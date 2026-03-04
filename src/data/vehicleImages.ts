@@ -95,7 +95,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
   "mercedes-benz-glc-2025": {
     "Exterior — Front": "/vehicles/COVER-IMAGE-TURO-2025-MERCEDES-BENZ-GLC-300-SUV-COUPE.png",
     "Exterior — Side": "/vehicles/mercedes-benz-glc-2025-ext-side.jpg",
-    "Exterior — Rear": "/vehicles/mercedes0benz-glc-2025-ext-rear.jpg",
+    "Exterior — Rear": "/vehicles/mercedes-benz-glc-2025-ext-rear.jpg",
     "Interior — Dashboard": "/vehicles/mercedes-benz-glc-2025-dashboard.jpg",
     "Interior — Cabin": "/vehicles/mercedez-benz-glc-2025-cabin.jpg",
     "Interior — Rear Seats": "/vehicles/mercedez-benz-glc-2025-rear-seat.jpg",
