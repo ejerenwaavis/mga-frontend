@@ -1,7 +1,6 @@
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-// import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Routes, Route } from "react-router-dom";
 import Layout from "@/components/Layout";
 import Index from "./pages/Index";
@@ -18,15 +17,11 @@ import NotFound from "./pages/NotFound";
 import { useEffect } from "react";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/Dashboard";
-// import Drivers from "./pages/admin/Drivers";
 import Requests from "./pages/admin/Requests";
-import BookingsAD from "./pages/admin/BookingsAD";
-import AdminStafs from "./pages/admin/AdminStafs";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-// const queryClient = new QueryClient();
 
 const ScrollToTop = () => {
   const url = window.location.pathname;
@@ -69,10 +64,7 @@ export function App() {
 
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          {/* <Route path="/admin/drivers" element={<Drivers />} /> */}
           <Route path="/admin/requests" element={<Requests />} />
-          <Route path="/admin/bookings" element={<BookingsAD />} />
-          <Route path="/admin/staffs" element={<AdminStafs />} />
           <Route path="/admin/users" element={<AdminUsers />} />
         </Routes>
       </Layout>
