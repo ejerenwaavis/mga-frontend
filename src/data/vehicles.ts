@@ -16,14 +16,15 @@ export interface Vehicle {
   mileageAllowance: string;
   mileageOverage: string;
   insuranceRequirement: string;
+  turoURL: string;
 }
 
 
 
 export const vehicles: Vehicle[] = [
   {
-    id: "kia-k4-2022",
-    name: "Kia k4",
+    id: "kia-telluride",
+    name: "Kia Telluride",
     year: 2022,
     category: "SUV",
     pricePerDay: 139,
@@ -32,11 +33,12 @@ export const vehicles: Vehicle[] = [
     airportReady: true,
     highlight: "Leather, panoramic sunroof, Bose surround",
     features: ["Premium leather interior", "Panoramic sunroof", "Wireless Apple CarPlay", "360° camera system", "Heated & ventilated seats", "Bose surround sound"],
-    overview: "Command the road in the Kia telluride Spacious, refined, and unmistakably premium — ideal for airport arrivals, family travel, or making an impression.",
+    overview: "Command the road in the Kia Spacious, refined, and unmistakably premium — ideal for airport arrivals, family travel, or making an impression.",
     deposit: "$300 refundable deposit",
     mileageAllowance: "200 miles/day included",
     mileageOverage: "$0.25 per additional mile",
     insuranceRequirement: "Full coverage required",
+    turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/kia/telluride/3125159?endDate=04%2F23%2F2026&endTime=10%3A00&startDate=04%2F20%2F2026&startTime=10%3A00"
   },
   {
     id: "bmw-x6-2022",
@@ -54,6 +56,7 @@ export const vehicles: Vehicle[] = [
     mileageAllowance: "200 miles/day included",
     mileageOverage: "$0.30 per additional mile",
     insuranceRequirement: "Full coverage required",
+    turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/bmw/x6/2943656?endDate=04%2F11%2F2026&endTime=10%3A00&startDate=04%2F08%2F2026&startTime=10%3A00"
   },
   {
     id: "mercedes-benz-glc-2022",
@@ -71,6 +74,7 @@ export const vehicles: Vehicle[] = [
     mileageAllowance: "200 miles/day included",
     mileageOverage: "$0.35 per additional mile",
     insuranceRequirement: "Full coverage required",
+    turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/mercedes-benz/glc-class/1947668?endDate=04%2F09%2F2026&endTime=10%3A00&startDate=04%2F06%2F2026&startTime=10%3A00"
   },
   {
     id: "ford-explorer-2023",
@@ -88,6 +92,7 @@ export const vehicles: Vehicle[] = [
     mileageAllowance: "200 miles/day included",
     mileageOverage: "$0.30 per additional mile",
     insuranceRequirement: "Full coverage required",
+    turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/ford/explorer/3351936?endDate=04%2F06%2F2026&endTime=10%3A00&startDate=04%2F03%2F2026&startTime=10%3A00"
   },
   // {
   //   id: "tesla-model-3-2024",
@@ -156,6 +161,7 @@ export const vehicles: Vehicle[] = [
     mileageAllowance: "200 miles/day included",
     mileageOverage: "$0.30 per additional mile",
     insuranceRequirement: "Full coverage required",
+    turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/ford/bronco-sport/3416097?endDate=04%2F06%2F2026&endTime=10%3A00&startDate=04%2F03%2F2026&startTime=10%3A00"
   },
   {
     id: "mercedes-benz-glc-2025",
@@ -173,6 +179,7 @@ export const vehicles: Vehicle[] = [
     mileageAllowance: "150 miles/day included",
     mileageOverage: "$0.50 per additional mile",
     insuranceRequirement: "Full coverage required; premium policy recommended",
+    turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/mercedes-benz/glc-class/3361316?endDate=04%2F06%2F2026&endTime=10%3A00&startDate=04%2F03%2F2026&startTime=10%3A00"
   },
   {
     id: "porsche-mecan-2023",
@@ -190,6 +197,7 @@ export const vehicles: Vehicle[] = [
     mileageAllowance: "175 miles/day included",
     mileageOverage: "$0.45 per additional mile",
     insuranceRequirement: "Full coverage required",
+    turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/porsche/macan/3412905?endDate=04%2F13%2F2026&endTime=10%3A00&startDate=04%2F10%2F2026&startTime=10%3A00"
   },
   // {
   //   id: "range-rover-sport-2024",
@@ -224,6 +232,7 @@ export const vehicles: Vehicle[] = [
     mileageAllowance: "150 miles/day included",
     mileageOverage: "$0.50 per additional mile",
     insuranceRequirement: "Full coverage required; premium policy recommended",
+    turoURL: "https://turo.com/us/en/car-rental/united-states/atlanta-ga/bmw/3-series/3344731?endDate=04%2F10%2F2026&endTime=10%3A00&startDate=04%2F07%2F2026&startTime=10%3A00"
   },
   {
     id: "kia-sorento-2025",
@@ -241,11 +250,12 @@ export const vehicles: Vehicle[] = [
     mileageAllowance: "200 miles/day included",
     mileageOverage: "$0.25 per additional mile",
     insuranceRequirement: "Full coverage required",
+    turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/kia/telluride/3125159?endDate=04%2F23%2F2026&endTime=10%3A00&startDate=04%2F20%2F2026&startTime=10%3A00"
   },
   {
-    id: "kia-k4-2024",
+    id: "kia-k4-2025",
     name: "Kia k4",
-    year: 2024,
+    year: 2025,
     category: "Sedan",
     pricePerDay: 139,
     seats: 5,
@@ -258,6 +268,7 @@ export const vehicles: Vehicle[] = [
     mileageAllowance: "200 miles/day included",
     mileageOverage: "$0.25 per additional mile",
     insuranceRequirement: "Full coverage required",
+    turoURL: "https://turo.com/us/en/car-rental/united-states/atlanta-ga/kia/k4/3360917?endDate=04%2F09%2F2026&endTime=10%3A00&startDate=04%2F06%2F2026&startTime=10%3A00"
   },
   {
     id: "mercedes-benz-glc-2024",
@@ -275,5 +286,6 @@ export const vehicles: Vehicle[] = [
     mileageAllowance: "150 miles/day included",
     mileageOverage: "$0.50 per additional mile",
     insuranceRequirement: "Full coverage required; premium policy recommended",
+    turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/mercedes-benz/glc-class/3500638?endDate=04%2F16%2F2026&endTime=10%3A00&startDate=04%2F13%2F2026&startTime=10%3A00"
   },
 ];

@@ -36,7 +36,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Cabin": "/vehicles/BMW-X6-2022-interior-cabin.jpg",
     "Interior — Rear Seats": "/vehicles/BMW-X6-2022-interior-rear-seat.jpg",
   },
-  "kia-k4-2022": {
+  "kia-telluride": {
     "Exterior — Front": "/vehicles/COVER-IMAGE-TURO-2022-KIA-TELLURIDE.png",
     "Exterior — Side": "/vehicles/kia-2022-teluride-side-exterior.jpg",
     "Exterior — Rear": "/vehicles/kia-2022-teluride-read-exterior.jpg",
@@ -100,7 +100,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Cabin": "/vehicles/mercedez-benz-glc-2025-cabin.jpg",
     "Interior — Rear Seats": "/vehicles/mercedez-benz-glc-2025-rear-seat.jpg",
   },
-  "kia-k4-2024": {
+  "kia-k4-2025": {
     "Exterior — Front": "/vehicles/COVER-IMAGE-TURO-2024-KIA-K4.png",
     "Exterior — Side": "/vehicles/kia-k4-2024-ext-side.jpg",
     "Exterior — Rear": "/vehicles/kia-k4-2024-ext-rear.jpg",
