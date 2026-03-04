@@ -276,7 +276,7 @@ const Dashboard = () => {
                           setEditRequestModalOpen(true);
                         }}
                       >
-                        Edit
+                        Process
                       </button>
 
                     </div>
@@ -396,7 +396,7 @@ const Dashboard = () => {
                   <option value="pending">Pending</option>
                   <option value="confirmed">Confirmed</option>
                   <option value="completed">Completed</option>
-                  <option value="cancelled">Cancelled</option>
+                  <option value="cancelled">Cancel</option>
                 </select>
 
               </div>
