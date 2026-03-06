@@ -19,6 +19,7 @@ import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/Dashboard";
 import Requests from "./pages/admin/Requests";
 import AdminUsers from "./pages/admin/AdminUsers";
+import AdminProfile from "./pages/admin/adminProfile";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -66,6 +67,7 @@ export function App() {
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/requests" element={<Requests />} />
           <Route path="/admin/users" element={<AdminUsers />} />
+          <Route path="/admin/profile" element={<AdminProfile />} />
         </Routes>
       </Layout>
 

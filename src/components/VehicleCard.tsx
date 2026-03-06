@@ -3,7 +3,7 @@ import { Users, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Vehicle } from "@/data/vehicles";
 import { TURO_URL } from "@/data/vehicles";
-import { vehicleImages } from "@/data/vehicleImages";
+import { vehicleImages, getOptimizedImageUrl } from "@/data/vehicleImages";
 
 interface VehicleCardProps {
   vehicle: Vehicle;
@@ -12,13 +12,17 @@ interface VehicleCardProps {
 export default function VehicleCard({ vehicle }: VehicleCardProps) {
   const image = vehicleImages[vehicle.id]?.["Exterior — Front"];
 
+  const displayImage = image
+    ? getOptimizedImageUrl(image, "display")
+    : undefined;
+
 
   return (
     <div className="group flex flex-col overflow-hidden rounded border border-border bg-card transition-all duration-200 hover:shadow-xl hover:shadow-foreground/5 hover:-translate-y-1.5 hover:border-border/80">
       <Link to={`/fleet/${vehicle.id}`} className="relative aspect-[16/10] overflow-hidden bg-muted">
-        {image ? (
+        {displayImage ? (
           <img
-            src={image}
+            src={displayImage}
             alt={`${vehicle.year} ${vehicle.name} rental in Atlanta, GA`}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
             loading="lazy"

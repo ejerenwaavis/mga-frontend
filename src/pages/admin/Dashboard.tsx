@@ -16,7 +16,8 @@ import { updateRequest } from "@/services/mutations";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import useUserStore from "../../hooks/store/userStore";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+
 
 
 const formatDateTime = (date: string | null | undefined) =>
@@ -162,6 +163,18 @@ const Dashboard = () => {
 
       <div className="mb-6 flex flex-row items-center justify-between p-8 border-b border-gray-100">
         <h1 className="text-2xl font-bold text-gray-800">Admin Dashboard</h1>
+
+
+
+
+
+        {/* <Link
+          to="/admin/profile"
+          className="nav-hover-link flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest transition-colors duration-150 hover:text-primary  text-muted-foreground"
+        >
+
+          Profile
+        </Link> */}
 
         <Button
           onClick={handleLogout}
