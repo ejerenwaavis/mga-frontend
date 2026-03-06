@@ -11,20 +11,9 @@ import porscheCayenne from "@/assets/vehicles/porsche-cayenne-2024.jpg";
 import rangeRoverSport from "@/assets/vehicles/range-rover-sport-2024.jpg";
 import bmw7Series from "@/assets/vehicles/bmw-7-series-2024.jpg";
 
-// export const vehicleImages: Record<string, string> = {
-//   "cadillac-escalade-2024": cadillacEscalade,
-//   "bmw-x5-2024": bmwX5,
-//   "mercedes-gle-2024": mercedesGle,
-//   "chevrolet-tahoe-2024": chevroletTahoe,
-//   "tesla-model-3-2024": teslaModel3,
-//   "audi-a6-2024": audiA6,
-//   "lexus-es-2024": lexusEs,
-//   "genesis-g80-2024": genesisG80,
-//   "mercedes-s-class-2024": mercedesSClass,
-//   "porsche-cayenne-2024": porscheCayenne,
-//   "range-rover-sport-2024": rangeRoverSport,
-//   "bmw-7-series-2024": bmw7Series,
-// };
+
+import manifest from "./vehicleImageManifest.json";
+
 
 
 export const vehicleImages: Record<string, Record<string, string>> = {
@@ -124,3 +113,19 @@ export const vehicleImages: Record<string, Record<string, string>> = {
 
 
 
+type ImageSize = "thumbnail" | "display";
+
+/**
+ * Returns the optimized WebP path for a given original image path.
+ * Falls back to the original path if the optimized version isn't in the manifest.
+ *
+ * @param originalPath  e.g. "/vehicles/BMW-X6-2022-side-exterior.jpg"
+ * @param size          "thumbnail" (grid slots) | "display" (main viewer)
+ */
+export function getOptimizedImageUrl(originalPath: string, size: ImageSize): string {
+  const fileName = originalPath.split("/").pop(); // e.g. "BMW-X6-2022-side-exterior.jpg"
+  if (!fileName) return originalPath;
+
+  const entry = (manifest as Record<string, Record<string, string>>)[fileName];
+  return entry?.[size] ?? originalPath; // graceful fallback to original
+}

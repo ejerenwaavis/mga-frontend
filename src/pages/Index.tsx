@@ -6,7 +6,7 @@ import FadeIn from "@/components/FadeIn";
 import CTAGroup from "@/components/CTAGroup";
 import { vehicles } from "@/data/vehicles";
 import { Shield, MapPin, FileCheck, Car, Phone, Clock, CreditCard, ShieldCheck, Gauge, UserCheck, Star, ExternalLink } from "lucide-react";
-import heroVideo from "@/assets/hero-video.mp4";
+import heroVideo from "@/assets/hero-video-1.mp4";
 
 const PHONE = "(470) 817-6427";
 const ADDRESS = "3535 Peachtree Rd Space 520 Ste 234, Atlanta, GA 30326";

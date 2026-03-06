@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { vehicles, TURO_URL } from "@/data/vehicles";
-import { vehicleImages } from "@/data/vehicleImages";
+// import { vehicleImages } from "@/data/vehicleImages";
 import { Button } from "@/components/ui/button";
 import FadeIn from "@/components/FadeIn";
 import CTAGroup from "@/components/CTAGroup";
-import { Users, Briefcase, Tag, ArrowLeft, ShieldCheck, Gauge, CreditCard, UserCheck } from "lucide-react";
+import { Tag, ArrowLeft, ShieldCheck, Gauge, CreditCard, UserCheck } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
+import { vehicleImages, getOptimizedImageUrl } from "@/data/vehicleImages";
 
 export default function VehicleDetails() {
   const { vehicleId } = useParams<{ vehicleId: string }>();
   const vehicle = vehicles.find((v) => v.id === vehicleId);
-  const [selectedImage, setSelectedImage] = useState(0);
+  // const [selectedImage, setSelectedImage] = useState(0);
 
   useSEO({
     title: vehicle
@@ -38,7 +39,10 @@ export default function VehicleDetails() {
     );
   }
 
+  // const carImages = vehicleImages[vehicle.id];
+
   const carImages = vehicleImages[vehicle.id];
+
 
 
   const policies = [
@@ -59,7 +63,13 @@ export default function VehicleDetails() {
   ];
 
   const [selectedSlot, setSelectedSlot] = useState(gallerySlots[0]);
-  const displayImage = carImages[selectedSlot.label];
+  // const displayImage = carImages[selectedSlot.label];
+  const rawDisplay = carImages[selectedSlot.label];
+
+
+  const displayImage = rawDisplay
+    ? getOptimizedImageUrl(rawDisplay, "display")
+    : undefined;
 
   return (
     <>
@@ -78,12 +88,17 @@ export default function VehicleDetails() {
             {/* Gallery */}
             <FadeIn>
               <div className="space-y-3">
+
+                {/* Main display image */}
                 <div className="aspect-[4/3] rounded border border-border bg-stone overflow-hidden group cursor-pointer">
                   {displayImage ? (
                     <img
                       src={displayImage}
                       alt={`${vehicle.year} ${vehicle.name} exterior — luxury rental in Atlanta, GA`}
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="eager"
+                      decoding="async"
+                      fetchPriority="high"
                     />
                   ) : (
                     <div className="flex h-full w-full items-center justify-center">
@@ -93,23 +108,34 @@ export default function VehicleDetails() {
                     </div>
                   )}
                 </div>
+
+                {/* Thumbnail grid */}
                 <div className="grid grid-cols-3 gap-3">
                   {gallerySlots.map((slot) => {
-                    const slotImage = carImages[slot.label];
+                    const rawSlot = carImages[slot.label];
+                    // Use the "thumbnail" size (320px WebP) for grid slots
+                    const slotImage = rawSlot
+                      ? getOptimizedImageUrl(rawSlot, "thumbnail")
+                      : undefined;
                     const isActive = selectedSlot.label === slot.label;
 
                     return (
                       <div
                         key={slot.label}
                         onClick={() => setSelectedSlot(slot)}
-                        className={`aspect-[4/3] rounded border bg-stone flex items-center justify-center overflow-hidden group cursor-pointer transition-all 
-                ${isActive ? "border-primary ring-1 ring-primary" : "border-border hover:border-primary/50"}`}
+                        className={`aspect-[4/3] rounded border bg-stone flex items-center justify-center overflow-hidden group cursor-pointer transition-all
+              ${isActive
+                            ? "border-primary ring-1 ring-primary"
+                            : "border-border hover:border-primary/50"
+                          }`}
                       >
                         {slotImage ? (
                           <img
                             src={slotImage}
                             alt={slot.label}
                             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            loading="lazy"
+                            decoding="async"
                           />
                         ) : (
                           <span className="text-[10px] font-sans text-muted-foreground/30 text-center px-1">
@@ -120,6 +146,7 @@ export default function VehicleDetails() {
                     );
                   })}
                 </div>
+
               </div>
             </FadeIn>
 
@@ -241,7 +268,7 @@ export default function VehicleDetails() {
             <CTAGroup className="mt-12" />
           </FadeIn>
         </div>
-      </section>
+      </section >
     </>
   );
 }
