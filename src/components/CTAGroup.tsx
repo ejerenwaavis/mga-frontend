@@ -19,7 +19,7 @@ export default function CTAGroup({ variant = "default", showHelper = true, class
             </Button>
           </Link>
           <a href={TURO_URL} target="_blank" rel="noopener noreferrer">
-            <Button variant="heroOutline" size="lg" className="neon-btn min-w-[200px]">
+            <Button variant="gold" size="lg" className="neon-btn min-w-[200px]">
               Rent on Turo
             </Button>
           </a>
@@ -43,7 +43,7 @@ export default function CTAGroup({ variant = "default", showHelper = true, class
             </Button>
           </Link>
           <a href={TURO_URL} target="_blank" rel="noopener noreferrer">
-            <Button variant="heroOutline" size="lg" className="min-w-[200px] border-primary-foreground/20 text-primary-foreground/60 hover:text-primary-foreground hover:bg-primary-foreground/10">
+            <Button variant="gold" size="lg" className="min-w-[200px] border-primary-foreground/20 text-primary-foreground/60 hover:text-primary-foreground hover:bg-primary-foreground/10">
               Rent on Turo
             </Button>
           </a>
@@ -66,7 +66,7 @@ export default function CTAGroup({ variant = "default", showHelper = true, class
           </Button>
         </Link>
         <a href={TURO_URL} target="_blank" rel="noopener noreferrer">
-          <Button variant="ghost" size="lg" className="min-w-[200px] text-muted-foreground hover:text-foreground">
+          <Button variant="gold" size="lg" className="min-w-[200px] text-muted-foreground hover:text-foreground">
             Rent on Turo
           </Button>
         </a>

@@ -9,7 +9,7 @@ const categories = ["All", "SUV", "Sedan", "Luxury"] as const;
 export default function Fleet() {
   useSEO({
     title: "Premium Rental Fleet in Atlanta | SUVs, Sedans & Luxury Vehicles",
-    description: "Browse our curated Atlanta rental fleet — luxury SUVs, executive sedans, and premium vehicles. Airport-ready, insured, available 24/7 in Buckhead.",
+    description: "Browse our curated Atlanta rental fleet — luxury SUVs, executive sedans, and premium vehicles. Airport-ready, insured, available 24/7 in Atlanta.",
     canonical: "https://green-fleet-concierge.lovable.app/fleet",
   });
   const [category, setCategory] = useState<string>("All");

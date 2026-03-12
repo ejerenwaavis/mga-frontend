@@ -80,7 +80,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
             </Button>
           </Link>
           <a href={vehicle.turoURL} target="_blank" rel="noopener noreferrer">
-            <Button variant="ghost" size="sm" className="w-full text-xs text-muted-foreground hover:text-foreground">
+            <Button variant="gold" size="sm" className="w-full text-xs text-white hover:text-foreground">
               Rent on Turo (Daily rentals)
             </Button>
           </a>

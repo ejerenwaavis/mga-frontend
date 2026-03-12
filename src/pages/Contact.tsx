@@ -10,7 +10,7 @@ import { useSEO } from "@/hooks/useSEO";
 const PHONE = "(470) 817-6427";
 const EMAIL = "info@meadgreenautos.com";
 const ADDRESS = "3535 Peachtree Rd Space 520 Ste 234, Atlanta, GA 30326";
-const YELP_URL = "https://www.yelp.com/biz/mead-green-autos-atlanta";
+// const YELP_URL = "https://www.yelp.com/biz/mead-green-autos-atlanta";
 const MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=3535+Peachtree+Rd+Space+520+Ste+234+Atlanta+GA+30326";
 
 export default function Contact() {
@@ -132,12 +132,12 @@ export default function Contact() {
                         Get Directions
                       </Button>
                     </a>
-                    <a href={YELP_URL} target="_blank" rel="noopener noreferrer">
+                    {/* <a href={YELP_URL} target="_blank" rel="noopener noreferrer">
                       <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
                         <ExternalLink className="mr-1.5 h-3.5 w-3.5" />
                         View on Yelp
                       </Button>
-                    </a>
+                    </a> */}
                   </div>
                 </div>
 

@@ -6,7 +6,7 @@ import { TURO_URL } from "@/data/vehicles";
 const PHONE = "(470) 817-6427";
 const EMAIL = "info@meadgreenautos.com";
 const ADDRESS = "3535 Peachtree Rd Space 520 Ste 234, Atlanta, GA 30326";
-const YELP_URL = "https://www.yelp.com/biz/mead-green-autos-atlanta";
+// const YELP_URL = "https://www.yelp.com/biz/mead-green-autos-atlanta";
 
 const serviceSubLinks = [
   { label: "AIRPORT SERVICE", to: "/services#airport" },
@@ -20,7 +20,7 @@ const navLinks = [
   { label: "Home", to: "/" },
   { label: "Fleet", to: "/fleet" },
   { label: "Services", to: "/services", children: serviceSubLinks },
-  { label: "About", to: "/about" },
+  { label: "About Us", to: "/about" },
   { label: "FAQ", to: "/faq" },
   { label: "Contact", to: "/contact" },
 ];
@@ -130,7 +130,7 @@ function Navbar() {
           // h-8 (32px) for mobile, md:h-10 (40px) for desktop
           />
           <span
-            className="font-serif text-[1.15rem] font-semibold uppercase tracking-tight md:text-[1.3rem]"
+            className="font-serif text-[1.15rem] font-semibold tracking-tight md:text-[1.3rem]"
             style={{ color: "hsl(var(--primary))" }}
           >
             Mead Green Autos
@@ -216,7 +216,7 @@ function Footer() {
             </p>
             <div className="flex items-center gap-1 text-xs text-secondary-foreground/50">
               <MapPin className="h-3 w-3" />
-              Buckhead, Atlanta &bull; Open 24/7
+              Atlanta &bull; Open 24/7
             </div>
             {/* Social Icons */}
             <div className="mt-4 flex gap-3">
@@ -277,10 +277,10 @@ function Footer() {
               <a href={TURO_URL} target="_blank" rel="noopener noreferrer" className="text-sm text-secondary-foreground/70 transition-colors hover:text-secondary-foreground">
                 Rent on Turo
               </a>
-              <a href="https://www.yelp.com/biz/mead-green-autos-atlanta" target="_blank" rel="noopener noreferrer" className="text-sm text-secondary-foreground/70 transition-colors hover:text-secondary-foreground flex items-center gap-1">
+              {/* <a href="https://www.yelp.com/biz/mead-green-autos-atlanta" target="_blank" rel="noopener noreferrer" className="text-sm text-secondary-foreground/70 transition-colors hover:text-secondary-foreground flex items-center gap-1">
                 View on Yelp
                 <ExternalLink className="h-3 w-3" />
-              </a>
+              </a> */}
             </nav>
           </div>
 
@@ -321,7 +321,7 @@ function Footer() {
         <div className="mt-12 border-t border-secondary-foreground/10 pt-8 text-center">
           <p className="text-xs text-secondary-foreground/40">
             &copy; {new Date().getFullYear()} Mead Green Autos. All rights
-            reserved. Buckhead, Atlanta, Georgia.
+            reserved. Atlanta, Georgia.
           </p>
         </div>
       </div>

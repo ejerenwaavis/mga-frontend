@@ -10,7 +10,7 @@ import heroVideo from "@/assets/hero-video-1.mp4";
 
 const PHONE = "(470) 817-6427";
 const ADDRESS = "3535 Peachtree Rd Space 520 Ste 234, Atlanta, GA 30326";
-const YELP_URL = "https://www.yelp.com/biz/mead-green-autos-atlanta";
+// const YELP_URL = "https://www.yelp.com/biz/mead-green-autos-atlanta";
 const MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=3535+Peachtree+Rd+Space+520+Ste+234+Atlanta+GA+30326";
 
 const featuredVehicles = vehicles.slice(0, 6);
@@ -191,7 +191,7 @@ export default function Index() {
         <div className="container flex flex-wrap items-center justify-center gap-x-6 gap-y-2 py-3 text-[13.5px] font-sans tracking-wide text-muted-foreground">
           <span>Open 24/7</span>
           <span className="hidden sm:inline text-border">|</span>
-          <span>Buckhead, Atlanta</span>
+          <span>Atlanta</span>
           <span className="hidden sm:inline text-border">|</span>
           <span>3535 Peachtree Rd</span>
           <span className="hidden sm:inline text-border">|</span>
@@ -336,7 +336,7 @@ export default function Index() {
                 <h2 className="font-serif text-3xl font-semibold md:text-4xl">Trusted in Atlanta</h2>
                 <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
                   We provide flexible, all-day rentals with a selection of well-maintained
-                  vehicles tailored to drivers in Buckhead, Atlanta. We take pride in
+                  vehicles tailored to drivers in Atlanta. We take pride in
                   top-notch service and consistently earn 5-star ratings on Turo. Let us
                   get you on the road with confidence.
                 </p>
@@ -359,12 +359,12 @@ export default function Index() {
                 <a href={MAPS_URL} target="_blank" rel="noopener noreferrer">
                   <Button variant="premiumOutline" size="sm">Get Directions</Button>
                 </a>
-                <a href={YELP_URL} target="_blank" rel="noopener noreferrer">
+                {/* <a href={YELP_URL} target="_blank" rel="noopener noreferrer">
                   <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
                     <ExternalLink className="mr-1.5 h-3.5 w-3.5" />
                     View on Yelp
                   </Button>
-                </a>
+                </a> */}
               </div>
             </div>
           </FadeIn>
@@ -379,7 +379,7 @@ export default function Index() {
               <div>
                 <h2 className="font-serif text-3xl font-semibold md:text-4xl">Service Area</h2>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  Based in Buckhead, Atlanta, with a focus on Hartsfield-Jackson Atlanta
+                  Based in Atlanta, with a focus on Hartsfield-Jackson Atlanta
                   International Airport (ATL). We provide convenient pickup and drop-off
                   for travelers arriving or departing through the world's busiest airport.
                 </p>
@@ -416,7 +416,7 @@ export default function Index() {
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="Mead Green Autos — Buckhead, Atlanta"
+                    title="Mead Green Autos — Atlanta"
                   />
                 </div>
                 <div className="absolute -top-px -left-px h-5 w-5 rounded-tl-xl border-t-2 border-l-2 border-primary/40 pointer-events-none" />
