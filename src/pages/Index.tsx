@@ -9,7 +9,7 @@ import { Shield, MapPin, FileCheck, Car, Phone, Clock, CreditCard, ShieldCheck, 
 import heroVideo from "@/assets/hero-video-1.mp4";
 
 const PHONE = "(470) 817-6427";
-const ADDRESS = "3535 Peachtree Rd Space 520 Ste 234, Atlanta, GA 30326";
+const ADDRESS = "3535 Peachtree Rd Space 520 Ste 234, Buckhead, Atlanta, GA 30326";
 // const YELP_URL = "https://www.yelp.com/biz/mead-green-autos-atlanta";
 const MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=3535+Peachtree+Rd+Space+520+Ste+234+Atlanta+GA+30326";
 
