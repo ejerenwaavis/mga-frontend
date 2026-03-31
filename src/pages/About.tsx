@@ -27,8 +27,8 @@ export default function About() {
         <div className="container max-w-3xl">
           <FadeIn>
             <div className="prose-sm prose-stone max-w-none">
-              <h2 className="font-serif text-2xl font-semibold">Our Story</h2>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              <h2 className="font-serif text-2xl font-semibold text-gold">Our Story</h2>
+              <p className="mt-4 text-sm leading-relaxed text-white">
                 Mead Green Autos was founded with a clear purpose: to provide
                 Atlanta travelers and residents with access to premium,
                 well-maintained vehicles backed by professional service. We
@@ -36,7 +36,7 @@ export default function About() {
                 it is about trust, reliability, and the confidence that comes
                 with knowing every detail has been handled.
               </p>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-4 text-sm leading-relaxed text-white">
                 Based near Hartsfield-Jackson Atlanta International Airport, we
                 serve a discerning clientele that includes airport arrivals,
                 corporate professionals, and individuals seeking a premium
@@ -44,7 +44,7 @@ export default function About() {
                 in Our inventory is carefully selected, meticulously maintained, and
                 prepared to the highest standard before each rental.
               </p>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-4 text-sm leading-relaxed text-white">
                 Our approach is straightforward: clear policies, transparent
                 pricing, responsive communication, and vehicles you can depend
                 on. Whether you are booking through Turo for immediate
@@ -57,15 +57,15 @@ export default function About() {
 
           <FadeIn delay={0.15}>
             <div className="mt-16">
-              <h2 className="font-serif text-2xl font-semibold">
+              <h2 className="font-serif text-2xl font-semibold text-gold">
                 Operations & Credibility
               </h2>
               <div className="mt-6 aspect-[16/9] rounded border border-border bg-stone flex items-center justify-center">
-                <span className="font-serif text-lg text-muted-foreground/40">
+                <span className="font-serif text-lg text-white">
                   Behind the Scenes
                 </span>
               </div>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-4 text-sm leading-relaxed text-white">
                 Our operations are built on consistency and accountability.
                 Each vehicle undergoes thorough inspection and cleaning between
                 rentals. We maintain full insurance coverage and comply with all

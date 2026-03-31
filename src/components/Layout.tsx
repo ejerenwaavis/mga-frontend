@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail, ChevronDown, MapPin, Clock, ExternalLink } from "lucide-react";
 import { TURO_URL } from "@/data/vehicles";
+import FAQSection from "@/components/Faq";
 
 const PHONE = "(470) 817-6427";
 const EMAIL = "ceo@meadgreenautos.com";
@@ -22,6 +23,7 @@ const navLinks = [
   { label: "Services", to: "/services", children: serviceSubLinks },
   { label: "About Us", to: "/about" },
   { label: "Contact", to: "/contact" },
+  { label: "Faq", to: "/#faqs" },
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -29,6 +31,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div className="flex min-h-screen flex-col">
       <Navbar />
       <main className="flex-1">{children}</main>
+      <Extra />
       <Footer />
     </div>
   );
@@ -46,7 +49,17 @@ function NavItem({ link, currentPath }: { link: typeof navLinks[0]; currentPath:
     <div className="relative" onMouseEnter={show} onMouseLeave={hide}>
       <Link
         to={link.to}
-        className={`nav-hover-link flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest transition-colors duration-150 hover:text-primary ${isActive ? "text-white active" : "text-white"
+        onClick={(e) => {
+          if (link.to.startsWith("#") || link.to.includes("#")) {
+            const id = link.to.split("#")[1];
+            const element = document.getElementById(id);
+            if (element) {
+              e.preventDefault(); // Prevent default jump
+              element.scrollIntoView({ behavior: "smooth" });
+            }
+          }
+        }}
+        className={`nav-hover-link flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest transition-colors duration-150 hover:text-gold ${isActive ? "text-white active" : "text-white"
           }`}
       >
         {link.label}
@@ -154,7 +167,7 @@ function Navbar() {
         <Link to="/" className="flex items-center gap-2 select-none">
           {/* The Image replaces the <span> */}
           <img
-            src="/MGA-SHORT-LOGO-GREEN.png"
+            src="/MGA-FULL-LOGO.png"
             alt="Mead Green Autos Logo"
             className="h-12 w-auto md:h-12"
           // h-8 (32px) for mobile, md:h-10 (40px) for desktop
@@ -231,6 +244,14 @@ function Navbar() {
       )}
     </header>
   );
+}
+
+function Extra() {
+  return (
+    <section id="faqs" className="scroll-mt-20">
+      <FAQSection />
+    </section>
+  )
 }
 
 function Footer() {

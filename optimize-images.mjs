@@ -24,7 +24,7 @@ const OUTPUT_DIR = path.join(__dirname, "public", "vehicles", "optimized");
 const SIZES = {
   // key: [maxWidth, quality]  — WebP quality 1-100
   thumbnail: [320, 60],   // used in gallery grid thumbnails
-  display:   [900, 75],   // used for the main large display slot
+  display: [900, 75],   // used for the main large display slot
 };
 
 const SUPPORTED_EXTS = [".jpg", ".jpeg", ".png", ".webp"];
@@ -32,7 +32,7 @@ const SUPPORTED_EXTS = [".jpg", ".jpeg", ".png", ".webp"];
 
 async function run() {
   if (!fs.existsSync(INPUT_DIR)) {
-    console.error(`❌  Input directory not found: ${INPUT_DIR}`);
+    console.error(` Input directory not found: ${INPUT_DIR}`);
     process.exit(1);
   }
 
@@ -43,11 +43,11 @@ async function run() {
     .filter((f) => SUPPORTED_EXTS.includes(path.extname(f).toLowerCase()));
 
   if (files.length === 0) {
-    console.warn("⚠️  No supported image files found in", INPUT_DIR);
+    console.warn("  No supported image files found in", INPUT_DIR);
     return;
   }
 
-  console.log(`\n🔍  Found ${files.length} images — optimizing...\n`);
+  console.log(`\n  Found ${files.length} images — optimizing...\n`);
 
   const manifest = {};
 
@@ -70,13 +70,13 @@ async function run() {
         const saving = (((originalSize - info.size) / originalSize) * 100).toFixed(1);
 
         console.log(
-          `  ✅  ${file}  →  ${outputFile}  ` +
+          `  ${file}  →  ${outputFile}  ` +
           `(${(originalSize / 1024).toFixed(0)} KB → ${(info.size / 1024).toFixed(0)} KB, -${saving}%)`
         );
 
         manifest[file][sizeName] = `/vehicles/optimized/${outputFile}`;
       } catch (err) {
-        console.error(`  ❌  Failed: ${file} [${sizeName}]`, err.message);
+        console.error(`    Failed: ${file} [${sizeName}]`, err.message);
       }
     }
   }
@@ -85,8 +85,8 @@ async function run() {
   const manifestPath = path.join(__dirname, "src", "data", "vehicleImageManifest.json");
   fs.mkdirSync(path.dirname(manifestPath), { recursive: true });
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
-  console.log(`\n📄  Manifest written to: ${manifestPath}`);
-  console.log("\n🎉  Done!\n");
+  console.log(`\n  Manifest written to: ${manifestPath}`);
+  console.log("\n Done!\n");
 }
 
 run();

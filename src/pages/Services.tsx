@@ -61,20 +61,19 @@ export default function Services() {
   });
   const [selectedService, setSelectedService] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
-  const [pickupValue, setPickupValue] = useState("");
-  const [customLocation, setCustomLocation] = useState("");
-  const [debouncedLocation, setDebouncedLocation] = useState("");
+  // const [pickupValue, setPickupValue] = useState("");
+  // const [customLocation, setCustomLocation] = useState("");
+  // const [debouncedLocation, setDebouncedLocation] = useState("");
 
   interface FormData {
     fullName: string;
     email: string;
     phone: string;
     serviceType: string;
-    pickupLocation: string;
     vehicleId: string;
     startDate: string;
     endDate: string;
-    purpose: string;
+    time?: string;
     notes?: string;
   }
 
@@ -83,11 +82,10 @@ export default function Services() {
     email?: string;
     phone?: string;
     serviceType?: string;
-    pickupLocation?: string;
     vehicleId?: string;
     startDate?: string;
     endDate?: string;
-    purpose?: string;
+    time?: string;
     notes?: string;
   }
 
@@ -96,11 +94,10 @@ export default function Services() {
     email: "",
     phone: "",
     serviceType: "",
-    pickupLocation: "",
     vehicleId: "",
     startDate: "",
     endDate: "",
-    purpose: "Please select purpose",
+    time: "",
     notes: ""
   };
 
@@ -109,17 +106,15 @@ export default function Services() {
 
   const [errors, setErrors] = useState<FormErrors>(initialFormState);
 
-  useEffect(() => {
-    // Set a timer to update the "final" location after 500ms of no typing
-    const handler = setTimeout(() => {
-      setDebouncedLocation(customLocation);
-    }, 500);
+  // useEffect(() => {
+  //   const handler = setTimeout(() => {
+  //     setDebouncedLocation(customLocation);
+  //   }, 500);
 
-    // If the user types again before 500ms, clear the previous timer
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [customLocation]);
+  //   return () => {
+  //     clearTimeout(handler);
+  //   };
+  // }, [customLocation]);
 
 
   const validateForm = (): boolean => {
@@ -188,10 +183,10 @@ export default function Services() {
       if (validateForm()) {
         const requestDetails: CreateRequestPayload = {
           ...formData,
-          phone: formData.phone.replace(/[^\d+]/g, ""),
-          pickupLocation: formData.pickupLocation === "other"
-            ? debouncedLocation
-            : formData.pickupLocation
+          phone: formData.phone.replace(/[^\d+]/g, "")
+          // pickupLocation: formData.pickupLocation === "other"
+          //   ? debouncedLocation
+          //   : formData.pickupLocation
         };
 
         handleCreateRequest(requestDetails);
@@ -383,6 +378,14 @@ export default function Services() {
                       </select>
 
                     </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="svc-time">Time</Label>
+                      <Input id="svc-time" value={formData.time}
+                        onChange={(e) =>
+                          handleInputChange("time", e.target.value)
+                        } disabled={isLoading} type="text" placeholder="04:30 PM" required className="focus-visible:ring-primary" />
+
+                    </div>
                     {/* <div className="space-y-2">
                       <Label htmlFor="svc-pickup">Pickup Location</Label>
                       <select
@@ -417,7 +420,7 @@ export default function Services() {
                       )}
                     </div> */}
 
-                    <div className="space-y-3">
+                    {/* <div className="space-y-3">
                       <div className="space-y-2">
                         <Label htmlFor="svc-pickup">Pickup Location</Label>
                         <select
@@ -453,7 +456,7 @@ export default function Services() {
                         </div>
                       )}
 
-                    </div>
+                    </div> */}
                     <div className="space-y-2">
                       <Label htmlFor="svc-vehicle">Desired Vehicle</Label>
                       <select
@@ -489,9 +492,25 @@ export default function Services() {
                         } type="date" disabled={isLoading} required className="focus-visible:ring-primary" />
                     </div>
 
+                    <div className="space-y-2">
+                      <Label htmlFor="svc-end">License ID</Label>
+                      <Input id="svc-end" value={formData.endDate}
+                        onChange={(e) =>
+                          handleInputChange("endDate", e.target.value)
+                        } type="file" disabled={isLoading} required className="focus-visible:ring-primary" />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="svc-end">Insurance ID</Label>
+                      <Input id="svc-end" value={formData.endDate}
+                        onChange={(e) =>
+                          handleInputChange("endDate", e.target.value)
+                        } type="file" disabled={isLoading} required className="focus-visible:ring-primary" />
+                    </div>
+
                   </div>
 
-                  <div className="space-y-2">
+                  {/* <div className="space-y-2">
                     <Label htmlFor="svc-purpose">Purpose</Label>
                     <select
                       id="svc-purpose"
@@ -508,7 +527,7 @@ export default function Services() {
                       <option value="corporate">Corporate</option>
                     </select>
 
-                  </div>
+                  </div> */}
 
                   <div className="space-y-2">
                     <Label htmlFor="svc-notes">Notes</Label>

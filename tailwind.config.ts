@@ -14,7 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ["Playfair Display", "Georgia", "serif"],
+        // serif: ["Playfair Display", "Georgia", "serif"],
+        serif: ['"Abril Fatface"', 'serif'],
         sans: ["DM Sans", "system-ui", "sans-serif"],
       },
       colors: {

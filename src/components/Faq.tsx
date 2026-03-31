@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { FiPlus, FiMinus } from 'react-icons/fi';
+import FadeIn from "@/components/FadeIn";
+import CTAGroup from "@/components/CTAGroup";
 
 const FAQItem = ({ question, answer }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -51,16 +53,33 @@ const FAQSection = () => {
     ];
 
     return (
-        <section className="mx-auto max-w-3xl px-6 py-12">
-            <h2 className="mb-8 text-3xl font-black text-white text-center uppercase tracking-tight">
-                Frequently Asked Questions
-            </h2>
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
-                {faqs.map((faq, index) => (
-                    <FAQItem key={index} question={faq.question} answer={faq.answer} />
-                ))}
-            </div>
-        </section>
+        <div>
+            {/* Bottom CTA */}
+            <section className="bg-[#062C1B] py-16 md:py-20">
+                <div className="container text-center">
+                    <FadeIn>
+                        <h2 className="font-serif text-2xl font-semibold text-gold md:text-3xl">
+                            Ready to Reserve Your Vehicle?
+                        </h2>
+                        <p className="mx-auto mt-3 max-w-md text-sm text-white">
+                            Choose the option that fits your needs — from daily rentals to
+                            full-service concierge arrangements.
+                        </p>
+                        <CTAGroup className="mt-8" />
+                    </FadeIn>
+                </div>
+            </section>
+            <section className="mx-auto max-w-3xl px-6 py-12">
+                <h2 className="mb-8 text-3xl font-black text-gold text-center uppercase tracking-tight">
+                    Frequently Asked Questions
+                </h2>
+                <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                    {faqs.map((faq, index) => (
+                        <FAQItem key={index} question={faq.question} answer={faq.answer} />
+                    ))}
+                </div>
+            </section>
+        </div>
     );
 };
 
