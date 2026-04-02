@@ -115,7 +115,7 @@ export const searchTripByDate = async (details: SearchTripByDateDetails) => {
   return { data };
 };
 
-export const submitRequest = async (details: CreateRequestPayload) => {
+export const submitRequest = async (details: any) => {
 
   const { data } = await apiInstance.post("/submit-request", details);
   return { data };

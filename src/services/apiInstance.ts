@@ -1,4 +1,5 @@
-import axios from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+
 import { removeUserFromLocalStorage } from "../lib/helpers";
 import useUserStore from "../hooks/store/userStore";
 
@@ -6,16 +7,24 @@ const { VITE_DEV_BASE_URL } = import.meta.env;
 
 export const BASE_URL = VITE_DEV_BASE_URL;
 
-export const apiInstance = axios.create({
+export const apiInstance: AxiosInstance = axios.create({
   baseURL: VITE_DEV_BASE_URL,
-  withCredentials: true,
-  headers: {
-    "Content-Type": "application/json",
-  },
+  timeout: 30000,
+  withCredentials: true
+  // headers: {
+  //   "Content-Type": "application/json",
+  // },
+});
+
+apiInstance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+  if (!(config.data instanceof FormData)) {
+    config.headers["Content-Type"] = "application/json";
+  }
+  return config;
 });
 
 //REQUEST interceptor
-apiInstance.interceptors.request.use((config) => {
+apiInstance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   const token = localStorage.getItem("accessToken");
 
   if (token) {

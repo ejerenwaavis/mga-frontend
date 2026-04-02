@@ -167,22 +167,22 @@ function Navbar() {
         <Link to="/" className="flex items-center gap-2 select-none">
           {/* The Image replaces the <span> */}
           <img
-            src="/MGA-FULL-LOGO.png"
+            src="/MGA-FULL-LOGO.svg"
             alt="Mead Green Autos Logo"
-            className="h-12 w-auto md:h-12"
+            className="h-13 w-auto md:h-13"
           // h-8 (32px) for mobile, md:h-10 (40px) for desktop
           />
           {/* <span
             className="font-serif text-[1.15rem] font-semibold tracking-tight md:text-[1.3rem]"
             style={{ color: "hsl(var(--primary))" }}
           > */}
-          <span
+          {/* <span
             className="font-serif text-[1.15rem] font-semibold tracking-tight md:text-[1.3rem]"
             style={{ color: "white" }}
           >
             Mead Green Autos
 
-          </span>
+          </span> */}
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
@@ -271,7 +271,7 @@ function Footer() {
           <div>
             <div className="flex gap-3 py-5">
               <img
-                src="/MGA-SHORT-LOGO-GREEN.png"
+                src="/MGA-SHORT-LOGO.svg"
                 alt="Mead Green Autos Logo"
                 className="h-12 w-auto md:h-12"
 

@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -10,7 +9,7 @@ import { Plane, Car, Clock, Building2, Sparkles, X } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import { submitRequest } from "@/services/mutations";
 import { CreateRequestPayload, } from "@/lib/types";
-
+import heic2any from "heic2any";
 import Swal from "sweetalert2";
 import { useMutation } from "react-query";
 import { toast } from "sonner";
@@ -75,6 +74,8 @@ export default function Services() {
     endDate: string;
     time?: string;
     notes?: string;
+    license?: any;
+    insurance?: any;
   }
 
   interface FormErrors {
@@ -87,6 +88,8 @@ export default function Services() {
     endDate?: string;
     time?: string;
     notes?: string;
+    license?: any;
+    insurance?: any;
   }
 
   const initialFormState: FormData = {
@@ -98,7 +101,9 @@ export default function Services() {
     startDate: "",
     endDate: "",
     time: "",
-    notes: ""
+    notes: "",
+    license: "",
+    insurance: ""
   };
 
 
@@ -106,16 +111,10 @@ export default function Services() {
 
   const [errors, setErrors] = useState<FormErrors>(initialFormState);
   const today = new Date().toISOString().split("T")[0];
-
-  // useEffect(() => {
-  //   const handler = setTimeout(() => {
-  //     setDebouncedLocation(customLocation);
-  //   }, 500);
-
-  //   return () => {
-  //     clearTimeout(handler);
-  //   };
-  // }, [customLocation]);
+  const licenseInputRef = useRef<HTMLInputElement>(null);
+  const insuranceInputRef = useRef<HTMLInputElement>(null);
+  const [licenseFilePreview, setLicenseFilePreview] = useState<{ file: File; url: string } | null>(null);
+  const [insuranceFilePreview, setInsuranceFilePreview] = useState<{ file: File; url: string } | null>(null);
 
 
   const validateForm = (): boolean => {
@@ -174,6 +173,55 @@ export default function Services() {
     }
   };
 
+  const handleFileSelect = async (file: File, type: 'license' | 'insurance') => {
+    let processedFile = file;
+
+    // 1. Detect HEIC/HEIF files (Common on iOS)
+    const isHeic = file.type === "image/heic" ||
+      file.type === "image/heif" ||
+      file.name.toLowerCase().endsWith(".heic") ||
+      file.name.toLowerCase().endsWith(".heif");
+
+    if (isHeic) {
+      try {
+        // 2. Convert HEIC to JPEG
+        const convertedBlob = await heic2any({
+          blob: file,
+          toType: "image/jpeg",
+          quality: 0.8 // Adjust quality as needed
+        });
+
+        // Handle the result (heic2any can return an array if the HEIC has multiple frames)
+        const blob = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
+
+        // 3. Create a new File object from the Blob
+        processedFile = new File([blob], file.name.replace(/\.(heic|heif)$/i, ".jpg"), {
+          type: "image/jpeg",
+          lastModified: Date.now()
+        });
+      } catch (error) {
+        console.error("HEIC conversion failed:", error);
+        // Fallback: Continue with original file if conversion fails
+      }
+    }
+
+    // 4. Create Preview URL for the (potentially converted) file
+    const url = URL.createObjectURL(processedFile);
+
+    if (type === 'license') {
+      if (licenseFilePreview) {
+        URL.revokeObjectURL(licenseFilePreview.url);
+      }
+      setLicenseFilePreview({ file: processedFile, url });
+    } else {
+      if (insuranceFilePreview) {
+        URL.revokeObjectURL(insuranceFilePreview.url);
+      }
+      setInsuranceFilePreview({ file: processedFile, url });
+    }
+
+  };
+
 
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -182,15 +230,44 @@ export default function Services() {
     try {
 
       if (validateForm()) {
+
+
+        if (licenseFilePreview) {
+          formData.license = licenseFilePreview.file
+        }
+        if (insuranceFilePreview) {
+          formData.insurance = insuranceFilePreview.file;
+        }
+
         const requestDetails: CreateRequestPayload = {
           ...formData,
           phone: formData.phone.replace(/[^\d+]/g, "")
-          // pickupLocation: formData.pickupLocation === "other"
-          //   ? debouncedLocation
-          //   : formData.pickupLocation
+
         };
 
-        handleCreateRequest(requestDetails);
+        const data = new FormData();
+
+        data.append("fullName", requestDetails.fullName);
+        data.append("email", requestDetails.email);
+        data.append("phone", requestDetails.phone);
+        data.append("serviceType", requestDetails.serviceType);
+        data.append("startDate", requestDetails.startDate);
+        data.append("endDate", requestDetails.endDate);
+
+        if (requestDetails.vehicleId) data.append("vehicleId", requestDetails.vehicleId);
+        if (requestDetails.time) data.append("time", requestDetails.time);
+        if (requestDetails.notes) data.append("notes", requestDetails.notes);
+
+        // 2. Append the binary files
+        // IMPORTANT: The key names must match your Multer .fields() names
+        if (requestDetails.license) {
+          data.append("license", requestDetails.license);
+        }
+        if (requestDetails.insurance) {
+          data.append("insurance", requestDetails.insurance);
+        }
+
+        handleCreateRequest(data);
       } else {
         const errorMessages = Object.values(errors).filter(Boolean).join("\n");
 
@@ -497,17 +574,32 @@ export default function Services() {
                         } type="date" disabled={isLoading} required className="focus-visible:ring-primary" />
                     </div>
 
-                    {/* <div className="space-y-2">
-                      <Label htmlFor="svc-end">License ID</Label>
-                      <Input id="svc-end"
-                        type="file" disabled={isLoading} required className="focus-visible:ring-primary" />
+                    <div className="space-y-2">
+                      <Label htmlFor="svc-license">License ID</Label>
+                      <Input id="svc-license"
+                        ref={licenseInputRef}
+                        accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
+                        type="file" disabled={isLoading} required className="focus-visible:ring-primary"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) handleFileSelect(file, 'license');
+                        }}
+                      />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-end">Insurance ID</Label>
-                      <Input id="svc-end"
-                        type="file" disabled={isLoading} required className="focus-visible:ring-primary" />
-                    </div> */}
+                      <Label htmlFor="svc-insurance">Insurance ID</Label>
+                      <Input
+                        ref={insuranceInputRef}
+                        id="svc-insurance"
+                        type="file" disabled={isLoading} required className="focus-visible:ring-primary"
+                        accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) handleFileSelect(file, 'insurance');
+                        }}
+                      />
+                    </div>
 
                   </div>
 

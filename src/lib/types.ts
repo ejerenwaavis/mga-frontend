@@ -275,6 +275,8 @@ export type CreateRequestPayload = {
   endDate: string;
   time?: string;
   notes?: string;
+  license?: any;
+  insurance?: any;
 }
 
 export interface TBookingStats {
