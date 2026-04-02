@@ -105,6 +105,7 @@ export default function Services() {
   const [formData, setFormData] = useState<FormData>(initialFormState);
 
   const [errors, setErrors] = useState<FormErrors>(initialFormState);
+  const today = new Date().toISOString().split("T")[0];
 
   // useEffect(() => {
   //   const handler = setTimeout(() => {
@@ -478,7 +479,9 @@ export default function Services() {
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="svc-start">Start Date</Label>
-                      <Input id="svc-start" value={formData.startDate}
+                      <Input id="svc-start"
+                        value={formData.startDate}
+                        min={today}
                         onChange={(e) =>
                           handleInputChange("startDate", e.target.value)
                         } type="date" disabled={isLoading} required className="focus-visible:ring-primary" />
@@ -486,27 +489,25 @@ export default function Services() {
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="svc-end">End Date</Label>
-                      <Input id="svc-end" value={formData.endDate}
+                      <Input id="svc-end"
+                        value={formData.endDate}
+                        min={today}
                         onChange={(e) =>
                           handleInputChange("endDate", e.target.value)
                         } type="date" disabled={isLoading} required className="focus-visible:ring-primary" />
                     </div>
 
-                    <div className="space-y-2">
+                    {/* <div className="space-y-2">
                       <Label htmlFor="svc-end">License ID</Label>
-                      <Input id="svc-end" value={formData.endDate}
-                        onChange={(e) =>
-                          handleInputChange("endDate", e.target.value)
-                        } type="file" disabled={isLoading} required className="focus-visible:ring-primary" />
+                      <Input id="svc-end"
+                        type="file" disabled={isLoading} required className="focus-visible:ring-primary" />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="svc-end">Insurance ID</Label>
-                      <Input id="svc-end" value={formData.endDate}
-                        onChange={(e) =>
-                          handleInputChange("endDate", e.target.value)
-                        } type="file" disabled={isLoading} required className="focus-visible:ring-primary" />
-                    </div>
+                      <Input id="svc-end"
+                        type="file" disabled={isLoading} required className="focus-visible:ring-primary" />
+                    </div> */}
 
                   </div>
 
