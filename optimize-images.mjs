@@ -18,8 +18,8 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // ── Config ────────────────────────────────────────────────────────────────────
-const INPUT_DIR = path.join(__dirname, "public", "vehicles");
-const OUTPUT_DIR = path.join(__dirname, "public", "vehicles", "optimized");
+const INPUT_DIR = path.join(__dirname, "public", "vehicles-2");
+const OUTPUT_DIR = path.join(__dirname, "public", "vehicles-2", "optimized");
 
 const SIZES = {
   // key: [maxWidth, quality]  — WebP quality 1-100

@@ -1,4 +1,76 @@
 {
+  "COVER-IMAGE-Chevrolet Corvette.jpeg": {
+    "thumbnail": "/vehicles/optimized/COVER-IMAGE-Chevrolet-Corvette__thumbnail.webp",
+    "display": "/vehicles/optimized/COVER-IMAGE-Chevrolet-Corvette__display.webp"
+  },
+  "COVER-IMAGE-Porsche-Cayenne-2023.png": {
+    "thumbnail": "/vehicles/optimized/COVER-IMAGE-Porsche-Cayenne-2023__thumbnail.webp",
+    "display": "/vehicles/optimized/COVER-IMAGE-Porsche-Cayenne-2023__display.webp"
+  },
+  "COVER-IMAGE-Porsche-Mecan-2025.png": {
+    "thumbnail": "/vehicles/optimized/COVER-IMAGE-Porsche-Mecan-2025__thumbnail.webp",
+    "display": "/vehicles/optimized/COVER-IMAGE-Porsche-Mecan-2025__display.webp"
+  },
+  "Chevrolet-Corvette-cabin.jpeg": {
+    "thumbnail": "/vehicles/optimized/Chevrolet-Corvette-cabin__thumbnail.webp",
+    "display": "/vehicles/optimized/Chevrolet-Corvette-cabin__display.webp"
+  },
+  "Chevrolet-Corvette-rear-ext.jpeg": {
+    "thumbnail": "/vehicles/optimized/Chevrolet-Corvette-rear-ext__thumbnail.webp",
+    "display": "/vehicles/optimized/Chevrolet-Corvette-rear-ext__display.webp"
+  },
+  "Chevrolet-Corvette-seats.jpeg": {
+    "thumbnail": "/vehicles/optimized/Chevrolet-Corvette-seats__thumbnail.webp",
+    "display": "/vehicles/optimized/Chevrolet-Corvette-seats__display.webp"
+  },
+  "Chevrolet-Corvette-side-ext.jpeg": {
+    "thumbnail": "/vehicles/optimized/Chevrolet-Corvette-side-ext__thumbnail.webp",
+    "display": "/vehicles/optimized/Chevrolet-Corvette-side-ext__display.webp"
+  },
+  "ChevroletCorvette-dashboard.png": {
+    "thumbnail": "/vehicles/optimized/ChevroletCorvette-dashboard__thumbnail.webp",
+    "display": "/vehicles/optimized/ChevroletCorvette-dashboard__display.webp"
+  },
+  "Porsche-Cayenne-2023-Cabin.png": {
+    "thumbnail": "/vehicles/optimized/Porsche-Cayenne-2023-Cabin__thumbnail.webp",
+    "display": "/vehicles/optimized/Porsche-Cayenne-2023-Cabin__display.webp"
+  },
+  "Porsche-Cayenne-2023-Dashboard.png": {
+    "thumbnail": "/vehicles/optimized/Porsche-Cayenne-2023-Dashboard__thumbnail.webp",
+    "display": "/vehicles/optimized/Porsche-Cayenne-2023-Dashboard__display.webp"
+  },
+  "Porsche-Cayenne-2023-Rear-Ext.png": {
+    "thumbnail": "/vehicles/optimized/Porsche-Cayenne-2023-Rear-Ext__thumbnail.webp",
+    "display": "/vehicles/optimized/Porsche-Cayenne-2023-Rear-Ext__display.webp"
+  },
+  "Porsche-Cayenne-2023-Seats.png": {
+    "thumbnail": "/vehicles/optimized/Porsche-Cayenne-2023-Seats__thumbnail.webp",
+    "display": "/vehicles/optimized/Porsche-Cayenne-2023-Seats__display.webp"
+  },
+  "Porsche-Cayenne-2023-Side-Ext.png": {
+    "thumbnail": "/vehicles/optimized/Porsche-Cayenne-2023-Side-Ext__thumbnail.webp",
+    "display": "/vehicles/optimized/Porsche-Cayenne-2023-Side-Ext__display.webp"
+  },
+  "Porsche-Mecan-2025-Cabin.png": {
+    "thumbnail": "/vehicles/optimized/Porsche-Mecan-2025-Cabin__thumbnail.webp",
+    "display": "/vehicles/optimized/Porsche-Mecan-2025-Cabin__display.webp"
+  },
+  "Porsche-Mecan-2025-Dashboard.png": {
+    "thumbnail": "/vehicles/optimized/Porsche-Mecan-2025-Dashboard__thumbnail.webp",
+    "display": "/vehicles/optimized/Porsche-Mecan-2025-Dashboard__display.webp"
+  },
+  "Porsche-Mecan-2025-Rear-Ext.png": {
+    "thumbnail": "/vehicles/optimized/Porsche-Mecan-2025-Rear-Ext__thumbnail.webp",
+    "display": "/vehicles/optimized/Porsche-Mecan-2025-Rear-Ext__display.webp"
+  },
+  "Porsche-Mecan-2025-Seats.png": {
+    "thumbnail": "/vehicles/optimized/Porsche-Mecan-2025-Seats__thumbnail.webp",
+    "display": "/vehicles/optimized/Porsche-Mecan-2025-Seats__display.webp"
+  },
+  "Porsche-Mecan-2025-Side-Ext.png": {
+    "thumbnail": "/vehicles/optimized/Porsche-Mecan-2025-Side-Ext__thumbnail.webp",
+    "display": "/vehicles/optimized/Porsche-Mecan-2025-Side-Ext__display.webp"
+  },
   "BMW-X6-2022-interior-cabin.jpg": {
     "thumbnail": "/vehicles/optimized/BMW-X6-2022-interior-cabin__thumbnail.webp",
     "display": "/vehicles/optimized/BMW-X6-2022-interior-cabin__display.webp"

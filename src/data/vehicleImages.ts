@@ -17,6 +17,22 @@ import manifest from "./vehicleImageManifest.json";
 
 
 export const vehicleImages: Record<string, Record<string, string>> = {
+  "chevrolet-corvette-2025": {
+    "Exterior — Front": "/vehicles/COVER-IMAGE-Chevrolet-Corvette.jpeg",
+    "Exterior — Side": "/vehicles/Chevrolet-Corvette-side-ext.jpeg",
+    "Exterior — Rear": "/vehicles/Chevrolet-Corvette-rear-ext.jpeg",
+    "Interior — Dashboard": "/vehicles/ChevroletCorvette-dashboard.png",
+    "Interior — Cabin": "/vehicles/Chevrolet-Corvette-cabin.jpeg",
+    "Interior — Rear Seats": "/vehicles/Chevrolet-Corvette-seats.jpeg",
+  },
+  "porsche-cayenne-2023": {
+    "Exterior — Front": "/vehicles/COVER-IMAGE-Porsche-Cayenne-2023.png",
+    "Exterior — Side": "/vehicles/Porsche-Cayenne-2023-Side-Ext.png",
+    "Exterior — Rear": "/vehicles/Porsche-Cayenne-2023-Rear-Ext.png",
+    "Interior — Dashboard": "/vehicles/Porsche-Cayenne-2023-Dashboard.png",
+    "Interior — Cabin": "/vehicles/Porsche-Cayenne-2023-Cabin.png",
+    "Interior — Rear Seats": "/vehicles/Porsche-Cayenne-2023-Seats.png",
+  },
   "bmw-x6-2022": {
     "Exterior — Front": "/vehicles/COVER-IMAGE-TURO-2022-BMW-X6.png",
     "Exterior — Side": "/vehicles/BMW-X6-2022-side-exterior.jpg",
@@ -24,6 +40,30 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Dashboard": "/vehicles/BMW-X6-2022-interior-dashboard.jpg",
     "Interior — Cabin": "/vehicles/BMW-X6-2022-interior-cabin.jpg",
     "Interior — Rear Seats": "/vehicles/BMW-X6-2022-interior-rear-seat.jpg",
+  },
+  "mercedes-benz-glc-2025": {
+    "Exterior — Front": "/vehicles/COVER-IMAGE-TURO-2025-MERCEDES-BENZ-GLC-300-SUV-COUPE.png",
+    "Exterior — Side": "/vehicles/mercedes-benz-glc-2025-ext-side.jpg",
+    "Exterior — Rear": "/vehicles/mercedes-benz-glc-2025-ext-rear.jpg",
+    "Interior — Dashboard": "/vehicles/mercedes-benz-glc-2025-dashboard.jpg",
+    "Interior — Cabin": "/vehicles/mercedez-benz-glc-2025-cabin.jpg",
+    "Interior — Rear Seats": "/vehicles/mercedez-benz-glc-2025-rear-seat.jpg",
+  },
+  "porsche-mecan-2025": {
+    "Exterior — Front": "/vehicles/COVER-IMAGE-Porsche-Mecan-2025.png",
+    "Exterior — Side": "/vehicles/Porsche-Mecan-2025-Side-Ext.png",
+    "Exterior — Rear": "/vehicles/Porsche-Mecan-2025-Rear-Ext.png",
+    "Interior — Dashboard": "/vehicles/Porsche-Mecan-2025-Dashboard.png",
+    "Interior — Cabin": "/vehicles/Porsche-Mecan-2025-Cabin.png",
+    "Interior — Rear Seats": "/vehicles/Porsche-Mecan-2025-Seats.png",
+  },
+  "porsche-mecan-2023": {
+    "Exterior — Front": "/vehicles/COVER-IMAGE-TURO-2023-PORSCHE-MACAN.png",
+    "Exterior — Side": "/vehicles/porsche-mecan-2023-ext-side.jpg",
+    "Exterior — Rear": "/vehicles/porsche-mecan-2023-ext-rear.jpg",
+    "Interior — Dashboard": "/vehicles/porsche-mecan-2023-dashboard.jpg",
+    "Interior — Cabin": "/vehicles/porsche-mecan-2023-cabin.jpg",
+    "Interior — Rear Seats": "/vehicles/porsche-mecan-2023-rear-seats.jpg",
   },
   "kia-telluride": {
     "Exterior — Front": "/vehicles/COVER-IMAGE-TURO-2022-KIA-TELLURIDE.png",
@@ -57,14 +97,6 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Cabin": "/vehicles/ford-explorer-2023-int-cabin.jpg",
     "Interior — Rear Seats": "/vehicles/ford-explorer-2023-rear-seats.jpg",
   },
-  "porsche-mecan-2023": {
-    "Exterior — Front": "/vehicles/COVER-IMAGE-TURO-2023-PORSCHE-MACAN.png",
-    "Exterior — Side": "/vehicles/porsche-mecan-2023-ext-side.jpg",
-    "Exterior — Rear": "/vehicles/porsche-mecan-2023-ext-rear.jpg",
-    "Interior — Dashboard": "/vehicles/porsche-mecan-2023-dashboard.jpg",
-    "Interior — Cabin": "/vehicles/porsche-mecan-2023-cabin.jpg",
-    "Interior — Rear Seats": "/vehicles/porsche-mecan-2023-rear-seats.jpg",
-  },
   "ford-bronco-sport-2024": {
     "Exterior — Front": "/vehicles/COVER-IMAGE-TURO-2024-FORD-BRONCO-SPORT.png",
     "Exterior — Side": "/vehicles/ford-bronco-2024-ext-sde.jpg",
@@ -81,14 +113,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Cabin": "/vehicles/kia-sorento-2025-cabin.jpg",
     "Interior — Rear Seats": "/vehicles/kia-sorento-2025-rear-seat.jpg",
   },
-  "mercedes-benz-glc-2025": {
-    "Exterior — Front": "/vehicles/COVER-IMAGE-TURO-2025-MERCEDES-BENZ-GLC-300-SUV-COUPE.png",
-    "Exterior — Side": "/vehicles/mercedes-benz-glc-2025-ext-side.jpg",
-    "Exterior — Rear": "/vehicles/mercedes-benz-glc-2025-ext-rear.jpg",
-    "Interior — Dashboard": "/vehicles/mercedes-benz-glc-2025-dashboard.jpg",
-    "Interior — Cabin": "/vehicles/mercedez-benz-glc-2025-cabin.jpg",
-    "Interior — Rear Seats": "/vehicles/mercedez-benz-glc-2025-rear-seat.jpg",
-  },
+
   "kia-k4-2025": {
     "Exterior — Front": "/vehicles/COVER-IMAGE-TURO-2024-KIA-K4.png",
     "Exterior — Side": "/vehicles/kia-k4-2024-ext-side.jpg",
