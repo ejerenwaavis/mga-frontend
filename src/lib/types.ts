@@ -257,6 +257,8 @@ export interface BookingRequest {
   startDate: string;   // HTML date inputs return strings
   endDate: string;
   time: string;
+  licenseId?: any;
+  insuranceId?: any;
   notes?: string;
   status: string;
   createdAt: string;

@@ -256,10 +256,10 @@ const Requests = () => {
                   Start/End Date
                 </th>
                 <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Pick Up Time
+                  Service
                 </th>
                 <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Service
+                  Documents
                 </th>
                 <th className="py-3 px-4 text-xs text-left font-medium text-gray-500 uppercase tracking-wider">
                   Status
@@ -299,17 +299,23 @@ const Requests = () => {
                     <td className="py-4 px-4 whitespace-nowrap">
                       <div className="flex flex-col">
                         <div className="flex items-center">
-                          <span>{trip.time}</span>
+                          <span>{trip.serviceType}</span>
                         </div>
                         <span className="text-sm text-gray-500 mt-1">
-                          {trip.serviceType}
+                          {trip.time}
                         </span>
                       </div>
                     </td>
+
                     <td className="py-4 px-4 whitespace-nowrap">
-                      <span className="font-medium">
-                        {trip.serviceType}
-                      </span>
+                      <div className="flex flex-col">
+                        <div className="flex items-center">
+                          <a href={trip.licenseId.url}>License Id</a>
+                        </div>
+                        <span className="text-sm text-gray-500 mt-1">
+                          <a href={trip.insuranceId.url}>Insurance Id</a>
+                        </span>
+                      </div>
                     </td>
                     <td className="py-4 px-4 whitespace-nowrap text-left">
                       <span
@@ -383,14 +389,14 @@ const Requests = () => {
                   disabled={isSubmitting}
                   value={statusPick}
                   onChange={(e) => setStatusPick(e.target.value as any)}
-                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  className="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   required
                 >
                   <option value="">Select response</option>
                   <option value="pending">Pending</option>
-                  <option value="confirmed">Confirmed</option>
+                  <option value="confirmed">Confirm</option>
                   <option value="completed">Completed</option>
-                  <option value="cancelled">Cancelled</option>
+                  <option value="cancelled">Cancel</option>
                 </select>
 
               </div>
