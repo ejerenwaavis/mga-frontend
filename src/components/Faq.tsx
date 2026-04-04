@@ -40,15 +40,15 @@ const FAQSection = () => {
         },
         {
             question: "Where is the pickup and drop-off location for exotic car rentals?",
-            answer: "All rentals are based out of Buckhead, Atlanta. Vehicles are typically picked up and dropped off at Nobu in Phipps Plaza. If you’d like your exotic car delivered to you, see the next questions on delivery options."
+            answer: "All rentals are based out of , Atlanta. Vehicles are typically picked up and dropped off at Nobu in Phipps Plaza. If you’d like your exotic car delivered to you, see the next questions on delivery options."
         },
         {
             question: "How much does it cost to have an exotic car delivered in Georgia?",
-            answer: "We offer luxury car delivery within Georgia for an additional fee based on mileage. This allows you to enjoy your exotic rental anywhere in the state without needing to come to Buckhead."
+            answer: "We offer luxury car delivery within Georgia for an additional fee based on mileage. This allows you to enjoy your exotic rental anywhere in the state without needing to come to ."
         },
         {
             question: "Do you provide out-of-state exotic car delivery?",
-            answer: "Yes, we deliver to clients across the Southeast. For example, from Buckhead to Birmingham (157 miles), delivery is $1,700 with a 3-day minimum rental. Out-of-state deliveries are best suited for multi-day bookings to make the trip worthwhile."
+            answer: "Yes, we deliver to clients across the Southeast. For example, from  to Birmingham (157 miles), delivery is $1,700 with a 3-day minimum rental. Out-of-state deliveries are best suited for multi-day bookings to make the trip worthwhile."
         }
     ];
 

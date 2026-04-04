@@ -19,7 +19,7 @@ export default function VehicleDetails() {
       ? `${vehicle.year} ${vehicle.name} Rental in Atlanta | Mead Green Autos`
       : "Vehicle Details | Mead Green Autos",
     description: vehicle
-      ? `Rent the ${vehicle.year} ${vehicle.name} in Buckhead, Atlanta. ${vehicle.highlight}. From $${vehicle.pricePerDay}/day. Airport-ready, insured, 24/7 availability.`
+      ? `Rent the ${vehicle.year} ${vehicle.name} in , Atlanta. ${vehicle.highlight}. From $${vehicle.pricePerDay}/day. Airport-ready, insured, 24/7 availability.`
       : "Premium vehicle rental in Atlanta, GA.",
     canonical: vehicle
       ? `https://green-fleet-concierge.lovable.app/fleet/${vehicle.id}`

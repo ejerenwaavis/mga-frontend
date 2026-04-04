@@ -3,8 +3,8 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function About() {
   useSEO({
-    title: "About Mead Green Autos | Premium Car Rental in Buckhead Atlanta",
-    description: "Learn about Mead Green Autos — professional premium car rentals in Buckhead, Atlanta. Licensed, insured, 5-star rated on Turo. Open 24/7.",
+    title: "About Mead Green Autos | Premium Car Rental in  Atlanta",
+    description: "Learn about Mead Green Autos — professional premium car rentals in , Atlanta. Licensed, insured, 5-star rated on Turo. Open 24/7.",
     canonical: "https://green-fleet-concierge.lovable.app/about",
   });
   return (

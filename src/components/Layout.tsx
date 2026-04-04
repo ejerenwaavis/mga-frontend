@@ -6,7 +6,7 @@ import FAQSection from "@/components/Faq";
 
 const PHONE = "(470) 817-6427";
 const EMAIL = "ceo@meadgreenautos.com";
-const ADDRESS = "4814 Old National Hwy Buckhead, Atlanta, GA 30337";
+const ADDRESS = "4814 Old National Hwy , Atlanta, GA 30337";
 // const YELP_URL = "https://www.yelp.com/biz/mead-green-autos-atlanta";
 
 const serviceSubLinks = [

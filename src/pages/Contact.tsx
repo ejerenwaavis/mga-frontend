@@ -9,14 +9,14 @@ import { useSEO } from "@/hooks/useSEO";
 
 const PHONE = "(470) 817-6427";
 const EMAIL = "ceo@meadgreenautos.com";
-const ADDRESS = "4814 Old National Hwy Buckhead, Atlanta, GA 30337";
+const ADDRESS = "4814 Old National Hwy , Atlanta, GA 30337";
 // const YELP_URL = "https://www.yelp.com/biz/mead-green-autos-atlanta";
 const MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=3535+Peachtree+Rd+Space+520+Ste+234+Atlanta+GA+30326";
 
 export default function Contact() {
   useSEO({
-    title: "Contact Mead Green Autos | 24/7 Buckhead Atlanta Car Rental",
-    description: "Contact Mead Green Autos for premium car rental in Buckhead, Atlanta. Open 24 hours. Call (470) 817-6427 or send a message. Airport & corporate service available.",
+    title: "Contact Mead Green Autos | 24/7  Atlanta Car Rental",
+    description: "Contact Mead Green Autos for premium car rental in , Atlanta. Open 24 hours. Call (470) 817-6427 or send a message. Airport & corporate service available.",
     canonical: "https://green-fleet-concierge.lovable.app/contact",
   });
   const [submitted, setSubmitted] = useState(false);
@@ -144,11 +144,11 @@ export default function Contact() {
                 {/* Compact Trust Module */}
                 <div className="rounded border border-border bg-card p-6">
                   <h3 className="font-serif text-base font-semibold">
-                    Trusted in Buckhead, Atlanta
+                    Trusted in , Atlanta
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                     We provide flexible, all-day rentals with a selection of
-                    well-maintained vehicles tailored to drivers in Buckhead,
+                    well-maintained vehicles tailored to drivers in ,
                     Atlanta. We take pride in top-notch service and consistently
                     earn 5-star ratings on Turo.
                   </p>
@@ -176,7 +176,7 @@ export default function Contact() {
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="Mead Green Autos — Buckhead, Atlanta"
+                    title="Mead Green Autos — , Atlanta"
                   />
                 </div>
               </div>

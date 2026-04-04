@@ -32,7 +32,7 @@ export function useSEO({ title, description, canonical }: SEOMeta) {
 
     return () => {
       // Reset to defaults on unmount
-      document.title = "Luxury Car Rental in Buckhead Atlanta | Mead Green Autos";
+      document.title = "Luxury Car Rental in  Atlanta | Mead Green Autos";
     };
   }, [title, description, canonical]);
 }
