@@ -16,7 +16,7 @@ import { updateRequest } from "@/services/mutations";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import useUserStore from "../../hooks/store/userStore";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -161,7 +161,7 @@ const Dashboard = () => {
   return (
     <div>
 
-      <div className="mb-6 flex flex-row items-center justify-between p-8 border-b border-gray-100">
+      <div className="mb-6 flex flex-row items-center justify-between p-16 border-b border-gray-100">
         <h1 className="text-2xl font-bold text-gray-800">Admin Dashboard</h1>
 
 

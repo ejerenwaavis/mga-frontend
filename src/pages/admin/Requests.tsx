@@ -186,7 +186,7 @@ const Requests = () => {
 
   return (
     <div>
-      <div className="mb-6 flex flex-row items-center justify-between p-8 border-b border-gray-100">
+      <div className="mb-6 flex flex-row items-center justify-between p-16 border-b border-gray-100">
         <h1 className="text-2xl font-bold text-gray-800">All Requests</h1>
 
         <Button
