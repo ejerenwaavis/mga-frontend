@@ -24,17 +24,30 @@ export default function Fleet() {
 
   return (
     <>
-      <section className="bg-stone py-16 md:py-20">
-        <div className="container text-center">
+      <section className="relative overflow-hidden bg-stone py-24 md:py-32">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/vehicles/COVER-IMAGE-Chevrolet-Corvette.jpeg"
+            alt="Luxury Fleet"
+            className="h-full w-full object-cover"
+          />
+          {/* Dark Overlay to ensure text readability */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
+        </div>
+
+        <div className="container relative z-10 text-center">
           <FadeIn>
-            <h1 className="font-serif text-3xl font-semibold md:text-4xl">
-              Our inventory
+            <h1 className="font-serif text-4xl font-semibold text-gold md:text-6xl">
+              Our Inventory
             </h1>
-            <p className="mx-auto mt-3 max-w-lg text-sm text-muted-foreground">
+            <p className="mx-auto mt-6 max-w-2xl text-base md:text-lg text-white/90">
               A curated selection of premium vehicles, maintained to the highest
               standard and available for short-term, long-term, and corporate
               rentals.
             </p>
+
+
           </FadeIn>
         </div>
       </section>

@@ -44,7 +44,7 @@ const FAQSection = () => {
         },
         {
             question: "How much does it cost to have an exotic car delivered in Georgia?",
-            answer: "We offer luxury car delivery within Georgia for an additional fee based on mileage. This allows you to enjoy your exotic rental anywhere in the state without needing to come to ."
+            answer: "We offer luxury car delivery within Georgia. This allows you to enjoy your exotic rental anywhere in the state without needing to come to ."
         },
         {
             question: "Do you provide out-of-state exotic car delivery?",

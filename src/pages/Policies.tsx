@@ -6,11 +6,7 @@ const sections = [
     content:
       "A refundable security deposit is required for all rentals and must be received prior to vehicle pickup. Deposit amounts vary by vehicle and are specified at the time of booking or approval. Deposits are refunded in full upon satisfactory return of the vehicle, subject to inspection for damage, excessive wear, or policy violations.",
   },
-  {
-    title: "Mileage Policy",
-    content:
-      "Each rental includes a daily mileage allowance, which varies by vehicle (typically 150–200 miles per day). Miles driven beyond the included allowance are subject to an overage charge at a per-mile rate specified in your rental agreement. Long-term rental arrangements may include adjusted mileage terms.",
-  },
+ 
   {
     title: "Fuel Policy",
     content:

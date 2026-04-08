@@ -11,10 +11,10 @@ const ADDRESS = "4814 Old National Hwy , Atlanta, GA 30337";
 
 const serviceSubLinks = [
   { label: "AIRPORT SERVICE", to: "/services#airport" },
-  { label: "RENTAL", to: "/services#rentals" },
+  { label: "STANDARD RENTAL", to: "/services#rentals" },
   // { label: "LONG-TERM RENTAL", to: "/services#long-term" },
-  { label: "CORPORATE RENTAL", to: "/services#corporate" },
-  { label: "CONCIERGE", to: "/services#concierge" },
+  { label: "CUSTOM DELIVERY", to: "/services#corporate" },
+  { label: "CO-OPERATE SERVICES", to: "/services#concierge" },
 ];
 
 const navLinks = [
@@ -276,9 +276,9 @@ function Footer() {
                 className="h-12 w-auto md:h-12"
 
               />
-              <h3 className="mb-4 font-serif text-lg font-semibold" style={{ color: "hsl(var(--primary-foreground))" }}>
+              {/* <h3 className="mb-4 font-serif text-lg font-semibold" style={{ color: "hsl(var(--primary-foreground))" }}>
                 Mead Green Autos
-              </h3>
+              </h3> */}
 
             </div>
 

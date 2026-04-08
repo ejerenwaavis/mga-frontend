@@ -25,7 +25,7 @@ const serviceTypes = [
   {
     id: "rentals",
     icon: Car,
-    title: "Rental",
+    title: "Standard Rental",
     description:
       "Premium vehicles available with transparent pricing, maintained to the highest standard for business or personal use.",
   },
@@ -37,16 +37,16 @@ const serviceTypes = [
   //     "Extended rental arrangements for weeks or months at a time, with favorable pricing and flexible terms tailored to your schedule.",
   // },
   {
-    id: "corporate",
+    id: "custom-delivery",
     icon: Building2,
-    title: "Corporate Rental",
+    title: "Custom Delivery",
     description:
       "Professional rental solutions for businesses — employee travel, client transportation, or fleet supplementation with reliable, premium vehicles.",
   },
   {
-    id: "concierge",
+    id: "cooperate-service",
     icon: Sparkles,
-    title: "Concierge",
+    title: "Co-operate Services",
     description:
       "Need a specific vehicle or arrangement? Our team accommodates special requests and ensures a seamless, white-glove rental experience.",
   },
@@ -315,18 +315,32 @@ export default function Services() {
 
   return (
     <>
-      <section className="bg-stone py-16 md:py-20">
-        <div className="container text-center">
+
+      <section className="relative overflow-hidden bg-stone py-24 md:py-32">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/vehicles/COVER-IMAGE-Chevrolet-Corvette.jpeg"
+            alt="Luxury Fleet"
+            className="h-full w-full object-cover"
+          />
+          {/* Dark Overlay to ensure text readability */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
+        </div>
+
+        <div className="container relative z-10 text-center">
           <FadeIn>
-            <h1 className="font-serif text-3xl font-semibold md:text-4xl">
+            <h1 className="font-serif text-white text-3xl font-semibold md:text-4xl">
               Our Services
             </h1>
-            <p className="mx-auto mt-3 max-w-lg text-sm text-muted-foreground">
+            <p className="mx-auto mt-3 max-w-lg text-sm text-white">
               From airport arrivals to long-term corporate needs, we offer rental
               solutions designed around professionalism, reliability, and
               convenience.
             </p>
           </FadeIn>
+
+
         </div>
       </section>
 

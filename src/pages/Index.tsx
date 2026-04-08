@@ -34,7 +34,6 @@ const steps = [
 const rentalRequirements = [
   { icon: CreditCard, title: "Deposit", description: "$300–$750 refundable deposit depending on vehicle class." },
   { icon: ShieldCheck, title: "Insurance", description: "Full coverage auto insurance required for all rentals." },
-  { icon: Gauge, title: "Mileage", description: "150–200 miles/day included. Overage rates clearly listed." },
   { icon: UserCheck, title: "ID Verification", description: "Valid driver's license and identity verification required." },
 ];
 
@@ -195,30 +194,50 @@ export default function Index() {
         </div>
       </div>
 
-      <section className="py-2 md:py-5">
-        <div className="container">
+      <section className="py-8 md:py-16">
+        <div className="container mx-auto px-4">
           <FadeIn>
-            <div className="mx-auto max-w-3xl rounded p-6 md:p-8">
-              <div className="text-center">
-                <h2 className="font-serif text-3xl text-gold font-semibold md:text-4xl">WELCOME TO MEAD GREEN AUTOS</h2>
-                <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white">
-                  At Mead Green Autos, we believe renting a premium vehicle should be as effortless as it is exceptional.
-                </p>
+            {/* Flex container: Stacks on mobile, side-by-side on medium screens and up */}
+            <div className="flex flex-col md:flex-row items-center gap-10">
+
+              {/* Left Side: Text Content */}
+              <div className="w-full md:w-1/2 text-left">
+                <h2 className="font-serif text-3xl text-gold font-semibold md:text-4xl">
+                  WELCOME TO MEAD GREEN AUTOS
+                </h2>
+
+                <div className="mt-6 space-y-4 text-sm leading-relaxed text-white max-w-prose">
+                  <p className="font-medium">
+                    At Mead Green Autos, we believe renting a premium vehicle should be as effortless as it is exceptional.
+                  </p>
+                  <p>
+                    Our carefully curated fleet of luxury vehicles is available throughout Atlanta, with seamless pickup and return options at Hartsfield-Jackson Atlanta International Airport for those flying into the city. We also offer convenient vehicle delivery across the Atlanta area, ensuring your car is ready wherever you need it.
+                  </p>
+                  <p>
+                    Each vehicle is meticulously maintained and presented in impeccable condition - because convenience, peace of mind, and the thrill of driving something remarkable should always come standard.
+                  </p>
+                  <p>
+                    Our team is happy to accommodate special requests and provide concierge-style support, making your experience as smooth and personalized as possible.
+                  </p>
+                  <p>
+                    Whether you’re visiting Atlanta, traveling for business, or simply indulging in a memorable weekend drive, Mead Green Autos delivers a refined rental experience from start to finish.
+                  </p>
+                </div>
               </div>
-              <div className="text-center">
-                <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white">
-                  Our carefully curated fleet of luxury vehicles is available throughout Atlanta, with seamless pickup and return options at Hartsfield-Jackson Atlanta International Airport for those flying into the city. We also offer convenient vehicle delivery across the Atlanta area, ensuring your car is ready wherever you need it.
-                  Each vehicle is meticulously maintained and presented in impeccable condition — because convenience, peace of mind, and the thrill of driving something remarkable should always come standard.
-                  Our team is happy to accommodate special requests and provide concierge-style support, making your experience as smooth and personalized as possible.
-                  Whether you’re visiting Atlanta, traveling for business, or simply indulging in a memorable weekend drive, Mead Green Autos delivers a refined rental experience from start to finish.
-                </p>
+
+              {/* Right Side: Image */}
+              <div className="w-full md:w-1/2">
+                <img
+                  src="/vehicles/COVER-IMAGE-Chevrolet-Corvette.jpeg"
+                  alt="Chevrolet Corvette"
+                  className="rounded-lg shadow-2xl w-full object-cover"
+                />
               </div>
 
             </div>
           </FadeIn>
         </div>
       </section>
-
       {/* Testimonials — auto-scroll marquee */}
       <section className="py-10 md:py-14 overflow-hidden">
         <div className="container mb-10">
@@ -239,7 +258,7 @@ export default function Index() {
         <div className="container">
           <FadeIn>
             <div className="text-center">
-              <h2 className="font-serif text-gold text-3xl font-semibold md:text-4xl">Our inventory</h2>
+              <h2 className="font-serif text-gold text-3xl font-semibold md:text-4xl">Our Inventory</h2>
               {/* <p className="mx-auto mt-3 max-w-lg text-sm text-white">
                 Explore our selection of premium vehicles, each maintained to the highest
               </p> */}
@@ -412,10 +431,10 @@ export default function Index() {
                   for travelers arriving or departing through the world's busiest airport.
                 </p>
                 <ul className="mt-6 space-y-3">
-                  <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                  {/* <li className="flex items-center gap-2 text-sm text-muted-foreground">
                     <MapPin className="h-4 w-4 text-primary shrink-0" />
                     {ADDRESS}
-                  </li>
+                  </li> */}
                   <li className="flex items-center gap-2 text-sm text-muted-foreground">
                     <MapPin className="h-4 w-4 text-primary shrink-0" />
                     Hartsfield-Jackson Atlanta International Airport (ATL)

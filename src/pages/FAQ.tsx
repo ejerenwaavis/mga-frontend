@@ -17,10 +17,6 @@ const faqs = [
     a: "Full coverage auto insurance is required for all rentals. You must provide proof of valid insurance before pickup. If you do not have your own coverage, please contact us to discuss available options.",
   },
   {
-    q: "What is the mileage policy?",
-    a: "Each vehicle includes a daily mileage allowance (typically 150–200 miles per day). Miles driven beyond the allowance are charged at a per-mile overage rate, which varies by vehicle. Full details are included in your rental agreement.",
-  },
-  {
     q: "What identification is required?",
     a: "A valid driver's license is required for all renters. We also verify your identity as part of our approval process for private rentals. All renters must be at least 25 years of age.",
   },
@@ -45,7 +41,7 @@ const faqs = [
 export default function FAQ() {
   useSEO({
     title: "FAQ | Mead Green Autos — Atlanta Car Rental Questions",
-    description: "Frequently asked questions about Mead Green Autos car rentals in Atlanta. Deposits, insurance, mileage, pickup, corporate rentals, and more.",
+    description: "Frequently asked questions about Mead Green Autos car rentals in Atlanta. Deposits, insurance, pickup, corporate rentals, and more.",
     canonical: "https://green-fleet-concierge.lovable.app/faq",
   });
   return (

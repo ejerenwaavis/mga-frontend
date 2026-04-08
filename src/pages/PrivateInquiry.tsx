@@ -18,7 +18,6 @@ export default function PrivateInquiry() {
     { icon: CreditCard, title: "Deposit", text: "A refundable security deposit is required prior to pickup. Amount varies by vehicle." },
     { icon: UserCheck, title: "ID Verification", text: "A valid driver's license and identity verification are required for all renters." },
     { icon: ShieldCheck, title: "Insurance", text: "Full coverage auto insurance is required. Proof of insurance must be provided before pickup." },
-    // { icon: Gauge, title: "Mileage Policy", text: "Daily mileage allowance is included. Overage charges apply for additional miles driven." },
   ];
 
   if (submitted) {

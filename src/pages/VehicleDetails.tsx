@@ -47,8 +47,6 @@ export default function VehicleDetails() {
 
   const policies = [
     { icon: CreditCard, label: "Deposit", value: vehicle.deposit },
-    { icon: Gauge, label: "Mileage Allowance", value: vehicle.mileageAllowance },
-    { icon: Gauge, label: "Overage Rate", value: vehicle.mileageOverage },
     { icon: ShieldCheck, label: "Insurance", value: vehicle.insuranceRequirement },
     { icon: UserCheck, label: "ID Verification", value: "Valid driver's license and identity verification required prior to pickup." },
   ];

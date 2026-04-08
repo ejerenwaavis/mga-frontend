@@ -13,8 +13,6 @@ export interface Vehicle {
   features: string[];
   overview: string;
   deposit: string;
-  mileageAllowance: string;
-  mileageOverage: string;
   insuranceRequirement: string;
   turoURL: string;
 }
@@ -35,8 +33,6 @@ export const vehicles: Vehicle[] = [
     features: ["Sport Chrono package", "PASM adaptive suspension", "14-way power sport seats", "Bose surround sound", "Panoramic roof", "Porsche Active Suspension Management"],
     overview: "Athletic precision in a luxury sports car. The Chevrolet Corvette is for those who want performance without compromise and luxury without apology.",
     deposit: "$600 refundable deposit",
-    mileageAllowance: "175 miles/day included",
-    mileageOverage: "$0.45 per additional mile",
     insuranceRequirement: "Full coverage required",
     turoURL: "https://turo.com/us/en/car-rental/united-states/atlanta-ga/chevrolet/corvette/3626413"
   },
@@ -53,8 +49,6 @@ export const vehicles: Vehicle[] = [
     features: ["Sport Chrono package", "PASM adaptive suspension", "14-way power sport seats", "Bose surround sound", "Panoramic roof", "Porsche Active Suspension Management"],
     overview: "Athletic precision in a luxury SUV. The Porsche Cayanne is for those who want performance without compromise and luxury without apology.",
     deposit: "$600 refundable deposit",
-    mileageAllowance: "175 miles/day included",
-    mileageOverage: "$0.45 per additional mile",
     insuranceRequirement: "Full coverage required",
     turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/porsche/cayenne/3617052"
   },
@@ -71,8 +65,6 @@ export const vehicles: Vehicle[] = [
     features: ["M Sport package", "Leather upholstery", "Heads-up display", "Wireless charging", "Adaptive cruise control", "Harman Kardon audio"],
     overview: "The BMW X6 blends athletic performance with everyday luxury. A confident choice for professionals who value precision and comfort.",
     deposit: "$400 refundable deposit",
-    mileageAllowance: "200 miles/day included",
-    mileageOverage: "$0.30 per additional mile",
     insuranceRequirement: "Full coverage required",
     turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/bmw/x6/2943656?endDate=04%2F11%2F2026&endTime=10%3A00&startDate=04%2F08%2F2026&startTime=10%3A00"
   },
@@ -89,8 +81,6 @@ export const vehicles: Vehicle[] = [
     features: ["Executive rear seating", "MBUX with AR navigation", "Energizing Comfort", "Burmester 4D surround", "Air Balance fragrance", "Night vision assist"],
     overview: "The pinnacle of automotive luxury. The GLC is reserved for those who accept nothing but the absolute finest in comfort, technology, and prestige.",
     deposit: "$750 refundable deposit",
-    mileageAllowance: "150 miles/day included",
-    mileageOverage: "$0.50 per additional mile",
     insuranceRequirement: "Full coverage required; premium policy recommended",
     turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/mercedes-benz/glc-class/3361316?endDate=04%2F06%2F2026&endTime=10%3A00&startDate=04%2F03%2F2026&startTime=10%3A00"
   },
@@ -107,8 +97,6 @@ export const vehicles: Vehicle[] = [
     features: ["Sport Chrono package", "PASM adaptive suspension", "14-way power sport seats", "Bose surround sound", "Panoramic roof", "Porsche Active Suspension Management"],
     overview: "Athletic precision in a luxury Sedan. The Porsche Mecan is for those who want performance without compromise and luxury without apology.",
     deposit: "$400 refundable deposit",
-    mileageAllowance: "175 miles/day included",
-    mileageOverage: "$0.45 per additional mile",
     insuranceRequirement: "Full coverage required",
     turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/porsche/macan/3618427"
   },
@@ -125,8 +113,6 @@ export const vehicles: Vehicle[] = [
     features: ["Sport Chrono package", "PASM adaptive suspension", "14-way power sport seats", "Bose surround sound", "Panoramic roof", "Porsche Active Suspension Management"],
     overview: "Athletic precision in a luxury SUV. The Porsche Mecan is for those who want performance without compromise and luxury without apology.",
     deposit: "$600 refundable deposit",
-    mileageAllowance: "175 miles/day included",
-    mileageOverage: "$0.45 per additional mile",
     insuranceRequirement: "Full coverage required",
     turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/porsche/macan/3412905?endDate=04%2F13%2F2026&endTime=10%3A00&startDate=04%2F10%2F2026&startTime=10%3A00"
   },
@@ -143,8 +129,6 @@ export const vehicles: Vehicle[] = [
     features: ["Premium leather interior", "Panoramic sunroof", "Wireless Apple CarPlay", "360° camera system", "Heated & ventilated seats", "Bose surround sound"],
     overview: "Command the road in the Kia Spacious, refined, and unmistakably premium — ideal for airport arrivals, family travel, or making an impression.",
     deposit: "$300 refundable deposit",
-    mileageAllowance: "200 miles/day included",
-    mileageOverage: "$0.25 per additional mile",
     insuranceRequirement: "Full coverage required",
     turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/kia/telluride/3125159?endDate=04%2F23%2F2026&endTime=10%3A00&startDate=04%2F20%2F2026&startTime=10%3A00"
   },
@@ -162,8 +146,6 @@ export const vehicles: Vehicle[] = [
     features: ["AMG Line exterior", "Burmester sound system", "Ambient lighting", "MBUX infotainment", "Driver assistance package", "Heated steering wheel"],
     overview: "Refined elegance meets advanced technology. The Mercedes-Benz GLE offers a serene driving experience for those who expect nothing less.",
     deposit: "$450 refundable deposit",
-    mileageAllowance: "200 miles/day included",
-    mileageOverage: "$0.35 per additional mile",
     insuranceRequirement: "Full coverage required",
     turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/mercedes-benz/glc-class/1947668?endDate=04%2F09%2F2026&endTime=10%3A00&startDate=04%2F06%2F2026&startTime=10%3A00"
   },
@@ -180,62 +162,10 @@ export const vehicles: Vehicle[] = [
     features: ["Magnetic Ride Control", "Panoramic sunroof", "10.2-inch touchscreen", "Wireless Apple CarPlay", "Rear-seat entertainment", "Power-folding third row"],
     overview: "The Ford Explorer offers commanding presence and generous space for the entire group. Ideal for large families, events, or corporate shuttles.",
     deposit: "$400 refundable deposit",
-    mileageAllowance: "200 miles/day included",
-    mileageOverage: "$0.30 per additional mile",
     insuranceRequirement: "Full coverage required",
     turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/ford/explorer/3351936?endDate=04%2F06%2F2026&endTime=10%3A00&startDate=04%2F03%2F2026&startTime=10%3A00"
   },
-  // {
-  //   id: "tesla-model-3-2024",
-  //   name: "Tesla Model 3",
-  //   year: 2024,
-  //   category: "Sedan",
-  //   pricePerDay: 99,
-  //   seats: 5,
-  //   luggage: 2,
-  //   airportReady: true,
-  //   highlight: "Autopilot, glass roof, premium audio",
-  //   features: ["Autopilot", "15-inch touchscreen", "Glass roof", "Premium audio", "Wireless phone charging", "Over-the-air updates"],
-  //   overview: "Efficient, modern, and effortlessly quiet. The Tesla Model 3 delivers a premium electric experience at an accessible price point.",
-  //   deposit: "$300 refundable deposit",
-  //   mileageAllowance: "200 miles/day included",
-  //   mileageOverage: "$0.25 per additional mile",
-  //   insuranceRequirement: "Full coverage required",
-  // },
-  // {
-  //   id: "audi-a6-2024",
-  //   name: "Audi A6",
-  //   year: 2024,
-  //   category: "Sedan",
-  //   pricePerDay: 129,
-  //   seats: 5,
-  //   luggage: 3,
-  //   airportReady: true,
-  //   highlight: "Quattro AWD, virtual cockpit, B&O audio",
-  //   features: ["Quattro all-wheel drive", "Virtual cockpit", "Bang & Olufsen audio", "Matrix LED headlights", "Nappa leather seats", "Adaptive air suspension"],
-  //   overview: "The Audi A6 is understated excellence. Refined technology, assured handling, and a cabin that feels like a first-class lounge.",
-  //   deposit: "$400 refundable deposit",
-  //   mileageAllowance: "200 miles/day included",
-  //   mileageOverage: "$0.30 per additional mile",
-  //   insuranceRequirement: "Full coverage required",
-  // },
-  // {
-  //   id: "lexus-es-2024",
-  //   name: "Lexus ES 350",
-  //   year: 2024,
-  //   category: "Sedan",
-  //   pricePerDay: 109,
-  //   seats: 5,
-  //   luggage: 3,
-  //   airportReady: true,
-  //   highlight: "Mark Levinson audio, ventilated seats, LSS+",
-  //   features: ["Mark Levinson audio", "Heated & ventilated seats", "Lexus Safety System+", "Touch-free power trunk", "Adaptive variable suspension", "10.3-inch display"],
-  //   overview: "Legendary reliability meets refined luxury. The Lexus ES 350 is the quiet confidence choice for discerning travelers.",
-  //   deposit: "$350 refundable deposit",
-  //   mileageAllowance: "200 miles/day included",
-  //   mileageOverage: "$0.25 per additional mile",
-  //   insuranceRequirement: "Full coverage required",
-  // },
+
   {
     id: "ford-bronco-sport-2024",
     name: "Ford Bronco",
@@ -249,28 +179,10 @@ export const vehicles: Vehicle[] = [
     features: ["Lexicon 21-speaker audio", "Quilted Nappa leather", "3D instrument cluster", "Highway Driving Assist II", "Rear comfort package", "Electromechanical suspension"],
     overview: "The Ford Bronco redefines the executive sedan with extraordinary craftsmanship, advanced safety, and a ride quality that rivals the best in class.",
     deposit: "$400 refundable deposit",
-    mileageAllowance: "200 miles/day included",
-    mileageOverage: "$0.30 per additional mile",
     insuranceRequirement: "Full coverage required",
     turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/ford/bronco-sport/3416097?endDate=04%2F06%2F2026&endTime=10%3A00&startDate=04%2F03%2F2026&startTime=10%3A00"
   },
-  // {
-  //   id: "range-rover-sport-2024",
-  //   name: "Range Rover Sport",
-  //   year: 2024,
-  //   category: "Luxury",
-  //   pricePerDay: 249,
-  //   seats: 5,
-  //   luggage: 3,
-  //   airportReady: true,
-  //   highlight: "Meridian audio, terrain response, pixel LEDs",
-  //   features: ["Meridian signature sound", "Configurable ambient lighting", "Terrain Response 2", "Cabin air purification", "Head-up display", "Pixel LED headlights"],
-  //   overview: "Commanding presence meets unrivaled capability. The Range Rover Sport moves through the city and beyond with effortless authority.",
-  //   deposit: "$600 refundable deposit",
-  //   mileageAllowance: "175 miles/day included",
-  //   mileageOverage: "$0.45 per additional mile",
-  //   insuranceRequirement: "Full coverage required",
-  // },
+
   {
     id: "bmw-3-series-2023",
     name: "BMW 3 Series",
@@ -284,8 +196,6 @@ export const vehicles: Vehicle[] = [
     features: ["31-inch Theatre Screen", "Executive Lounge seating", "Bowers & Wilkins Diamond audio", "Sky Lounge panoramic roof", "Automatic doors", "Highway Assistant"],
     overview: "The BMW 3 Series sets a new standard for the modern luxury flagship. Technology, craftsmanship, and presence converge in a singular driving experience.",
     deposit: "$700 refundable deposit",
-    mileageAllowance: "150 miles/day included",
-    mileageOverage: "$0.50 per additional mile",
     insuranceRequirement: "Full coverage required; premium policy recommended",
     turoURL: "https://turo.com/us/en/car-rental/united-states/atlanta-ga/bmw/3-series/3344731?endDate=04%2F10%2F2026&endTime=10%3A00&startDate=04%2F07%2F2026&startTime=10%3A00"
   },
@@ -302,8 +212,6 @@ export const vehicles: Vehicle[] = [
     features: ["Premium leather interior", "Panoramic sunroof", "Wireless Apple CarPlay", "360° camera system", "Heated & ventilated seats", "Bose surround sound"],
     overview: "Command the road in the Kia telluride Spacious, refined, and unmistakably premium — ideal for airport arrivals, family travel, or making an impression.",
     deposit: "$300 refundable deposit",
-    mileageAllowance: "200 miles/day included",
-    mileageOverage: "$0.25 per additional mile",
     insuranceRequirement: "Full coverage required",
     turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/kia/telluride/3125159?endDate=04%2F23%2F2026&endTime=10%3A00&startDate=04%2F20%2F2026&startTime=10%3A00"
   },
@@ -320,8 +228,6 @@ export const vehicles: Vehicle[] = [
     features: ["Premium leather interior", "Panoramic sunroof", "Wireless Apple CarPlay", "360° camera system", "Heated & ventilated seats", "Bose surround sound"],
     overview: "Command the road in the Kia telluride Spacious, refined, and unmistakably premium — ideal for airport arrivals, family travel, or making an impression.",
     deposit: "$300 refundable deposit",
-    mileageAllowance: "200 miles/day included",
-    mileageOverage: "$0.25 per additional mile",
     insuranceRequirement: "Full coverage required",
     turoURL: "https://turo.com/us/en/car-rental/united-states/atlanta-ga/kia/k4/3360917?endDate=04%2F09%2F2026&endTime=10%3A00&startDate=04%2F06%2F2026&startTime=10%3A00"
   },
@@ -338,8 +244,6 @@ export const vehicles: Vehicle[] = [
     features: ["Executive rear seating", "MBUX with AR navigation", "Energizing Comfort", "Burmester 4D surround", "Air Balance fragrance", "Night vision assist"],
     overview: "The pinnacle of automotive luxury. The GLC is reserved for those who accept nothing but the absolute finest in comfort, technology, and prestige.",
     deposit: "$750 refundable deposit",
-    mileageAllowance: "150 miles/day included",
-    mileageOverage: "$0.50 per additional mile",
     insuranceRequirement: "Full coverage required; premium policy recommended",
     turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/mercedes-benz/glc-class/3500638?endDate=04%2F16%2F2026&endTime=10%3A00&startDate=04%2F13%2F2026&startTime=10%3A00"
   },
