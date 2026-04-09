@@ -271,9 +271,9 @@ function Footer() {
           <div>
             <div className="flex gap-3 py-5">
               <img
-                src="/MGA-SHORT-LOGO.svg"
+                src="/MGA-SHORT-LOGO-Round.svg"
                 alt="Mead Green Autos Logo"
-                className="h-12 w-auto md:h-12"
+                className="h-16 w-auto md:h-16"
 
               />
               {/* <h3 className="mb-4 font-serif text-lg font-semibold" style={{ color: "hsl(var(--primary-foreground))" }}>

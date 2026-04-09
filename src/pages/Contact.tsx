@@ -405,7 +405,7 @@ export default function Contact() {
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div className="space-y-2">
-                      <Label htmlFor="svc-name"></Label>
+                      <Label htmlFor="svc-name" className="text-white">Full Name</Label>
                       <Input id="svc-name" value={formData.fullName}
                         onChange={(e) =>
                           handleInputChange("fullName", e.target.value)
@@ -414,7 +414,7 @@ export default function Contact() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-email"></Label>
+                      <Label htmlFor="svc-email" className="text-white">Email</Label>
                       <Input id="svc-email" value={formData.email}
                         onChange={(e) =>
                           handleInputChange("email", e.target.value)
@@ -423,7 +423,7 @@ export default function Contact() {
 
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="svc-phone"></Label>
+                      <Label htmlFor="svc-phone" className="text-white">Phone</Label>
                       <Input id="svc-phone" value={formData.phone}
                         onChange={(e) =>
                           handleInputChange("phone", e.target.value)
@@ -431,7 +431,7 @@ export default function Contact() {
 
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="svc-type" className=""></Label>
+                      <Label htmlFor="svc-type" className="text-white">Service</Label>
                       <select
                         id="svc-type"
                         disabled={isLoading}
@@ -451,7 +451,7 @@ export default function Contact() {
 
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="svc-time"></Label>
+                      <Label htmlFor="svc-time" className="text-white">Time</Label>
                       <Input id="svc-time" value={formData.time}
                         onChange={(e) =>
                           handleInputChange("time", e.target.value)
@@ -460,7 +460,7 @@ export default function Contact() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-vehicle"></Label>
+                      <Label htmlFor="svc-vehicle" className="text-white">Vehicle</Label>
                       <select
                         id="svc-vehicle"
                         disabled={isLoading}
@@ -479,7 +479,7 @@ export default function Contact() {
 
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="svc-start"></Label>
+                      <Label htmlFor="svc-start" className="text-white">Start Date</Label>
                       <Input id="svc-start"
                         value={formData.startDate}
                         min={today}
@@ -489,7 +489,7 @@ export default function Contact() {
 
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="svc-end"></Label>
+                      <Label htmlFor="svc-end" className="text-white">End Date</Label>
                       <Input id="svc-end"
                         value={formData.endDate}
                         min={today}
@@ -499,7 +499,7 @@ export default function Contact() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-license"></Label>
+                      <Label htmlFor="svc-license" className="text-white">License Id</Label>
                       <Input id="svc-license"
                         ref={licenseInputRef}
                         accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
@@ -512,7 +512,7 @@ export default function Contact() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-insurance"></Label>
+                      <Label htmlFor="svc-insurance" className="text-white">Insurance Id</Label>
                       <Input
                         ref={insuranceInputRef}
                         id="svc-insurance"
@@ -529,7 +529,7 @@ export default function Contact() {
 
 
                   <div className="space-y-2">
-                    <Label htmlFor="svc-notes"></Label>
+                    <Label htmlFor="svc-notes" className="Notes">Notes?</Label>
                     <Textarea id="svc-notes" value={formData.notes}
                       onChange={(e) =>
                         handleInputChange("notes", e.target.value)
