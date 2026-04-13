@@ -305,29 +305,29 @@ export default function Index() {
       </section>
 
       {/* Rental Requirements */}
-      <section className="py-20 md:py-28">
-        <div className="container">
-          <FadeIn>
-            <div className="text-center">
-              <h2 className="font-serif text-3xl text-gold font-semibold md:text-4xl">Rental Requirements</h2>
-              <p className="mx-auto mt-3 max-w-lg text-sm text-white">Everything you need to know before booking.</p>
+<section className="py-20 md:py-28">
+  <div className="container">
+    <FadeIn>
+      <div className="text-center">
+        <h2 className="font-serif text-3xl text-gold font-semibold md:text-4xl">Rental Requirements</h2>
+        <p className="mx-auto mt-3 max-w-lg text-sm text-white">Everything you need to know before booking.</p>
+      </div>
+    </FadeIn>
+    <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
+      {rentalRequirements.map((req, i) => (
+        <FadeIn key={req.title} delay={i * 0.05}>
+          <div className="rounded border border-border bg-card p-6 text-center w-full max-w-[280px]">
+            <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-sm bg-primary/10">
+              <req.icon className="h-5 w-5 text-primary" />
             </div>
-          </FadeIn>
-          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {rentalRequirements.map((req, i) => (
-              <FadeIn key={req.title} delay={i * 0.05}>
-                <div className="rounded border border-border bg-card p-6 text-center">
-                  <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-sm bg-primary/10">
-                    <req.icon className="h-5 w-5 text-primary" />
-                  </div>
-                  <h3 className="mt-4 font-serif text-base font-semibold">{req.title}</h3>
-                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{req.description}</p>
-                </div>
-              </FadeIn>
-            ))}
+            <h3 className="mt-4 font-serif text-base font-semibold">{req.title}</h3>
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{req.description}</p>
           </div>
-        </div>
-      </section>
+        </FadeIn>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Why Mead Green Autos — with cinematic car background */}
       <section className="relative py-20 md:py-28 overflow-hidden">
