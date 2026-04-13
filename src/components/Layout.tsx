@@ -169,7 +169,7 @@ function Navbar() {
           <img
             src="/MGA-FULL-LOGO.svg"
             alt="Mead Green Autos Logo"
-            className="h-13 w-auto md:h-13"
+className="h-[90%] w-auto md:h-[90%]"  // 90% of original size
           // h-8 (32px) for mobile, md:h-10 (40px) for desktop
           />
           {/* <span
