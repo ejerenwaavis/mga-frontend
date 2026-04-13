@@ -304,7 +304,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Rental Requirements */}
+     {/* Rental Requirements */}
 <section className="py-20 md:py-28">
   <div className="container">
     <FadeIn>
@@ -313,10 +313,13 @@ export default function Index() {
         <p className="mx-auto mt-3 max-w-lg text-sm text-white">Everything you need to know before booking.</p>
       </div>
     </FadeIn>
-    <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
+    
+    {/* FIX: Added justify-items-center and items-start to the grid */}
+    <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 justify-items-center items-start">
       {rentalRequirements.map((req, i) => (
         <FadeIn key={req.title} delay={i * 0.05}>
-          <div className="rounded border border-border bg-card p-6 text-center w-full max-w-[280px]">
+          {/* FIX: Added w-full max-w-[280px] to control card width and ensure centering */}
+          <div className="w-full max-w-[280px] rounded border border-border bg-card p-6 text-center">
             <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-sm bg-primary/10">
               <req.icon className="h-5 w-5 text-primary" />
             </div>
@@ -329,6 +332,8 @@ export default function Index() {
   </div>
 </section>
 
+
+      
       {/* Why Mead Green Autos — with cinematic car background */}
       <section className="relative py-20 md:py-28 overflow-hidden">
         {/* Cinematic background */}
