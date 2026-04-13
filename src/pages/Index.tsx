@@ -225,14 +225,17 @@ export default function Index() {
                 </div>
               </div>
 
-              {/* Right Side: Image */}
-              <div className="w-full md:w-1/2 aspect-square">
-                <img
-                  src="/vehicles/COVER-IMAGE-TURO-2022-BMW-X6.png"
-                  alt="Chevrolet Corvette"
-                  className="rounded-lg shadow-2xl w-full object-cover"
-                />
-              </div>
+          
+        {/* Right Side: Image */}
+<div className="w-full md:w-1/2">
+  <div className="aspect-square w-full overflow-hidden rounded-lg shadow-2xl">
+    <img
+      src="/vehicles/COVER-IMAGE-TURO-2022-BMW-X6.png"
+      alt="BMW"
+      className="h-full w-full object-cover"
+    />
+  </div>
+</div>
 
             </div>
           </FadeIn>
