@@ -262,26 +262,24 @@ function Footer() {
         backgroundImage: `linear-gradient(rgba(2, 34, 19, 0.80), rgba(2, 34, 19, 0.85)), url('/nat4.jpg')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed' // Optional: creates a parallax effect
+        backgroundAttachment: 'fixed'
       }}
     >
       <div className="border-t-2 border-border/60 z-10" />
       <div className="container py-16">
+        {/* First Row: Logo only - Left Aligned */}
+        <div className="mb-12">
+          <img
+            src="/MGA-SHORT-LOGO-Round.svg"
+            alt="Mead Green Autos Logo"
+            className="h-20 w-auto md:h-24"
+          />
+        </div>
+
+        {/* Second Row: Description, Quick Links, Resources, Contact */}
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+          {/* Description Column */}
           <div>
-            <div className="flex gap-3 py-5">
-              <img
-                src="/MGA-SHORT-LOGO-Round.svg"
-                alt="Mead Green Autos Logo"
-                className="h-16 w-auto md:h-16"
-
-              />
-              {/* <h3 className="mb-4 font-serif text-lg font-semibold" style={{ color: "hsl(var(--primary-foreground))" }}>
-                Mead Green Autos
-              </h3> */}
-
-            </div>
-
             <p className="mb-4 text-sm leading-relaxed text-secondary-foreground/70">
               Premium car rentals serving the greater Atlanta area. Flexible,
               all-day rentals with well-maintained vehicles and consistently
@@ -289,8 +287,9 @@ function Footer() {
             </p>
             <div className="flex items-center gap-1 text-xs text-secondary-foreground/50">
               <MapPin className="h-3 w-3" />
-              Atlanta &bull; Open 24/7
+              Atlanta &bull; Open 7 days in a week
             </div>
+            
             {/* Social Icons */}
             <div className="mt-4 flex gap-3">
               {[
@@ -316,6 +315,7 @@ function Footer() {
             </div>
           </div>
 
+          {/* Quick Links Column */}
           <div>
             <h4 className="mb-4 text-xs font-sans font-semibold uppercase tracking-widest text-secondary-foreground/50">
               Quick Links
@@ -333,6 +333,7 @@ function Footer() {
             </nav>
           </div>
 
+          {/* Resources Column */}
           <div>
             <h4 className="mb-4 text-xs font-sans font-semibold uppercase tracking-widest text-secondary-foreground/50">
               Resources
@@ -344,17 +345,13 @@ function Footer() {
               <Link to="/insurance" className="text-sm text-secondary-foreground/70 transition-colors hover:text-secondary-foreground">
                 Insurance Information
               </Link>
-                <a href={TURO_URL} target="_blank" rel="noopener noreferrer" className="text-sm text-secondary-foreground/70 transition-colors hover:text-secondary-foreground">
+              <a href={TURO_URL} target="_blank" rel="noopener noreferrer" className="text-sm text-secondary-foreground/70 transition-colors hover:text-secondary-foreground">
                 Book on Turo
               </a>
-              {/* <Link to="/faq" className="text-sm text-secondary-foreground/70 transition-colors hover:text-secondary-foreground">
-                FAQs
-              </Link>*/}
-            
-
             </nav>
           </div>
 
+          {/* Contact Column */}
           <div>
             <h4 className="mb-4 text-xs font-sans font-semibold uppercase tracking-widest text-secondary-foreground/50">
               Contact
@@ -374,7 +371,7 @@ function Footer() {
               </div>
               <div className="flex items-center gap-2 text-sm text-secondary-foreground/70">
                 <Clock className="h-4 w-4" />
-                Open 24 hours
+                Open 7 days in a week
               </div>
             </div>
 
@@ -389,6 +386,7 @@ function Footer() {
           </div>
         </div>
 
+        {/* Copyright Row */}
         <div className="mt-12 border-t border-secondary-foreground/10 pt-8 text-center">
           <p className="text-xs text-secondary-foreground/40">
             &copy; {new Date().getFullYear()} Mead Green Autos. All rights
