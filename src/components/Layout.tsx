@@ -23,7 +23,6 @@ const navLinks = [
   { label: "Services", to: "/services", children: serviceSubLinks },
   { label: "About Us", to: "/about" },
   { label: "Contact", to: "/contact" },
-  { label: "Faq", to: "/#faqs" },
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -344,12 +343,13 @@ function Footer() {
               <Link to="/insurance" className="text-sm text-secondary-foreground/70 transition-colors hover:text-secondary-foreground">
                 Insurance Information
               </Link>
-              <Link to="/faq" className="text-sm text-secondary-foreground/70 transition-colors hover:text-secondary-foreground">
-                FAQ
-              </Link>
-              <a href={TURO_URL} target="_blank" rel="noopener noreferrer" className="text-sm text-secondary-foreground/70 transition-colors hover:text-secondary-foreground">
-                BOOK ON TURO
+                <a href={TURO_URL} target="_blank" rel="noopener noreferrer" className="text-sm text-secondary-foreground/70 transition-colors hover:text-secondary-foreground">
+                Book on Turo
               </a>
+              <Link to="/faq" className="text-sm text-secondary-foreground/70 transition-colors hover:text-secondary-foreground">
+                FAQs
+              </Link>
+            
 
             </nav>
           </div>
