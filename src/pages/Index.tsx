@@ -226,9 +226,9 @@ export default function Index() {
               </div>
 
           
-        {/* Right Side: Image */}
-<div className="w-full md:w-1/2">
-  <div className="aspect-square w-full overflow-hidden rounded-lg shadow-2xl">
+       {/* Right Side: Image */}
+<div className="w-full md:w-1/2 flex justify-center">
+  <div className="aspect-square w-full max-w-md overflow-hidden rounded-lg shadow-2xl">
     <img
       src="/vehicles/COVER-IMAGE-TURO-2022-BMW-X6.png"
       alt="BMW"
