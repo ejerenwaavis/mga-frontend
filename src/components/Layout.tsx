@@ -22,6 +22,7 @@ const navLinks = [
   { label: "Fleet", to: "/fleet" },
   { label: "Services", to: "/services", children: serviceSubLinks },
   { label: "About Us", to: "/about" },
+   { label: "FAQs", to: "/faq" },
   { label: "Contact", to: "/contact" },
 ];
 
@@ -346,9 +347,9 @@ function Footer() {
                 <a href={TURO_URL} target="_blank" rel="noopener noreferrer" className="text-sm text-secondary-foreground/70 transition-colors hover:text-secondary-foreground">
                 Book on Turo
               </a>
-              <Link to="/faq" className="text-sm text-secondary-foreground/70 transition-colors hover:text-secondary-foreground">
+              {/* <Link to="/faq" className="text-sm text-secondary-foreground/70 transition-colors hover:text-secondary-foreground">
                 FAQs
-              </Link>
+              </Link>*/}
             
 
             </nav>
