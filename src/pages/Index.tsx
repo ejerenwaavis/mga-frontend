@@ -226,9 +226,9 @@ export default function Index() {
               </div>
 
               {/* Right Side: Image */}
-              <div className="w-full md:w-1/2">
+              <div className="w-full md:w-1/2 aspect-square">
                 <img
-                  src="/vehicles/COVER-IMAGE-Chevrolet-Corvette.jpeg"
+                  src="/vehicles/COVER-IMAGE-TURO-2022-BMW-X6.png"
                   alt="Chevrolet Corvette"
                   className="rounded-lg shadow-2xl w-full object-cover"
                 />
