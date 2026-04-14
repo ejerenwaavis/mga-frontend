@@ -267,7 +267,7 @@ function Footer() {
       <div className="border-t-2 border-border/60 z-10" />
       <div className="container px-4 md:px-6 py-8 md:py-12">
         {/* Logo */}
-        <div className="mb-8">
+        <div className="mb-3">
           <img
             src="/MGA-SHORT-LOGO-Round.svg"
             alt="Mead Green Autos Logo"
@@ -275,11 +275,11 @@ function Footer() {
           />
         </div>
 
-        {/* Second Row - EQUAL WIDTH COLUMNS */}
+        {/* Second Row - FORCE EQUAL WIDTHS */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           
-          {/* Column 1 - Description */}
-          <div className="pr-4 lg:pr-6">
+          {/* Column 1 */}
+          <div className="min-w-0 pr-6">
             <p className="text-sm leading-relaxed text-secondary-foreground/70 mb-3">
               Premium car rentals serving the greater Atlanta area. Flexible, all-day rentals with well-maintained vehicles and consistently 5-star-rated service.
             </p>
@@ -311,8 +311,8 @@ function Footer() {
             </div>
           </div>
 
-          {/* Column 2 - Quick Links */}
-          <div className="mt-8 sm:mt-0 pl-0 lg:pl-4">
+          {/* Column 2 */}
+          <div className="min-w-0 mt-8 sm:mt-0 pl-0 lg:pl-6">
             <h4 className="mb-4 text-xs font-sans font-semibold uppercase tracking-widest text-secondary-foreground/50">
               Quick Links
             </h4>
@@ -329,8 +329,8 @@ function Footer() {
             </nav>
           </div>
 
-          {/* Column 3 - Resources */}
-          <div className="mt-8 sm:mt-0 pl-0 lg:pl-4">
+          {/* Column 3 */}
+          <div className="min-w-0 mt-8 sm:mt-0 pl-0 lg:pl-6">
             <h4 className="mb-4 text-xs font-sans font-semibold uppercase tracking-widest text-secondary-foreground/50">
               Resources
             </h4>
@@ -347,8 +347,8 @@ function Footer() {
             </nav>
           </div>
 
-          {/* Column 4 - Contact */}
-          <div className="mt-8 sm:mt-0 pl-0 lg:pl-4">
+          {/* Column 4 */}
+          <div className="min-w-0 mt-8 sm:mt-0 pl-0 lg:pl-6">
             <h4 className="mb-4 text-xs font-sans font-semibold uppercase tracking-widest text-secondary-foreground/50">
               Contact
             </h4>
