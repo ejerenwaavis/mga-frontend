@@ -154,35 +154,14 @@ function Navbar() {
           : "bg-transparent" // Transparent at the very top
         }`}
     >
-      <div className="container flex h-16 items-center justify-between md:h-20">
-        {/* <Link to="/" className="flex items-center gap-2 select-none">
-          <span
-            className="font-serif text-[1.15rem] font-semibold uppercase tracking-tight md:text-[1.3rem]"
-            style={{ color: "hsl(var(--primary))" }}
-          >
-            Mead Green Autos
-            
-          </span>
-        </Link> */}
+      {/* REMOVED container class, using mx-auto and max-w-6xl to match footer */}
+      <div className="mx-auto max-w-6xl flex h-16 items-center justify-between md:h-20">
         <Link to="/" className="flex items-center gap-2 select-none">
-          {/* The Image replaces the <span> */}
           <img
             src="/MGA-FULL-LOGO.svg"
             alt="Mead Green Autos Logo"
-className="h-[20px] w-auto md:h-[30px]"  // 90% of original size
-          // h-8 (32px) for mobile, md:h-10 (40px) for desktop
+            className="h-[20px] w-auto md:h-[30px]"
           />
-          {/* <span
-            className="font-serif text-[1.15rem] font-semibold tracking-tight md:text-[1.3rem]"
-            style={{ color: "hsl(var(--primary))" }}
-          > */}
-          {/* <span
-            className="font-serif text-[1.15rem] font-semibold tracking-tight md:text-[1.3rem]"
-            style={{ color: "white" }}
-          >
-            Mead Green Autos
-
-          </span> */}
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
@@ -202,7 +181,8 @@ className="h-[20px] w-auto md:h-[30px]"  // 90% of original size
 
       {open && (
         <div className="border-t border-border/50 bg-background lg:hidden animate-fade-in">
-          <nav className="container flex flex-col gap-1 py-4">
+          {/* REMOVED container class from mobile menu as well */}
+          <nav className="mx-auto max-w-6xl flex flex-col gap-1 py-4">
             {navLinks.map((link) => (
               <div key={link.to}>
                 <div className="flex items-center">
@@ -253,6 +233,7 @@ function Extra() {
     </section>
   )
 }
+
 function Footer() {
   return (
     <footer
@@ -266,7 +247,8 @@ function Footer() {
     >
       <div className="border-t-2 border-border/60 z-10" />
 
-      <div className="container max-w-6xl px-4 md:px-6 py-8 md:py-12">
+      {/* REMOVED px-4 md:px-6, kept only max-w-6xl and mx-auto */}
+      <div className="mx-auto max-w-6xl py-8 md:py-12">
         
         {/* Logo */}
         <div className="mb-3">
@@ -282,8 +264,6 @@ function Footer() {
 
           {/* Column 1 */}
           <div>
-            
-
             <p className="text-sm leading-relaxed text-secondary-foreground/70 mb-4">
               Premium car rentals serving the greater Atlanta area. Flexible, all-day rentals with well-maintained vehicles and consistently 5-star-rated service.
             </p>
