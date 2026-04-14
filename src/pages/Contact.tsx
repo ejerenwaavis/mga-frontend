@@ -58,7 +58,7 @@ export default function Contact() {
   useSEO({
     title: "Contact Mead Green Autos | 24/7  Atlanta Car Rental",
     description: "Contact Mead Green Autos for premium car rental in , Atlanta. Open 24 hours. Call (470) 817-6427 or send a message. Airport & corporate service available.",
-    canonical: "https://green-fleet-concierge.lovable.app/contact",
+    canonical: "https://meadgreenautos.com/contact",
   });
   const [submitted, setSubmitted] = useState(false);
   const [selectedService, setSelectedService] = useState<string | null>(null);
@@ -328,7 +328,7 @@ export default function Contact() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/vehicles/COVER-IMAGE-Chevrolet-Corvette.jpeg"
+            src="/vehicles/Porsche-Cayenne-2023-Side-Ext.png"
             alt="Luxury Fleet"
             className="h-full w-full object-cover"
           />
