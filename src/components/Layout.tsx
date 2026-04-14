@@ -336,7 +336,7 @@ function Footer() {
           </div>
 
           {/* Column 4 */}
-          <div className="lg:pr-0"> 
+         <div className="lg:-mr-2"> 
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-secondary-foreground/50">
               Contact
             </h4>
