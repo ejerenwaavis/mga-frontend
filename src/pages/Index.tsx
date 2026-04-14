@@ -184,7 +184,7 @@ export default function Index() {
       {/* Trust strip */}
       <div className="border-b border-border bg-card">
         <div className="container flex flex-wrap items-center justify-center gap-x-6 gap-y-2 py-3 text-[13.5px] font-sans tracking-wide text-muted-foreground">
-          <span>Open 24/7</span>
+          <span>Open 7 days a week</span>
           <span className="hidden sm:inline text-border">|</span>
           <span>Atlanta, GA 30337</span>
           <span className="hidden sm:inline text-border">|</span>
@@ -412,7 +412,7 @@ export default function Index() {
             </div>
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
               <Clock className="h-4 w-4 text-primary shrink-0" />
-              Open 24 hours, 7 days
+              Open 7 days a week
             </div>
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
               <Phone className="h-4 w-4 text-primary shrink-0" />
