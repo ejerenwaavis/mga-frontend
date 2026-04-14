@@ -154,8 +154,8 @@ function Navbar() {
           : "bg-transparent" // Transparent at the very top
         }`}
     >
-      {/* REMOVED container class, using mx-auto and max-w-6xl to match footer */}
-      <div className="mx-auto max-w-6xl flex h-16 items-center justify-between md:h-20">
+      {/* FIX 1: Added px-4 md:px-6 to match footer's horizontal spacing */}
+      <div className="mx-auto max-w-6xl px-4 md:px-6 flex h-16 items-center justify-between md:h-20">
         <Link to="/" className="flex items-center gap-2 select-none">
           <img
             src="/MGA-FULL-LOGO.svg"
@@ -181,8 +181,8 @@ function Navbar() {
 
       {open && (
         <div className="border-t border-border/50 bg-background lg:hidden animate-fade-in">
-          {/* REMOVED container class from mobile menu as well */}
-          <nav className="mx-auto max-w-6xl flex flex-col gap-1 py-4">
+          {/* FIX 2: Added px-4 md:px-6 to mobile menu as well */}
+          <nav className="mx-auto max-w-6xl px-4 md:px-6 flex flex-col gap-1 py-4">
             {navLinks.map((link) => (
               <div key={link.to}>
                 <div className="flex items-center">
@@ -247,8 +247,8 @@ function Footer() {
     >
       <div className="border-t-2 border-border/60 z-10" />
 
-      {/* REMOVED px-4 md:px-6, kept only max-w-6xl and mx-auto */}
-      <div className="mx-auto max-w-6xl py-8 md:py-12">
+      {/* FIX 3: Added px-4 md:px-6 to match navbar exactly */}
+      <div className="mx-auto max-w-6xl px-4 md:px-6 py-8 md:py-12">
         
         {/* Logo */}
         <div className="mb-3">
@@ -322,6 +322,7 @@ function Footer() {
             </h4>
 
             <nav className="flex flex-col gap-2">
+              {/* FIX 4: Replaced gap-2 with consistent spacing */}
               <Link to="/policies" className="text-sm text-secondary-foreground/70 hover:text-secondary-foreground">
                 Policies & Terms
               </Link>
@@ -340,7 +341,8 @@ function Footer() {
               Contact
             </h4>
 
-            <div className="flex flex-col gap-3">
+            {/* FIX 5: Changed from gap-3 to gap-2 for visual consistency across all columns */}
+            <div className="flex flex-col gap-2">
               <a href="tel:+14708176427" className="flex items-center gap-2 text-sm text-secondary-foreground/70 hover:text-secondary-foreground">
                 <Phone className="h-4 w-4 shrink-0" />
                 {PHONE}
@@ -362,7 +364,8 @@ function Footer() {
               </div>
             </div>
 
-            <div className="mt-6 flex flex-col gap-2">
+            {/* FIX 6: Changed from gap-2 to gap-3 for better visual separation from contact info */}
+            <div className="mt-6 flex flex-col gap-3">
               <Link to="/services" className="text-xs font-semibold uppercase tracking-widest text-gold hover:text-gold/80">
                 BOOK DIRECT
               </Link>
