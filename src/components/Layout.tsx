@@ -316,7 +316,7 @@ function Footer() {
           </div>
 
           {/* Column 3 */}
-          <div>
+         <div className="lg:pr-8"> 
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-secondary-foreground/50">
               Resources
             </h4>
@@ -336,7 +336,7 @@ function Footer() {
           </div>
 
           {/* Column 4 */}
-         <div className="lg:-mr-2"> 
+         <div className="lg:-mr-8"> 
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-secondary-foreground/50">
               Contact
             </h4>
