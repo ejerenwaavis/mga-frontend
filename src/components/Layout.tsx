@@ -278,14 +278,12 @@ function Footer() {
         </div>
 
         {/* Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr_1fr_1.2fr] gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] gap-10">
 
-          {/* Column 1 - Description */}
+          {/* Column 1 */}
           <div>
-            {/* Invisible spacer to align with other headings */}
-            <div className="mb-4 invisible text-xs font-semibold uppercase">
-              spacer
-            </div>
+            {/* Spacer to align with headings */}
+            <div className="mb-4 h-[16px]" />
 
             <p className="text-sm leading-relaxed text-secondary-foreground/70 mb-4">
               Premium car rentals serving the greater Atlanta area. Flexible, all-day rentals with well-maintained vehicles and consistently 5-star-rated service.
@@ -297,14 +295,19 @@ function Footer() {
             </div>
 
             <div className="flex gap-3">
-              {socials.map((social) => (
+              {[
+                { label: "Instagram", href: "#", icon: "M12 2.163c3.204..." },
+                { label: "Facebook", href: "#", icon: "M24 12.073..." },
+                { label: "X", href: "#", icon: "M18.244 2.25..." },
+                { label: "LinkedIn", href: "#", icon: "M20.447 20.452..." },
+                { label: "TikTok", href: "#", icon: "M12.525.02..." },
+              ].map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-8 w-8 items-center justify-center rounded-sm text-secondary-foreground/40 transition-colors hover:text-secondary-foreground/80"
-                  aria-label={social.label}
+                  className="flex h-8 w-8 items-center justify-center rounded-sm text-secondary-foreground/40 hover:text-secondary-foreground/80"
                 >
                   <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d={social.icon} />
@@ -314,18 +317,18 @@ function Footer() {
             </div>
           </div>
 
-          {/* Column 2 - Quick Links */}
+          {/* Column 2 */}
           <div>
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-secondary-foreground/50">
               Quick Links
             </h4>
 
             <nav className="flex flex-col gap-2">
-              {navLinks.map((link) => (
+              {navLinks?.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="text-sm text-secondary-foreground/70 transition-colors hover:text-secondary-foreground"
+                  className="text-sm text-secondary-foreground/70 hover:text-secondary-foreground"
                 >
                   {link.label}
                 </Link>
@@ -333,7 +336,7 @@ function Footer() {
             </nav>
           </div>
 
-          {/* Column 3 - Resources */}
+          {/* Column 3 */}
           <div>
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-secondary-foreground/50">
               Resources
@@ -352,7 +355,7 @@ function Footer() {
             </nav>
           </div>
 
-          {/* Column 4 - Contact */}
+          {/* Column 4 */}
           <div>
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-secondary-foreground/50">
               Contact
