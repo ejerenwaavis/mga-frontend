@@ -287,7 +287,7 @@ function Footer() {
             </p>
             <div className="flex items-center gap-1 text-xs text-secondary-foreground/50">
               <MapPin className="h-3 w-3" />
-              Atlanta &bull; Open 7 days in a week
+              Atlanta &bull; Open 7 days a week
             </div>
             
             {/* Social Icons */}
@@ -371,7 +371,7 @@ function Footer() {
               </div>
               <div className="flex items-center gap-2 text-sm text-secondary-foreground/70">
                 <Clock className="h-4 w-4" />
-                Open 7 days in a week
+               Open 7 days a week
               </div>
             </div>
 
