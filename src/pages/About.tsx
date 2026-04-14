@@ -5,7 +5,7 @@ export default function About() {
   useSEO({
     title: "About Mead Green Autos | Premium Car Rental in  Atlanta",
     description: "Learn about Mead Green Autos — professional premium car rentals in , Atlanta. Licensed, insured, 5-star rated on Turo. Open 24/7.",
-    canonical: "https://green-fleet-concierge.lovable.app/about",
+    canonical: "https://meadgreenautos.com/about",
   });
   return (
     <>
@@ -88,18 +88,32 @@ export default function About() {
             </FadeIn>
           </div>
 
-          {/* Right Side: Image */}
-          <div className="w-full md:w-1/2">
-            <FadeIn delay={0.2}>
-              <img
-                src="/vehicles/COVER-IMAGE-Chevrolet-Corvette.jpeg"
-                alt="Chevrolet Corvette"
-                className="rounded-lg shadow-2xl w-full object-cover aspect-[4/3]"
-              />
-            </FadeIn>
-          </div>
+         
 
+
+
+
+
+
+ {/* Right Side: Image - Proper alignment WITHOUT overflow */}
+        <div className="w-full md:w-1/2 flex justify-end">
+          <div className="aspect-square w-full max-w-md overflow-hidden rounded-lg shadow-2xl">
+            <img
+              src="/vehicles/COVER-IMAGE-TURO-2022-BMW-X6.png"
+              alt="BMW X6 - Mead Green Autos Luxury Vehicle"
+              className="h-full w-full object-cover"
+            />
+          </div>
         </div>
+      </div>
+    </FadeIn>
+  </div>
+
+
+
+
+
+        
       </section>
     </>
   );
