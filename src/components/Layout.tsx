@@ -248,7 +248,8 @@ function Footer() {
       <div className="border-t-2 border-border/60 z-10" />
 
       {/* FIX 3: Added px-4 md:px-6 to match navbar exactly */}
-      <div className="mx-auto max-w-6xl px-4 md:px-1 py-8 md:py-12">
+      <div className="w-full px-4 md:px-1 py-8 md:py-12">
+      
         
         {/* Logo */}
         <div className="mb-3">
