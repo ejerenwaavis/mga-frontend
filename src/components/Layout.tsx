@@ -269,7 +269,7 @@ function Footer() {
       <div className="container max-w-6xl px-4 md:px-6 py-8 md:py-12">
         
         {/* Logo */}
-        <div className="mb-8">
+        <div className="mb-3">
           <img
             src="/MGA-SHORT-LOGO-Round.svg"
             alt="Mead Green Autos Logo"
@@ -278,7 +278,7 @@ function Footer() {
         </div>
 
         {/* Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr_1fr_1.1fr] gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr_1fr_1.5fr] gap-10">
 
           {/* Column 1 */}
           <div>
