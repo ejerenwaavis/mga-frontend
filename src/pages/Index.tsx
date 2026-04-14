@@ -463,16 +463,15 @@ export default function Index() {
 
 
 
-
-      {/* Floating Call Button */}
-      <a
-        href="tel:+14708176427"
-        className="fixed bottom-6 right-6 z-50 flex h-13 w-13 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-all duration-200 hover:shadow-xl hover:shadow-primary/40 hover:scale-105"
-        aria-label="Call Mead Green Autos"
-        style={{ boxShadow: "0 4px 20px hsl(var(--primary) / 0.35)" }}
-      >
-        <Phone className="h-5 w-5" />
-      </a>
+{/* Floating Call Button - Larger */}
+<a
+  href="tel:+14708176427"
+  className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-all duration-200 hover:shadow-xl hover:shadow-primary/40 hover:scale-105"
+  aria-label="Call Mead Green Autos"
+  style={{ boxShadow: "0 4px 20px hsl(var(--primary) / 0.35)" }}
+>
+  <Phone className="h-6 w-6" />  {/* Also increased icon size */}
+</a>
     </>
   );
 }
