@@ -263,7 +263,7 @@ function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-[2.5fr_1fr_1fr_2.0fr] gap-2">
 
           {/* Column 1 */}
-            <div className="lg:pr-8">  {/* Add this class */}
+            <div className="lg:pr-10">  {/* Add this class */}
             <p className="text-sm leading-relaxed text-secondary-foreground/70 mb-4">
               Premium car rentals serving the greater Atlanta area. Flexible, all-day rentals with well-maintained vehicles and consistently 5-star-rated service.
             </p>
@@ -336,7 +336,7 @@ function Footer() {
           </div>
 
           {/* Column 4 */}
-          <div>
+          <div className="lg:pr-0"> 
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-secondary-foreground/50">
               Contact
             </h4>
