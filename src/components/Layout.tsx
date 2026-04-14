@@ -267,7 +267,7 @@ function Footer() {
       <div className="border-t-2 border-border/60 z-10" />
       <div className="container px-4 md:px-6 py-8 md:py-12">
         {/* Logo */}
-        <div className="mb-3">
+        <div className="mb-6">
           <img
             src="/MGA-SHORT-LOGO-Round.svg"
             alt="Mead Green Autos Logo"
@@ -275,11 +275,11 @@ function Footer() {
           />
         </div>
 
-        {/* Second Row - EVEN SPACING */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
+        {/* Second Row - FLEXBOX with equal widths */}
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-6">
           
           {/* Column 1 - Description */}
-          <div className="min-w-0">
+          <div className="flex-1 min-w-0">
             <p className="text-sm leading-relaxed text-secondary-foreground/70 mb-3">
               Premium car rentals serving the greater Atlanta area. Flexible, all-day rentals with well-maintained vehicles and consistently 5-star-rated service.
             </p>
@@ -312,7 +312,7 @@ function Footer() {
           </div>
 
           {/* Column 2 - Quick Links */}
-          <div className="min-w-0">
+          <div className="flex-1 min-w-0">
             <h4 className="mb-4 text-xs font-sans font-semibold uppercase tracking-widest text-secondary-foreground/50">
               Quick Links
             </h4>
@@ -330,7 +330,7 @@ function Footer() {
           </div>
 
           {/* Column 3 - Resources */}
-          <div className="min-w-0">
+          <div className="flex-1 min-w-0">
             <h4 className="mb-4 text-xs font-sans font-semibold uppercase tracking-widest text-secondary-foreground/50">
               Resources
             </h4>
@@ -348,7 +348,7 @@ function Footer() {
           </div>
 
           {/* Column 4 - Contact */}
-          <div className="min-w-0">
+          <div className="flex-1 min-w-0">
             <h4 className="mb-4 text-xs font-sans font-semibold uppercase tracking-widest text-secondary-foreground/50">
               Contact
             </h4>
