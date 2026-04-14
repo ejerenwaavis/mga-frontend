@@ -278,12 +278,11 @@ function Footer() {
         </div>
 
         {/* Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr_1fr_1.1fr] gap-10">
 
           {/* Column 1 */}
           <div>
-            {/* Spacer to align with headings */}
-            <div className="mb-4 h-[16px]" />
+            
 
             <p className="text-sm leading-relaxed text-secondary-foreground/70 mb-4">
               Premium car rentals serving the greater Atlanta area. Flexible, all-day rentals with well-maintained vehicles and consistently 5-star-rated service.
