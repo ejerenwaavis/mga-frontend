@@ -10,7 +10,7 @@ export default function Fleet() {
   useSEO({
     title: "Premium Rental Fleet in Atlanta | SUVs, Sedans & Luxury Vehicles",
     description: "Browse our curated Atlanta rental fleet — luxury SUVs, executive sedans, and premium vehicles. Airport-ready, insured, available 24/7 in Atlanta.",
-    canonical: "https://green-fleet-concierge.lovable.app/fleet",
+    canonical: "https://meadgreenautos.com/fleet",
   });
   const [category, setCategory] = useState<string>("All");
 
@@ -28,7 +28,7 @@ export default function Fleet() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/vehicles/COVER-IMAGE-Chevrolet-Corvette.jpeg"
+            src="/vehicles/Chevrolet-Corvette-side-ext.jpeg"
             alt="Luxury Fleet"
             className="h-full w-full object-cover"
           />
