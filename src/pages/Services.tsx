@@ -56,7 +56,7 @@ export default function Services() {
   useSEO({
     title: "Airport & Corporate Car Rental Services in Atlanta | Mead Green Autos",
     description: "Airport service, daily rental, long-term rental, corporate & concierge car rental in Atlanta, GA. Open 24/7. Book now or call (470) 817-6427.",
-    canonical: "https://green-fleet-concierge.lovable.app/services",
+    canonical: "https://meadgreenautos.com/services",
   });
   const [selectedService, setSelectedService] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -320,7 +320,7 @@ export default function Services() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/vehicles/COVER-IMAGE-Chevrolet-Corvette.jpeg"
+            src="/vehicles/BMW-X6-2022-side-exterior.jpg"
             alt="Luxury Fleet"
             className="h-full w-full object-cover"
           />
