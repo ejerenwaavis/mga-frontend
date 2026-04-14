@@ -247,8 +247,9 @@ function Footer() {
     >
       <div className="border-t-2 border-border/60 z-10" />
 
-      {/* FIX 3: Added px-4 md:px-6 to match navbar exactly */}
-      <div className="w-full px-4 md:px-1 py-8 md:py-12">
+      {/* FIX 3: Added px-4 md:px-6 to match navbar exactly <div className="mx-auto max-w-6xl px-4 md:px-1 py-8 md:py-12"> */}
+      <div className="mx-auto max-w-6xl pl-4 md:pl-1 pr-0 py-8 md:py-12">
+        
       
         
         {/* Logo */}
@@ -261,7 +262,7 @@ function Footer() {
         </div>
 
         {/* Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[2.5fr_1fr_1fr_2.0fr] gap-2">
+        <div className="grid grid-cols-1 lg:grid-cols-[2.5fr_1fr_1fr_2.0fr] gap-2 gap-y-8 lg:gap-y-2">
 
           {/* Column 1 */}
             <div className="lg:pr-10">  {/* Add this class */}
