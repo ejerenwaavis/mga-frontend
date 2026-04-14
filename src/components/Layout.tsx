@@ -278,7 +278,7 @@ function Footer() {
         </div>
 
         {/* Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[3.0fr_1fr_1fr_3.0fr] gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr_1fr] gap-10">
 
           {/* Column 1 */}
           <div>
