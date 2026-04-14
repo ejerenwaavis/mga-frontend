@@ -194,51 +194,51 @@ export default function Index() {
         </div>
       </div>
 
-      {/* Welcome Section - Fixed Image Alignment */}
-      <section className="py-8 md:py-16">
-        <div className="container mx-auto px-4 md:px-0">
-          <FadeIn>
-            {/* Flex container: Stacks on mobile, side-by-side on medium screens and up */}
-            <div className="flex flex-col md:flex-row items-center gap-10 md:gap-12">
-              {/* Left Side: Text Content */}
-              <div className="w-full md:w-1/2 text-left">
-                <h2 className="font-serif text-3xl text-gold font-semibold md:text-4xl">
-                  WELCOME TO MEAD GREEN AUTOS
-                </h2>
+     {/* Welcome Section - Fixed Image Alignment (No Overflow) */}
+<section className="py-8 md:py-16">
+  <div className="container mx-auto px-4">
+    <FadeIn>
+      {/* Flex container: Stacks on mobile, side-by-side on medium screens and up */}
+      <div className="flex flex-col md:flex-row items-center gap-10 md:gap-12">
+        {/* Left Side: Text Content */}
+        <div className="w-full md:w-1/2 text-left">
+          <h2 className="font-serif text-3xl text-gold font-semibold md:text-4xl">
+            WELCOME TO MEAD GREEN AUTOS
+          </h2>
 
-                <div className="mt-6 space-y-4 text-sm leading-relaxed text-white max-w-prose">
-                  <p className="font-medium">
-                    At Mead Green Autos, we believe renting a premium vehicle should be as effortless as it is exceptional.
-                  </p>
-                  <p>
-                    Our carefully curated fleet of luxury vehicles is available throughout Atlanta, with seamless pickup and return options at Hartsfield-Jackson Atlanta International Airport for those flying into the city. We also offer convenient vehicle delivery across the Atlanta area, ensuring your car is ready wherever you need it.
-                  </p>
-                  <p>
-                    Each vehicle is meticulously maintained and presented in impeccable condition - because convenience, peace of mind, and the thrill of driving something remarkable should always come standard.
-                  </p>
-                  <p>
-                    Our team is happy to accommodate special requests and provide concierge-style support, making your experience as smooth and personalized as possible.
-                  </p>
-                  <p>
-                    Whether you’re visiting Atlanta, traveling for business, or simply indulging in a memorable weekend drive, Mead Green Autos delivers a refined rental experience from start to finish.
-                  </p>
-                </div>
-              </div>
-
-              {/* Right Side: Image - Removed padding and improved alignment */}
-              <div className="w-full md:w-1/2 flex justify-end md:justify-end -mr-4 md:-mr-8">
-                <div className="aspect-square w-full max-w-md overflow-hidden rounded-lg shadow-2xl">
-                  <img
-                    src="/vehicles/COVER-IMAGE-TURO-2022-BMW-X6.png"
-                    alt="BMW X6 - Mead Green Autos Luxury Vehicle"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-          </FadeIn>
+          <div className="mt-6 space-y-4 text-sm leading-relaxed text-white max-w-prose">
+            <p className="font-medium">
+              At Mead Green Autos, we believe renting a premium vehicle should be as effortless as it is exceptional.
+            </p>
+            <p>
+              Our carefully curated fleet of luxury vehicles is available throughout Atlanta, with seamless pickup and return options at Hartsfield-Jackson Atlanta International Airport for those flying into the city. We also offer convenient vehicle delivery across the Atlanta area, ensuring your car is ready wherever you need it.
+            </p>
+            <p>
+              Each vehicle is meticulously maintained and presented in impeccable condition - because convenience, peace of mind, and the thrill of driving something remarkable should always come standard.
+            </p>
+            <p>
+              Our team is happy to accommodate special requests and provide concierge-style support, making your experience as smooth and personalized as possible.
+            </p>
+            <p>
+              Whether you’re visiting Atlanta, traveling for business, or simply indulging in a memorable weekend drive, Mead Green Autos delivers a refined rental experience from start to finish.
+            </p>
+          </div>
         </div>
-      </section>
+
+        {/* Right Side: Image - Proper alignment WITHOUT overflow */}
+        <div className="w-full md:w-1/2 flex justify-end">
+          <div className="aspect-square w-full max-w-md overflow-hidden rounded-lg shadow-2xl">
+            <img
+              src="/vehicles/COVER-IMAGE-TURO-2022-BMW-X6.png"
+              alt="BMW X6 - Mead Green Autos Luxury Vehicle"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </FadeIn>
+  </div>
+</section>
       
       {/* Testimonials — auto-scroll marquee */}
       <section className="py-10 md:py-14 overflow-hidden">
