@@ -169,7 +169,7 @@ function Navbar() {
           <img
             src="/MGA-FULL-LOGO.svg"
             alt="Mead Green Autos Logo"
-className="h-[10px] w-auto md:h-[10px]"  // 90% of original size
+className="h-[80px] w-auto md:h-[80px]"  // 90% of original size
           // h-8 (32px) for mobile, md:h-10 (40px) for desktop
           />
           {/* <span
@@ -271,7 +271,7 @@ function Footer() {
           <img
             src="/MGA-SHORT-LOGO-Round.svg"
             alt="Mead Green Autos Logo"
-            className="h-10 w-auto md:h-12"
+            className="h-[80px] w-auto md:h-[100px]"
           />
         </div>
 
