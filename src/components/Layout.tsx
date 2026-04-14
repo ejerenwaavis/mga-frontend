@@ -276,7 +276,7 @@ function Footer() {
         </div>
 
         {/* Second Row - FLEXBOX with equal widths */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr_1fr_1fr] gap-10">
           
           {/* Column 1 - Description */}
 <div className="lg:max-w-sm">
