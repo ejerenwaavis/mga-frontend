@@ -155,7 +155,7 @@ function Navbar() {
         }`}
     >
       {/* FIX 1: Added px-4 md:px-6 to match footer's horizontal spacing */}
-      <div className="mx-auto max-w-6xl px-1 md:px-1 flex h-16 items-center justify-between md:h-20">
+      <div className="mx-auto max-w-6xl px-2 md:px-1 flex h-16 items-center justify-between md:h-20">
         <Link to="/" className="flex items-center gap-2 select-none">
           <img
             src="/MGA-FULL-LOGO.svg"
@@ -182,7 +182,7 @@ function Navbar() {
       {open && (
         <div className="border-t border-border/50 bg-background lg:hidden animate-fade-in">
           {/* FIX 2: Added px-4 md:px-6 to mobile menu as well */}
-          <nav className="mx-auto max-w-6xl px-1 md:px-1 flex flex-col gap-1 py-4">
+          <nav className="mx-auto max-w-6xl px-2 md:px-1 flex flex-col gap-1 py-4">
             {navLinks.map((link) => (
               <div key={link.to}>
                 <div className="flex items-center">
@@ -248,7 +248,7 @@ function Footer() {
       <div className="border-t-2 border-border/60 z-10" />
 
       {/* FIX 3: Added px-4 md:px-6 to match navbar exactly */}
-      <div className="mx-auto max-w-6xl px-1 md:px-1 py-8 md:py-12">
+      <div className="mx-auto max-w-6xl px-2 md:px-1 py-8 md:py-12">
         
         {/* Logo */}
         <div className="mb-3">
