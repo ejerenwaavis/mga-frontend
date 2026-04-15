@@ -160,7 +160,7 @@ function HeroVideo() {
 export default function Index() {
   return (
     <>
-      {/* Hero — VIDEO ONLY, no poster, no background image */}
+      {/* Hero — VIDEO ONLY, no posters, no background image */}
       <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden bg-secondary">
         <HeroVideo />
         <div className="absolute inset-0 bg-secondary/55" />
