@@ -328,7 +328,7 @@ export default function Contact() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/vehicles/Porsche-Cayenne-2023-Side-Ext.png"
+            src="/vehicles/benz-glc-2022-side-exterior.jpg"
             alt="Luxury Fleet"
             className="h-full w-full object-cover"
           />
