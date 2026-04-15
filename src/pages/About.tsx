@@ -3,14 +3,12 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function About() {
   useSEO({
-    title: "About Mead Green Autos | Premium Car Rental in  Atlanta",
-    description: "Learn about Mead Green Autos — professional premium car rentals in , Atlanta. Licensed, insured, 5-star rated on Turo. Open 24/7.",
+    title: "About Mead Green Autos | Premium Car Rental in Atlanta",
+    description: "Learn about Mead Green Autos — professional premium car rentals in Atlanta. Licensed, insured, 5-star rated on Turo. Open 24/7.",
     canonical: "https://meadgreenautos.com/about",
   });
   return (
     <>
-
-
       <section className="relative overflow-hidden bg-stone py-24 md:py-32">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
@@ -33,15 +31,12 @@ export default function About() {
               reliability, and a commitment to an exceptional experience.
             </p>
           </FadeIn>
-
-
         </div>
       </section>
 
       <section className="py-16 md:py-20">
         {/* Increased max-w for better side-by-side spacing */}
         <div className="container max-w-6xl flex flex-col md:flex-row items-center gap-12">
-
           {/* Left Side: Text Content */}
           <div className="w-full md:w-1/2 text-left">
             <FadeIn>
@@ -75,7 +70,8 @@ export default function About() {
             </FadeIn>
 
             <FadeIn delay={0.15}>
-              <div className="mt-6"> {/* Reduced margin from mt-16 to mt-6 */}
+              {/* Reduced margin from mt-16 to mt-6 */}
+              <div className="mt-6">
                 <p className="text-sm leading-relaxed text-white">
                   Our operations are built on consistency and accountability.
                   Each vehicle undergoes thorough inspection and cleaning between
@@ -88,29 +84,18 @@ export default function About() {
             </FadeIn>
           </div>
 
-         
-
-
-
-
-
-
-{/* Right Side: Image */}
-<div className="w-full md:w-1/2">
-  <FadeIn delay={0.2}>
-    <img
-      src="/vehicles/COVER-IMAGE-Chevrolet-Corvette.jpeg"
-      alt="Chevrolet Corvette"
-      className="rounded-lg shadow-2xl w-full object-cover aspect-[4/3]"
-    />
-  </FadeIn>
-</div>  {/* ← ADD THIS MISSING CLOSING TAG */}
-
-</div>  {/* This closes the flex container div */}
-
-</section>  {/* This closes the second section */}
-
-</>  {/* This closes the fragment */}
-
-);
+          {/* Right Side: Image */}
+          <div className="w-full md:w-1/2">
+            <FadeIn delay={0.2}>
+              <img
+                src="/vehicles/COVER-IMAGE-Chevrolet-Corvette.jpeg"
+                alt="Chevrolet Corvette"
+                className="rounded-lg shadow-2xl w-full object-cover aspect-[4/3]"
+              />
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+    </>
+  );
 }
