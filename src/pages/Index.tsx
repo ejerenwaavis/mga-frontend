@@ -210,7 +210,18 @@ export default function Index() {
             <p className="font-medium">
               At Mead Green Autos, we believe renting a premium vehicle should be as effortless as it is exceptional.
             </p>
-           
+            <p>
+              Our carefully curated fleet of luxury vehicles is available throughout Atlanta, with seamless pickup and return options at Hartsfield-Jackson Atlanta International Airport for those flying into the city. We also offer convenient vehicle delivery across the Atlanta area, ensuring your car is ready wherever you need it.
+            </p>
+            <p>
+              Each vehicle is meticulously maintained and presented in impeccable condition - because convenience, peace of mind, and the thrill of driving something remarkable should always come standard.
+            </p>
+            <p>
+              Our team is happy to accommodate special requests and provide concierge-style support, making your experience as smooth and personalized as possible.
+            </p>
+            <p>
+              Whether you’re visiting Atlanta, traveling for business, or simply indulging in a memorable weekend drive, Mead Green Autos delivers a refined rental experience from start to finish.
+            </p>
           </div>
         </div>
 
