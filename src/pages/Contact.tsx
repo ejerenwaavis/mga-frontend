@@ -369,67 +369,55 @@ export default function Contact() {
                   </div>
                 </div>
               ) : (
-                // <form onSubmit={handleSubmit} className="space-y-6">
-                //   <div className="grid gap-6 sm:grid-cols-2">
-                //     <div className="space-y-2">
-                //       <Label htmlFor="name">Full Name</Label>
-                //       <Input id="name" placeholder="Your name" required />
-                //     </div>
-                //     <div className="space-y-2">
-                //       <Label htmlFor="email">Email</Label>
-                //       <Input
-                //         id="email"
-                //         type="email"
-                //         placeholder="you@example.com"
-                //         required
-                //       />
-                //     </div>
-                //   </div>
-                //   <div className="space-y-2">
-                //     <Label htmlFor="subject">Subject</Label>
-                //     <Input id="subject" placeholder="How can we help?" required />
-                //   </div>
-                //   <div className="space-y-2">
-                //     <Label htmlFor="message">Message</Label>
-                //     <Textarea
-                //       id="message"
-                //       placeholder="Your message"
-                //       rows={5}
-                //       required
-                //     />
-                //   </div>
-                //   <Button type="submit" variant="premium" size="lg">
-                //     Send Message
-                //   </Button>
-                // </form>
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div className="space-y-2">
                       <Label htmlFor="svc-name" className="text-white">Full Name</Label>
-                      <Input id="svc-name" value={formData.fullName}
+                      <Input 
+                        id="svc-name" 
+                        value={formData.fullName}
                         onChange={(e) =>
                           handleInputChange("fullName", e.target.value)
-                        } disabled={isLoading} placeholder="Your full name" required className="focus-visible:ring-primary" />
-
+                        } 
+                        disabled={isLoading} 
+                        placeholder="Your full name" 
+                        required 
+                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                      />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="svc-email" className="text-white">Email</Label>
-                      <Input id="svc-email" value={formData.email}
+                      <Input 
+                        id="svc-email" 
+                        value={formData.email}
                         onChange={(e) =>
                           handleInputChange("email", e.target.value)
-                        } type="email" disabled={isLoading} placeholder="you@example.com" required className="focus-visible:ring-primary" />
-
-
+                        } 
+                        type="email" 
+                        disabled={isLoading} 
+                        placeholder="you@example.com" 
+                        required 
+                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                      />
                     </div>
+
                     <div className="space-y-2">
                       <Label htmlFor="svc-phone" className="text-white">Phone</Label>
-                      <Input id="svc-phone" value={formData.phone}
+                      <Input 
+                        id="svc-phone" 
+                        value={formData.phone}
                         onChange={(e) =>
                           handleInputChange("phone", e.target.value)
-                        } disabled={isLoading} type="tel" placeholder="(404) 555-0000" required className="focus-visible:ring-primary" />
-
+                        } 
+                        disabled={isLoading} 
+                        type="tel" 
+                        placeholder="(404) 555-0000" 
+                        required 
+                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                      />
                     </div>
+
                     <div className="space-y-2">
                       <Label htmlFor="svc-type" className="text-white">Service</Label>
                       <select
@@ -448,15 +436,22 @@ export default function Contact() {
                           <option key={s.id} value={s.id}>{s.title}</option>
                         ))}
                       </select>
-
                     </div>
+
                     <div className="space-y-2">
                       <Label htmlFor="svc-time" className="text-white">Time</Label>
-                      <Input id="svc-time" value={formData.time}
+                      <Input 
+                        id="svc-time" 
+                        value={formData.time}
                         onChange={(e) =>
                           handleInputChange("time", e.target.value)
-                        } disabled={isLoading} type="text" placeholder="04:30 PM" required className="focus-visible:ring-primary" />
-
+                        } 
+                        disabled={isLoading} 
+                        type="text" 
+                        placeholder="04:30 PM" 
+                        required 
+                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                      />
                     </div>
 
                     <div className="space-y-2">
@@ -476,34 +471,50 @@ export default function Contact() {
                           <option key={v.id} value={v.id}>{v.year} {v.name}</option>
                         ))}
                       </select>
-
                     </div>
+
                     <div className="space-y-2">
                       <Label htmlFor="svc-start" className="text-white">Start Date</Label>
-                      <Input id="svc-start"
+                      <Input 
+                        id="svc-start"
                         value={formData.startDate}
                         min={today}
                         onChange={(e) =>
                           handleInputChange("startDate", e.target.value)
-                        } type="date" disabled={isLoading} required className="focus-visible:ring-primary" />
-
+                        } 
+                        type="date" 
+                        disabled={isLoading} 
+                        required 
+                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                      />
                     </div>
+
                     <div className="space-y-2">
                       <Label htmlFor="svc-end" className="text-white">End Date</Label>
-                      <Input id="svc-end"
+                      <Input 
+                        id="svc-end"
                         value={formData.endDate}
                         min={today}
                         onChange={(e) =>
                           handleInputChange("endDate", e.target.value)
-                        } type="date" disabled={isLoading} required className="focus-visible:ring-primary" />
+                        } 
+                        type="date" 
+                        disabled={isLoading} 
+                        required 
+                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                      />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="svc-license" className="text-white">License Id</Label>
-                      <Input id="svc-license"
+                      <Input 
+                        id="svc-license"
                         ref={licenseInputRef}
                         accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
-                        type="file" disabled={isLoading} required className="focus-visible:ring-primary"
+                        type="file" 
+                        disabled={isLoading} 
+                        required 
+                        className="focus-visible:ring-primary text-white file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white/10 file:text-white hover:file:bg-white/20"
                         onChange={(e) => {
                           const file = e.target.files?.[0];
                           if (file) handleFileSelect(file, 'license');
@@ -516,7 +527,10 @@ export default function Contact() {
                       <Input
                         ref={insuranceInputRef}
                         id="svc-insurance"
-                        type="file" disabled={isLoading} required className="focus-visible:ring-primary"
+                        type="file" 
+                        disabled={isLoading} 
+                        required 
+                        className="focus-visible:ring-primary text-white file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white/10 file:text-white hover:file:bg-white/20"
                         accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
                         onChange={(e) => {
                           const file = e.target.files?.[0];
@@ -524,16 +538,21 @@ export default function Contact() {
                         }}
                       />
                     </div>
-
                   </div>
 
-
                   <div className="space-y-2">
-                    <Label htmlFor="svc-notes" className="Notes">Notes?</Label>
-                    <Textarea id="svc-notes" value={formData.notes}
+                    <Label htmlFor="svc-notes" className="text-white">Notes?</Label>
+                    <Textarea 
+                      id="svc-notes" 
+                      value={formData.notes}
                       onChange={(e) =>
                         handleInputChange("notes", e.target.value)
-                      } disabled={isLoading} placeholder="Any additional details or requests" rows={3} className="focus-visible:ring-primary" />
+                      } 
+                      disabled={isLoading} 
+                      placeholder="Any additional details or requests" 
+                      rows={3} 
+                      className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                    />
                   </div>
 
                   <Button type="submit" disabled={isLoading} variant="premium" size="lg" className="w-full">
@@ -579,17 +598,8 @@ export default function Contact() {
                         Get Directions
                       </Button>
                     </a>
-                    {/* <a href={YELP_URL} target="_blank" rel="noopener noreferrer">
-                      <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-                        <ExternalLink className="mr-1.5 h-3.5 w-3.5" />
-                        View on Yelp
-                      </Button>
-                    </a> */}
                   </div>
                 </div>
-
-                {/* Compact Trust Module */}
-
 
                 <div className="rounded border border-border bg-card p-6">
                   <h3 className="font-serif text-base font-semibold">
