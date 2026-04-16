@@ -56,7 +56,7 @@ const serviceTypes = [
 
 export default function Contact() {
   useSEO({
-    title: "Contact Mead Green Autos | 24/7  Atlanta Car Rental",
+    title: "Contact Mead Green Autos | Atlanta Car Rental",
     description: "Contact Mead Green Autos for premium car rental in , Atlanta. Open 7 days a week. Call (470) 817-6427 or send a message. Airport & corporate service available.",
     canonical: "https://meadgreenautos.com/contact",
   });
