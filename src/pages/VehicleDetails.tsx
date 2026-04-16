@@ -26,9 +26,9 @@ export default function VehicleDetails() {
 
   if (!vehicle) {
     return (
-      <section className="py-20">
+      <section className="py-20 bg-stone">
         <div className="container text-center">
-          <h1 className="font-serif text-2xl font-semibold">Vehicle Not Found</h1>
+          <h1 className="font-serif text-2xl font-semibold text-white">Vehicle Not Found</h1>
           <Link to="/fleet" className="mt-4 inline-block text-sm text-primary underline">
             Return to Fleet
           </Link>
@@ -61,28 +61,27 @@ export default function VehicleDetails() {
     : undefined;
 
   return (
-    <>
-      {/* Top dark section for navbar */}
-      <div className="bg-stone pt-24 md:pt-32">
-        <div className="container">
-          <Link
-            to="/fleet"
-            className="inline-flex items-center gap-1 text-xs font-sans uppercase tracking-widest text-white/70 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            Back to Fleet
-          </Link>
-        </div>
+    <div className="bg-stone min-h-screen">
+      {/* Back button section - top padding accounts for navbar */}
+      <div className="container pt-24 pb-8 md:pt-32">
+        <Link
+          to="/fleet"
+          className="inline-flex items-center gap-1 text-xs font-sans uppercase tracking-widest text-white/70 hover:text-white transition-colors"
+        >
+          <ArrowLeft className="h-3.5 w-3.5" />
+          Back to Fleet
+        </Link>
       </div>
 
-      {/* Main content with bg-stone to continue the dark background */}
-      <section className="bg-stone pb-12 md:pb-16">
+      {/* Main content */}
+      <section className="pb-12 md:pb-16">
         <div className="container">
           <div className="grid gap-12 lg:grid-cols-2">
             {/* Gallery */}
             <FadeIn>
               <div className="space-y-3">
-                <div className="aspect-[4/3] rounded border border-border bg-stone/50 overflow-hidden group cursor-pointer">
+                {/* Main display image */}
+                <div className="aspect-[4/3] rounded border border-border bg-stone/30 overflow-hidden group cursor-pointer">
                   {displayImage ? (
                     <img
                       src={displayImage}
@@ -101,6 +100,7 @@ export default function VehicleDetails() {
                   )}
                 </div>
 
+                {/* Thumbnail grid */}
                 <div className="grid grid-cols-3 gap-3">
                   {gallerySlots.map((slot) => {
                     const rawSlot = carImages[slot.label];
@@ -113,7 +113,7 @@ export default function VehicleDetails() {
                       <div
                         key={slot.label}
                         onClick={() => setSelectedSlot(slot)}
-                        className={`aspect-[4/3] rounded border bg-stone/50 flex items-center justify-center overflow-hidden group cursor-pointer transition-all
+                        className={`aspect-[4/3] rounded border bg-stone/30 flex items-center justify-center overflow-hidden group cursor-pointer transition-all
                           ${isActive
                             ? "border-primary ring-1 ring-primary"
                             : "border-border hover:border-primary/50"
@@ -149,7 +149,8 @@ export default function VehicleDetails() {
                   {vehicle.year} {vehicle.name}
                 </h1>
 
-                <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 rounded-sm border border-border bg-stone/50 px-4 py-3 text-xs font-sans text-muted-foreground">
+                {/* Quick Facts strip */}
+                <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 rounded-sm border border-border bg-stone/30 px-4 py-3 text-xs font-sans text-muted-foreground">
                   <span><span className="font-semibold text-white">{vehicle.seats}</span> Seats</span>
                   <span className="text-border">·</span>
                   <span><span className="font-semibold text-white">{vehicle.luggage}</span> Bags</span>
@@ -169,6 +170,7 @@ export default function VehicleDetails() {
                   </div>
                 </div>
 
+                {/* CTAs */}
                 <div className="mt-6 flex flex-col gap-2">
                   <Link to="/services">
                     <Button variant="premium" size="lg" className="w-full text-xs text-white hover:text-foreground">
@@ -192,7 +194,8 @@ export default function VehicleDetails() {
                   </p>
                 </div>
 
-                <div className="mt-6 rounded-sm border border-border/60 bg-stone/50 p-4">
+                {/* Why choose this vehicle */}
+                <div className="mt-6 rounded-sm border border-border/60 bg-stone/30 p-4">
                   <h2 className="text-xs font-sans font-semibold uppercase tracking-widest text-muted-foreground mb-3">Why this vehicle</h2>
                   <ul className="space-y-2">
                     <li className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -225,8 +228,9 @@ export default function VehicleDetails() {
             </FadeIn>
           </div>
 
+          {/* Policies */}
           <FadeIn>
-            <div className="mt-16 rounded border border-border bg-stone/50 p-8">
+            <div className="mt-16 rounded border border-border bg-stone/30 p-8">
               <h2 className="font-serif text-xl font-semibold text-white">
                 Policies for This Vehicle
               </h2>
@@ -248,11 +252,12 @@ export default function VehicleDetails() {
             </div>
           </FadeIn>
 
+          {/* Bottom CTAs */}
           <FadeIn>
             <CTAGroup className="mt-12" />
           </FadeIn>
         </div>
       </section>
-    </>
+    </div>
   );
 }
