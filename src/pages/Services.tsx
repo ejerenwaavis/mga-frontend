@@ -21,6 +21,8 @@ const serviceTypes = [
     title: "Airport Service",
     description:
       "Convenient vehicle pickup and drop-off near Hartsfield-Jackson Atlanta International Airport. Arrive and get on your way with minimal delay.",
+    image: "/vehicles/areoplane.jpg",
+    imagePosition: "right" // image on right, text on left
   },
   {
     id: "rentals",
@@ -28,20 +30,17 @@ const serviceTypes = [
     title: "Standard Rental",
     description:
       "Premium vehicles available with transparent pricing, maintained to the highest standard for business or personal use.",
+    image: "/vehicles/COVER-IMAGE-Porsche-Cayenne-2023.png",
+    imagePosition: "left" // image on left, text on right
   },
-  // {
-  //   id: "long-term",
-  //   icon: Clock,
-  //   title: "Long-Term Rental",
-  //   description:
-  //     "Extended rental arrangements for weeks or months at a time, with favorable pricing and flexible terms tailored to your schedule.",
-  // },
   {
     id: "custom-delivery",
     icon: Building2,
     title: "Custom Delivery",
     description:
       "Professional rental solutions for businesses — employee travel, client transportation, or fleet supplementation with reliable, premium vehicles.",
+    image: "/vehicles/COVER-IMAGE-TURO-2022-KIA-TELLURIDE.png",
+    imagePosition: "right" // image on right, text on left
   },
   {
     id: "cooperate-service",
@@ -49,6 +48,8 @@ const serviceTypes = [
     title: "Co-operate Services",
     description:
       "Need a specific vehicle or arrangement? Our team accommodates special requests and ensures a seamless, white-glove rental experience.",
+    image: "/vehicles/COVER-IMAGE-TURO-2024-FORD-BRONCO-SPORT.png",
+    imagePosition: "left" // image on left, text on right
   },
 ];
 
@@ -60,9 +61,6 @@ export default function Services() {
   });
   const [selectedService, setSelectedService] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
-  // const [pickupValue, setPickupValue] = useState("");
-  // const [customLocation, setCustomLocation] = useState("");
-  // const [debouncedLocation, setDebouncedLocation] = useState("");
 
   interface FormData {
     fullName: string;
@@ -123,24 +121,17 @@ export default function Services() {
     const usPhoneRegex = /^(?:\+1\s?)?(?:\(\d{3}\)|\d{3})(?:[\s.-]?)\d{3}(?:[\s.-]?)\d{4}$/;
     const titles = /^(mr|mrs|ms|miss|dr|prof|engr|sir|chief)\.?\s+/i;
 
-    // First name validation
-    // 1. Basic empty check
     if (formData.fullName.trim()) {
-
       const fullName = formData.fullName.trim();
       const finalName = fullName.replace(titles, "");
-
-      // 2. Logic for "Two Names" requirement
       const nameParts = finalName.trim().split(/\s+/);
 
       if (nameParts.length !== 2) {
         errors['fullName'] = 'Please enter actual (First and Last name)';
-
         return false;
       }
     }
 
-    // Email validation
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
       newErrors.email = "Invalid email address";
       return false;
@@ -150,10 +141,8 @@ export default function Services() {
       newErrors.phone = "Please enter a valid US phone number (e.g., (404) 555-0100)";
     }
 
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-
   };
 
 
@@ -176,7 +165,6 @@ export default function Services() {
   const handleFileSelect = async (file: File, type: 'license' | 'insurance') => {
     let processedFile = file;
 
-    // 1. Detect HEIC/HEIF files (Common on iOS)
     const isHeic = file.type === "image/heic" ||
       file.type === "image/heif" ||
       file.name.toLowerCase().endsWith(".heic") ||
@@ -184,28 +172,22 @@ export default function Services() {
 
     if (isHeic) {
       try {
-        // 2. Convert HEIC to JPEG
         const convertedBlob = await heic2any({
           blob: file,
           toType: "image/jpeg",
-          quality: 0.8 // Adjust quality as needed
+          quality: 0.8
         });
 
-        // Handle the result (heic2any can return an array if the HEIC has multiple frames)
         const blob = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
-
-        // 3. Create a new File object from the Blob
         processedFile = new File([blob], file.name.replace(/\.(heic|heif)$/i, ".jpg"), {
           type: "image/jpeg",
           lastModified: Date.now()
         });
       } catch (error) {
         console.error("HEIC conversion failed:", error);
-        // Fallback: Continue with original file if conversion fails
       }
     }
 
-    // 4. Create Preview URL for the (potentially converted) file
     const url = URL.createObjectURL(processedFile);
 
     if (type === 'license') {
@@ -219,7 +201,6 @@ export default function Services() {
       }
       setInsuranceFilePreview({ file: processedFile, url });
     }
-
   };
 
 
@@ -228,10 +209,7 @@ export default function Services() {
     e.preventDefault();
 
     try {
-
       if (validateForm()) {
-
-
         if (licenseFilePreview) {
           formData.license = licenseFilePreview.file
         }
@@ -242,7 +220,6 @@ export default function Services() {
         const requestDetails: CreateRequestPayload = {
           ...formData,
           phone: formData.phone.replace(/[^\d+]/g, "")
-
         };
 
         const data = new FormData();
@@ -258,8 +235,6 @@ export default function Services() {
         if (requestDetails.time) data.append("time", requestDetails.time);
         if (requestDetails.notes) data.append("notes", requestDetails.notes);
 
-        // 2. Append the binary files
-        // IMPORTANT: The key names must match your Multer .fields() names
         if (requestDetails.license) {
           data.append("license", requestDetails.license);
         }
@@ -277,10 +252,8 @@ export default function Services() {
           text: errorMessages,
           confirmButtonColor: "hsl(var(--primary))",
         });
-
       }
     } catch (error) {
-      // Handle error
       console.log(error);
     }
   };
@@ -289,9 +262,7 @@ export default function Services() {
     useMutation({
       mutationFn: submitRequest,
       onSuccess: () => {
-        toast.success(
-          "Request sent"
-        );
+        toast.success("Request sent");
 
         Swal.fire({
           icon: "success",
@@ -300,8 +271,6 @@ export default function Services() {
         });
         setSubmitted(true);
         setFormData(initialFormState);
-
-
       },
       onError: (error: any) => {
         console.log(error);
@@ -317,14 +286,12 @@ export default function Services() {
     <>
 
       <section className="relative overflow-hidden bg-stone py-24 md:py-32">
-        {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
             src="/vehicles/BMW-X6-2022-side-exterior.jpg"
             alt="Luxury Fleet"
             className="h-full w-full object-cover"
           />
-          {/* Dark Overlay to ensure text readability */}
           <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
         </div>
 
@@ -339,30 +306,39 @@ export default function Services() {
               convenience.
             </p>
           </FadeIn>
-
-
         </div>
       </section>
 
+      {/* Service Sections with Images */}
       <section className="py-16 md:py-20">
-        <div className="container max-w-4xl">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="service-cards">
-            {serviceTypes.map((service, i) => (
-              <FadeIn key={service.id} delay={i * 0.06}>
-                <div id={service.id} className="flex flex-col rounded border border-border bg-card p-6 transition-all duration-200 ease-out hover:bg-white hover:shadow-lg hover:-translate-y-0.5 h-full">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-primary/10 mb-4">
-                    <service.icon className="h-5 w-5 text-primary" />
-                  </div>
-                  <h2 className="font-serif text-lg font-semibold">
+        <div className="container max-w-6xl">
+          {serviceTypes.map((service, index) => (
+            <div 
+              key={service.id} 
+              id={service.id}
+              className="scroll-mt-24 mb-20 last:mb-0"
+            >
+              <div className={`grid gap-12 items-center md:grid-cols-2 ${service.imagePosition === 'left' ? 'md:grid-flow-col' : ''}`}>
+                {/* Image */}
+                <div className={`rounded-lg overflow-hidden shadow-xl ${service.imagePosition === 'right' ? 'md:order-1' : 'md:order-0'}`}>
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-80 md:h-96 object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                
+                {/* Text Content */}
+                <div className={`space-y-4 ${service.imagePosition === 'right' ? 'md:order-0' : 'md:order-1'}`}>
+                  <h2 className="font-serif text-3xl md:text-4xl font-semibold">
                     {service.title}
                   </h2>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-base leading-relaxed text-muted-foreground">
                     {service.description}
                   </p>
                   <Button
                     variant="premium"
-                    size="sm"
-                    className="mt-5 w-full"
+                    size="lg"
                     onClick={() => {
                       setSelectedService(service.id);
                       setSubmitted(false);
@@ -374,9 +350,9 @@ export default function Services() {
                     Request This Service
                   </Button>
                 </div>
-              </FadeIn>
-            ))}
-          </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
