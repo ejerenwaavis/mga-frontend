@@ -42,7 +42,7 @@ export default function FAQ() {
   useSEO({
     title: "FAQ | Mead Green Autos — Atlanta Car Rental Questions",
     description: "Frequently asked questions about Mead Green Autos car rentals in Atlanta. Deposits, insurance, pickup, corporate rentals, and more.",
-    canonical: "https://green-fleet-concierge.lovable.app/faq",
+    canonical: "https://meadgreenautos.com/faq",
   });
   return (
     <>
