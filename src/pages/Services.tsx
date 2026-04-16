@@ -457,7 +457,7 @@ export default function Services() {
                           setSelectedService(e.target.value)
                           handleInputChange("serviceType", e.target.value)
                         }}
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white/90"
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
                         required
                       >
                         <option value="">Select a service</option>
@@ -492,7 +492,7 @@ export default function Services() {
                         onChange={(e) =>
                           handleInputChange("vehicleId", e.target.value)
                         }
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white/90"
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
                         required
                       >
                         <option value="">Any / No preference</option>
@@ -514,7 +514,7 @@ export default function Services() {
                         type="date" 
                         disabled={isLoading} 
                         required 
-                        className="focus-visible:ring-primary text-white/80 placeholder:text-white/30 [&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert [&::-webkit-calendar-picker-indicator]:opacity-50" 
+                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
                       />
                     </div>
 
@@ -530,7 +530,7 @@ export default function Services() {
                         type="date" 
                         disabled={isLoading} 
                         required 
-                        className="focus-visible:ring-primary text-white/80 placeholder:text-white/30 [&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert [&::-webkit-calendar-picker-indicator]:opacity-50" 
+                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
                       />
                     </div>
 
@@ -543,7 +543,7 @@ export default function Services() {
                         type="file" 
                         disabled={isLoading} 
                         required 
-                        className="focus-visible:ring-primary text-white/80 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white/10 file:text-white/80 hover:file:bg-white/20"
+                        className="focus-visible:ring-primary text-white/60 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white/10 file:text-white/80 hover:file:bg-white/20"
                         onChange={(e) => {
                           const file = e.target.files?.[0];
                           if (file) handleFileSelect(file, 'license');
@@ -559,7 +559,7 @@ export default function Services() {
                         type="file" 
                         disabled={isLoading} 
                         required 
-                        className="focus-visible:ring-primary text-white/80 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white/10 file:text-white/80 hover:file:bg-white/20"
+                        className="focus-visible:ring-primary text-white/60 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white/10 file:text-white/80 hover:file:bg-white/20"
                         accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
                         onChange={(e) => {
                           const file = e.target.files?.[0];
