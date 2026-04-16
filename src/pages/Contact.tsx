@@ -431,7 +431,7 @@ export default function Contact() {
                         className="flex h-10 w-full text-white rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                         required
                       >
-                        <option value=""></option>
+                        <option value="">Select a service</option>
                         {serviceTypes.map((s) => (
                           <option key={s.id} value={s.id}>{s.title}</option>
                         ))}
@@ -485,7 +485,7 @@ export default function Contact() {
                         type="date" 
                         disabled={isLoading} 
                         required 
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
                       />
                     </div>
 
@@ -501,7 +501,7 @@ export default function Contact() {
                         type="date" 
                         disabled={isLoading} 
                         required 
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
                       />
                     </div>
 
@@ -514,7 +514,7 @@ export default function Contact() {
                         type="file" 
                         disabled={isLoading} 
                         required 
-                        className="focus-visible:ring-primary text-white file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white/10 file:text-white hover:file:bg-white/20"
+                        className="focus-visible:ring-primary text-white/60 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white/10 file:text-white/80 hover:file:bg-white/20"
                         onChange={(e) => {
                           const file = e.target.files?.[0];
                           if (file) handleFileSelect(file, 'license');
@@ -530,7 +530,7 @@ export default function Contact() {
                         type="file" 
                         disabled={isLoading} 
                         required 
-                        className="focus-visible:ring-primary text-white file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white/10 file:text-white hover:file:bg-white/20"
+                        className="focus-visible:ring-primary text-white/60 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white/10 file:text-white/80 hover:file:bg-white/20"
                         accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
                         onChange={(e) => {
                           const file = e.target.files?.[0];
@@ -589,7 +589,7 @@ export default function Contact() {
                     </div>
                     <div className="flex items-center gap-3 text-sm text-white">
                       <Clock className="h-4 w-4 text-primary" />
-                      Open days a week
+                      Open 7 days a week
                     </div>
                   </div>
                   <div className="mt-4 flex flex-wrap gap-3 text-white">
