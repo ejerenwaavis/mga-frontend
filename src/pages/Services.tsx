@@ -22,7 +22,7 @@ const serviceTypes = [
     description:
       "Convenient vehicle pickup and drop-off near Hartsfield-Jackson Atlanta International Airport. Arrive and get on your way with minimal delay.",
     image: "/vehicles/areoplane.jpg",
-    imagePosition: "right" // image on right, text on left
+    imagePosition: "right"
   },
   {
     id: "rentals",
@@ -31,7 +31,7 @@ const serviceTypes = [
     description:
       "Premium vehicles available with transparent pricing, maintained to the highest standard for business or personal use.",
     image: "/vehicles/COVER-IMAGE-Porsche-Cayenne-2023.png",
-    imagePosition: "left" // image on left, text on right
+    imagePosition: "left"
   },
   {
     id: "custom-delivery",
@@ -40,7 +40,7 @@ const serviceTypes = [
     description:
       "Professional rental solutions for businesses — employee travel, client transportation, or fleet supplementation with reliable, premium vehicles.",
     image: "/vehicles/COVER-IMAGE-TURO-2022-KIA-TELLURIDE.png",
-    imagePosition: "right" // image on right, text on left
+    imagePosition: "right"
   },
   {
     id: "cooperate-service",
@@ -49,7 +49,7 @@ const serviceTypes = [
     description:
       "Need a specific vehicle or arrangement? Our team accommodates special requests and ensures a seamless, white-glove rental experience.",
     image: "/vehicles/COVER-IMAGE-TURO-2024-FORD-BRONCO-SPORT.png",
-    imagePosition: "left" // image on left, text on right
+    imagePosition: "left"
   },
 ];
 
@@ -330,10 +330,10 @@ export default function Services() {
                 
                 {/* Text Content */}
                 <div className={`space-y-4 ${service.imagePosition === 'right' ? 'md:order-0' : 'md:order-1'}`}>
-                  <h2 className="font-serif text-3xl md:text-4xl font-semibold">
+                  <h2 className="font-serif text-3xl md:text-4xl font-semibold text-primary">
                     {service.title}
                   </h2>
-                  <p className="text-base leading-relaxed text-muted-foreground">
+                  <p className="text-base leading-relaxed text-white">
                     {service.description}
                   </p>
                   <Button
