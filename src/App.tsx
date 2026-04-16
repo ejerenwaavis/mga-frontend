@@ -58,7 +58,7 @@ export function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/private-inquiry" element={<PrivateInquiry />} />
           <Route path="/about" element={<About />} />
-          {/* <Route path="/faq" element={<FAQ />} /> */}
+          <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/policies" element={<Policies />} />
           <Route path="/insurance" element={<Insurance />} />
