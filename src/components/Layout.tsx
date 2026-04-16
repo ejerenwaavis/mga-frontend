@@ -7,12 +7,10 @@ import FAQSection from "@/components/Faq";
 const PHONE = "(470) 817-6427";
 const EMAIL = "ceo@meadgreenautos.com";
 const ADDRESS = "4814 Old National Hwy , Atlanta, GA 30337";
-// const YELP_URL = "https://www.yelp.com/biz/mead-green-autos-atlanta";
 
 const serviceSubLinks = [
   { label: "AIRPORT SERVICE", to: "/services", hash: "airport" },
   { label: "STANDARD RENTAL", to: "/services", hash: "rentals" },
-  // { label: "LONG-TERM RENTAL", to: "/services#long-term" },
   { label: "CUSTOM DELIVERY", to: "/services", hash: "custom-delivery" },
   { label: "CO-OPERATE SERVICES", to: "/services", hash: "cooperate-service" },
 ];
@@ -22,11 +20,21 @@ const navLinks = [
   { label: "Fleet", to: "/fleet" },
   { label: "Services", to: "/services", children: serviceSubLinks },
   { label: "About Us", to: "/about" },
-   { label: "FAQs", to: "/faq" },
+  { label: "FAQs", to: "/faq" },
   { label: "Contact", to: "/contact" },
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+
+  // Scroll to top on every route change (except when navigating to hash links)
+  useEffect(() => {
+    // Only scroll to top if there's no hash in the URL
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, location.hash]);
+
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
@@ -36,6 +44,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
+
+// ... rest of your components (NavItem, Navbar, Extra, Footer)
 
 function NavItem({ link, currentPath }: { link: typeof navLinks[0]; currentPath: string }) {
   const [open, setOpen] = useState(false);
