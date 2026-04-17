@@ -122,9 +122,8 @@ export default function Insurance() {
                       </Link>
                       <Link to="/private-inquiry">
                         <Button 
-                          variant="outline" 
-                          size="sm" 
-                          className="border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white"
+                          variant="premium" 
+                          size="sm"
                         >
                           Submit Inquiry
                         </Button>
