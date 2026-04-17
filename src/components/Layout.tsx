@@ -4,8 +4,12 @@ function Navbar() {
   const [expandedMobile, setExpandedMobile] = useState<string | null>(null);
   const location = useLocation();
 
-  // Check if we're on the VehicleDetails dynamic page (e.g., /fleet/bmw-x6)
-  const isVehicleDetailsPage = location.pathname.startsWith('/fleet/') && location.pathname !== '/fleet';
+  // Debug: log the current path to see what we're getting
+  console.log("Current path:", location.pathname);
+  
+  // Check if we're on the VehicleDetails dynamic page
+  const isVehicleDetailsPage = location.pathname.match(/^\/fleet\/[^/]+$/) !== null;
+  console.log("Is vehicle details page:", isVehicleDetailsPage);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -25,19 +29,15 @@ function Navbar() {
     const controlNavbar = () => {
       const currentScrollY = window.scrollY;
 
-      // 1. Handle Translucency (Scrolled state)
       if (currentScrollY > 10) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
 
-      // 2. Handle Direction (Visibility state)
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling Down - Hide
         setIsVisible(false);
       } else {
-        // Scrolling Up - Show
         setIsVisible(true);
       }
 
@@ -61,25 +61,23 @@ function Navbar() {
     }
   }, [location]);
 
-  // Use inline style for the header background to ensure it works
-  const getHeaderStyle = () => {
-    if (isVehicleDetailsPage) {
-      // Dark green background for vehicle details page
-      return { backgroundColor: '#1a3a2a', borderBottom: '1px solid rgba(255,255,255,0.1)' };
-    } else if (scrolled) {
-      // Translucent black with blur when scrolled on other pages
-      return { backgroundColor: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(12px)', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' };
-    } else {
-      // Fully transparent at the top on other pages
-      return { backgroundColor: 'transparent' };
-    }
-  };
+  // Determine the classes based on the page
+  let headerClasses = "fixed top-0 left-0 right-0 z-50 transition-all duration-500 transform ";
+  headerClasses += isVisible ? "translate-y-0" : "-translate-y-full";
+  
+  if (isVehicleDetailsPage) {
+    // On vehicle details page - use dark green background
+    headerClasses += " bg-[#1a3a2a] border-b border-white/10";
+  } else if (scrolled) {
+    // On other pages when scrolled
+    headerClasses += " bg-black/40 backdrop-blur-md shadow-lg";
+  } else {
+    // On other pages at the top
+    headerClasses += " bg-transparent";
+  }
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 transform ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
-      style={getHeaderStyle()}
-    >
+    <header className={headerClasses}>
       <div className="mx-auto max-w-6xl px-4 md:px-1 flex h-16 items-center justify-between md:h-20">
         <Link to="/" className="flex items-center gap-2 select-none">
           <img
@@ -136,11 +134,9 @@ function Navbar() {
                         onClick={(e) => {
                           e.preventDefault();
                           setOpen(false);
-                          // Navigate to services page first if not already there
                           if (location.pathname !== "/services") {
                             window.location.href = `/services#${child.hash}`;
                           } else {
-                            // Already on services page, just scroll
                             const element = document.getElementById(child.hash);
                             if (element) {
                               element.scrollIntoView({ behavior: "smooth" });
