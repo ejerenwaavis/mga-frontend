@@ -46,7 +46,7 @@ export default function FAQ() {
   });
   return (
     <>
-      <section className="bg-stone py-16 md:py-20">
+      <section className="py-16 md:py-20">
         <div className="container text-center">
           <FadeIn>
             <h1 className="font-serif text-3xl font-semibold text-white md:text-4xl">
@@ -60,7 +60,7 @@ export default function FAQ() {
         </div>
       </section>
 
-      <section className="bg-stone py-12 md:py-16">
+      <section className="py-12 md:py-16">
         <div className="container max-w-2xl">
           <FadeIn>
             <Accordion type="single" collapsible className="w-full">
