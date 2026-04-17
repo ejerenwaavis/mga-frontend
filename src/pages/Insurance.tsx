@@ -122,10 +122,7 @@ export default function Insurance() {
                         </Button>
                       </Link>
                       <Link to="/private-inquiry">
-                        <Button 
-                          size="sm"
-                          className="bg-amber-600 text-white hover:bg-amber-700"
-                        >
+                       <Button variant="hero" size="sm" className="neon-btn min-w-[200px]">
                           Submit Inquiry
                         </Button>
                       </Link>
