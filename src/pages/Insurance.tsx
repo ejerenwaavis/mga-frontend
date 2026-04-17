@@ -116,7 +116,8 @@ export default function Insurance() {
                         <Button 
                           variant="outline"
                           size="sm" 
-                          className="border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white"
+                          className="bg-gray-900 text-white hover:bg-gray-800"
+                        
                         >
                           Contact Us
                         </Button>
