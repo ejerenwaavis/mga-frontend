@@ -49,10 +49,10 @@ export default function FAQ() {
       <section className="bg-stone py-16 md:py-20">
         <div className="container text-center">
           <FadeIn>
-            <h1 className="font-serif text-3xl font-semibold md:text-4xl">
+            <h1 className="font-serif text-3xl font-semibold text-white md:text-4xl">
               Frequently Asked Questions
             </h1>
-            <p className="mx-auto mt-3 max-w-lg text-sm text-muted-foreground">
+            <p className="mx-auto mt-3 max-w-lg text-sm text-gray-300">
               Answers to common questions about our vehicles, policies, and
               rental process.
             </p>
@@ -60,16 +60,16 @@ export default function FAQ() {
         </div>
       </section>
 
-      <section className="py-12 md:py-16">
+      <section className="bg-stone py-12 md:py-16">
         <div className="container max-w-2xl">
           <FadeIn>
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq, i) => (
-                <AccordionItem key={i} value={`faq-${i}`}>
-                  <AccordionTrigger className="text-left font-serif text-base font-semibold">
+                <AccordionItem key={i} value={`faq-${i}`} className="border-gray-700">
+                  <AccordionTrigger className="text-left font-serif text-base font-semibold text-white hover:text-gray-300">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
+                  <AccordionContent className="text-sm leading-relaxed text-gray-300">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>
