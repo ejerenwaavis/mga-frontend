@@ -46,7 +46,8 @@ export default function FAQ() {
   });
   return (
     <>
-      <section className="py-16 md:py-20">
+      {/* Hero Section */}
+      <section className="pt-24 pb-8 md:pt-32 md:pb-12">
         <div className="container text-center">
           <FadeIn>
             <h1 className="font-serif text-3xl font-semibold text-white md:text-4xl">
@@ -60,21 +61,24 @@ export default function FAQ() {
         </div>
       </section>
 
-      <section className="py-12 md:py-16">
-        <div className="container max-w-2xl">
+      {/* Content Section with White Container */}
+      <section className="pb-20 md:pb-28">
+        <div className="container max-w-3xl">
           <FadeIn>
-            <Accordion type="single" collapsible className="w-full">
-              {faqs.map((faq, i) => (
-                <AccordionItem key={i} value={`faq-${i}`} className="border-gray-700">
-                  <AccordionTrigger className="text-left font-serif text-base font-semibold text-white hover:text-gray-300">
-                    {faq.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-sm leading-relaxed text-gray-300">
-                    {faq.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+            <div className="rounded-xl bg-white p-6 shadow-lg md:p-8">
+              <Accordion type="single" collapsible className="w-full">
+                {faqs.map((faq, i) => (
+                  <AccordionItem key={i} value={`faq-${i}`} className="border-gray-200 last:border-0">
+                    <AccordionTrigger className="text-left font-serif text-base font-semibold text-gray-900 hover:text-gray-600">
+                      {faq.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-sm leading-relaxed text-gray-600">
+                      {faq.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
           </FadeIn>
         </div>
       </section>
