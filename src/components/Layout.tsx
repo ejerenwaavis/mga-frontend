@@ -38,11 +38,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
-      <main className="flex-1">{children}</main>
       
-      {/* Wrapper with background image from FAQ section to Footer */}
+      {/* Background wrapper for everything below the navbar */}
       <div 
-        className="relative overflow-hidden"
+        className="relative flex-1 overflow-hidden"
         style={{
           backgroundImage: `linear-gradient(rgba(2, 34, 19, 0.80), rgba(2, 34, 19, 0.85)), url('/nat4pro.jpg')`,
           backgroundSize: 'cover',
@@ -50,6 +49,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           backgroundAttachment: 'fixed'
         }}
       >
+        <main className="flex-1">{children}</main>
         {showFaqExtra && <Extra />}
         <Footer />
       </div>
