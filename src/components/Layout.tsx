@@ -128,6 +128,9 @@ function Navbar() {
   const [expandedMobile, setExpandedMobile] = useState<string | null>(null);
   const location = useLocation();
 
+  // Check if we're on the VehicleDetails dynamic page
+  const isVehicleDetailsPage = location.pathname.startsWith('/fleet/') && location.pathname !== '/fleet';
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -182,13 +185,24 @@ function Navbar() {
     }
   }, [location]);
 
+  // Determine navbar background classes based on page and scroll state
+  let navbarBgClasses = "";
+  
+  if (isVehicleDetailsPage) {
+    // Always dark green background on vehicle details page, regardless of scroll
+    navbarBgClasses = "bg-stone border-b border-white/10";
+  } else if (scrolled) {
+    // Translucent Black when scrolling up on other pages
+    navbarBgClasses = "bg-black/40 backdrop-blur-md shadow-lg";
+  } else {
+    // Transparent at the very top on other pages
+    navbarBgClasses = "bg-transparent";
+  }
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 border-b border-white/10 transition-all duration-500 transform ${isVisible ? "translate-y-0" : "-translate-y-full"
-        } ${scrolled
-          ? "bg-black/40 backdrop-blur-md shadow-lg" // Translucent Black when scrolling up
-          : "bg-transparent" // Transparent at the very top
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 transform ${isVisible ? "translate-y-0" : "-translate-y-full"
+        } ${navbarBgClasses}`}
     >
       {/* FIX 1: Added px-4 md:px-6 to match footer's horizontal spacing */}
       <div className="mx-auto max-w-6xl px-4 md:px-1 flex h-16 items-center justify-between md:h-20">
