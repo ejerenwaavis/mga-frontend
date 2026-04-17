@@ -71,8 +71,8 @@ export default function VehicleDetails() {
 
   return (
     <>
-      {/* Fixed: Removed bg-stone, added top padding for dark green behind navbar */}
-      <section className="pt-20 md:pt-24 pb-8">
+      {/* Back to Fleet button - reduced padding */}
+      <section className="pt-20 md:pt-24 pb-2">
         <div className="container">
           <Link to="/fleet" className="inline-flex items-center gap-1 text-xs font-sans uppercase tracking-widest text-white hover:text-gray-300 transition-colors">
             <ArrowLeft className="h-3.5 w-3.5" />
@@ -81,7 +81,8 @@ export default function VehicleDetails() {
         </div>
       </section>
 
-      <section className="py-12 md:py-16">
+      {/* Main content - reduced top padding */}
+      <section className="py-6 md:py-8">
         <div className="container">
           <div className="grid gap-12 lg:grid-cols-2">
             {/* Gallery */}
