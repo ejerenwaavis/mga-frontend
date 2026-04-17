@@ -71,10 +71,10 @@ export default function VehicleDetails() {
 
   return (
     <>
-      {/* Fixed: Added top padding to push content down and show dark green behind navbar */}
+      {/* Fixed: Removed bg-stone, added top padding for dark green behind navbar */}
       <section className="pt-20 md:pt-24 pb-8">
         <div className="container">
-          <Link to="/fleet" className="inline-flex items-center gap-1 text-xs font-sans uppercase tracking-widest text-white hover:text-foreground transition-colors">
+          <Link to="/fleet" className="inline-flex items-center gap-1 text-xs font-sans uppercase tracking-widest text-white hover:text-gray-300 transition-colors">
             <ArrowLeft className="h-3.5 w-3.5" />
             Back to Fleet
           </Link>
