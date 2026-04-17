@@ -33,7 +33,7 @@ export default function Fleet() {
             className="h-full w-full object-cover"
           />
           {/* Dark Overlay to ensure text readability */}
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
+          <div className="absolute inset-0 bg-black/60"></div>
         </div>
 
         <div className="container relative z-10 text-center">
