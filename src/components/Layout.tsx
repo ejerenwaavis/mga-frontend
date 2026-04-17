@@ -127,7 +127,7 @@ function Navbar() {
   const [expandedMobile, setExpandedMobile] = useState<string | null>(null);
   const location = useLocation();
 
-  // Check if we're on the VehicleDetails dynamic page
+  // Check if we're on the VehicleDetails dynamic page (e.g., /fleet/bmw-x6)
   const isVehicleDetailsPage = location.pathname.startsWith('/fleet/') && location.pathname !== '/fleet';
 
   useEffect(() => {
@@ -184,17 +184,18 @@ function Navbar() {
     }
   }, [location]);
 
-  // Determine navbar background classes based on page and scroll state
+  // Force dark green background on vehicle details page
+  // On other pages: transparent when at top, black/translucent when scrolled
   let navbarBgClasses = "";
   
   if (isVehicleDetailsPage) {
-    // Always dark green background on vehicle details page, regardless of scroll
+    // Dark green background on vehicle details page
     navbarBgClasses = "bg-stone border-b border-white/10";
   } else if (scrolled) {
-    // Translucent Black when scrolling up on other pages
+    // Translucent black with blur when scrolled on other pages
     navbarBgClasses = "bg-black/40 backdrop-blur-md shadow-lg";
   } else {
-    // Transparent at the very top on other pages
+    // Fully transparent at the top on other pages
     navbarBgClasses = "bg-transparent";
   }
 
@@ -203,7 +204,6 @@ function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 transform ${isVisible ? "translate-y-0" : "-translate-y-full"
         } ${navbarBgClasses}`}
     >
-      {/* FIX 1: Added px-4 md:px-6 to match footer's horizontal spacing */}
       <div className="mx-auto max-w-6xl px-4 md:px-1 flex h-16 items-center justify-between md:h-20">
         <Link to="/" className="flex items-center gap-2 select-none">
           <img
@@ -230,7 +230,6 @@ function Navbar() {
 
       {open && (
         <div className="border-t border-border/50 bg-background lg:hidden animate-fade-in">
-          {/* FIX 2: Added px-4 md:px-6 to mobile menu as well */}
           <nav className="mx-auto max-w-6xl px-4 md:px-1 flex flex-col gap-1 py-4">
             {navLinks.map((link) => (
               <div key={link.to}>
@@ -333,10 +332,7 @@ function Footer() {
     >
       <div className="border-t-2 border-border/60 z-10" />
 
-      {/* FIX 3: Added px-4 md:px-6 to match navbar exactly <div className="mx-auto max-w-6xl px-4 md:px-1 py-8 md:py-12"> */}
       <div className="mx-auto max-w-6xl pl-4 md:pl-1 pr-0 py-8 md:py-12">
-        
-      
         
         {/* Logo */}
         <div className="mb-3">
@@ -351,7 +347,7 @@ function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-[2.5fr_1fr_1fr_2.0fr] gap-2 gap-y-8 lg:gap-y-2">
 
           {/* Column 1 */}
-            <div className="lg:pr-10">  {/* Add this class */}
+            <div className="lg:pr-10">
             <p className="text-sm leading-relaxed text-secondary-foreground/70 mb-4">
               Premium car rentals serving the greater Atlanta area. Flexible, all-day rentals with well-maintained vehicles and consistently 5-star-rated service.
             </p>
@@ -410,7 +406,6 @@ function Footer() {
             </h4>
 
             <nav className="flex flex-col gap-2">
-              {/* FIX 4: Replaced gap-2 with consistent spacing */}
               <Link to="/policies" className="text-sm text-secondary-foreground/70 hover:text-secondary-foreground">
                 Policies & Terms
               </Link>
@@ -429,7 +424,6 @@ function Footer() {
               Contact
             </h4>
 
-            {/* FIX 5: Changed from gap-3 to gap-2 for visual consistency across all columns */}
             <div className="flex flex-col gap-2">
               <a href="tel:+14708176427" className="flex items-center gap-2 text-sm text-secondary-foreground/70 hover:text-secondary-foreground">
                 <Phone className="h-4 w-4 shrink-0" />
@@ -452,7 +446,6 @@ function Footer() {
               </div>
             </div>
 
-            {/* FIX 6: Changed from gap-2 to gap-3 for better visual separation from contact info */}
             <div className="mt-6 flex flex-col gap-3">
               <button 
                 onClick={handleScrollToForm}
