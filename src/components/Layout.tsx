@@ -39,13 +39,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div className="flex min-h-screen flex-col">
       <Navbar />
       <main className="flex-1">{children}</main>
-      <Extra />
+      {/* Only render Extra component if NOT on the FAQ page */}
+      {location.pathname !== "/faq" && <Extra />}
       <Footer />
     </div>
   );
 }
-
-// ... rest of your components (NavItem, Navbar, Extra, Footer)
 
 function NavItem({ link, currentPath }: { link: typeof navLinks[0]; currentPath: string }) {
   const [open, setOpen] = useState(false);
