@@ -77,48 +77,79 @@ export default function PrivateInquiry() {
                     <div className="grid gap-6 sm:grid-cols-2">
                       <div className="space-y-2">
                         <Label htmlFor="name" className="text-gray-700">Full Name</Label>
-                        <Input id="name" placeholder="Your full name" required className="border-gray-200 focus:border-gray-400" />
+                        <Input 
+                          id="name" 
+                          placeholder="Your full name" 
+                          required 
+                          className="border-gray-200 focus:border-gray-400 placeholder:text-gray-400" 
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="email" className="text-gray-700">Email</Label>
-                        <Input id="email" type="email" placeholder="you@example.com" required className="border-gray-200 focus:border-gray-400" />
+                        <Input 
+                          id="email" 
+                          type="email" 
+                          placeholder="you@example.com" 
+                          required 
+                          className="border-gray-200 focus:border-gray-400 placeholder:text-gray-400" 
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="phone" className="text-gray-700">Phone</Label>
-                        <Input id="phone" type="tel" placeholder="(404) 555-0000" required className="border-gray-200 focus:border-gray-400" />
+                        <Input 
+                          id="phone" 
+                          type="tel" 
+                          placeholder="(404) 555-0000" 
+                          required 
+                          className="border-gray-200 focus:border-gray-400 placeholder:text-gray-400" 
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="pickup" className="text-gray-700">Pickup Location</Label>
                         <select
                           id="pickup"
-                          className="flex h-10 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm ring-offset-background placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400"
+                          className="flex h-10 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 ring-offset-background placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400"
                           required
                         >
-                          <option value="">Select location</option>
+                          <option value="" className="text-gray-400">Select location</option>
                           <option value="atl-airport">ATL Airport</option>
                           <option value="other">Other Location</option>
                         </select>
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="pickup-date" className="text-gray-700">Pickup Date</Label>
-                        <Input id="pickup-date" type="date" required className="border-gray-200 focus:border-gray-400" />
+                        <Input 
+                          id="pickup-date" 
+                          type="date" 
+                          required 
+                          className="border-gray-200 focus:border-gray-400 text-gray-900 [&::-webkit-calendar-picker-indicator]:opacity-50"
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="return-date" className="text-gray-700">Return Date</Label>
-                        <Input id="return-date" type="date" required className="border-gray-200 focus:border-gray-400" />
+                        <Input 
+                          id="return-date" 
+                          type="date" 
+                          required 
+                          className="border-gray-200 focus:border-gray-400 text-gray-900 [&::-webkit-calendar-picker-indicator]:opacity-50"
+                        />
                       </div>
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="vehicle" className="text-gray-700">Desired Vehicle</Label>
-                      <Input id="vehicle" placeholder="e.g., Cadillac Escalade, Any SUV" className="border-gray-200 focus:border-gray-400" />
+                      <Input 
+                        id="vehicle" 
+                        placeholder="e.g., Cadillac Escalade, Any SUV" 
+                        className="border-gray-200 focus:border-gray-400 placeholder:text-gray-400" 
+                      />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="purpose" className="text-gray-700">Purpose</Label>
                       <select
                         id="purpose"
-                        className="flex h-10 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm ring-offset-background placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400"
+                        className="flex h-10 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 ring-offset-background placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400"
                       >
                         <option value="personal">Personal</option>
                         <option value="corporate">Corporate</option>
@@ -128,7 +159,12 @@ export default function PrivateInquiry() {
 
                     <div className="space-y-2">
                       <Label htmlFor="notes" className="text-gray-700">Additional Notes</Label>
-                      <Textarea id="notes" placeholder="Any additional details or requests" rows={4} className="border-gray-200 focus:border-gray-400" />
+                      <Textarea 
+                        id="notes" 
+                        placeholder="Any additional details or requests" 
+                        rows={4} 
+                        className="border-gray-200 focus:border-gray-400 placeholder:text-gray-400 resize-none" 
+                      />
                     </div>
 
                     <p className="text-xs text-gray-500">
