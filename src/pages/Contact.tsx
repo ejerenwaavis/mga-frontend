@@ -651,10 +651,10 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Full width map section - now constrained to container boundaries */}
+      {/* Full width map section - reduced height */}
       <section className="pb-12 md:pb-16">
         <div className="container">
-          <div className="aspect-[4/3] w-full overflow-hidden rounded border border-border">
+          <div className="aspect-[4/2] w-full overflow-hidden rounded border border-border">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3322.2711608896607!2d-84.4736799!3d33.6242105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f4e30394d673e3%3A0xa2f5da71d3f0eff1!2s4814%20Old%20National%20Hwy%2C%20Atlanta%2C%20GA%3030337%2C%20USA!5e0!3m2!1sen!2sng!4v1776526361183!5m2!1sen!2sng"
               width="100%"
