@@ -44,7 +44,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div 
         className="relative overflow-hidden"
         style={{
-          backgroundImage: `linear-gradient(rgba(2, 34, 19, 0.80), rgba(2, 34, 19, 0.85)), url('/nat4pro.jpg')`,
+          backgroundImage: `url('/nat4pro.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed'
