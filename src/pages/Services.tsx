@@ -542,15 +542,15 @@ export default function Services() {
                       <div className="flex items-center gap-3">
                         <Button
                           type="button"
-                          variant="premiumOutline"
+                          variant="outline"
                           size="sm"
                           onClick={() => licenseInputRef.current?.click()}
                           disabled={isLoading}
-                          className="text-white"
+                          className="bg-white text-gray-900 hover:bg-gray-100 border-gray-300"
                         >
                           Choose File
                         </Button>
-                        <span className="text-sm text-white/60 flex-1 truncate">
+                        <span className="text-sm text-gray-700 flex-1 truncate">
                           {licenseFilePreview ? licenseFilePreview.file.name : "No file selected"}
                         </span>
                         <Input 
@@ -574,15 +574,15 @@ export default function Services() {
                       <div className="flex items-center gap-3">
                         <Button
                           type="button"
-                          variant="premiumOutline"
+                          variant="outline"
                           size="sm"
                           onClick={() => insuranceInputRef.current?.click()}
                           disabled={isLoading}
-                          className="text-white"
+                          className="bg-white text-gray-900 hover:bg-gray-100 border-gray-300"
                         >
                           Choose File
                         </Button>
-                        <span className="text-sm text-white/60 flex-1 truncate">
+                        <span className="text-sm text-gray-700 flex-1 truncate">
                           {insuranceFilePreview ? insuranceFilePreview.file.name : "No file selected"}
                         </span>
                         <Input
