@@ -71,6 +71,7 @@ export default function Services() {
     startDate: string;
     endDate: string;
     time?: string;
+    endTime?: string;
     notes?: string;
     license?: any;
     insurance?: any;
@@ -85,6 +86,7 @@ export default function Services() {
     startDate?: string;
     endDate?: string;
     time?: string;
+    endTime?: string;
     notes?: string;
     license?: any;
     insurance?: any;
@@ -99,6 +101,7 @@ export default function Services() {
     startDate: "",
     endDate: "",
     time: "",
+    endTime: "",
     notes: "",
     license: "",
     insurance: ""
@@ -233,6 +236,7 @@ export default function Services() {
 
         if (requestDetails.vehicleId) data.append("vehicleId", requestDetails.vehicleId);
         if (requestDetails.time) data.append("time", requestDetails.time);
+        if (requestDetails.endTime) data.append("endTime", requestDetails.endTime);
         if (requestDetails.notes) data.append("notes", requestDetails.notes);
 
         if (requestDetails.license) {
@@ -271,6 +275,8 @@ export default function Services() {
         });
         setSubmitted(true);
         setFormData(initialFormState);
+        setLicenseFilePreview(null);
+        setInsuranceFilePreview(null);
       },
       onError: (error: any) => {
         console.log(error);
@@ -468,7 +474,7 @@ export default function Services() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-time">Time</Label>
+                      <Label htmlFor="svc-time">Start Time</Label>
                       <Input 
                         id="svc-time" 
                         value={formData.time}
@@ -484,22 +490,19 @@ export default function Services() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-vehicle">Desired Vehicle</Label>
-                      <select
-                        id="svc-vehicle"
-                        disabled={isLoading}
-                        value={formData.vehicleId}
+                      <Label htmlFor="svc-endtime">End Time</Label>
+                      <Input 
+                        id="svc-endtime" 
+                        value={formData.endTime}
                         onChange={(e) =>
-                          handleInputChange("vehicleId", e.target.value)
-                        }
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
-                        required
-                      >
-                        <option value="">Any / No preference</option>
-                        {vehicles.map((v) => (
-                          <option key={v.id} value={v.id}>{v.year} {v.name}</option>
-                        ))}
-                      </select>
+                          handleInputChange("endTime", e.target.value)
+                        } 
+                        disabled={isLoading} 
+                        type="text" 
+                        placeholder="06:30 PM" 
+                        required 
+                        className="focus-visible:ring-primary text-white placeholder:text-white/40" 
+                      />
                     </div>
 
                     <div className="space-y-2">
@@ -536,41 +539,71 @@ export default function Services() {
 
                     <div className="space-y-2">
                       <Label htmlFor="svc-license">License ID</Label>
-                      <Input 
-                        id="svc-license"
-                        ref={licenseInputRef}
-                        accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
-                        type="file" 
-                        disabled={isLoading} 
-                        required 
-                        className="focus-visible:ring-primary text-white/60 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white/10 file:text-white/80 hover:file:bg-white/20"
-                        onChange={(e) => {
-                          const file = e.target.files?.[0];
-                          if (file) handleFileSelect(file, 'license');
-                        }}
-                      />
+                      <div className="flex items-center gap-3">
+                        <Button
+                          type="button"
+                          variant="premiumOutline"
+                          size="sm"
+                          onClick={() => licenseInputRef.current?.click()}
+                          disabled={isLoading}
+                          className="text-white"
+                        >
+                          Choose File
+                        </Button>
+                        <span className="text-sm text-white/60 flex-1 truncate">
+                          {licenseFilePreview ? licenseFilePreview.file.name : "No file selected"}
+                        </span>
+                        <Input 
+                          id="svc-license"
+                          ref={licenseInputRef}
+                          accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
+                          type="file" 
+                          disabled={isLoading} 
+                          required 
+                          className="hidden"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) handleFileSelect(file, 'license');
+                          }}
+                        />
+                      </div>
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="svc-insurance">Insurance ID</Label>
-                      <Input
-                        ref={insuranceInputRef}
-                        id="svc-insurance"
-                        type="file" 
-                        disabled={isLoading} 
-                        required 
-                        className="focus-visible:ring-primary text-white/60 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white/10 file:text-white/80 hover:file:bg-white/20"
-                        accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
-                        onChange={(e) => {
-                          const file = e.target.files?.[0];
-                          if (file) handleFileSelect(file, 'insurance');
-                        }}
-                      />
+                      <div className="flex items-center gap-3">
+                        <Button
+                          type="button"
+                          variant="premiumOutline"
+                          size="sm"
+                          onClick={() => insuranceInputRef.current?.click()}
+                          disabled={isLoading}
+                          className="text-white"
+                        >
+                          Choose File
+                        </Button>
+                        <span className="text-sm text-white/60 flex-1 truncate">
+                          {insuranceFilePreview ? insuranceFilePreview.file.name : "No file selected"}
+                        </span>
+                        <Input
+                          ref={insuranceInputRef}
+                          id="svc-insurance"
+                          type="file" 
+                          disabled={isLoading} 
+                          required 
+                          className="hidden"
+                          accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) handleFileSelect(file, 'insurance');
+                          }}
+                        />
+                      </div>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="svc-notes">Notes</Label>
+                    <Label htmlFor="svc-notes">Messages</Label>
                     <Textarea 
                       id="svc-notes" 
                       value={formData.notes}
@@ -578,7 +611,7 @@ export default function Services() {
                         handleInputChange("notes", e.target.value)
                       } 
                       disabled={isLoading} 
-                      placeholder="Any additional details or requests" 
+                      placeholder="Make and model of the car and any additional details or requests" 
                       rows={3} 
                       className="focus-visible:ring-primary text-white placeholder:text-white/40" 
                     />
