@@ -6,7 +6,7 @@ import FAQSection from "@/components/Faq";
 
 const PHONE = "(470) 817-6427";
 const EMAIL = "ceo@meadgreenautos.com";
-const ADDRESS = "4814 Old National Hwy , Atlanta, GA 30337";
+const ADDRESS = "4814 Old National Hwy, Atlanta, GA 30337";
 
 const serviceSubLinks = [
   { label: "AIRPORT SERVICE", to: "/services", hash: "airport" },
