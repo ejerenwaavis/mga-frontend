@@ -45,7 +45,7 @@ const serviceTypes = [
   {
     id: "cooperate-service",
     icon: Sparkles,
-    title: "Co-operate Services",
+    title: "Corporate Service",
     description:
       "Need a specific vehicle or arrangement? Our team accommodates special requests and ensures a seamless, white-glove rental experience.",
     image: "/vehicles/COVER-IMAGE-TURO-2024-FORD-BRONCO-SPORT.png",
