@@ -369,7 +369,7 @@ export default function Index() {
               {/* Trusted in Atlanta Card */}
               <div className="rounded border border-border bg-card p-6 md:p-8 flex flex-col justify-center">
                 <div className="text-center">
-                  <h2 className="font-serif text-gold text-3xl font-semibold md:text-4xl">Trusted in Atlanta</h2>
+                  <h2 className="font-serif text-gold text-3xl font-semibold md:text-4xl">Trusted Across Atlanta</h2>
                   <p className="mx-auto mt-4 text-sm leading-relaxed text-muted-foreground">
                     We provide flexible, all-day rentals with a selection of well-maintained
                     vehicles tailored to drivers in Atlanta. We take pride in
@@ -384,7 +384,7 @@ export default function Index() {
                   </div>
                   <div className="flex items-center gap-3 text-sm text-muted-foreground">
                     <Clock className="h-4 w-4 text-primary shrink-0" />
-                    Open 7 days a week
+                    Open 6 days a week
                   </div>
                   <div className="flex items-center gap-3 text-sm text-muted-foreground">
                     <Phone className="h-4 w-4 text-primary shrink-0" />
