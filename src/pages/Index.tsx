@@ -52,8 +52,8 @@ const testimonials = [
   { name: "Kathlyn", text: "Second time renting with MGA. Always easy to communicate with and very accommodating. The car was beautiful and drove smoothly. Can’t wait to book again.", rating: 5 },
   { name: "Christian", text: "Beautiful car and one of the smoothest rides I’ve had. Pickup was easy and service was excellent from start to finish. Definitely making this my regular.", rating: 5 },
   { name: "Jennifer", text: "Amazing host and car. Very professional, great communication, and a smooth, quiet ride. Will definitely be renting again.", rating: 5 },
-  { name: "Shivom", text: "Extremely clean and well-maintained car. Host was helpful, responsive, and easy to coordinate with. Would definitely recommend and rent again.”, rating: 5 },
-  { name: "Jasmine", text: "5-star experience. The car was clean, ran smoothly, and was delivered ahead of time. Host was very communicative and accommodating. Will definitely book again.”, rating: 5 },
+  { name: "Shivom", text: "Extremely clean and well-maintained car. Host was helpful, responsive, and easy to coordinate with. Would definitely recommend and rent again.", rating: 5 },
+  { name: "Jasmine", text: "5-star experience. The car was clean, ran smoothly, and was delivered ahead of time. Host was very communicative and accommodating. Will definitely book again.", rating: 5 },
 ];
 
 function TestimonialMarquee() {
@@ -98,7 +98,7 @@ function TestimonialMarquee() {
             <p className="text-sm leading-relaxed text-muted-foreground italic">"{t.text}"</p>
             <div className="mt-4 border-t border-border pt-3">
               <p className="text-xs font-sans font-semibold uppercase tracking-widest text-foreground">{t.name}</p>
-              <p className="text-[10px] text-muted-foreground/60 mt-0.5">Verified Turo Guest</p>
+              <p className="text-[10px] text-muted-foreground/60 mt-0.5">Verified Guest</p>
             </div>
           </div>
         ))}
