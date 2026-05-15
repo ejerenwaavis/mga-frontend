@@ -133,33 +133,57 @@ export default function Contact() {
     const usPhoneRegex = /^(?:\+1\s?)?(?:\(\d{3}\)|\d{3})(?:[\s.-]?)\d{3}(?:[\s.-]?)\d{4}$/;
     const titles = /^(mr|mrs|ms|miss|dr|prof|engr|sir|chief)\.?\s+/i;
 
-    // First name validation
-    // 1. Basic empty check
-    if (formData.fullName.trim()) {
-
+    // Full name validation
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = 'Full name is required';
+    } else {
       const fullName = formData.fullName.trim();
       const finalName = fullName.replace(titles, "");
-
-      // 2. Logic for "Two Names" requirement
       const nameParts = finalName.trim().split(/\s+/);
 
       if (nameParts.length !== 2) {
-        errors['fullName'] = 'Please enter actual (First and Last name)';
-
-        return false;
+        newErrors.fullName = 'Please enter your first and last name';
       }
     }
 
     // Email validation
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
       newErrors.email = "Invalid email address";
-      return false;
     }
 
-    if (!usPhoneRegex.test(formData.phone.trim())) {
+    // Phone validation
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    } else if (!usPhoneRegex.test(formData.phone.trim())) {
       newErrors.phone = "Please enter a valid US phone number (e.g., (404) 555-0100)";
     }
 
+    // Service type validation
+    if (!formData.serviceType.trim()) {
+      newErrors.serviceType = "Service type is required";
+    }
+
+    // Start date validation
+    if (!formData.startDate.trim()) {
+      newErrors.startDate = "Start date is required";
+    }
+
+    // End date validation
+    if (!formData.endDate.trim()) {
+      newErrors.endDate = "End date is required";
+    }
+
+    // License file validation
+    if (!licenseFilePreview) {
+      newErrors.license = "Driver's license is required";
+    }
+
+    // Insurance file validation
+    if (!insuranceFilePreview) {
+      newErrors.insurance = "Insurance document is required";
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -390,6 +414,7 @@ export default function Contact() {
                         required 
                         className="focus-visible:ring-primary text-white placeholder:text-white/40"
                       />
+                      {errors.fullName && <p className="text-xs text-red-500">{errors.fullName}</p>}
                     </div>
 
                     <div className="space-y-2">
@@ -406,6 +431,7 @@ export default function Contact() {
                         required 
                         className="focus-visible:ring-primary text-white placeholder:text-white/40"
                       />
+                      {errors.email && <p className="text-xs text-red-500">{errors.email}</p>}
                     </div>
 
                     <div className="space-y-2">
@@ -422,6 +448,7 @@ export default function Contact() {
                         required 
                         className="focus-visible:ring-primary text-white placeholder:text-white/40"
                       />
+                      {errors.phone && <p className="text-xs text-red-500">{errors.phone}</p>}
                     </div>
 
                     <div className="space-y-2">
@@ -442,6 +469,7 @@ export default function Contact() {
                           <option key={s.id} value={s.id}>{s.title}</option>
                         ))}
                       </select>
+                      {errors.serviceType && <p className="text-xs text-red-500">{errors.serviceType}</p>}
                     </div>
 
                     <div className="space-y-2">
@@ -490,6 +518,7 @@ export default function Contact() {
                         required 
                         className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
                       />
+                      {errors.startDate && <p className="text-xs text-red-500">{errors.startDate}</p>}
                     </div>
 
                     <div className="space-y-2">
@@ -506,6 +535,7 @@ export default function Contact() {
                         required 
                         className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
                       />
+                      {errors.endDate && <p className="text-xs text-red-500">{errors.endDate}</p>}
                     </div>
 
                     <div className="space-y-2">
@@ -538,6 +568,7 @@ export default function Contact() {
                           }}
                         />
                       </div>
+                      {errors.license && <p className="text-xs text-red-500">{errors.license}</p>}
                     </div>
 
                     <div className="space-y-2">
@@ -570,6 +601,7 @@ export default function Contact() {
                           }}
                         />
                       </div>
+                      {errors.insurance && <p className="text-xs text-red-500">{errors.insurance}</p>}
                     </div>
                   </div>
 
