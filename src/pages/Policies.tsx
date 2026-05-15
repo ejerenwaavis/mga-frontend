@@ -3,34 +3,40 @@ import { useSEO } from "@/hooks/useSEO";
 
 const sections = [
   {
-    title: "Deposits",
+    title: "Authorized Drivers",
     content:
-      "A refundable security deposit is required for all rentals and must be received prior to vehicle pickup. Deposit amounts vary by vehicle and are specified at the time of booking or approval. Deposits are refunded in full upon satisfactory return of the vehicle, subject to inspection for damage, excessive wear, or policy violations.",
-  },
-  {
-    title: "Fuel Policy",
-    content:
-      "Vehicles are provided with a full tank of fuel and must be returned with a full tank. If the vehicle is returned with less than a full tank, a refueling fee will be applied at a rate above the prevailing market price to cover the cost of refueling.",
+      "Only drivers approved by Mead Green Autos and listed on the reservation may operate the vehicle.Allowing unauthorized drivers to operate the vehicle may result in termination of the rental agreement and additional liability.",
   },
   {
     title: "Prohibited Use",
     content:
-      "Vehicles may not be used for any illegal activity, off-road driving, racing, towing, or any purpose not consistent with normal personal or business transportation. Subletting or allowing unauthorized drivers to operate the vehicle is strictly prohibited. Violations may result in forfeiture of the security deposit and additional liability.",
+      "Vehicles may not be used for: \n \u2022 Off-roading or driving on unpaved terrain \n \u2022 Racing, drifting, burnouts, or reckless driving \n \u2022 Towing another vehicle or trailer \n \u2022 Illegal activity of any kind \n \u2022 Ride-share, delivery, or commercial transport services unless approved beforehand \n \u2022 Smoking or vaping inside the vehicle \n Any prohibited use may result in immediate termination of the rental and full financial responsibility for resulting damages."     
+     
+  },
+  {
+    title: "Vehicle Responsibility",
+    content:
+      "Renters are responsible for returning the vehicle in the same condition in which it was received, excluding normal wear and tear. \n The renter is financially responsible for any damage occurring during the rental period, including but not limited to: \n \u2022 Wheel and tire damage \n \u2022 Interior damage \n \u2022 Windshield damage \n \u2022 Underbody damage \n \u2022 Mechanical damage caused by misuse or negligence \n \u2022 Lost keys or accessories \n We strongly recommend documenting the vehicle condition at pickup and return. ",
+  },
+  {
+    title: "Fuel Requirements",
+    content:
+      "Vehicles must be returned with the same fuel level provided at pickup. \n Vehicles requiring premium fuel must only be filled with premium-grade gasoline.",
   },
   {
     title: "Late Returns",
     content:
-      "Vehicles must be returned at the agreed-upon date and time. Late returns are subject to additional daily charges at the standard daily rate. If a vehicle is not returned within 24 hours of the agreed return time without prior arrangement, additional actions may be taken in accordance with applicable law.",
+      "Vehicles must be returned at the agreed-upon time stated in the reservation. \n Late returns may result in additional charges and may affect future reservations. \n Failure to return a vehicle without communication may result in further action in accordance with applicable law.",
   },
   {
-    title: "Cancellations",
+    title: "Payment Authorization",
     content:
-      "Cancellations made at least 48 hours prior to the scheduled pickup time are eligible for a full deposit refund. Cancellations made within 48 hours of pickup may be subject to a cancellation fee. Turo bookings follow Turo's cancellation policy. We encourage renters to communicate schedule changes as early as possible.",
+      "By booking with Mead Green Autos, the renter authorizes additional charges related to tolls, parking fees, traffic violations, mileage overages, cleaning, damages, smoking violations, late returns, or other policy violations to be charged to the payment method on file.",
   },
   {
-    title: "Damages",
+    title: "Right to Refuse Service",
     content:
-      "Renters are responsible for any damage to the vehicle that occurs during the rental period, regardless of fault. Damage is assessed upon vehicle return and repair costs will be deducted from the security deposit. If repair costs exceed the deposit amount, the renter is responsible for the remaining balance. We recommend documenting the vehicle condition at pickup and return.",
+      "Mead Green Autos reserves the right to refuse, cancel, or terminate any rental if policies are violated or if a rental presents a safety, insurance, or operational concern. \n This feels much more intentional alongside your FAQ instead of repeating it.",
   },
 ];
 
@@ -51,8 +57,9 @@ export default function Policies() {
               Policies & Terms
             </h1>
             <p className="mx-auto mt-3 max-w-lg text-sm text-gray-300">
-              Clear, fair policies that protect both our guests and our
-              vehicles. Please review these terms before your rental.
+              These policies are designed to protect both our guests and our
+              vehicles. By booking or operating a vehicle through Mead Green
+              Autos, you agree to the following terms and conditions.
             </p>
           </FadeIn>
         </div>
@@ -71,7 +78,12 @@ export default function Policies() {
                         {section.title}
                       </h2>
                       <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                        {section.content}
+                        {section.content.split("\n").map((line, index) => (
+                          <span key={index}>
+                            {line}
+                            <br />
+                          </span>
+                        ))}
                       </p>
                     </div>
                   </FadeIn>

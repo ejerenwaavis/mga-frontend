@@ -35,20 +35,44 @@ const FAQItem = ({ question, answer }) => {
 const FAQSection = () => {
     const faqs = [
         {
-            question: "Do you offer chauffeur services in Atlanta?",
-            answer: "Yes, we provide professional luxury chauffeur services for clients who prefer to be driven. In addition, we partnered with Black Wolf Security to offer armed executive drivers, giving you an added layer of safety and peace of mind."
+            question: "What do I need to rent a vehicle?",
+            answer: "A valid driver’s license, full-coverage auto insurance in your name that transfers to rental vehicles, and a valid payment method are required."
         },
         {
-            question: "Where is the pickup and drop-off location for exotic car rentals?",
-            answer: "All rentals are based out of , Atlanta. Vehicles are typically picked up and dropped off at Nobu in Phipps Plaza. If you'd like your exotic car delivered to you, see the next questions on delivery options."
+            question: "What is the minimum age to rent?",
+            answer: "Renters must be at least 21 years old with a valid driver’s license and qualifying full-coverage auto insurance. Certain vehicles may require drivers to be 25 or older."
         },
         {
             question: "How much does it cost to have an exotic car delivered in Georgia?",
             answer: "We offer luxury car delivery within Georgia. This allows you to enjoy your exotic rental anywhere in the state without needing to come to ."
         },
         {
-            question: "Do you provide out-of-state exotic car delivery?",
-            answer: "Yes, we deliver to clients across the Southeast. For example, from to Birmingham (157 miles), delivery is $1,700 with a 3-day minimum rental. Out-of-state deliveries are best suited for multi-day bookings to make the trip worthwhile."
+            question: "Do you require a security deposit?",
+            answer: "Yes. A refundable security deposit is required for every rental. Deposit amounts vary by vehicle and are typically refunded within 24–48 hours after return, pending inspection and any additional charges."
+        },
+        {
+            question: "Do you offer airport pickup and custom delivery?",
+            answer: "Yes. We offer airport pickup and return at Hartsfield–Jackson Atlanta International Airport, along with custom pickup and delivery throughout Atlanta for an additional fee."
+        },
+        {
+            question: "Is there a mileage limit?",
+            answer: "Yes. Each vehicle includes a daily mileage allowance. Additional miles may be purchased in advance, and overage charges apply if the mileage limit is exceeded."
+        },
+        {
+            question: "Are your vehicles allowed to be used for off-roading?",
+            answer: "No. Off-roading or driving on unpaved terrain is strictly prohibited. Any damage, excessive wear, or recovery costs resulting from off-road use will be the renter’s responsibility."
+        },
+        {
+            question: "What is your cancellation policy?",
+            answer: "Cancellations made 48+ hours before pickup qualify for a full refund. Cancellations made within 24–48 hours may qualify for a partial refund or reservation credit. Cancellations made less than 24 hours before pickup, or no-shows, are non-refundable."
+        },
+        {
+            question: "Are there smoking or cleaning fees?",
+            answer: "Smoking or vaping is strictly prohibited. Vehicles returned excessively dirty may result in a $150 cleaning fee, while smoke-related cleaning starts at $300."
+        },
+        {
+            question: "Who is responsible for tolls, tickets, or parking violations?",
+            answer: "The renter is responsible for all tolls, parking fees, tickets, and violations incurred during the rental period, including those received after return. Charges may be processed to the payment method on file."
         }
     ];
 
@@ -62,8 +86,7 @@ const FAQSection = () => {
                             Ready to Reserve Your Vehicle?
                         </h2>
                         <p className="mx-auto mt-3 max-w-md text-sm text-white/90">
-                            Choose the option that fits your needs — from daily rentals to
-                            full-service concierge arrangements.
+                            Select the rental option that works best for your schedule and travel plans..
                         </p>
                         <CTAGroup className="mt-8" />
                     </FadeIn>

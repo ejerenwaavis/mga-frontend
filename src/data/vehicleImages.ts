@@ -1,22 +1,16 @@
-import cadillacEscalade from "@/assets/vehicles/cadillac-escalade-2024.jpg";
-import bmwX5 from "@/assets/vehicles/bmw-x5-2024.jpg";
-import mercedesGle from "@/assets/vehicles/mercedes-gle-2024.jpg";
-import chevroletTahoe from "@/assets/vehicles/chevrolet-tahoe-2024.jpg";
-import teslaModel3 from "@/assets/vehicles/tesla-model-3-2024.jpg";
-import audiA6 from "@/assets/vehicles/audi-a6-2024.jpg";
-import lexusEs from "@/assets/vehicles/lexus-es-2024.jpg";
-import genesisG80 from "@/assets/vehicles/genesis-g80-2024.jpg";
-import mercedesSClass from "@/assets/vehicles/mercedes-s-class-2024.jpg";
-import porscheCayenne from "@/assets/vehicles/porsche-cayenne-2024.jpg";
-import rangeRoverSport from "@/assets/vehicles/range-rover-sport-2024.jpg";
-import bmw7Series from "@/assets/vehicles/bmw-7-series-2024.jpg";
-
-
 import manifest from "./vehicleImageManifest.json";
 
 
 
 export const vehicleImages: Record<string, Record<string, string>> = {
+  "mercedes-gle-2024": {
+    "Exterior — Front": "/vehicles/mercedes-gle-2024-updated.png",
+    "Exterior — Side": "/vehicles/mercedes-gle-2024-updated-sideview.jpg",
+    "Exterior — Rear": "/vehicles/mercedes-gle-2024-updated-backview.jpg",
+    "Interior — Dashboard": "/vehicles/mercedes-gle-2024-updated-dashboard.jpg",
+    "Interior — Cabin": "/vehicles/mercedes-gle-2024-updated-interior.jpg",
+    "Interior — Rear Seats": "/vehicles/mercedes-gle-2024-updated-interior back.jpg",
+  },
   "chevrolet-corvette-2025": {
     "Exterior — Front": "/vehicles/COVER-IMAGE-Chevrolet-Corvette.jpeg",
     "Exterior — Side": "/vehicles/Chevrolet-Corvette-side-ext.jpeg",
@@ -40,6 +34,14 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Dashboard": "/vehicles/BMW-X6-2022-interior-dashboard.jpg",
     "Interior — Cabin": "/vehicles/BMW-X6-2022-interior-cabin.jpg",
     "Interior — Rear Seats": "/vehicles/BMW-X6-2022-interior-rear-seat.jpg",
+  },
+  "range-rover-hse-2024": {
+    "Exterior — Front": "/vehicles/range-rover-hse-updated-front.jpg",
+    "Exterior — Side": "/vehicles/range-rover-hse-updated-sideview.jpg",
+    "Exterior — Rear": "/vehicles/range-rover-hse-updated-backview.jpg",
+    "Interior — Dashboard": "/vehicles/range-rover-hse-updated-dashboard.jpg",
+    "Interior — Cabin": "/vehicles/range-rover-hse-updated-interior-front.jpg",
+    "Interior — Rear Seats": "/vehicles/range-rover-hse-updated-interior-back.jpg",
   },
   "mercedes-benz-glc-2025": {
     "Exterior — Front": "/vehicles/COVER-IMAGE-TURO-2025-MERCEDES-BENZ-GLC-300-SUV-COUPE.png",

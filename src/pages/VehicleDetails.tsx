@@ -156,8 +156,11 @@ export default function VehicleDetails() {
                 <span className="text-xs font-sans uppercase tracking-widest text-gold">
                   {vehicle.category}
                 </span>
-                <h1 className="mt-1 text-white font-serif text-3xl font-semibold md:text-4xl">
+                {/* <h1 className="mt-1 text-white font-serif text-3xl font-semibold md:text-4xl">
                   {vehicle.year} {vehicle.name}
+                </h1> */}
+                <h1 className="mt-1 text-white font-serif text-3xl font-semibold md:text-4xl">
+                  {vehicle.name}
                 </h1>
 
                 {/* Quick Facts strip */}

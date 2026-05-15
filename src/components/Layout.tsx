@@ -328,13 +328,13 @@ function Footer() {
           {/* Column 1 */}
           <div className="lg:pr-10">
             <p className="text-sm leading-relaxed text-secondary-foreground/70 mb-4">
-              Premium car rentals serving the greater Atlanta area. Flexible, all-day rentals with well-maintained vehicles and consistently 5-star-rated service.
+              Premium car rentals across Atlanta, built around convenience, flexibility, and a professionally maintained fleet.
             </p>
 
-            <div className="flex items-center gap-1 text-xs text-secondary-foreground/50 mb-4">
+            {/* <div className="flex items-center gap-1 text-xs text-secondary-foreground/50 mb-4">
               <MapPin className="h-3 w-3 shrink-0" />
               <span>Atlanta • Open 7 days a week</span>
-            </div>
+            </div> */}
 
             <div className="flex gap-3">
               {[

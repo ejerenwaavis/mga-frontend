@@ -27,8 +27,8 @@ export default function About() {
               About Mead Green Autos
             </h1>
             <p className="mx-auto mt-3 max-w-lg text-sm text-white">
-              Premium car rentals in Atlanta, built on professionalism,
-              reliability, and a commitment to an exceptional experience.
+              Premium car rentals in Atlanta, built around convenience,
+              reliability, and a better rental experience.
             </p>
           </FadeIn>
         </div>
@@ -41,30 +41,35 @@ export default function About() {
           <div className="w-full md:w-1/2 text-left">
             <FadeIn>
               <div className="prose-sm prose-stone max-w-none">
-                <h2 className="font-serif text-3xl font-semibold text-gold">Our Story</h2>
+                <h2 className="font-serif text-3xl font-semibold text-gold">
+                  Our Story
+                </h2>
                 <p className="mt-4 text-sm leading-relaxed text-white">
-                  Mead Green Autos was founded with a clear purpose: to provide
-                  Atlanta travelers and residents with access to premium,
-                  well-maintained vehicles backed by professional service. We
-                  understand that renting a car is about more than transportation -
-                  it is about trust, reliability, and the confidence that comes
-                  with knowing every detail has been handled.
+                  Mead Green Autos was founded with a simple goal: to create a
+                  better rental experience. After seeing the condition,
+                  inconsistency, and inconvenience often associated with
+                  traditional rental companies, we built a service centered
+                  around what renters actually value: clean vehicles, clear
+                  communication, and a seamless pickup and return process.
                 </p>
                 <p className="mt-4 text-sm leading-relaxed text-white">
-                  Based near Hartsfield-Jackson Atlanta International Airport, we
-                  serve a discerning clientele that includes airport arrivals,
-                  corporate professionals, and individuals seeking a premium
-                  rental experience without unnecessary complexity. Every vehicle
-                  in Our Inventory is carefully selected, meticulously maintained, and
-                  prepared to the highest standard before each rental.
+                  We believe renting a vehicle should be straightforward,
+                  dependable, and built around your schedule, not complicated by
+                  long lines, unclear policies, or unnecessary delays. Located
+                  near Hartsfield–Jackson Atlanta International Airport, we
+                  provide airport rentals, custom delivery, corporate rentals,
+                  and flexible private rental options throughout Atlanta. Every
+                  vehicle in our fleet is carefully selected, professionally
+                  maintained, and thoroughly prepared before each rental to
+                  deliver the level of quality and consistency we believe should
+                  be standard.
                 </p>
                 <p className="mt-4 text-sm leading-relaxed text-white">
-                  Our approach is straightforward: clear policies, transparent
-                  pricing, responsive communication, and vehicles you can depend
-                  on. Whether you are booking through Turo for immediate
-                  convenience or inquiring about our private rental program for a
-                  more tailored arrangement, the standard of care remains the
-                  same.
+                  At Mead Green Autos, our focus is simple: premium vehicles,
+                  reliable service, and a rental experience designed to be
+                  better from start to finish. That tells the real story and
+                  positions MGA directly against the weak points of legacy
+                  rental companies.
                 </p>
               </div>
             </FadeIn>
@@ -72,19 +77,19 @@ export default function About() {
             <FadeIn delay={0.15}>
               {/* Reduced margin from mt-16 to mt-6 */}
               <div className="mt-6">
-                <p className="text-sm leading-relaxed text-white">
+                {/* <p className="text-sm leading-relaxed text-white">
                   Our operations are built on consistency and accountability.
-                  Each vehicle undergoes thorough inspection and cleaning between
-                  rentals. We maintain full insurance coverage and comply with all
-                  applicable regulations. Our team is available to assist with
-                  questions, scheduling, and any needs that arise during your
-                  rental period.
-                </p>
+                  Each vehicle undergoes thorough inspection and cleaning
+                  between rentals. We maintain full insurance coverage and
+                  comply with all applicable regulations. Our team is available
+                  to assist with questions, scheduling, and any needs that arise
+                  during your rental period.
+                </p> */}
               </div>
             </FadeIn>
           </div>
 
-       {/* Right Side: Image */}
+          {/* Right Side: Image */}
           <div className="w-full md:w-1/2">
             <FadeIn delay={0.2}>
               <img

@@ -20,7 +20,7 @@ const serviceTypes = [
     icon: Plane,
     title: "Airport Service",
     description:
-      "Convenient vehicle pickup and drop-off near Hartsfield-Jackson Atlanta International Airport. Arrive and get on your way with minimal delay.",
+      "Convenient vehicle pickup and drop-off at Hartsfield–Jackson Atlanta International Airport, designed for a fast and seamless arrival or departure.",
     image: "/vehicles/areoplane.jpg",
     imagePosition: "right"
   },
@@ -29,7 +29,7 @@ const serviceTypes = [
     icon: Car,
     title: "Standard Rental",
     description:
-      "Premium vehicles available with transparent pricing, maintained to the highest standard for business or personal use.",
+      "Premium vehicles with transparent pricing, flexible rental terms, and professionally maintained standards for everyday rental needs.",
     image: "/vehicles/COVER-IMAGE-Porsche-Cayenne-2023.png",
     imagePosition: "left"
   },
@@ -38,7 +38,7 @@ const serviceTypes = [
     icon: Building2,
     title: "Custom Delivery",
     description:
-      "Professional rental solutions for businesses — employee travel, client transportation, or fleet supplementation with reliable, premium vehicles.",
+      "Vehicle delivery and pickup tailored to your location and schedule throughout Atlanta for added convenience.",
     image: "/vehicles/COVER-IMAGE-TURO-2022-KIA-TELLURIDE.png",
     imagePosition: "right"
   },
@@ -47,7 +47,7 @@ const serviceTypes = [
     icon: Sparkles,
     title: "Corporate Service",
     description:
-      "Need a specific vehicle or arrangement? Our team accommodates special requests and ensures a seamless, white-glove rental experience.",
+      "Professional rental solutions for employee travel, client transportation, and short-term business vehicle needs.",
     image: "/vehicles/COVER-IMAGE-TURO-2024-FORD-BRONCO-SPORT.png",
     imagePosition: "left"
   },
@@ -307,9 +307,7 @@ export default function Services() {
               Our Services
             </h1>
             <p className="mx-auto mt-3 max-w-lg text-sm text-white">
-              From airport arrivals to long-term corporate needs, we offer rental
-              solutions designed around professionalism, reliability, and
-              convenience.
+              From airport arrivals to business travel and custom delivery, our rental services are designed to make every trip simple, reliable, and efficient.
             </p>
           </FadeIn>
         </div>

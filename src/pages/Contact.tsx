@@ -20,7 +20,7 @@ const PHONE = "(470) 817-6427";
 const EMAIL = "ceo@meadgreenautos.com";
 const ADDRESS = "4814 Old National Hwy , Atlanta, GA 30337";
 // const YELP_URL = "https://www.yelp.com/biz/mead-green-autos-atlanta";
-const MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=3535+Peachtree+Rd+Space+520+Ste+234+Atlanta+GA+30326";
+const MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=4814+Old+National+Hwy,+Atlanta,+GA+30337";
 
 const serviceTypes = [
   {
@@ -28,14 +28,14 @@ const serviceTypes = [
     icon: Plane,
     title: "Airport Service",
     description:
-      "Convenient vehicle pickup and drop-off near Hartsfield-Jackson Atlanta International Airport. Arrive and get on your way with minimal delay.",
+      "Convenient vehicle pickup and drop-off at Hartsfield–Jackson Atlanta International Airport, designed for a fast and seamless arrival or departure.",
   },
   {
     id: "rentals",
     icon: Car,
     title: "Standard Rental",
     description:
-      "Premium vehicles available with transparent pricing, maintained to the highest standard for business or personal use.",
+      "Premium vehicles with transparent pricing, flexible rental terms, and professionally maintained standards for everyday rental needs.",
   },
 
   {
@@ -43,14 +43,14 @@ const serviceTypes = [
     icon: Building2,
     title: "Custom Delivery",
     description:
-      "Professional rental solutions for businesses — employee travel, client transportation, or fleet supplementation with reliable, premium vehicles.",
+      "Vehicle delivery and pickup tailored to your location and schedule throughout Atlanta for added convenience.",
   },
   {
     id: "cooperate-service",
     icon: Sparkles,
-    title: "Co-operate Services",
+    title: "Corporate Services",
     description:
-      "Need a specific vehicle or arrangement? Our team accommodates special requests and ensures a seamless, white-glove rental experience.",
+      "Professional rental solutions for employee travel, client transportation, and short-term business vehicle needs.",
   },
 ];
 
@@ -509,7 +509,7 @@ export default function Contact() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-license" className="text-white">License Id</Label>
+                      <Label htmlFor="svc-license" className="text-white">License</Label>
                       <div className="flex items-center gap-3">
                         <Button
                           type="button"
@@ -541,7 +541,7 @@ export default function Contact() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-insurance" className="text-white">Insurance Id</Label>
+                      <Label htmlFor="svc-insurance" className="text-white">Insurance</Label>
                       <div className="flex items-center gap-3">
                         <Button
                           type="button"
@@ -574,7 +574,7 @@ export default function Contact() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="svc-notes" className="text-white">Messages</Label>
+                    <Label htmlFor="svc-notes" className="text-white">Message</Label>
                     <Textarea 
                       id="svc-notes" 
                       value={formData.notes}
@@ -620,10 +620,10 @@ export default function Contact() {
                       <MapPin className="h-4 w-4 text-primary" />
                       {ADDRESS}
                     </div>
-                    <div className="flex items-center gap-3 text-sm text-white">
+                    {/* <div className="flex items-center gap-3 text-sm text-white">
                       <Clock className="h-4 w-4 text-primary" />
                       Open 7 days a week
-                    </div>
+                    </div> */}
                   </div>
                   <div className="mt-4 flex flex-wrap gap-3 text-white">
                     <a href={MAPS_URL} target="_blank" rel="noopener noreferrer">
@@ -634,7 +634,7 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="rounded border border-border bg-card p-6">
+                {/* <div className="rounded border border-border bg-card p-6">
                   <h3 className="font-serif text-base font-semibold">
                     Service Area
                   </h3>
@@ -644,7 +644,7 @@ export default function Contact() {
                     International Airport. Alternative arrangements may be
                     available upon request.
                   </p>
-                </div>
+                </div> */}
               </div>
             </FadeIn>
           </div>
