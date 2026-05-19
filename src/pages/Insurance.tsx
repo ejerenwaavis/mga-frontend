@@ -20,8 +20,7 @@ export default function Insurance() {
               Insurance Information
             </h1>
             <p className="mx-auto mt-3 max-w-lg text-sm text-gray-300">
-              Understanding insurance requirements before your rental ensures a
-              smooth, worry-free experience.
+              Understanding coverage requirements before your rental helps ensure a smooth and seamless experience with Mead Green Autos.
             </p>
           </FadeIn>
         </div>
@@ -38,78 +37,80 @@ export default function Insurance() {
                   <h2 className="font-serif text-xl font-semibold text-gray-900">
                     Insurance Requirements
                   </h2>
-                  <ul className="mt-4 space-y-3">
-                    <li className="flex items-start gap-3 text-sm text-gray-600">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-900" />
-                      Full coverage auto insurance (liability, collision, and
-                      comprehensive) is required for all private rentals.
-                    </li>
-                    <li className="flex items-start gap-3 text-sm text-gray-600">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-900" />
-                      Proof of valid insurance must be provided before vehicle
-                      pickup. Digital copies are accepted.
-                    </li>
-                    <li className="flex items-start gap-3 text-sm text-gray-600">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-900" />
-                      Insurance must be active for the entire duration of the
-                      rental period.
-                    </li>
-                    <li className="flex items-start gap-3 text-sm text-gray-600">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-900" />
-                      The rental vehicle must be listed as a covered vehicle on
-                      your policy, or your policy must cover rental vehicles.
-                    </li>
+                  <p className="mt-4 text-sm leading-relaxed text-gray-600">
+                    For all private rentals, renters are generally required to maintain active full coverage auto insurance that extends to rental vehicles. This typically includes:
+                  </p>
+                  <ul className="mt-4 space-y-3 pl-4 text-sm text-gray-600 list-disc">
+                    <li>Liability coverage</li>
+                    <li>Collision coverage</li>
+                    <li>Comprehensive coverage</li>
                   </ul>
+                  <p className="mt-4 text-sm leading-relaxed text-gray-600">
+                    Proof of insurance and a valid driver’s license must be provided prior to pickup.
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                    Coverage must remain active for the full duration of the rental period.
+                  </p>
                 </div>
 
-                {/* Accepted Coverage */}
+                {/* Accepted Coverage Types */}
                 <div className="border-b border-gray-200 pb-6">
                   <h2 className="font-serif text-xl font-semibold text-gray-900">
-                    Accepted Coverage
+                    Accepted Coverage Types
                   </h2>
-                  <ul className="mt-4 space-y-3">
-                    <li className="flex items-start gap-3 text-sm text-gray-600">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-900" />
-                      Personal auto insurance policies with full coverage
-                    </li>
-                    <li className="flex items-start gap-3 text-sm text-gray-600">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-900" />
-                      Commercial auto insurance policies
-                    </li>
-                    <li className="flex items-start gap-3 text-sm text-gray-600">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-900" />
-                      Non-owner auto insurance with rental coverage endorsement
-                    </li>
+                  <p className="mt-4 text-sm leading-relaxed text-gray-600">
+                    We may accept the following forms of qualifying coverage:
+                  </p>
+                  <ul className="mt-4 space-y-3 pl-4 text-sm text-gray-600 list-disc">
+                    <li>Personal auto insurance policies with full coverage</li>
+                    <li>Commercial auto insurance policies</li>
+                    <li>Non-owner policies with qualifying rental coverage</li>
+                    <li>Select premium credit card rental protection programs, subject to verification and approval</li>
                   </ul>
+                  <p className="mt-4 text-sm leading-relaxed text-gray-600">
+                    Additional verification may be required prior to reservation approval.
+                  </p>
                 </div>
 
-                {/* Important Disclaimers */}
+                {/* Security Deposit */}
+                <div className="border-b border-gray-200 pb-6">
+                  <h2 className="font-serif text-xl font-semibold text-gray-900">
+                    Security Deposit
+                  </h2>
+                  <p className="mt-4 text-sm leading-relaxed text-gray-600">
+                    All private rentals require a refundable security deposit. Deposit amounts vary depending on the vehicle and renter profile.
+                  </p>
+                  <p className="mt-4 text-sm leading-relaxed text-gray-600">
+                    Security deposits are temporary authorization holds and are typically released within 24 hours after the vehicle is returned in the same condition.
+                  </p>
+                </div>
+
+                {/* Important Information */}
                 <div className="border-b border-gray-200 pb-6">
                   <div className="rounded-lg bg-gray-50 p-6">
                     <h3 className="font-serif text-base font-semibold text-gray-900">
-                      Important Disclaimers
+                      Important Information
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                      Mead Green Autos does not provide insurance coverage for
-                      private rentals. Renters are solely responsible for
-                      maintaining adequate insurance coverage throughout the rental
-                      period. In the event of an accident or damage, the renter's
-                      insurance is the primary coverage. Turo bookings include
-                      Turo's insurance options — please refer to Turo for details.
+                      Renters are financially responsible for the vehicle during the rental period pursuant to the rental agreement.
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                      If using personal insurance or third-party rental protection, renters are responsible for confirming that their policy or protection plan applies to the rental arrangement with Mead Green Autos prior to the trip.
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                      In certain situations, alternative coverage solutions may be available subject to approval and verification.
                     </p>
                   </div>
                 </div>
 
-                {/* Questions About Insurance */}
+                {/* Questions About Coverage */}
                 <div className="pb-0">
                   <div className="rounded-lg bg-gray-50 p-6">
                     <h3 className="font-serif text-base font-semibold text-gray-900">
-                      Questions About Insurance?
+                      Questions About Coverage?
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                      If you have questions about insurance requirements or need
-                      guidance on what coverage to obtain, please reach out to our
-                      team. We are happy to help clarify before your rental.
+                      If you have any questions regarding insurance requirements, verification, or coverage eligibility, our team is happy to assist prior to your rental.
                     </p>
                     <div className="mt-4 flex flex-wrap gap-3">
                       <Link to="/contact">
@@ -117,14 +118,8 @@ export default function Insurance() {
                           variant="outline"
                           size="sm" 
                           className="bg-gray-900 text-white hover:bg-gray-800"
-                        
                         >
                           Contact Us
-                        </Button>
-                      </Link>
-                      <Link to="/private-inquiry">
-                       <Button variant="hero" size="sm" className="neon-btn min-w-[200px]">
-                          Submit Inquiry
                         </Button>
                       </Link>
                     </div>

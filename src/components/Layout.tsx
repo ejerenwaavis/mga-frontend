@@ -421,7 +421,7 @@ function Footer() {
 
               <div className="flex items-center gap-2 text-sm text-secondary-foreground/70">
                 <Clock className="h-4 w-4 shrink-0" />
-                Open 7 days a week
+                Open daily by reservation
               </div>
             </div>
 

@@ -8,11 +8,13 @@ import { vehicles } from "@/data/vehicles";
 import { Plane, Car, Clock, Building2, Sparkles, X } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import { submitRequest } from "@/services/mutations";
-import { CreateRequestPayload, } from "@/lib/types";
+import { CreateRequestPayload } from "@/lib/types";
 import heic2any from "heic2any";
 import Swal from "sweetalert2";
 import { useMutation } from "react-query";
 import { toast } from "sonner";
+
+const SERVICE_EMAIL = "ceo@meadgreenautos.com";
 
 const serviceTypes = [
   {
@@ -230,13 +232,14 @@ export default function Services() {
         data.append("fullName", requestDetails.fullName);
         data.append("email", requestDetails.email);
         data.append("phone", requestDetails.phone);
+        data.append("recipientEmail", SERVICE_EMAIL);
         data.append("serviceType", requestDetails.serviceType);
         data.append("startDate", requestDetails.startDate);
         data.append("endDate", requestDetails.endDate);
 
         if (requestDetails.vehicleId) data.append("vehicleId", requestDetails.vehicleId);
         if (requestDetails.time) data.append("time", requestDetails.time);
-        if (requestDetails.endTime) data.append("endTime", requestDetails.endTime);
+        if (formData.endTime) data.append("endTime", formData.endTime);
         if (requestDetails.notes) data.append("notes", requestDetails.notes);
 
         if (requestDetails.license) {
@@ -536,7 +539,7 @@ export default function Services() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-license">License ID</Label>
+                      <Label htmlFor="svc-license">License</Label>
                       <div className="flex items-center gap-3">
                         <Button
                           type="button"
@@ -568,7 +571,7 @@ export default function Services() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-insurance">Insurance ID</Label>
+                      <Label htmlFor="svc-insurance">Insurance</Label>
                       <div className="flex items-center gap-3">
                         <Button
                           type="button"
@@ -601,7 +604,7 @@ export default function Services() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="svc-notes">Messages</Label>
+                    <Label htmlFor="svc-notes">Message</Label>
                     <Textarea 
                       id="svc-notes" 
                       value={formData.notes}
