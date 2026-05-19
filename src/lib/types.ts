@@ -276,6 +276,7 @@ export type CreateRequestPayload = {
   startDate: string;   // HTML date inputs return strings
   endDate: string;
   time?: string;
+  endTime?: string;
   notes?: string;
   license?: any;
   insurance?: any;

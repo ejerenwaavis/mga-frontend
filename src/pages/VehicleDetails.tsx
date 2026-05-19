@@ -12,14 +12,19 @@ import { vehicleImages, getOptimizedImageUrl } from "@/data/vehicleImages";
 export default function VehicleDetails() {
   const { vehicleId } = useParams<{ vehicleId: string }>();
   const vehicle = vehicles.find((v) => v.id === vehicleId);
+  const vehicleTitle = vehicle
+    ? vehicle.name.includes(vehicle.year.toString())
+      ? vehicle.name
+      : `${vehicle.year} ${vehicle.name}`
+    : "Vehicle Details";
   // const [selectedImage, setSelectedImage] = useState(0);
 
   useSEO({
     title: vehicle
-      ? `${vehicle.year} ${vehicle.name} Rental in Atlanta | Mead Green Autos`
+      ? `${vehicleTitle} Rental in Atlanta | Mead Green Autos`
       : "Vehicle Details | Mead Green Autos",
     description: vehicle
-      ? `Rent the ${vehicle.year} ${vehicle.name} in , Atlanta. ${vehicle.highlight}. From $${vehicle.pricePerDay}/day. Airport-ready, insured, 24/7 availability.`
+      ? `Rent the ${vehicleTitle} in Atlanta. ${vehicle.highlight}. From $${vehicle.pricePerDay}/day. Airport-ready, insured, 24/7 availability.`
       : "Premium vehicle rental in Atlanta, GA.",
     canonical: vehicle
       ? `https://meadgreenautos.com/fleet/${vehicle.id}`
@@ -45,24 +50,17 @@ export default function VehicleDetails() {
 
 
 
-  const policies = [
-    { icon: CreditCard, label: "Deposit", value: vehicle.deposit },
-    { icon: ShieldCheck, label: "Insurance", value: vehicle.insuranceRequirement },
-    { icon: UserCheck, label: "ID Verification", value: "Valid driver's license and identity verification required prior to pickup." },
-  ];
-
   const gallerySlots = [
-    { label: "Exterior — Front", type: "exterior" },
-    { label: "Exterior — Side", type: "exterior" },
-    { label: "Exterior — Rear", type: "exterior" },
-    { label: "Interior — Dashboard", type: "interior" },
-    { label: "Interior — Cabin", type: "interior" },
-    { label: "Interior — Rear Seats", type: "interior" },
+    { label: "Cover Image", key: "Cover Image", fallback: "Exterior — Front" },
+    { label: "Front 3/4", key: "Front 3/4", fallback: "Exterior — Front" },
+    { label: "Rear 3/4", key: "Rear 3/4", fallback: "Exterior — Rear" },
+    { label: "Wheels", key: "Wheels", fallback: "Exterior — Side" },
+    { label: "Dashboard", key: "Dashboard", fallback: "Interior — Dashboard" },
+    { label: "Front Seats", key: "Front Seats", fallback: "Interior — Cabin" },
   ];
 
   const [selectedSlot, setSelectedSlot] = useState(gallerySlots[0]);
-  // const displayImage = carImages[selectedSlot.label];
-  const rawDisplay = carImages[selectedSlot.label];
+  const rawDisplay = carImages[selectedSlot.key] ?? carImages[selectedSlot.fallback];
 
 
   const displayImage = rawDisplay
@@ -112,12 +110,12 @@ export default function VehicleDetails() {
                 {/* Thumbnail grid */}
                 <div className="grid grid-cols-3 gap-3">
                   {gallerySlots.map((slot) => {
-                    const rawSlot = carImages[slot.label];
+                    const rawSlot = carImages[slot.key] ?? carImages[slot.fallback];
                     // Use the "thumbnail" size (320px WebP) for grid slots
                     const slotImage = rawSlot
                       ? getOptimizedImageUrl(rawSlot, "thumbnail")
                       : undefined;
-                    const isActive = selectedSlot.label === slot.label;
+                    const isActive = selectedSlot.key === slot.key;
 
                     return (
                       <div
@@ -160,21 +158,8 @@ export default function VehicleDetails() {
                   {vehicle.year} {vehicle.name}
                 </h1> */}
                 <h1 className="mt-1 text-white font-serif text-3xl font-semibold md:text-4xl">
-                  {vehicle.name}
+                  {vehicleTitle}
                 </h1>
-
-                {/* Quick Facts strip */}
-                <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 rounded-sm border border-border bg-stone px-4 py-3 text-xs font-sans text-muted-foreground">
-                  <span><span className="font-semibold text-foreground">{vehicle.seats}</span> Seats</span>
-                  <span className="text-border">·</span>
-                  <span><span className="font-semibold text-">{vehicle.luggage}</span> Bags</span>
-                  <span className="text-border">·</span>
-                  <span>Automatic</span>
-                  <span className="text-border">·</span>
-                  <span>Gasoline</span>
-                  <span className="text-border">·</span>
-                  <span>{vehicle.category}</span>
-                </div>
 
                 <div className="mt-5 flex flex-wrap gap-6 border-b border-border pb-5">
                   <div className="flex items-center gap-2 text-sm">
@@ -193,7 +178,7 @@ export default function VehicleDetails() {
                   </Link>
                   <a href={TURO_URL} target="_blank" rel="noopener noreferrer">
                     <Button variant="gold" size="sm" className="w-full text-xs text-white hover:text-foreground">
-                      BOOK ON TURO (Daily rentals only)
+                      BOOK ON TURO
                     </Button>
                   </a>
                   <p className="text-[10px] text-white text-center">
@@ -201,35 +186,20 @@ export default function VehicleDetails() {
                   </p>
                 </div>
 
-                <div className="mt-8">
+                <div className="mt-6 rounded-sm border border-border/60 bg-stone p-4">
                   <h2 className="font-serif text-lg font-semibold text-white">Overview</h2>
-                  <p className="mt-2 text-sm leading-relaxed text-white">
+                  <p className="mt-3 text-sm leading-relaxed text-black">
                     {vehicle.overview}
                   </p>
-                </div>
-
-                {/* Why choose this vehicle */}
-                <div className="mt-6 rounded-sm border border-border/60 bg-stone p-4">
-                  <h2 className="text-xs font-sans font-semibold uppercase tracking-widest text-muted-foreground mb-3">Why this vehicle</h2>
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary" />
-                      Airport-ready with meet-and-greet service available
-                    </li>
-                    <li className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary" />
-                      Inspected and detailed before every rental
-                    </li>
-                    <li className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary" />
-                      Flexible terms — daily, long-term, and corporate options
-                    </li>
-                  </ul>
                 </div>
 
                 <div className="mt-8">
                   <h2 className="font-serif text-lg font-semibold text-white">Features</h2>
                   <ul className="mt-3 grid grid-cols-2 gap-2">
+                    <li key="seats" className="flex items-start gap-2 text-sm text-white">
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-gold" />
+                      {vehicle.seats} Seats
+                    </li>
                     {vehicle.features.map((f) => (
                       <li key={f} className="flex items-start gap-2 text-sm text-white">
                         <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-gold" />
@@ -241,35 +211,6 @@ export default function VehicleDetails() {
               </div>
             </FadeIn>
           </div>
-
-          {/* Policies */}
-          <FadeIn>
-            <div className="mt-16 rounded border border-border bg-card p-8">
-              <h2 className="font-serif text-xl font-semibold">
-                Policies for This Vehicle
-              </h2>
-              <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {policies.map((p) => (
-                  <div key={p.label} className="flex gap-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-sm bg-primary/10">
-                      <p.icon className="h-4 w-4 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-sm font-semibold">{p.label}</h3>
-                      <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                        {p.value}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </FadeIn>
-
-          {/* Bottom CTAs */}
-          <FadeIn>
-            <CTAGroup className="mt-12" />
-          </FadeIn>
         </div>
       </section >
     </>

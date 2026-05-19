@@ -7,7 +7,6 @@ import Index from "./pages/Index";
 import Fleet from "./pages/Fleet";
 import VehicleDetails from "./pages/VehicleDetails";
 import Services from "./pages/Services";
-import PrivateInquiry from "./pages/PrivateInquiry";
 import About from "./pages/About";
 import FAQ from "./pages/Faq";
 import Contact from "./pages/Contact";
@@ -56,7 +55,6 @@ export function App() {
           <Route path="/fleet" element={<Fleet />} />
           <Route path="/fleet/:vehicleId" element={<VehicleDetails />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/private-inquiry" element={<PrivateInquiry />} />
           <Route path="/about" element={<About />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
