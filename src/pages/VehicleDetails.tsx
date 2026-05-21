@@ -51,12 +51,12 @@ export default function VehicleDetails() {
 
 
   const gallerySlots = [
-    { label: "Cover Image", key: "Cover Image", fallback: "Exterior — Front" },
+    // { label: "Cove{r Image", key: "Cover Image", fallback: "Exterior — Front" },
     { label: "Front 3/4", key: "Front 3/4", fallback: "Exterior — Front" },
     { label: "Rear 3/4", key: "Rear 3/4", fallback: "Exterior — Rear" },
-    { label: "Wheels", key: "Wheels", fallback: "Exterior — Side" },
+    { label: "Wheels", key: "Wheels", fallback: "Exterior — Wheel" },
     { label: "Dashboard", key: "Dashboard", fallback: "Interior — Dashboard" },
-    { label: "Front Seats", key: "Front Seats", fallback: "Interior — Cabin" },
+    { label: "Front Seats", key: "Front Seats", fallback: "Interior — Rear-Seats" },
   ];
 
   const [selectedSlot, setSelectedSlot] = useState(gallerySlots[0]);
