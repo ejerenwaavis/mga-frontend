@@ -1,5 +1,6 @@
 import manifest from "./vehicleImageManifest.json";
 
+//includes updated images for all vehicles
 export const vehicleImages: Record<string, Record<string, string>> = {
   "mercedes-gle-2024": {
     "Exterior — Front": "/vehicles/mercedes-benz-amg-gle-53-coupe-front-view.jpg",
@@ -8,6 +9,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Dashboard": "/vehicles/mercedes-benz-amg-gle-53-dash-board-interior-image.jpg",
     "Interior — Rear-Seats": "/vehicles/mercedes-benz-amg-gle-53-seats-image.jpg",
   },
+
   "chevrolet-corvette-2025": {
     "Exterior — Front": "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-front-view.png",
     "Exterior — Rear": "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-rear-view.jpg",
@@ -15,6 +17,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Dashboard": "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-dash-board-interior-image.jpg",
     "Interior — Rear-Seats": "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-seats-image.jpg",
   },
+
   "porsche-cayenne-2023": {
     "Exterior — Front": "/vehicles/porsche-cayenne-2023-front-view.jpg",
     "Exterior — Rear": "/vehicles/porsche-cayenne-2023-rear-view.jpg",
@@ -22,6 +25,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Dashboard": "/vehicles/porsche-cayenne-2023-dash-board-interior-image.jpg",
     "Interior — Rear-Seats": "/vehicles/porsche-cayenne-2023-seats-image.jpg",
   },
+
   "bmw-x6-2022": {
     "Exterior — Front": "/vehicles/bmw-x6-xdrive40i-2022-front-view.jpg",
     "Exterior — Rear": "/vehicles/bmw-x6-xdrive40i-2022-rear-view.jpg",
@@ -29,6 +33,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Dashboard": "/vehicles/bmw-x6-xdrive40i-2022-dash-board-interior-image.jpg",
     "Interior — Rear-Seats": "/vehicles/bmw-x6-xdrive40i-2022-seats-image.jpg",
   },
+
   "range-rover-hse-2024": {
     "Exterior — Front": "/vehicles/range-rover-hse-updated-front.jpg",
     "Exterior — Side": "/vehicles/range-rover-hse-updated-sideview.jpg",
@@ -37,6 +42,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Cabin": "/vehicles/range-rover-hse-updated-interior-front.jpg",
     "Interior — Rear Seats": "/vehicles/range-rover-hse-updated-interior-back.jpg",
   },
+
   "mercedes-benz-glc-2025": {
     "Exterior — Front": "/vehicles/mercedes-benz-glc-300-coupe-front-view.jpg",
     "Exterior — Rear": "/vehicles/mercedes-benz-glc-300-coupe-rear-view.jpg",
@@ -44,6 +50,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Dashboard": "/vehicles/mercedes-benz-glc-300-dash-board-interior-image.jpg",
     "Interior — Rear-Seats": "/vehicles/mercedes-benz-glc-300-coupe-seats-image.jpg",
   },
+
   "porsche-mecan-2025": {
     "Exterior — Front": "/vehicles/porsche-macan-2025-front-view.jpg",
     "Exterior — Rear": "/vehicles/porsche-macan-2025-rear-view.jpg",
@@ -51,6 +58,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Dashboard": "/vehicles/porsche-macan-2025-dashboard-interior-image.jpg",
     "Interior — Rear-Seats": "/vehicles/porsche-macan-2025-seats-image.jpg",
   },
+
   "porsche-mecan-2023": {
     "Exterior — Front": "/vehicles/porsche-macan-2023-front-view.jpg",
     "Exterior — Rear": "/vehicles/porsche-macan-2023-rear-view.jpg",
@@ -58,6 +66,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Dashboard": "/vehicles/porsche-macan-2023-dash-board-interior-image.jpg",
     "Interior — Rear-Seats": "/vehicles/porsche-macan-2023-seats-image.jpg",
   },
+
   "kia-telluride": {
     "Exterior — Front": "/vehicles/kia-telluride-ex-2022-front-view.jpg",
     "Exterior — Rear": "/vehicles/kia-telluride-ex-2022-rear-view.jpg",
@@ -65,6 +74,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Dashboard": "/vehicles/kia-telluride-ex-2022-dash-board-interior-image.jpg",
     "Interior — Rear-Seats": "/vehicles/kia-telluride-ex-2022-seats-image.jpg",
   },
+
   "mercedes-benz-glc-2022": {
     "Exterior — Front": "/vehicles/mercedes-benz-glc-300-2022-front-view.jpg",
     "Exterior — Rear": "/vehicles/mercedes-benz-glc-300-2022-rear-view.jpg",
@@ -72,6 +82,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Dashboard": "/vehicles/mercedes-benz-glc-300-2022-dash-board-interior-image.jpg",
     "Interior — Rear-Seats": "/vehicles/mercedes-benz-glc-300-2022-seats-image.jpg",
   },
+
   "bmw-3-series-2023": {
     "Exterior — Front": "/vehicles/bmw-330i-2023-front-view.jpg",
     "Exterior — Rear": "/vehicles/bmw-330i-2023-rear-view.jpg",
@@ -79,6 +90,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Dashboard": "/vehicles/bmw-330i-2023-dash-board-interior-image.jpg",
     "Interior — Rear-Seats": "/vehicles/bmw-330i-2023-seats-image.jpg",
   },
+
   "ford-explorer-2023": {
     "Exterior — Front": "/vehicles/ford-explorer-xlt-2023-front-view.jpg",
     "Exterior — Rear": "/vehicles/ford-explorer-xlt-2023-rear-view.jpg",
@@ -86,6 +98,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Dashboard": "/vehicles/ford-explorer-xlt-2023-dash-board-interior-image.jpg",
     "Interior — Rear-Seats": "/vehicles/ford-explorer-xlt-2023-seats-image.jpg",
   },
+
   "ford-bronco-sport-2024": {
     "Exterior — Front": "/vehicles/ford-bronco-sport-outer-banks-2024-front-view.jpg",
     "Exterior — Rear": "/vehicles/ford-bronco-sport-outer-banks-2024-rear-view.jpg",
@@ -93,6 +106,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Dashboard": "/vehicles/ford-bronco-sport-outer-banks-2024-dash-board-interior-image.jpg",
     "Interior — Rear-Seats": "/vehicles/ford-bronco-sport-outer-banks-2024-seats-image.jpg",
   },
+
   "kia-sorento-2025": {
     "Exterior — Front": "/vehicles/kia-sorento-s-2025-front-view.jpg",
     "Exterior — Rear": "/vehicles/kia-sorento-s-2025-rear-view.jpg",
@@ -108,6 +122,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Dashboard": "/vehicles/kia-gt-line-2025-dash-board-interior-image.jpg",
     "Interior — Rear-Seats": "/vehicles/kia-gt-line-2025-seats-image.jpg",
   },
+
   "mercedes-benz-glc-2024": {
     "Exterior — Front": "/vehicles/mercedes-benz-glc-300-front-view.jpg",
     "Exterior — Rear": "/vehicles/mercedes-benz-glc-300-rear-view.jpg",
