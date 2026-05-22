@@ -251,7 +251,7 @@ export default function Index() {
 
               {/* Right Side: Image */}
               <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                <div className="w-full max-w-md aspect-[16/9] rounded-lg shadow-2xl overflow-hidden">
+                <div className="w-full h-full aspect-[16/9] rounded-lg shadow-2xl overflow-hidden">
                   <img
                     src="/vehicles/WELCOME_TO_MGA.jpg"
                     alt="Welcome to Mead Green Autos"
