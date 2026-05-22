@@ -51,7 +51,7 @@ export default function VehicleDetails() {
 
 
   const gallerySlots = [
-    // { label: "Cove{r Image", key: "Cover Image", fallback: "Exterior — Front" },
+    // { label: "Cover Image", key: "Cover Image", fallback: "Exterior — Front" },
     { label: "Front 3/4", key: "Front 3/4", fallback: "Exterior — Front" },
     { label: "Rear 3/4", key: "Rear 3/4", fallback: "Exterior — Rear" },
     { label: "Wheels", key: "Wheels", fallback: "Exterior — Wheel" },
