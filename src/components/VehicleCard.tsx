@@ -10,7 +10,7 @@ interface VehicleCardProps {
 }
 
 export default function VehicleCard({ vehicle }: VehicleCardProps) {
-  const image = vehicleImages[vehicle.id]?.["Exterior — Front"];
+  const image = vehicleImages[vehicle.id]?.["Cover Image"];
 
   const displayImage = image
     ? getOptimizedImageUrl(image, "display")

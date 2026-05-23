@@ -51,7 +51,7 @@ export default function VehicleDetails() {
 
 
   const gallerySlots = [
-    // { label: "Cover Image", key: "Cover Image", fallback: "Exterior — Front" },
+    { label: "Cover Image", key: "Cover Image", fallback: "Cover Image" },
     { label: "Front 3/4", key: "Front 3/4", fallback: "Exterior — Front" },
     { label: "Rear 3/4", key: "Rear 3/4", fallback: "Exterior — Rear" },
     { label: "Wheels", key: "Wheels", fallback: "Exterior — Wheel" },
@@ -187,7 +187,7 @@ export default function VehicleDetails() {
                 </div>
 
                 <div className="mt-6 rounded-sm border border-border/60 bg-stone p-4">
-                  <h2 className="font-serif text-lg font-semibold text-white">Overview</h2>
+                  <h2 className="font-serif text-lg font-semibold text-[#005D36]">Overview</h2>
                   <p className="mt-3 text-sm leading-relaxed text-black">
                     {vehicle.overview}
                   </p>
