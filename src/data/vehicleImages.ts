@@ -146,6 +146,15 @@ export const vehicleImages: Record<string, Record<string, string>> = {
     "Interior — Dashboard": "/vehicles/mercedes-benz-glc-300-dash-board-interior-image.jpg",
     "Interior — Rear-Seats": "/vehicles/mercedes-benz-glc-300-seats-image.jpg",
   },
+
+  "mercedes-benz-e-350-2024": {
+    "Cover Image": "/vehicles/mercedes-benz-e-350-2024-cover-image.png",
+    "Exterior — Front": "/vehicles/mercedes-benz-e-350-2024-front-view.jpg",
+    "Exterior — Rear": "/vehicles/mercedes-benz-e-350-2024-rear-view.jpg",
+    "Exterior — Wheel": "/vehicles/mercedes-benz-e-350-2024-close-up-wheel-image.jpg",
+    "Interior — Dashboard": "/vehicles/mercedes-benz-e-350-2024-dash-board-interior-image.jpg",
+    "Interior — Rear-Seats": "/vehicles/mercedes-benz-e-350-2024-seats-image.jpg",
+  },
 };
 
 
