@@ -628,75 +628,58 @@ export default function Contact() {
             </FadeIn>
 
             <FadeIn delay={0.15}>
-              <div className="space-y-8">
-                <div>
-                  <h2 className="font-serif text-xl text-white font-semibold">
-                    Direct Contact
-                  </h2>
-                  <div className="mt-4 space-y-3">
-                    <a
-                      href={`tel:${PHONE.replace(/[^+\d]/g, "")}`}
-                      className="flex items-center gap-3 text-sm text-white hover:text-foreground transition-colors"
-                    >
-                      <Phone className="h-4 w-4 text-primary" />
-                      {PHONE}
-                    </a>
-                    <a
-                      href={`mailto:${EMAIL}`}
-                      className="flex items-center gap-3 text-sm text-white hover:text-foreground transition-colors"
-                    >
-                      <Mail className="h-4 w-4 text-primary" />
-                      {EMAIL}
-                    </a>
-                    <div className="flex items-center gap-3 text-sm text-white">
-                      <MapPin className="h-4 w-4 text-primary" />
-                      {ADDRESS}
-                    </div>
-                    {/* <div className="flex items-center gap-3 text-sm text-white">
-                      <Clock className="h-4 w-4 text-primary" />
-                      Open 7 days a week
-                    </div> */}
-                  </div>
-                  <div className="mt-4 flex flex-wrap gap-3 text-white">
-                    <a href={MAPS_URL} target="_blank" rel="noopener noreferrer">
-                      <Button variant="premiumOutline" size="sm" className="text-white">
-                        Get Directions
-                      </Button>
-                    </a>
-                  </div>
-                </div>
+  <div className="space-y-8">
 
-                {/* <div className="rounded border border-border bg-card p-6">
-                  <h3 className="font-serif text-base font-semibold">
-                    Service Area
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    We primarily serve the greater Atlanta area with convenient
-                    pickup and drop-off near Hartsfield-Jackson Atlanta
-                    International Airport. Alternative arrangements may be
-                    available upon request.
-                  </p>
-                </div> */}
-              </div>
-            </FadeIn>
-          </div>
+    {/* Direct Contact — unchanged */}
+    <div>
+      <h2 className="font-serif text-xl text-white font-semibold">
+        Direct Contact
+      </h2>
+      <div className="mt-4 space-y-3">
+        <a
+          href={`tel:${PHONE.replace(/[^+\d]/g, "")}`}
+          className="flex items-center gap-3 text-sm text-white hover:text-foreground transition-colors"
+        >
+          <Phone className="h-4 w-4 text-primary" />
+          {PHONE}
+        </a>
+        <a
+          href={`mailto:${EMAIL}`}
+          className="flex items-center gap-3 text-sm text-white hover:text-foreground transition-colors"
+        >
+          <Mail className="h-4 w-4 text-primary" />
+          {EMAIL}
+        </a>
+        <div className="flex items-center gap-3 text-sm text-white">
+          <MapPin className="h-4 w-4 text-primary" />
+          {ADDRESS}
         </div>
-      </section>
+      </div>
+      <div className="mt-4 flex flex-wrap gap-3 text-white">
+        <a href={MAPS_URL} target="_blank" rel="noopener noreferrer">
+          <Button variant="premiumOutline" size="sm" className="text-white">
+            Get Directions
+          </Button>
+        </a>
+      </div>
+    </div>
 
-      {/* Full width map section - reduced height */}
-      <section className="pb-12 md:pb-16">
-        <div className="container">
-          <div className="aspect-[4/2] w-full overflow-hidden rounded border border-border">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3322.2711608896607!2d-84.4736799!3d33.6242105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f4e30394d673e3%3A0xa2f5da71d3f0eff1!2s4814%20Old%20National%20Hwy%2C%20Atlanta%2C%20GA%3030337%2C%20USA!5e0!3m2!1sen!2sng!4v1776526361183!5m2!1sen!2sng"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Mead Green Autos — Atlanta"
-            />
+    {/* Map — moved here from the standalone section below */}
+    <div className="aspect-[4/3] w-full overflow-hidden rounded border border-border">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3322.2711608896607!2d-84.4736799!3d33.6242105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f4e30394d673e3%3A0xa2f5da71d3f0eff1!2s4814%20Old%20National%20Hwy%2C%20Atlanta%2C%20GA%3030337%2C%20USA!5e0!3m2!1sen!2sng!4v1776526361183!5m2!1sen!2sng"
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        title="Mead Green Autos — Atlanta"
+      />
+    </div>
+
+  </div>
+</FadeIn>
           </div>
         </div>
       </section>
