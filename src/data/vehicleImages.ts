@@ -3,7 +3,7 @@ import manifest from "./vehicleImageManifest.json";
 //includes updated images for all vehicles
 export const vehicleImages: Record<string, Record<string, string>> = {
   "mercedes-gle-2024": {
-    "Cover Image": "/vehicles/mercedes-benz-amg-gle-53-coupe-cover-image.png",
+    "Cover Image": "/vehicles/mercedes-benz-amg-gle-53-coupe-cover-image.jpeg",
     "Exterior — Front": "/vehicles/mercedes-benz-amg-gle-53-coupe-front-view.jpg",
     "Exterior — Rear": "/vehicles/mercedes-benz-amg-gle-53-coupe-rear-view.jpg",
     "Exterior — Wheel": "/vehicles/mercedes-benz-amg-gle-53-coupe-close-up-wheel-image.jpg",
