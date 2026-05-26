@@ -14,7 +14,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
   "chevrolet-corvette-2025": {
     "Cover Image": "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-cover-image.png",
     "Exterior — Front": "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-front-view.png",
-    "Exterior — Rear": "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-rear-view.jpg",
+    "Exterior — Rear": "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-rear-view.jpeg",
     "Exterior — Wheel": "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-close-up-wheel-image.jpg",
     "Interior — Dashboard": "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-dash-board-interior-image.jpg",
     "Interior — Rear-Seats": "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-seats-image.jpg",

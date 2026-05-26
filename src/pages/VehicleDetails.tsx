@@ -162,7 +162,7 @@ export default function VehicleDetails() {
                 </h1>
 
                 <div className="mt-5 flex flex-wrap gap-6 border-b border-border pb-5">
-                  <div className="flex items-center gap-2 text-sm">
+                  <div className="flex items-center text-sm">
                     <Tag className="h-4 w-4 text-gold" />
                     <span className="font-semibold text-white">${vehicle.pricePerDay}</span>
                     <span className="text-white">/day</span>
