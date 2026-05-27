@@ -44,7 +44,7 @@ const FAQSection = () => {
                             Ready to Reserve Your Vehicle?
                         </h2>
                         <p className="mx-auto mt-3 max-w-md text-sm text-white/90">
-                            Select the rental option that works best for your schedule and travel plans.
+                            Select the rental option that works best for your schedule and travel plans
                         </p>
                         <CTAGroup className="mt-8" />
                     </FadeIn>

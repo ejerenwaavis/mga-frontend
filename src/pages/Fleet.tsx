@@ -15,11 +15,12 @@ export default function Fleet() {
   const [category, setCategory] = useState<string>("All");
 
   const filtered = useMemo(
-    () =>
-      category === "All"
-        ? vehicles
-        : vehicles.filter((v) => v.category === category),
-    [category]
+  () =>
+    (category === "All"
+      ? vehicles
+      : vehicles.filter((v) => v.category === category)
+    ).sort((a, b) => b.pricePerDay - a.pricePerDay),
+  [category]
   );
 
   return (
