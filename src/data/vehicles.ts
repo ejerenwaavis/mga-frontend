@@ -114,7 +114,7 @@ export const vehicles: Vehicle[] = [
     overview: "The 2025 Mercedes-Benz GLC 300 Coupe blends sleek coupe-inspired styling with modern luxury and everyday SUV practicality. Featuring the AMG Line and Night Package, this GLC Coupe delivers a sporty and refined driving experience with premium interior finishes, smooth turbocharged performance, and signature Mercedes-Benz comfort throughout. Whether you’re traveling for business, heading to the airport, or enjoying a night out in Atlanta, the GLC Coupe offers upscale styling and comfort with unmistakable road presence.",
     deposit: "$750 refundable deposit",
     insuranceRequirement: "Full coverage required; premium policy recommended",
-    turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/mercedes-benz/glc-class/1947668"
+    turoURL: "https://turo.com/us/en/suv-rental/united-states/atlanta-ga/mercedes-benz/glc-class/3361316?endDate=06%2F15%2F2026&endTime=10%3A00&startDate=06%2F12%2F2026&startTime=10%3A00"
   },
   {
     id: "porsche-mecan-2025",

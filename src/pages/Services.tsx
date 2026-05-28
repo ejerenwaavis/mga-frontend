@@ -32,7 +32,7 @@ const serviceTypes = [
     title: "Standard Rental",
     description:
       "Premium vehicles with transparent pricing, flexible rental terms, and professionally maintained standards for everyday rental needs.",
-    image: "/vehicles/COVER-IMAGE-Porsche-Cayenne-2023.png",
+    image: "/vehicles/standard-rental-cover-image.jpeg",
     imagePosition: "left"
   },
   {
@@ -41,7 +41,7 @@ const serviceTypes = [
     title: "Custom Delivery",
     description:
       "Vehicle delivery and pickup tailored to your location and schedule throughout Atlanta for added convenience.",
-    image: "/vehicles/COVER-IMAGE-TURO-2022-KIA-TELLURIDE.png",
+    image: "/vehicles/custom-delivery-cover-image.jpeg",
     imagePosition: "right"
   },
   {
@@ -50,7 +50,7 @@ const serviceTypes = [
     title: "Corporate Service",
     description:
       "Professional rental solutions for employee travel, client transportation, and short-term business vehicle needs.",
-    image: "/vehicles/COVER-IMAGE-TURO-2024-FORD-BRONCO-SPORT.png",
+    image: "/vehicles/corporate-services-cover-image.jpeg",
     imagePosition: "left"
   },
 ];

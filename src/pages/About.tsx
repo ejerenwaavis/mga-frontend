@@ -13,7 +13,7 @@ export default function About() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/vehicles/Porsche-Cayenne-2023-Side-Ext.png"
+            src="/vehicles/about-hero-image.jpeg"
             alt="Luxury Fleet"
             className="h-full w-full object-cover"
           />
@@ -93,8 +93,8 @@ export default function About() {
           <div className="w-full md:w-1/2">
             <FadeIn delay={0.2}>
               <img
-                src="/vehicles/COVER-IMAGE-TURO-2023-PORSCHE-MACAN.png"
-                alt="Chevrolet Corvette"
+                src="/vehicles/our-story-cover-image.jpeg"
+                alt="Porsche Macan"
                 className="rounded-lg shadow-2xl w-full object-cover aspect-[4/3]"
               />
             </FadeIn>
