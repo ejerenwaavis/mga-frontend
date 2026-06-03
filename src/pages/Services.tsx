@@ -47,7 +47,7 @@ const serviceTypes = [
   {
     id: "cooperate-service",
     icon: Sparkles,
-    title: "Corporate Service",
+    title: "Corporate Services",
     description:
       "Professional rental solutions for employee travel, client transportation, and short-term business vehicle needs.",
     image: "/vehicles/corporate-services-cover-image.jpeg",

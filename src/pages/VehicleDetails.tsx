@@ -54,7 +54,9 @@ export default function VehicleDetails() {
     { label: "Cover Image", key: "Cover Image", fallback: "Cover Image" },
     { label: "Front 3/4", key: "Front 3/4", fallback: "Exterior — Front" },
     { label: "Rear 3/4", key: "Rear 3/4", fallback: "Exterior — Rear" },
+    { label: "Side View", key: "Side View", fallback: "Exterior — Side" },
     { label: "Wheels", key: "Wheels", fallback: "Exterior — Wheel" },
+    { label: "Detail Shot", key: "Detail Shot", fallback: "Exterior — Close-Up-Front" },
     { label: "Dashboard", key: "Dashboard", fallback: "Interior — Dashboard" },
     { label: "Front Seats", key: "Front Seats", fallback: "Interior — Rear-Seats" },
   ];
