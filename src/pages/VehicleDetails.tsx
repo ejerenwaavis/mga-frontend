@@ -110,7 +110,7 @@ export default function VehicleDetails() {
                 </div>
 
                 {/* Thumbnail grid */}
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-4 gap-3">
                   {gallerySlots.map((slot) => {
                     const rawSlot = carImages[slot.key] ?? carImages[slot.fallback];
                     // Use the "thumbnail" size (320px WebP) for grid slots
