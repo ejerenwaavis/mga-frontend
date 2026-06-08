@@ -15,7 +15,7 @@ export default function About() {
           <img
             src="/vehicles/about-hero-image.jpeg"
             alt="Luxury Fleet"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-bottom"
           />
           {/* Dark Overlay to ensure text readability */}
           <div className="absolute inset-0 bg-black/60"></div>

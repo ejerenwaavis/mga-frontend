@@ -284,6 +284,7 @@ export default function Contact() {
         data.append("fullName", requestDetails.fullName);
         data.append("email", requestDetails.email);
         data.append("phone", requestDetails.phone);
+        data.append("recipientEmail", EMAIL);
         data.append("serviceType", requestDetails.serviceType);
         data.append("startDate", requestDetails.startDate);
         data.append("endDate", requestDetails.endDate);
