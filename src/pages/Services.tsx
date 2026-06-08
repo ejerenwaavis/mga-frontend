@@ -297,7 +297,7 @@ export default function Services() {
       <section className="relative overflow-hidden bg-stone py-24 md:py-32">
         <div className="absolute inset-0 z-0">
           <img
-            src="/vehicles/BMW-X6-2022-side-exterior.jpg"
+            src="/vehicles/Services-Hero.jpg"
             alt="Luxury Fleet"
             className="h-full w-full object-cover"
           />

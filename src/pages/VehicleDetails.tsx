@@ -184,7 +184,7 @@ export default function VehicleDetails() {
                     </Button>
                   </a>
                   <p className="text-[10px] text-white text-center">
-                    BOOK DIRECT: rentals, airport services, custom delivery & corporate services
+                    BOOK DIRECT: Standard Rentals, Airport Service, Custom Delivery & Corporate Rentals
                   </p>
                 </div>
 
