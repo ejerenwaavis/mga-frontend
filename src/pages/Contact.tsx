@@ -358,7 +358,7 @@ export default function Contact() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/vehicles/contact-hero-image.jpeg"
+            src="/vehicles/contact-hero-image.jpg"
             alt="Luxury Fleet"
             className="h-full w-full object-cover"
           />

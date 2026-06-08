@@ -29,7 +29,7 @@ export default function Fleet() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/vehicles/Chevrolet-Corvette-side-ext.jpeg"
+            src="/vehicles/fleet-hero-image.jpg"
             alt="Luxury Fleet"
             className="h-full w-full object-cover"
           />

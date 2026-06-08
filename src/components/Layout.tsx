@@ -41,10 +41,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <main className="flex-1">{children}</main>
       
       {/* Wrapper with background image from FAQ section to Footer */}
-      <div 
+      <div
         className="relative overflow-hidden"
         style={{
-          backgroundImage: `linear-gradient(rgba(2, 34, 19, 0.80), rgba(2, 34, 19, 0.85)), url('/back/nat4pro.jpg')`,
+          backgroundImage: `linear-gradient(rgba(2, 34, 19, 0.80), rgba(2, 34, 19, 0.85)), url('/vehicles/home-faq-image.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
