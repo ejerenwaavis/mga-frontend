@@ -163,7 +163,7 @@ export default function Index() {
         <img
           src="/vehicles/MGA_HERO.jpg"
           alt="Mead Green Autos hero background"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-bottom"
         />
         <div className="absolute inset-0 bg-secondary/55" />
         <div className="relative z-10 container text-center">

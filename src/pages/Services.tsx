@@ -299,7 +299,7 @@ export default function Services() {
           <img
             src="/vehicles/Services-Hero.jpg"
             alt="Luxury Fleet"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-bottom"
           />
           <div className="absolute inset-0 bg-black/60"></div>
         </div>

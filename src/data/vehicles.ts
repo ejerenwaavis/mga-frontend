@@ -217,7 +217,7 @@ export const vehicles: Vehicle[] = [
 
   {
     id: "bmw-3-series-2023",
-    name: "BMW 330i",
+    name: "BMW 3 Series",
     year: 2023,
     category: "Sedan",
     pricePerDay:150,
