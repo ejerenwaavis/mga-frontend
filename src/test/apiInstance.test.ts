@@ -17,9 +17,9 @@ describe("resolveApiBaseUrl", () => {
   it("prefers an explicit environment override when one is provided", () => {
     expect(
       resolveApiBaseUrl(
-        { VITE_API_BASE_URL: "https://api.example.com/v1" } as Record<string, string | undefined>,
+        { VITE_API_BASE_URL: "https://monkfish-app-en3sj.ondigitalocean.app/api/v1" } as Record<string, string | undefined>,
         { hostname: "meadgreenautos.com" } as Location
       )
-    ).toBe("https://api.example.com/v1");
+    ).toBe("https://monkfish-app-en3sj.ondigitalocean.app/api/v1");
   });
 });
