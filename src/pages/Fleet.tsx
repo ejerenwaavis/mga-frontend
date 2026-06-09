@@ -52,12 +52,12 @@ export default function Fleet() {
       <section className="py-12 md:py-16">
         <div className="container">
           <FadeIn>
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap pb-1">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setCategory(cat)}
-                  className={`rounded-sm px-4 py-2 text-xs font-sans font-medium uppercase tracking-widest transition-colors ${
+                  className={`shrink-0 rounded-sm px-3 py-2 text-[11px] font-sans font-medium uppercase tracking-widest transition-colors sm:px-4 sm:text-xs ${
                     category === cat
                       ? "bg-primary text-primary-foreground"
                       : "bg-muted text-muted-foreground hover:bg-muted/80"

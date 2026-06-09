@@ -183,25 +183,25 @@ export default function Index() {
 
       {/* Trust strip */}
       <div className="border-b border-border bg-card">
-        <div className="container px-4 md:px-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 py-3 text-[13.5px] font-sans tracking-wide text-muted-foreground">
-          <span>Trusted by hundreds of 5-star trips</span>
+        <div className="container px-4 md:px-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 py-3 text-[12px] sm:text-[13.5px] font-sans tracking-wide text-muted-foreground">
+          <span className="whitespace-nowrap">Trusted by hundreds of 5-star trips</span>
           <span className="hidden sm:inline text-border">|</span>
 
-          <span>Seamless airport pickup</span>
+          <span className="whitespace-nowrap">Seamless airport pickup</span>
           <span className="hidden sm:inline text-border">|</span>
 
-          <span>Flexible delivery across Atlanta</span>
+          <span className="whitespace-nowrap">Flexible delivery across Atlanta</span>
           <span className="hidden sm:inline text-border">|</span>
 
           <a
             href="tel:+14708176427"
-            className="hover:text-primary transition-colors duration-150"
+            className="whitespace-nowrap hover:text-primary transition-colors duration-150"
           >
             (470) 817-6427
           </a>
           <span className="hidden sm:inline text-border">|</span>
 
-          <span>4814 Old National Hwy</span>
+          <span className="whitespace-nowrap">4814 Old National Hwy</span>
         </div>
       </div>
 
