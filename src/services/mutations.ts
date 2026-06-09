@@ -116,9 +116,29 @@ export const searchTripByDate = async (details: SearchTripByDateDetails) => {
 };
 
 export const submitRequest = async (details: any) => {
+  try {
+    const { data } = await apiInstance.post("/submit-request", details);
+    return { data };
+  } catch (error) {
+    const fallbackEndpoint =
+      import.meta.env.VITE_FORM_ENDPOINT ||
+      import.meta.env.VITE_FORMSUBMIT_ENDPOINT ||
+      "https://monkfish-app-en3sj.ondigitalocean.app/api/v1/submit-request";
 
-  const { data } = await apiInstance.post("/submit-request", details);
-  return { data };
+    const response = await fetch(fallbackEndpoint, {
+      method: "POST",
+      body: details instanceof FormData ? details : JSON.stringify(details),
+      headers: details instanceof FormData ? undefined : { "Content-Type": "application/json" },
+    });
+
+    if (!response.ok) {
+      const responseText = await response.text();
+      throw new Error(responseText || "Unable to submit request right now.");
+    }
+
+    const fallbackData = await response.json().catch(() => ({ success: true }));
+    return { data: fallbackData };
+  }
 };
 
 export const rescheduleBooking = async (details: RescheduleBooking) => {

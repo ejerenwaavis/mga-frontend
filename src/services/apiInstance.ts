@@ -1,14 +1,39 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance, InternalAxiosRequestConfig } from 'axios';
 
 import { removeUserFromLocalStorage } from "../lib/helpers";
 import useUserStore from "../hooks/store/userStore";
 
-const { VITE_DEV_BASE_URL } = import.meta.env;
+const LOCAL_DEV_BASE_URL = "http://localhost:8080/api/v1";
+const DEFAULT_PROD_BASE_URL = "https://monkfish-app-en3sj.ondigitalocean.app/api/v1";
 
-export const BASE_URL = VITE_DEV_BASE_URL;
+type EnvLike = Record<string, string | undefined>;
+type LocationLike = { hostname?: string };
+
+export const resolveApiBaseUrl = (
+  env: EnvLike = import.meta.env,
+  location: LocationLike | undefined = typeof window !== "undefined" ? window.location : undefined
+) => {
+  const configuredUrl = env.VITE_API_BASE_URL || env.VITE_DEV_BASE_URL;
+
+  if (configuredUrl) {
+    return configuredUrl;
+  }
+
+  const hostname = location?.hostname?.toLowerCase() || "";
+
+  if (hostname === "localhost" || hostname === "127.0.0.1" || hostname.endsWith(".local")) {
+    return LOCAL_DEV_BASE_URL;
+  }
+
+  return DEFAULT_PROD_BASE_URL;
+};
+
+const API_BASE_URL = resolveApiBaseUrl();
+
+export const BASE_URL = API_BASE_URL;
 
 export const apiInstance: AxiosInstance = axios.create({
-  baseURL: VITE_DEV_BASE_URL,
+  baseURL: API_BASE_URL,
   timeout: 30000,
   withCredentials: true
   // headers: {

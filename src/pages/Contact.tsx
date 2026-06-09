@@ -343,11 +343,12 @@ export default function Contact() {
       },
       onError: (error: any) => {
         console.log(error);
-        toast.error(
-          error.response
-            ? error.response?.data?.message
-            : error.message
-        );
+        const errorMessage =
+          error?.response?.data?.message ||
+          error?.message ||
+          "We couldn't send your request right now. Please call (470) 817-6427.";
+
+        toast.error(errorMessage);
       },
     });
 
@@ -359,7 +360,7 @@ export default function Contact() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/vehicles/contact-hero-image.jpg"
+            src="/vehicles/contact-hero-image.webp"
             alt="Luxury Fleet"
             className="h-full w-full object-cover"
           />
@@ -517,7 +518,7 @@ export default function Contact() {
                         type="date" 
                         disabled={isLoading} 
                         required 
-                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
+                        className="w-full min-w-0 appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
                       />
                       {errors.startDate && <p className="text-xs text-red-500">{errors.startDate}</p>}
                     </div>
@@ -534,7 +535,7 @@ export default function Contact() {
                         type="date" 
                         disabled={isLoading} 
                         required 
-                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
+                        className="w-full min-w-0 appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
                       />
                       {errors.endDate && <p className="text-xs text-red-500">{errors.endDate}</p>}
                     </div>

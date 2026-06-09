@@ -44,7 +44,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div
         className="relative overflow-hidden"
         style={{
-          backgroundImage: `linear-gradient(rgba(2, 34, 19, 0.80), rgba(2, 34, 19, 0.85)), url('/vehicles/home-faq-image.jpg')`,
+          backgroundImage: `linear-gradient(rgba(2, 34, 19, 0.80), rgba(2, 34, 19, 0.85)), url('/vehicles/home-faq-image.webp')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
