@@ -193,10 +193,9 @@ export default function Index() {
           <span className="whitespace-nowrap">Flexible delivery across Atlanta</span>
           <span className="hidden sm:inline text-border">|</span>
 
-          <a
-            href="tel:+14708176427"
-            className="whitespace-nowrap hover:text-primary transition-colors duration-150"
-          >
+  
+          <a href="tel:+14708176427"
+            className="whitespace-nowrap hover:text-primary transition-colors duration-150">
             (470) 817-6427
           </a>
           <span className="hidden sm:inline text-border">|</span>

@@ -115,6 +115,28 @@ export const searchTripByDate = async (details: SearchTripByDateDetails) => {
   return { data };
 };
 
+const normalizeFormData = (details: any) => {
+  if (details instanceof FormData) {
+    const normalized: Record<string, string> = {};
+    for (const [key, value] of details.entries()) {
+      if (value instanceof File) {
+        normalized[key] = value.name;
+      } else {
+        normalized[key] = String(value);
+      }
+    }
+    return normalized;
+  }
+
+  if (typeof details === "object" && details !== null) {
+    return Object.fromEntries(
+      Object.entries(details).map(([key, value]) => [key, String(value ?? "")])
+    );
+  }
+
+  return { payload: String(details) };
+};
+
 export const submitRequest = async (details: any) => {
   try {
     const { data } = await apiInstance.post("/submit-request", details);
@@ -123,12 +145,19 @@ export const submitRequest = async (details: any) => {
     const fallbackEndpoint =
       import.meta.env.VITE_FORM_ENDPOINT ||
       import.meta.env.VITE_FORMSUBMIT_ENDPOINT ||
-      "https://monkfish-app-en3sj.ondigitalocean.app/api/v1/submit-request";
+      "https://formsubmit.co/ajax/ceo@meadgreenautos.com";
 
+    const payload = normalizeFormData(details);
     const response = await fetch(fallbackEndpoint, {
       method: "POST",
-      body: details instanceof FormData ? details : JSON.stringify(details),
-      headers: details instanceof FormData ? undefined : { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...payload,
+        _subject: "New request from Mead Green Autos website",
+        _captcha: "false",
+      }),
     });
 
     if (!response.ok) {
