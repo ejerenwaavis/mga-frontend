@@ -218,17 +218,16 @@ export const createVehicle = async (details: {
   chassisNumber: string;
   plateNumber: string;
   engineNumber: string;
-  color: string,
+  color: string;
   hexColor: string;
   seats: [
-    { seatNumber: number, position: string },
-    { seatNumber: number, position: string },
-    { seatNumber: number, position: string },
-    { seatNumber: number, position: string },
-    { seatNumber: number, position: string },
-  ]
+    { seatNumber: number; position: string },
+    { seatNumber: number; position: string },
+    { seatNumber: number; position: string },
+    { seatNumber: number; position: string },
+    { seatNumber: number; position: string },
+  ];
 }) => {
-
   const { data } = await apiInstance.post("/createVehicle", details);
   console.log(data);
   return { data };
@@ -240,27 +239,18 @@ export const updateTrip = async (details: {
   vehicleId: string;
   price: number;
   tripId: string;
-  status: string
+  status: string;
 }) => {
   const { data } = await apiInstance.post("/updateTrip", details);
   return { data };
 };
 
-export const updateTripStatusApi = async (
-  tripId: string,
-  status: string
-) => {
-  const { data } = await apiInstance.post(`/updateTripStatus`,
-    { status, tripId }
-  );
-
+export const updateTripStatusApi = async (tripId: string, status: string) => {
+  const { data } = await apiInstance.post(`/updateTripStatus`, { status, tripId });
   return data;
 };
 
-export const cancelBooking = async (details: {
-  bookingId: string;
-  status: "cancelled";
-}) => {
+export const cancelBooking = async (details: { bookingId: string; status: "cancelled" }) => {
   const { data } = await apiInstance.post("/cancelBooking", details);
   return { data };
 };
@@ -284,9 +274,7 @@ export const updateUser = async (details: updateUserPayload) => {
   return { data };
 };
 
-export const verifyPayment = async (
-  reference: string
-): Promise<PaymentVerificationResponse> => {
+export const verifyPayment = async (reference: string): Promise<PaymentVerificationResponse> => {
   try {
     const { data } = await apiInstance.post("/verifyPayment", { reference });
     console.log(data);
@@ -298,20 +286,14 @@ export const verifyPayment = async (
     };
   } catch (error: any) {
     console.error("Payment verification failed:", error);
-    throw new Error(
-      error.response?.data?.message || "Payment verification failed"
-    );
+    throw new Error(error.response?.data?.message || "Payment verification failed");
   }
 };
 
-export const acceptPayment = async (
-  details: acceptPaymentPayload
-): Promise<acceptPaymentResponse> => {
-  // try {
+export const acceptPayment = async (details: acceptPaymentPayload): Promise<acceptPaymentResponse> => {
   const { data } = await apiInstance.post("/acceptPayment", details);
   if (!data.success) {
     throw new Error(data.error || "payment processing failed");
   }
   return data;
-
 };
