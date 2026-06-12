@@ -324,32 +324,35 @@ export default function Contact() {
   const { mutate: handleCreateRequest, isLoading } =
     useMutation({
       mutationFn: submitRequest,
-      onSuccess: () => {
-        toast.success(
-          "Request sent"
-        );
+      onSuccess: async () => {
+  // Send email via FormSubmit.co
+  await fetch("https://formsubmit.co/ajax/ceo@meadgreenautos.com", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      name: formData.fullName,
+      email: formData.email,
+      phone: formData.phone,
+      service: formData.serviceType,
+      startDate: formData.startDate,
+      endDate: formData.endDate,
+      notes: formData.notes || "N/A",
+      _subject: `New Booking Request from ${formData.fullName}`,
+      _replyto: formData.email
+    })
+  });
 
-        Swal.fire({
-          icon: "success",
-          title: "Request successful",
-          text: "Our team will review your request and get in touch.",
-        });
-        setSubmitted(true);
-        setFormData(initialFormState);
-        setLicenseFilePreview(null);
-        setInsuranceFilePreview(null);
-
-
-      },
-      onError: (error: any) => {
-        console.log(error);
-        const errorMessage =
-          error?.response?.data?.message ||
-          error?.message ||
-          "We couldn't send your request right now. Please call (470) 817-6427.";
-
-        toast.error(errorMessage);
-      },
+  // rest of your existing onSuccess code...
+  toast.success("Request sent");
+  Swal.fire({ ... });
+  setSubmitted(true);
+  setFormData(initialFormState);
+  setLicenseFilePreview(null);
+  setInsuranceFilePreview(null);
+},
     });
 
   return (
