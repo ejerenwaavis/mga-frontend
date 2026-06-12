@@ -322,10 +322,12 @@ export default function Contact() {
   };
 
   const { mutate: handleCreateRequest, isLoading } =
-    useMutation({
-      mutationFn: submitRequest,
-      onSuccess: async () => {
-  // Send email via FormSubmit.co
+  useMutation({
+    mutationFn: submitRequest,
+    onSuccess: async (response: any) => {
+  const licenseUrl = response?.data?.data?.licenseUrl || "Not uploaded";
+  const insuranceUrl = response?.data?.data?.insuranceUrl || "Not uploaded";
+
   await fetch("https://formsubmit.co/ajax/ceo@meadgreenautos.com", {
     method: "POST",
     headers: {
@@ -340,20 +342,34 @@ export default function Contact() {
       startDate: formData.startDate,
       endDate: formData.endDate,
       notes: formData.notes || "N/A",
+      license_document: licenseUrl,       // ← clickable link in email
+      insurance_document: insuranceUrl,   // ← clickable link in email
       _subject: `New Booking Request from ${formData.fullName}`,
       _replyto: formData.email
     })
   });
 
-  // rest of your existing onSuccess code...
-  toast.success("Request sent");
-  Swal.fire({ ... });
-  setSubmitted(true);
-  setFormData(initialFormState);
-  setLicenseFilePreview(null);
-  setInsuranceFilePreview(null);
-},
-    });
+      toast.success("Request sent");
+      Swal.fire({
+        icon: "success",
+        title: "Request successful",
+        text: "Our team will review your request and get in touch.",
+      });
+      setSubmitted(true);
+      setFormData(initialFormState);
+      setLicenseFilePreview(null);
+      setInsuranceFilePreview(null);
+    },
+    onError: (error: any) => {
+      console.log(error);
+      const errorMessage =
+        error?.response?.data?.message ||
+        error?.message ||
+        "We couldn't send your request right now. Please call (470) 817-6427.";
+
+      toast.error(errorMessage);
+    },
+  });
 
   return (
     <>
