@@ -47,7 +47,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
   },
 
   "range-rover-hse-2024": {
-    "Cover Image": "/vehicles/range-rover-hse-updated-front-view.jpg",
+    "Cover Image": "/vehicles/range-rover-hse-updated-cover-image.jpeg",
     "Exterior — Front": "/vehicles/range-rover-hse-updated-front-view.jpg",
     "Exterior — Side": "/vehicles/range-rover-hse-updated-side-view.jpg",
     "Exterior — Rear": "/vehicles/range-rover-hse-updated-rear-view.jpg",
