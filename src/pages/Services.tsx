@@ -294,7 +294,6 @@ export default function Services() {
 
   return (
     <>
-
       <section className="relative overflow-hidden bg-stone py-24 md:py-32">
         <div className="absolute inset-0 z-0">
           <img
@@ -311,7 +310,9 @@ export default function Services() {
               Our Services
             </h1>
             <p className="mx-auto mt-3 max-w-lg text-sm text-white">
-              From airport arrivals to business travel and custom delivery, our rental services are designed to make every trip simple, reliable, and efficient.
+              From airport arrivals to business travel and custom delivery, our
+              rental services are designed to make every trip simple, reliable,
+              and efficient.
             </p>
           </FadeIn>
         </div>
@@ -321,23 +322,29 @@ export default function Services() {
       <section className="py-16 md:py-20">
         <div className="container max-w-6xl">
           {serviceTypes.map((service, index) => (
-            <div 
-              key={service.id} 
+            <div
+              key={service.id}
               id={service.id}
               className="scroll-mt-24 mb-20 last:mb-0"
             >
-              <div className={`grid gap-12 items-center md:grid-cols-2 ${service.imagePosition === 'left' ? 'md:grid-flow-col' : ''}`}>
+              <div
+                className={`grid gap-12 items-center md:grid-cols-2 ${service.imagePosition === "left" ? "md:grid-flow-col" : ""}`}
+              >
                 {/* Image */}
-                <div className={`rounded-lg overflow-hidden shadow-xl ${service.imagePosition === 'right' ? 'md:order-1' : 'md:order-0'}`}>
+                <div
+                  className={`rounded-lg overflow-hidden shadow-xl ${service.imagePosition === "right" ? "md:order-1" : "md:order-0"}`}
+                >
                   <img
                     src={service.image}
                     alt={service.title}
                     className="w-full h-80 md:h-96 object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                
+
                 {/* Text Content */}
-                <div className={`space-y-4 ${service.imagePosition === 'right' ? 'md:order-0' : 'md:order-1'}`}>
+                <div
+                  className={`space-y-4 ${service.imagePosition === "right" ? "md:order-0" : "md:order-1"}`}
+                >
                   <h2 className="font-serif text-3xl md:text-4xl font-semibold text-gold">
                     {service.title}
                   </h2>
@@ -351,7 +358,9 @@ export default function Services() {
                       setSelectedService(service.id);
                       setSubmitted(false);
                       setTimeout(() => {
-                        document.getElementById("service-form")?.scrollIntoView({ behavior: "smooth" });
+                        document
+                          .getElementById("service-form")
+                          ?.scrollIntoView({ behavior: "smooth" });
                       }, 100);
                     }}
                   >
@@ -370,10 +379,13 @@ export default function Services() {
           <FadeIn>
             {submitted ? (
               <div className="rounded border border-border bg-card p-8 text-center">
-                <h2 className="font-serif text-2xl font-semibold">Request Received</h2>
+                <h2 className="font-serif text-2xl font-semibold">
+                  Request Received
+                </h2>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  Thank you for your request. We review all submissions within 4 hours during
-                  business hours and will contact you to confirm details and next steps.
+                  Thank you for your request. We review all submissions within 4
+                  hours during business hours and will contact you to confirm
+                  details and next steps.
                 </p>
                 <Button
                   variant="premiumOutline"
@@ -392,7 +404,7 @@ export default function Services() {
                       BOOK DIRECT
                     </h2>
                     <p className="mt-1 text-sm text-muted-foreground">
-                      Complete the form below and we will respond within 4 hours.
+                      Complete the form below to receive pricing, availability, and delivery options.
                     </p>
                   </div>
                   {selectedService && (
@@ -410,48 +422,48 @@ export default function Services() {
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div className="space-y-2">
                       <Label htmlFor="svc-name">Full Name</Label>
-                      <Input 
-                        id="svc-name" 
+                      <Input
+                        id="svc-name"
                         value={formData.fullName}
                         onChange={(e) =>
                           handleInputChange("fullName", e.target.value)
-                        } 
-                        disabled={isLoading} 
-                        placeholder="Your full name" 
-                        required 
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40" 
+                        }
+                        disabled={isLoading}
+                        placeholder="Your full name"
+                        required
+                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
                       />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="svc-email">Email</Label>
-                      <Input 
-                        id="svc-email" 
+                      <Input
+                        id="svc-email"
                         value={formData.email}
                         onChange={(e) =>
                           handleInputChange("email", e.target.value)
-                        } 
-                        type="email" 
-                        disabled={isLoading} 
-                        placeholder="you@example.com" 
-                        required 
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40" 
+                        }
+                        type="email"
+                        disabled={isLoading}
+                        placeholder="you@example.com"
+                        required
+                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
                       />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="svc-phone">Phone</Label>
-                      <Input 
-                        id="svc-phone" 
+                      <Input
+                        id="svc-phone"
                         value={formData.phone}
                         onChange={(e) =>
                           handleInputChange("phone", e.target.value)
-                        } 
-                        disabled={isLoading} 
-                        type="tel" 
-                        placeholder="(404) 555-0000" 
-                        required 
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40" 
+                        }
+                        disabled={isLoading}
+                        type="tel"
+                        placeholder="(404) 555-0000"
+                        required
+                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
                       />
                     </div>
 
@@ -462,80 +474,82 @@ export default function Services() {
                         disabled={isLoading}
                         value={formData.serviceType}
                         onChange={(e) => {
-                          setSelectedService(e.target.value)
-                          handleInputChange("serviceType", e.target.value)
+                          setSelectedService(e.target.value);
+                          handleInputChange("serviceType", e.target.value);
                         }}
                         className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
                         required
                       >
                         <option value="">Select a service</option>
                         {serviceTypes.map((s) => (
-                          <option key={s.id} value={s.id}>{s.title}</option>
+                          <option key={s.id} value={s.id}>
+                            {s.title}
+                          </option>
                         ))}
                       </select>
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="svc-time">Start Time</Label>
-                      <Input 
-                        id="svc-time" 
+                      <Input
+                        id="svc-time"
                         value={formData.time}
                         onChange={(e) =>
                           handleInputChange("time", e.target.value)
-                        } 
-                        disabled={isLoading} 
-                        type="text" 
-                        placeholder="04:30 PM" 
-                        required 
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40" 
+                        }
+                        disabled={isLoading}
+                        type="text"
+                        placeholder="04:30 PM"
+                        required
+                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
                       />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="svc-endtime">End Time</Label>
-                      <Input 
-                        id="svc-endtime" 
+                      <Input
+                        id="svc-endtime"
                         value={formData.endTime}
                         onChange={(e) =>
                           handleInputChange("endTime", e.target.value)
-                        } 
-                        disabled={isLoading} 
-                        type="text" 
-                        placeholder="06:30 PM" 
-                        required 
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40" 
+                        }
+                        disabled={isLoading}
+                        type="text"
+                        placeholder="06:30 PM"
+                        required
+                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
                       />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="svc-start">Start Date</Label>
-                      <Input 
+                      <Input
                         id="svc-start"
                         value={formData.startDate}
                         min={today}
                         onChange={(e) =>
                           handleInputChange("startDate", e.target.value)
-                        } 
-                        type="date" 
-                        disabled={isLoading} 
-                        required 
-                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
+                        }
+                        type="date"
+                        disabled={isLoading}
+                        required
+                        className="h-10 w-full appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
                       />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="svc-end">End Date</Label>
-                      <Input 
+                      <Input
                         id="svc-end"
                         value={formData.endDate}
                         min={today}
                         onChange={(e) =>
                           handleInputChange("endDate", e.target.value)
-                        } 
-                        type="date" 
-                        disabled={isLoading} 
-                        required 
-                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
+                        }
+                        type="date"
+                        disabled={isLoading}
+                        required
+                        className="h-10 w-full appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
                       />
                     </div>
 
@@ -553,19 +567,21 @@ export default function Services() {
                           Choose File
                         </Button>
                         <span className="text-sm text-gray-700 flex-1 truncate">
-                          {licenseFilePreview ? licenseFilePreview.file.name : "No file selected"}
+                          {licenseFilePreview
+                            ? licenseFilePreview.file.name
+                            : "No file selected"}
                         </span>
-                        <Input 
+                        <Input
                           id="svc-license"
                           ref={licenseInputRef}
                           accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
-                          type="file" 
-                          disabled={isLoading} 
-                          required 
+                          type="file"
+                          disabled={isLoading}
+                          required
                           className="hidden"
                           onChange={(e) => {
                             const file = e.target.files?.[0];
-                            if (file) handleFileSelect(file, 'license');
+                            if (file) handleFileSelect(file, "license");
                           }}
                         />
                       </div>
@@ -585,19 +601,21 @@ export default function Services() {
                           Choose File
                         </Button>
                         <span className="text-sm text-gray-700 flex-1 truncate">
-                          {insuranceFilePreview ? insuranceFilePreview.file.name : "No file selected"}
+                          {insuranceFilePreview
+                            ? insuranceFilePreview.file.name
+                            : "No file selected"}
                         </span>
                         <Input
                           ref={insuranceInputRef}
                           id="svc-insurance"
-                          type="file" 
-                          disabled={isLoading} 
-                          required 
+                          type="file"
+                          disabled={isLoading}
+                          required
                           className="hidden"
                           accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
                           onChange={(e) => {
                             const file = e.target.files?.[0];
-                            if (file) handleFileSelect(file, 'insurance');
+                            if (file) handleFileSelect(file, "insurance");
                           }}
                         />
                       </div>
@@ -606,20 +624,26 @@ export default function Services() {
 
                   <div className="space-y-2">
                     <Label htmlFor="svc-notes">Message</Label>
-                    <Textarea 
-                      id="svc-notes" 
+                    <Textarea
+                      id="svc-notes"
                       value={formData.notes}
                       onChange={(e) =>
                         handleInputChange("notes", e.target.value)
-                      } 
-                      disabled={isLoading} 
-                      placeholder="Make and model of the car and any additional details or requests" 
-                      rows={3} 
-                      className="focus-visible:ring-primary text-white placeholder:text-white/40" 
+                      }
+                      disabled={isLoading}
+                      placeholder="Make and model of the car and any additional details or requests"
+                      rows={3}
+                      className="focus-visible:ring-primary text-white placeholder:text-white/40"
                     />
                   </div>
 
-                  <Button type="submit" disabled={isLoading} variant="premium" size="lg" className="w-full">
+                  <Button
+                    type="submit"
+                    disabled={isLoading}
+                    variant="premium"
+                    size="lg"
+                    className="w-full"
+                  >
                     {isLoading ? "Processing" : "Submit Request"}
                   </Button>
                 </form>
