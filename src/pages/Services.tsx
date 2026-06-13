@@ -404,8 +404,7 @@ export default function Services() {
                       BOOK DIRECT
                     </h2>
                     <p className="mt-1 text-sm text-muted-foreground">
-                      Complete the form below and we will respond within 4
-                      hours.
+                      Complete the form below to receive pricing, availability, and delivery options.
                     </p>
                   </div>
                   {selectedService && (
