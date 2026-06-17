@@ -3,10 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail, ChevronDown, MapPin, Clock } from "lucide-react";
 import { TURO_URL } from "@/data/vehicles";
 import FAQSection from "@/components/Faq";
-
-const PHONE = "(470) 817-6427";
-const EMAIL = "ceo@meadgreenautos.com";
-const ADDRESS = "4814 Old National Hwy, Atlanta, GA 30337";
+import { CONTACT_ADDRESS, CONTACT_EMAIL, CONTACT_PHONE } from "@/data/contact";
 
 const serviceSubLinks = [
   { label: "AIRPORT SERVICE", to: "/services", hash: "airport" },
@@ -404,19 +401,19 @@ function Footer() {
             </h4>
 
             <div className="flex flex-col gap-2">
-              <a href="tel:+14708176427" className="flex items-center gap-2 text-sm text-secondary-foreground/70 hover:text-secondary-foreground">
+              <a href={`tel:${CONTACT_PHONE.replace(/[^+\d]/g, "")}`} className="flex items-center gap-2 text-sm text-secondary-foreground/70 hover:text-secondary-foreground">
                 <Phone className="h-4 w-4 shrink-0" />
-                {PHONE}
+                {CONTACT_PHONE}
               </a>
 
-              <a href={`mailto:${EMAIL}`} className="flex items-center gap-2 text-sm text-secondary-foreground/70 hover:text-secondary-foreground">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-2 text-sm text-secondary-foreground/70 hover:text-secondary-foreground">
                 <Mail className="h-4 w-4 shrink-0" />
-                {EMAIL}
+                {CONTACT_EMAIL}
               </a>
 
               <div className="flex items-start gap-2 text-sm text-secondary-foreground/70">
                 <MapPin className="h-4 w-4 shrink-0 mt-0.5" />
-                <span className="text-xs leading-relaxed">{ADDRESS}</span>
+                <span className="text-xs leading-relaxed">{CONTACT_ADDRESS}</span>
               </div>
 
               <div className="flex items-center gap-2 text-sm text-secondary-foreground/70">
