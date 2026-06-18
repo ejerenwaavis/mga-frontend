@@ -88,8 +88,8 @@
     "display": "/vehicles/optimized/BMW-X6-2022-rear-exterior__display.webp"
   },
   "BMW-X6-2022-side-exterior.jpg": {
-    "thumbnail": "/vehicles/optimized/BMW-X6-2022-side-exterior__thumbnail.webp",
-    "display": "/vehicles/optimized/BMW-X6-2022-side-exterior__display.webp"
+    "thumbnail": "/vehicles/optimized/BMW-X6-2022-side-exterior-thumbnail.webp",
+    "display": "/vehicles/optimized/BMW-X6-2022-side-exterior-display.webp"
   },
   "COVER-IMAGE-TURO -2024-MERCEDES-BENZ-GLC-300-SUV.png": {
     "thumbnail": "/vehicles/optimized/COVER-IMAGE-TURO -2024-MERCEDES-BENZ-GLC-300-SUV__thumbnail.webp",
@@ -382,5 +382,549 @@
   "tesla-model-3-2024.jpg": {
     "thumbnail": "/vehicles/optimized/tesla-model-3-2024__thumbnail.webp",
     "display": "/vehicles/optimized/tesla-model-3-2024__display.webp"
+  },
+  "mercedes-benz-amg-gle-53-coupe-cover-image.jpeg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-amg-gle-53-coupe-cover-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-amg-gle-53-coupe-cover-image-display.webp"
+  },
+  "mercedes-benz-amg-gle-53-coupe-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-amg-gle-53-coupe-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-amg-gle-53-coupe-front-view-display.webp"
+  },
+  "mercedes-benz-amg-gle-53-coupe-rear-view.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-amg-gle-53-coupe-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-amg-gle-53-coupe-rear-view-display.webp"
+  },
+  "mercedes-benz-amg-gle-53-coupe-close-up-wheel-image.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-amg-gle-53-coupe-close-up-wheel-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-amg-gle-53-coupe-close-up-wheel-image-display.webp"
+  },
+  "mercedes-benz-amg-gle-53-dash-board-interior-image.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-amg-gle-53-dash-board-interior-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-amg-gle-53-dash-board-interior-image-display.webp"
+  },
+  "mercedes-benz-amg-gle-53-seats-image.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-amg-gle-53-seats-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-amg-gle-53-seats-image-display.webp"
+  },
+  "mercedes-benz-amg-gle-53-coupe-side-view.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-amg-gle-53-coupe-side-view-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-amg-gle-53-coupe-side-view-display.webp"
+  },
+  "mercedes-benz-amg-gle-53-coupe-close-up-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-amg-gle-53-coupe-close-up-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-amg-gle-53-coupe-close-up-front-view-display.webp"
+  },
+  "chevrolet-corvette-stringray-2lt-convertible-2023-cover-image.jpeg": {
+    "thumbnail": "/vehicles/optimized/chevrolet-corvette-stringray-2lt-convertible-2023-cover-image-thumbnail.webp",
+    "display": "/vehicles/optimized/chevrolet-corvette-stringray-2lt-convertible-2023-cover-image-display.webp"
+  },
+  "chevrolet-corvette-stringray-2lt-convertible-2023-front-view.png": {
+    "thumbnail": "/vehicles/optimized/chevrolet-corvette-stringray-2lt-convertible-2023-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/chevrolet-corvette-stringray-2lt-convertible-2023-front-view-display.webp"
+  },
+  "chevrolet-corvette-stringray-2lt-convertible-2023-rear-view.jpeg": {
+    "thumbnail": "/vehicles/optimized/chevrolet-corvette-stringray-2lt-convertible-2023-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/chevrolet-corvette-stringray-2lt-convertible-2023-rear-view-display.webp"
+  },
+  "chevrolet-corvette-stringray-2lt-convertible-2023-close-up-wheel-image.jpg": {
+    "thumbnail": "/vehicles/optimized/chevrolet-corvette-stringray-2lt-convertible-2023-close-up-wheel-image-thumbnail.webp",
+    "display": "/vehicles/optimized/chevrolet-corvette-stringray-2lt-convertible-2023-close-up-wheel-image-display.webp"
+  },
+  "chevrolet-corvette-stringray-2lt-convertible-2023-dash-board-interior-image.jpg": {
+    "thumbnail": "/vehicles/optimized/chevrolet-corvette-stringray-2lt-convertible-2023-dash-board-interior-image-thumbnail.webp",
+    "display": "/vehicles/optimized/chevrolet-corvette-stringray-2lt-convertible-2023-dash-board-interior-image-display.webp"
+  },
+  "chevrolet-corvette-stringray-2lt-convertible-2023-seats-image.jpg": {
+    "thumbnail": "/vehicles/optimized/chevrolet-corvette-stringray-2lt-convertible-2023-seats-image-thumbnail.webp",
+    "display": "/vehicles/optimized/chevrolet-corvette-stringray-2lt-convertible-2023-seats-image-display.webp"
+  },
+  "chevrolet-corvette-stringray-2lt-convertible-2023-side-view.jpg": {
+    "thumbnail": "/vehicles/optimized/chevrolet-corvette-stringray-2lt-convertible-2023-side-view-thumbnail.webp",
+    "display": "/vehicles/optimized/chevrolet-corvette-stringray-2lt-convertible-2023-side-view-display.webp"
+  },
+  "chevrolet-corvette-stringray-2lt-convertible-2023-close-up-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/chevrolet-corvette-stringray-2lt-convertible-2023-close-up-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/chevrolet-corvette-stringray-2lt-convertible-2023-close-up-front-view-display.webp"
+  },
+  "porsche-cayenne-2023-cover-image.png": {
+    "thumbnail": "/vehicles/optimized/porsche-cayenne-2023-cover-image-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-cayenne-2023-cover-image-display.webp"
+  },
+  "porsche-cayenne-2023-front-view.jpeg": {
+    "thumbnail": "/vehicles/optimized/porsche-cayenne-2023-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-cayenne-2023-front-view-display.webp"
+  },
+  "porsche-cayenne-2023-rear-view.jpeg": {
+    "thumbnail": "/vehicles/optimized/porsche-cayenne-2023-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-cayenne-2023-rear-view-display.webp"
+  },
+  "porsche-cayenne-2023-close-up-wheel-image.jpeg": {
+    "thumbnail": "/vehicles/optimized/porsche-cayenne-2023-close-up-wheel-image-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-cayenne-2023-close-up-wheel-image-display.webp"
+  },
+  "porsche-cayenne-2023-dash-board-interior-image.jpg": {
+    "thumbnail": "/vehicles/optimized/porsche-cayenne-2023-dash-board-interior-image-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-cayenne-2023-dash-board-interior-image-display.webp"
+  },
+  "porsche-cayenne-2023-seats-image.jpg": {
+    "thumbnail": "/vehicles/optimized/porsche-cayenne-2023-seats-image-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-cayenne-2023-seats-image-display.webp"
+  },
+  "porsche-cayenne-2023-side-view.jpeg": {
+    "thumbnail": "/vehicles/optimized/porsche-cayenne-2023-side-view-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-cayenne-2023-side-view-display.webp"
+  },
+  "porsche-cayenne-2023-close-up-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/porsche-cayenne-2023-close-up-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-cayenne-2023-close-up-front-view-display.webp"
+  },
+  "bmw-x6-xdrive40i-2022-cover-image.png": {
+    "thumbnail": "/vehicles/optimized/bmw-x6-xdrive40i-2022-cover-image-thumbnail.webp",
+    "display": "/vehicles/optimized/bmw-x6-xdrive40i-2022-cover-image-display.webp"
+  },
+  "bmw-x6-xdrive40i-2022-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/bmw-x6-xdrive40i-2022-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/bmw-x6-xdrive40i-2022-front-view-display.webp"
+  },
+  "bmw-x6-xdrive40i-2022-rear-view.jpg": {
+    "thumbnail": "/vehicles/optimized/bmw-x6-xdrive40i-2022-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/bmw-x6-xdrive40i-2022-rear-view-display.webp"
+  },
+  "bmw-x6-xdrive40i-2022-close-up-wheel-image.jpg": {
+    "thumbnail": "/vehicles/optimized/bmw-x6-xdrive40i-2022-close-up-wheel-image-thumbnail.webp",
+    "display": "/vehicles/optimized/bmw-x6-xdrive40i-2022-close-up-wheel-image-display.webp"
+  },
+  "bmw-x6-xdrive40i-2022-dash-board-interior-image.jpg": {
+    "thumbnail": "/vehicles/optimized/bmw-x6-xdrive40i-2022-dash-board-interior-image-thumbnail.webp",
+    "display": "/vehicles/optimized/bmw-x6-xdrive40i-2022-dash-board-interior-image-display.webp"
+  },
+  "bmw-x6-xdrive40i-2022-seats-image.jpg": {
+    "thumbnail": "/vehicles/optimized/bmw-x6-xdrive40i-2022-seats-image-thumbnail.webp",
+    "display": "/vehicles/optimized/bmw-x6-xdrive40i-2022-seats-image-display.webp"
+  },
+  "bmw-x6-xdrive40i-2022-side-view.jpg": {
+    "thumbnail": "/vehicles/optimized/bmw-x6-xdrive40i-2022-side-view-thumbnail.webp",
+    "display": "/vehicles/optimized/bmw-x6-xdrive40i-2022-side-view-display.webp"
+  },
+  "bmw-x6-xdrive40i-2022-close-up-rear-view.jpg": {
+    "thumbnail": "/vehicles/optimized/bmw-x6-xdrive40i-2022-close-up-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/bmw-x6-xdrive40i-2022-close-up-rear-view-display.webp"
+  },
+  "range-rover-hse-updated-cover-image.jpeg": {
+    "thumbnail": "/vehicles/optimized/range-rover-hse-updated-cover-image-thumbnail.webp",
+    "display": "/vehicles/optimized/range-rover-hse-updated-cover-image-display.webp"
+  },
+  "range-rover-hse-updated-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/range-rover-hse-updated-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/range-rover-hse-updated-front-view-display.webp"
+  },
+  "range-rover-hse-updated-side-view.jpg": {
+    "thumbnail": "/vehicles/optimized/range-rover-hse-updated-side-view-thumbnail.webp",
+    "display": "/vehicles/optimized/range-rover-hse-updated-side-view-display.webp"
+  },
+  "range-rover-hse-updated-rear-view.jpg": {
+    "thumbnail": "/vehicles/optimized/range-rover-hse-updated-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/range-rover-hse-updated-rear-view-display.webp"
+  },
+  "range-rover-hse-updated-dashboard.jpg": {
+    "thumbnail": "/vehicles/optimized/range-rover-hse-updated-dashboard-thumbnail.webp",
+    "display": "/vehicles/optimized/range-rover-hse-updated-dashboard-display.webp"
+  },
+  "range-rover-hse-updated-interior-back.jpg": {
+    "thumbnail": "/vehicles/optimized/range-rover-hse-updated-interior-back-thumbnail.webp",
+    "display": "/vehicles/optimized/range-rover-hse-updated-interior-back-display.webp"
+  },
+  "range-rover-hse-updated-close-up-wheel-image.jpg": {
+    "thumbnail": "/vehicles/optimized/range-rover-hse-updated-close-up-wheel-image-thumbnail.webp",
+    "display": "/vehicles/optimized/range-rover-hse-updated-close-up-wheel-image-display.webp"
+  },
+  "range-rover-hse-updated-close-up-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/range-rover-hse-updated-close-up-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/range-rover-hse-updated-close-up-front-view-display.webp"
+  },
+  "mercedes-benz-glc-300-coupe-cover-image.png": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-coupe-cover-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-coupe-cover-image-display.webp"
+  },
+  "mercedes-benz-glc-300-2025-coupe-front-view.jpeg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-2025-coupe-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-2025-coupe-front-view-display.webp"
+  },
+  "mercedes-benz-glc-300-2025-coupe-rear-view.jpeg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-2025-coupe-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-2025-coupe-rear-view-display.webp"
+  },
+  "mercedes-benz-glc-300-2025-coupe-close-up-wheel-image.jpeg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-2025-coupe-close-up-wheel-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-2025-coupe-close-up-wheel-image-display.webp"
+  },
+  "mercedes-benz-glc-300-2025-coupe-dash-board-interior-image.jpeg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-2025-coupe-dash-board-interior-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-2025-coupe-dash-board-interior-image-display.webp"
+  },
+  "mercedes-benz-glc-300-2025-coupe-seats-image.jpeg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-2025-coupe-seats-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-2025-coupe-seats-image-display.webp"
+  },
+  "mercedes-benz-glc-300-2025-coupe-side-view.jpeg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-2025-coupe-side-view-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-2025-coupe-side-view-display.webp"
+  },
+  "mercedes-benz-glc-300-2025-coupe-close-up-rear-view.jpeg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-2025-coupe-close-up-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-2025-coupe-close-up-rear-view-display.webp"
+  },
+  "porsche-macan-2025-cover-image.png": {
+    "thumbnail": "/vehicles/optimized/porsche-macan-2025-cover-image-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-macan-2025-cover-image-display.webp"
+  },
+  "porsche-macan-2025-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/porsche-macan-2025-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-macan-2025-front-view-display.webp"
+  },
+  "porsche-macan-2025-rear-view.jpg": {
+    "thumbnail": "/vehicles/optimized/porsche-macan-2025-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-macan-2025-rear-view-display.webp"
+  },
+  "porsche-macan-2025-close-up-wheel-image.jpg": {
+    "thumbnail": "/vehicles/optimized/porsche-macan-2025-close-up-wheel-image-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-macan-2025-close-up-wheel-image-display.webp"
+  },
+  "porsche-macan-2025-dashboard-interior-image.jpg": {
+    "thumbnail": "/vehicles/optimized/porsche-macan-2025-dashboard-interior-image-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-macan-2025-dashboard-interior-image-display.webp"
+  },
+  "porsche-macan-2025-seats-image.jpg": {
+    "thumbnail": "/vehicles/optimized/porsche-macan-2025-seats-image-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-macan-2025-seats-image-display.webp"
+  },
+  "porsche-macan-2025-side-view.jpg": {
+    "thumbnail": "/vehicles/optimized/porsche-macan-2025-side-view-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-macan-2025-side-view-display.webp"
+  },
+  "porsche-macan-2025-close-up-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/porsche-macan-2025-close-up-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-macan-2025-close-up-front-view-display.webp"
+  },
+  "porsche-macan-2023-cover-image.png": {
+    "thumbnail": "/vehicles/optimized/porsche-macan-2023-cover-image-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-macan-2023-cover-image-display.webp"
+  },
+  "porsche-macan-2023-front-view.jpeg": {
+    "thumbnail": "/vehicles/optimized/porsche-macan-2023-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-macan-2023-front-view-display.webp"
+  },
+  "porsche-macan-2023-rear-view.jpeg": {
+    "thumbnail": "/vehicles/optimized/porsche-macan-2023-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-macan-2023-rear-view-display.webp"
+  },
+  "porsche-macan-2023-close-up-wheel-image.jpeg": {
+    "thumbnail": "/vehicles/optimized/porsche-macan-2023-close-up-wheel-image-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-macan-2023-close-up-wheel-image-display.webp"
+  },
+  "porsche-macan-2023-dash-board-interior-image.jpg": {
+    "thumbnail": "/vehicles/optimized/porsche-macan-2023-dash-board-interior-image-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-macan-2023-dash-board-interior-image-display.webp"
+  },
+  "porsche-macan-2023-seats-image.jpg": {
+    "thumbnail": "/vehicles/optimized/porsche-macan-2023-seats-image-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-macan-2023-seats-image-display.webp"
+  },
+  "porsche-macan-2023-side-view.jpeg": {
+    "thumbnail": "/vehicles/optimized/porsche-macan-2023-side-view-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-macan-2023-side-view-display.webp"
+  },
+  "porsche-macan-2023-close-up-rear-view.jpg": {
+    "thumbnail": "/vehicles/optimized/porsche-macan-2023-close-up-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/porsche-macan-2023-close-up-rear-view-display.webp"
+  },
+  "kia-telluride-ex-2022-cover-image.png": {
+    "thumbnail": "/vehicles/optimized/kia-telluride-ex-2022-cover-image-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-telluride-ex-2022-cover-image-display.webp"
+  },
+  "kia-telluride-ex-2022-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-telluride-ex-2022-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-telluride-ex-2022-front-view-display.webp"
+  },
+  "kia-telluride-ex-2022-rear-view.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-telluride-ex-2022-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-telluride-ex-2022-rear-view-display.webp"
+  },
+  "kia-telluride-ex-2022-close-up-wheel-image.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-telluride-ex-2022-close-up-wheel-image-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-telluride-ex-2022-close-up-wheel-image-display.webp"
+  },
+  "kia-telluride-ex-2022-dash-board-interior-image.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-telluride-ex-2022-dash-board-interior-image-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-telluride-ex-2022-dash-board-interior-image-display.webp"
+  },
+  "kia-telluride-ex-2022-seats-image.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-telluride-ex-2022-seats-image-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-telluride-ex-2022-seats-image-display.webp"
+  },
+  "kia-telluride-ex-2022-side-view.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-telluride-ex-2022-side-view-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-telluride-ex-2022-side-view-display.webp"
+  },
+  "kia-telluride-ex-2022-close-up-rear-view.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-telluride-ex-2022-close-up-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-telluride-ex-2022-close-up-rear-view-display.webp"
+  },
+  "mercedes-benz-glc-300-2022-cover-image.png": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-2022-cover-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-2022-cover-image-display.webp"
+  },
+  "mercedes-benz-glc-300-coupe-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-coupe-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-coupe-front-view-display.webp"
+  },
+  "mercedes-benz-glc-300-coupe-rear-view.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-coupe-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-coupe-rear-view-display.webp"
+  },
+  "mercedes-benz-glc-300-coupe-close-up-wheel-image.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-coupe-close-up-wheel-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-coupe-close-up-wheel-image-display.webp"
+  },
+  "mercedes-benz-glc-300-2022-dash-board-interior-image.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-2022-dash-board-interior-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-2022-dash-board-interior-image-display.webp"
+  },
+  "mercedes-benz-glc-300-2022-seats-image.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-2022-seats-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-2022-seats-image-display.webp"
+  },
+  "mercedes-benz-glc-300-coupe-side-view.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-coupe-side-view-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-coupe-side-view-display.webp"
+  },
+  "mercedes-benz-glc-300-coupe-close-up-rear-view.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-coupe-close-up-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-coupe-close-up-rear-view-display.webp"
+  },
+  "bmw-330i-2023-cover-image.png": {
+    "thumbnail": "/vehicles/optimized/bmw-330i-2023-cover-image-thumbnail.webp",
+    "display": "/vehicles/optimized/bmw-330i-2023-cover-image-display.webp"
+  },
+  "bmw-330i-2023-front-view.jpeg": {
+    "thumbnail": "/vehicles/optimized/bmw-330i-2023-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/bmw-330i-2023-front-view-display.webp"
+  },
+  "bmw-330i-2023-rear-view.jpeg": {
+    "thumbnail": "/vehicles/optimized/bmw-330i-2023-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/bmw-330i-2023-rear-view-display.webp"
+  },
+  "bmw-330i-2023-close-up-wheel-image.jpeg": {
+    "thumbnail": "/vehicles/optimized/bmw-330i-2023-close-up-wheel-image-thumbnail.webp",
+    "display": "/vehicles/optimized/bmw-330i-2023-close-up-wheel-image-display.webp"
+  },
+  "bmw-330i-2023-dash-board-interior-image.jpg": {
+    "thumbnail": "/vehicles/optimized/bmw-330i-2023-dash-board-interior-image-thumbnail.webp",
+    "display": "/vehicles/optimized/bmw-330i-2023-dash-board-interior-image-display.webp"
+  },
+  "bmw-330i-2023-seats-image.jpg": {
+    "thumbnail": "/vehicles/optimized/bmw-330i-2023-seats-image-thumbnail.webp",
+    "display": "/vehicles/optimized/bmw-330i-2023-seats-image-display.webp"
+  },
+  "bmw-330i-2023-side-view.jpeg": {
+    "thumbnail": "/vehicles/optimized/bmw-330i-2023-side-view-thumbnail.webp",
+    "display": "/vehicles/optimized/bmw-330i-2023-side-view-display.webp"
+  },
+  "bmw-330i-2023-close-up-front-view.jpeg": {
+    "thumbnail": "/vehicles/optimized/bmw-330i-2023-close-up-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/bmw-330i-2023-close-up-front-view-display.webp"
+  },
+  "ford-explorer-xlt-2023-cover-image.png": {
+    "thumbnail": "/vehicles/optimized/ford-explorer-xlt-2023-cover-image-thumbnail.webp",
+    "display": "/vehicles/optimized/ford-explorer-xlt-2023-cover-image-display.webp"
+  },
+  "ford-explorer-xlt-2023-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/ford-explorer-xlt-2023-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/ford-explorer-xlt-2023-front-view-display.webp"
+  },
+  "ford-explorer-xlt-2023-rear-view.jpg": {
+    "thumbnail": "/vehicles/optimized/ford-explorer-xlt-2023-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/ford-explorer-xlt-2023-rear-view-display.webp"
+  },
+  "ford-explorer-xlt-2023-close-up-wheel-image.jpg": {
+    "thumbnail": "/vehicles/optimized/ford-explorer-xlt-2023-close-up-wheel-image-thumbnail.webp",
+    "display": "/vehicles/optimized/ford-explorer-xlt-2023-close-up-wheel-image-display.webp"
+  },
+  "ford-explorer-xlt-2023-dash-board-interior-image.jpg": {
+    "thumbnail": "/vehicles/optimized/ford-explorer-xlt-2023-dash-board-interior-image-thumbnail.webp",
+    "display": "/vehicles/optimized/ford-explorer-xlt-2023-dash-board-interior-image-display.webp"
+  },
+  "ford-explorer-xlt-2023-seats-image.jpg": {
+    "thumbnail": "/vehicles/optimized/ford-explorer-xlt-2023-seats-image-thumbnail.webp",
+    "display": "/vehicles/optimized/ford-explorer-xlt-2023-seats-image-display.webp"
+  },
+  "ford-explorer-xlt-2023-side-view.jpg": {
+    "thumbnail": "/vehicles/optimized/ford-explorer-xlt-2023-side-view-thumbnail.webp",
+    "display": "/vehicles/optimized/ford-explorer-xlt-2023-side-view-display.webp"
+  },
+  "ford-explorer-xlt-2023-close-up-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/ford-explorer-xlt-2023-close-up-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/ford-explorer-xlt-2023-close-up-front-view-display.webp"
+  },
+  "ford-bronco-sport-outer-banks-2024-cover-image.png": {
+    "thumbnail": "/vehicles/optimized/ford-bronco-sport-outer-banks-2024-cover-image-thumbnail.webp",
+    "display": "/vehicles/optimized/ford-bronco-sport-outer-banks-2024-cover-image-display.webp"
+  },
+  "ford-bronco-sport-outer-banks-2024-front-view.jpeg": {
+    "thumbnail": "/vehicles/optimized/ford-bronco-sport-outer-banks-2024-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/ford-bronco-sport-outer-banks-2024-front-view-display.webp"
+  },
+  "ford-bronco-sport-outer-banks-2024-rear-view.jpeg": {
+    "thumbnail": "/vehicles/optimized/ford-bronco-sport-outer-banks-2024-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/ford-bronco-sport-outer-banks-2024-rear-view-display.webp"
+  },
+  "ford-bronco-sport-outer-banks-2024-close-up-wheel-image.jpeg": {
+    "thumbnail": "/vehicles/optimized/ford-bronco-sport-outer-banks-2024-close-up-wheel-image-thumbnail.webp",
+    "display": "/vehicles/optimized/ford-bronco-sport-outer-banks-2024-close-up-wheel-image-display.webp"
+  },
+  "ford-bronco-sport-outer-banks-2024-dash-board-interior-image.jpeg": {
+    "thumbnail": "/vehicles/optimized/ford-bronco-sport-outer-banks-2024-dash-board-interior-image-thumbnail.webp",
+    "display": "/vehicles/optimized/ford-bronco-sport-outer-banks-2024-dash-board-interior-image-display.webp"
+  },
+  "ford-bronco-sport-outer-banks-2024-seats-image.jpeg": {
+    "thumbnail": "/vehicles/optimized/ford-bronco-sport-outer-banks-2024-seats-image-thumbnail.webp",
+    "display": "/vehicles/optimized/ford-bronco-sport-outer-banks-2024-seats-image-display.webp"
+  },
+  "ford-bronco-sport-outer-banks-2024-side-view.jpeg": {
+    "thumbnail": "/vehicles/optimized/ford-bronco-sport-outer-banks-2024-side-view-thumbnail.webp",
+    "display": "/vehicles/optimized/ford-bronco-sport-outer-banks-2024-side-view-display.webp"
+  },
+  "ford-bronco-sport-outer-banks-2024-close-up-front-view.jpeg": {
+    "thumbnail": "/vehicles/optimized/ford-bronco-sport-outer-banks-2024-close-up-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/ford-bronco-sport-outer-banks-2024-close-up-front-view-display.webp"
+  },
+  "kia-sorento-s-2025-cover-image.png": {
+    "thumbnail": "/vehicles/optimized/kia-sorento-s-2025-cover-image-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-sorento-s-2025-cover-image-display.webp"
+  },
+  "kia-sorento-s-2025-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-sorento-s-2025-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-sorento-s-2025-front-view-display.webp"
+  },
+  "kia-sorento-s-2025-rear-view.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-sorento-s-2025-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-sorento-s-2025-rear-view-display.webp"
+  },
+  "kia-sorento-s-2025-close-up-wheel-image.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-sorento-s-2025-close-up-wheel-image-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-sorento-s-2025-close-up-wheel-image-display.webp"
+  },
+  "kia-sorento-s-2025-dash-board-interior-image.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-sorento-s-2025-dash-board-interior-image-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-sorento-s-2025-dash-board-interior-image-display.webp"
+  },
+  "kia-sorento-s-2025-seats-image.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-sorento-s-2025-seats-image-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-sorento-s-2025-seats-image-display.webp"
+  },
+  "kia-sorento-s-2025-side-view.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-sorento-s-2025-side-view-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-sorento-s-2025-side-view-display.webp"
+  },
+  "kia-sorento-s-2025-close-up-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-sorento-s-2025-close-up-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-sorento-s-2025-close-up-front-view-display.webp"
+  },
+  "kia-gt-line-2025-cover-image.png": {
+    "thumbnail": "/vehicles/optimized/kia-gt-line-2025-cover-image-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-gt-line-2025-cover-image-display.webp"
+  },
+  "kia-gt-line-2025-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-gt-line-2025-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-gt-line-2025-front-view-display.webp"
+  },
+  "kia-gt-line-2025-rear-view.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-gt-line-2025-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-gt-line-2025-rear-view-display.webp"
+  },
+  "kia-gt-line-2025-close-up-wheel-image.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-gt-line-2025-close-up-wheel-image-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-gt-line-2025-close-up-wheel-image-display.webp"
+  },
+  "kia-gt-line-2025-dash-board-interior-image.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-gt-line-2025-dash-board-interior-image-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-gt-line-2025-dash-board-interior-image-display.webp"
+  },
+  "kia-gt-line-2025-seats-image.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-gt-line-2025-seats-image-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-gt-line-2025-seats-image-display.webp"
+  },
+  "kia-gt-line-2025-side-view.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-gt-line-2025-side-view-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-gt-line-2025-side-view-display.webp"
+  },
+  "kia-gt-line-2025-close-up-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/kia-gt-line-2025-close-up-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/kia-gt-line-2025-close-up-front-view-display.webp"
+  },
+  "mercedes-benz-glc-300-cover-image.png": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-cover-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-cover-image-display.webp"
+  },
+  "mercedes-benz-glc-300-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-front-view-display.webp"
+  },
+  "mercedes-benz-glc-300-rear-view.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-rear-view-display.webp"
+  },
+  "mercedes-benz-glc-300-close-up-wheel-image.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-close-up-wheel-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-close-up-wheel-image-display.webp"
+  },
+  "mercedes-benz-glc-300-dash-board-interior-image.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-dash-board-interior-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-dash-board-interior-image-display.webp"
+  },
+  "mercedes-benz-glc-300-seats-image.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-seats-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-seats-image-display.webp"
+  },
+  "mercedes-benz-glc-300-side-view.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-side-view-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-side-view-display.webp"
+  },
+  "mercedes-benz-glc-300-close-up-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-glc-300-close-up-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-glc-300-close-up-front-view-display.webp"
+  },
+  "mercedes-benz-e-350-2024-cover-image.png": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-e-350-2024-cover-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-e-350-2024-cover-image-display.webp"
+  },
+  "mercedes-benz-e-350-2024-front-view.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-e-350-2024-front-view-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-e-350-2024-front-view-display.webp"
+  },
+  "mercedes-benz-e-350-2024-rear-view.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-e-350-2024-rear-view-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-e-350-2024-rear-view-display.webp"
+  },
+  "mercedes-benz-e-350-2024-close-up-wheel-image.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-e-350-2024-close-up-wheel-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-e-350-2024-close-up-wheel-image-display.webp"
+  },
+  "mercedes-benz-e-350-2024-dash-board-interior-image.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-e-350-2024-dash-board-interior-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-e-350-2024-dash-board-interior-image-display.webp"
+  },
+  "mercedes-benz-e-350-2024-seats-image.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-e-350-2024-seats-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-e-350-2024-seats-image-display.webp"
+  },
+  "mercedes-benz-e-350-2024-side-view.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-e-350-2024-side-view-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-e-350-2024-side-view-display.webp"
+  },
+  "mercedes-benz-e-350-2024-detail-shot.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-e-350-2024-detail-shot-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-e-350-2024-detail-shot-display.webp"
   }
 }
