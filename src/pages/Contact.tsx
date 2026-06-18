@@ -322,31 +322,7 @@ export default function Contact() {
   const { mutate: handleCreateRequest, isLoading } =
   useMutation({
     mutationFn: submitRequest,
-    onSuccess: async (response: any) => {
-  const licenseUrl = response?.data?.data?.licenseUrl || "Not uploaded";
-  const insuranceUrl = response?.data?.data?.insuranceUrl || "Not uploaded";
-
-  await fetch("https://formsubmit.co/ajax/ceo@meadgreenautos.com", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify({
-      name: formData.fullName,
-      email: formData.email,
-      phone: formData.phone,
-      service: formData.serviceType,
-      startDate: formData.startDate,
-      endDate: formData.endDate,
-      notes: formData.notes || "N/A",
-      license_document: licenseUrl,       // ← clickable link in email
-      insurance_document: insuranceUrl,   // ← clickable link in email
-      _subject: `New Booking Request from ${formData.fullName}`,
-      _replyto: formData.email
-    })
-  });
-
+    onSuccess: async () => {
       toast.success("Request sent");
       Swal.fire({
         icon: "success",
