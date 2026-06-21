@@ -13,12 +13,10 @@ import Swal from "sweetalert2";
 import { useMutation } from "react-query";
 import { toast } from "sonner";
 import { vehicles } from "@/data/vehicles";
+import { CONTACT_ADDRESS, CONTACT_EMAIL, CONTACT_PHONE } from "@/data/contact";
 
 
 
-const PHONE = "(470) 817-6427";
-const EMAIL = "ceo@meadgreenautos.com";
-const ADDRESS = "4814 Old National Hwy, Atlanta, GA 30337";
 // const YELP_URL = "https://www.yelp.com/biz/mead-green-autos-atlanta";
 const MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=4814+Old+National+Hwy,+Atlanta,+GA+30337";
 
@@ -284,7 +282,7 @@ export default function Contact() {
         data.append("fullName", requestDetails.fullName);
         data.append("email", requestDetails.email);
         data.append("phone", requestDetails.phone);
-        data.append("recipientEmail", EMAIL);
+        data.append("recipientEmail", CONTACT_EMAIL);
         data.append("serviceType", requestDetails.serviceType);
         data.append("startDate", requestDetails.startDate);
         data.append("endDate", requestDetails.endDate);
@@ -324,31 +322,7 @@ export default function Contact() {
   const { mutate: handleCreateRequest, isLoading } =
   useMutation({
     mutationFn: submitRequest,
-    onSuccess: async (response: any) => {
-  const licenseUrl = response?.data?.data?.licenseUrl || "Not uploaded";
-  const insuranceUrl = response?.data?.data?.insuranceUrl || "Not uploaded";
-
-  await fetch("https://formsubmit.co/ajax/ceo@meadgreenautos.com", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify({
-      name: formData.fullName,
-      email: formData.email,
-      phone: formData.phone,
-      service: formData.serviceType,
-      startDate: formData.startDate,
-      endDate: formData.endDate,
-      notes: formData.notes || "N/A",
-      license_document: licenseUrl,       // ← clickable link in email
-      insurance_document: insuranceUrl,   // ← clickable link in email
-      _subject: `New Booking Request from ${formData.fullName}`,
-      _replyto: formData.email
-    })
-  });
-
+    onSuccess: async () => {
       toast.success("Request sent");
       Swal.fire({
         icon: "success",
@@ -658,22 +632,22 @@ export default function Contact() {
       </h2>
       <div className="mt-4 space-y-3">
         <a
-          href={`tel:${PHONE.replace(/[^+\d]/g, "")}`}
+          href={`tel:${CONTACT_PHONE.replace(/[^+\d]/g, "")}`}
           className="flex items-center gap-3 text-sm text-white hover:text-foreground transition-colors"
         >
           <Phone className="h-4 w-4 text-primary" />
-          {PHONE}
+          {CONTACT_PHONE}
         </a>
         <a
-          href={`mailto:${EMAIL}`}
+          href={`mailto:${CONTACT_EMAIL}`}
           className="flex items-center gap-3 text-sm text-white hover:text-foreground transition-colors"
         >
           <Mail className="h-4 w-4 text-primary" />
-          {EMAIL}
+          {CONTACT_EMAIL}
         </a>
         <div className="flex items-center gap-3 text-sm text-white">
           <MapPin className="h-4 w-4 text-primary" />
-          {ADDRESS}
+          {CONTACT_ADDRESS}
         </div>
       </div>
       <div className="mt-4 flex flex-wrap gap-3 text-white">

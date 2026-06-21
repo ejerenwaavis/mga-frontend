@@ -13,8 +13,7 @@ import heic2any from "heic2any";
 import Swal from "sweetalert2";
 import { useMutation } from "react-query";
 import { toast } from "sonner";
-
-const SERVICE_EMAIL = "ceo@meadgreenautos.com";
+import { CONTACT_EMAIL } from "@/data/contact";
 
 const serviceTypes = [
   {
@@ -232,7 +231,7 @@ export default function Services() {
         data.append("fullName", requestDetails.fullName);
         data.append("email", requestDetails.email);
         data.append("phone", requestDetails.phone);
-        data.append("recipientEmail", SERVICE_EMAIL);
+        data.append("recipientEmail", CONTACT_EMAIL);
         data.append("serviceType", requestDetails.serviceType);
         data.append("startDate", requestDetails.startDate);
         data.append("endDate", requestDetails.endDate);
