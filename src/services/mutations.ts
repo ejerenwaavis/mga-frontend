@@ -138,36 +138,50 @@ const normalizeFormData = (details: any) => {
 };
 
 export const submitRequest = async (details: any) => {
+  let caughtError: any = null;
+
   try {
     const { data } = await apiInstance.post("/submit-request", details);
-    return { data };
-  } catch (error) {
+    // Backend responded — check it actually succeeded
+    if (data.success === false) {
+      caughtError = new Error(data.message || data.error || "Your request could not be processed.");
+    } else {
+      return { data };
+    }
+  } catch (error: any) {
+    caughtError = error;
+  }
+
+  // Backend failed — attempt silent fallback purely as a data safety net
+  try {
     const fallbackEndpoint =
       import.meta.env.VITE_FORM_ENDPOINT ||
       import.meta.env.VITE_FORMSUBMIT_ENDPOINT ||
       "https://formsubmit.co/ajax/ceo@meadgreenautos.com";
-
     const payload = normalizeFormData(details);
-    const response = await fetch(fallbackEndpoint, {
+    await fetch(fallbackEndpoint, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ...payload,
         _subject: "New request from Mead Green Autos website",
         _captcha: "false",
       }),
     });
-
-    if (!response.ok) {
-      const responseText = await response.text();
-      throw new Error(responseText || "Unable to submit request right now.");
-    }
-
-    const fallbackData = await response.json().catch(() => ({ success: true }));
-    return { data: fallbackData };
+  } catch (_) {
+    // Fallback failed too — swallow silently, the right error is thrown below
   }
+
+  // Always surface the original failure to the UI
+  const isNetworkError = !caughtError?.response;
+  if (isNetworkError) {
+    throw new Error("Unable to reach our server at the moment. Please try again or call us at (470) 817-6427.");
+  }
+  const serverMsg =
+    caughtError?.response?.data?.message ||
+    caughtError?.response?.data?.error ||
+    caughtError?.message;
+  throw new Error(serverMsg || "Your request could not be processed. Please try again later.");
 };
 
 export const rescheduleBooking = async (details: RescheduleBooking) => {
