@@ -58,7 +58,8 @@ async function convertOne(originalPath, force) {
   const srcStat = fs.statSync(absSource);
   const srcSize = srcStat.size;
   const variants = {};
-  let generated = 0, skipped = 0, savedBytes = 0;
+  const bySize   = {}; // per-variant output size, for accurate reduction stats
+  let generated = 0, skipped = 0;
 
   for (const [sizeName, opts] of Object.entries(CONFIG.sizes)) {
     const outFile = `${baseName}-${sizeName}.webp`;
@@ -67,6 +68,7 @@ async function convertOne(originalPath, force) {
 
     if (!force && fs.existsSync(outAbs) && fs.statSync(outAbs).mtimeMs > srcStat.mtimeMs) {
       variants[sizeName] = outRel;
+      bySize[sizeName]   = fs.statSync(outAbs).size;
       skipped++;
       continue;
     }
@@ -76,13 +78,12 @@ async function convertOne(originalPath, force) {
       .toFormat('webp', { quality: opts.quality })
       .toFile(outAbs);
 
-    const outSize = fs.statSync(outAbs).size;
-    savedBytes += Math.max(0, srcSize - outSize);
     variants[sizeName] = outRel;
+    bySize[sizeName]    = fs.statSync(outAbs).size;
     generated++;
   }
 
-  return { fileName, variants, generated, skipped, savedBytes, srcSize };
+  return { fileName, variants, bySize, generated, skipped, srcSize };
 }
 
 async function run() {
@@ -99,7 +100,14 @@ async function run() {
     manifest = JSON.parse(fs.readFileSync(CONFIG.manifestPath, 'utf8'));
   }
 
-  let totalGenerated = 0, totalSkipped = 0, totalSaved = 0, totalOriginal = 0;
+  let totalGenerated = 0, totalSkipped = 0, totalOriginal = 0;
+  // Track bytes per size category separately — comparing each variant
+  // against the original individually, rather than summing both variants'
+  // savings against a single original size (which can exceed 100%).
+  const sizeTotals = {};
+  for (const sizeName of Object.keys(CONFIG.sizes)) {
+    sizeTotals[sizeName] = 0;
+  }
   const missing = [];
 
   for (const p of paths) {
@@ -119,8 +127,10 @@ async function run() {
     manifest[result.fileName] = result.variants;
     totalGenerated += result.generated;
     totalSkipped   += result.skipped;
-    totalSaved     += result.savedBytes;
     totalOriginal  += result.srcSize;
+    for (const [sizeName, bytes] of Object.entries(result.bySize)) {
+      sizeTotals[sizeName] += bytes;
+    }
     console.log(`  ✓ ${result.fileName}`);
   }
 
@@ -136,9 +146,11 @@ async function run() {
   if (!dryRun) {
     console.log(`  Variants generated : ${totalGenerated}`);
     console.log(`  Variants up-to-date: ${totalSkipped}`);
-    if (totalSaved > 0) {
-      const pct = ((totalSaved / totalOriginal) * 100).toFixed(0);
-      console.log(`  Size saved         : ${fmtBytes(totalSaved)} (~${pct}% smaller)`);
+    console.log(`  Original size (×${paths.length - missing.length}) : ${fmtBytes(totalOriginal)}`);
+    for (const [sizeName, bytes] of Object.entries(sizeTotals)) {
+      if (bytes === 0) continue;
+      const pct = Math.max(0, ((totalOriginal - bytes) / totalOriginal) * 100).toFixed(0);
+      console.log(`  ${sizeName.padEnd(18)}: ${fmtBytes(bytes)} (~${pct}% smaller than original)`);
     }
     if (missing.length) {
       console.log(`  Broken references  : ${missing.length} (file in code, not on disk)`);

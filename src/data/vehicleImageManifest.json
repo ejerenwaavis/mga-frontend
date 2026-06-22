@@ -926,5 +926,13 @@
   "mercedes-benz-e-350-2024-detail-shot.jpg": {
     "thumbnail": "/vehicles/optimized/mercedes-benz-e-350-2024-detail-shot-thumbnail.webp",
     "display": "/vehicles/optimized/mercedes-benz-e-350-2024-detail-shot-display.webp"
+  },
+  "mercedes-benz-amg-gle-53-coupe-dash-board-interior-image.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-amg-gle-53-coupe-dash-board-interior-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-amg-gle-53-coupe-dash-board-interior-image-display.webp"
+  },
+  "mercedes-benz-amg-gle-53-coupe-seats-image.jpg": {
+    "thumbnail": "/vehicles/optimized/mercedes-benz-amg-gle-53-coupe-seats-image-thumbnail.webp",
+    "display": "/vehicles/optimized/mercedes-benz-amg-gle-53-coupe-seats-image-display.webp"
   }
 }
