@@ -335,13 +335,17 @@ export default function Contact() {
       setInsuranceFilePreview(null);
     },
     onError: (error: any) => {
-      console.log(error);
-      const errorMessage =
-        error?.response?.data?.message ||
-        error?.message ||
-        "We couldn't send your request right now. Please call (470) 817-6427.";
-
-      toast.error(errorMessage);
+      const msg: string = error?.message || "We couldn't send your request right now.";
+      const isNetworkError = msg.toLowerCase().includes("unable to reach");
+      Swal.fire({
+        icon: "error",
+        title: isNetworkError ? "Unable to Reach Server" : "Submission Failed",
+        text: msg,
+        footer: isNetworkError
+          ? 'Please try again later or call us at <a href="tel:4708176427">(470) 817-6427</a>'
+          : undefined,
+        confirmButtonColor: "hsl(var(--primary))",
+      });
     },
   });
 
