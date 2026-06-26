@@ -1,8 +1,10 @@
 import { useState, useMemo } from "react";
 import VehicleCard from "@/components/VehicleCard";
 import FadeIn from "@/components/FadeIn";
-import { vehicles } from "@/data/vehicles";
+import { vehicles as localVehicles, Vehicle } from "@/data/vehicles";
 import { useSEO } from "@/hooks/useSEO";
+import { useQuery } from "@tanstack/react-query";
+import { getAllCarsQuery } from "@/services/queries";
 
 const categories = ["All", "SUV", "Sedan", "Sports Cars"] as const;
 
@@ -14,13 +16,20 @@ export default function Fleet() {
   });
   const [category, setCategory] = useState<string>("All");
 
+  const { data: carsData } = useQuery({
+    queryKey: ["fleetCars"],
+    queryFn: getAllCarsQuery,
+  });
+
+  const displayVehicles = carsData?.cars?.length ? carsData.cars : localVehicles;
+
   const filtered = useMemo(
   () =>
     (category === "All"
-      ? vehicles
-      : vehicles.filter((v) => v.category === category)
-    ).sort((a, b) => b.pricePerDay - a.pricePerDay),
-  [category]
+      ? displayVehicles
+      : displayVehicles.filter((v: Vehicle) => v.category === category)
+    ).sort((a: Vehicle, b: Vehicle) => b.pricePerDay - a.pricePerDay),
+  [category, displayVehicles]
   );
 
   return (

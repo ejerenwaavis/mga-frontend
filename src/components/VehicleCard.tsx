@@ -10,11 +10,15 @@ interface VehicleCardProps {
 }
 
 export default function VehicleCard({ vehicle }: VehicleCardProps) {
-  const image = vehicleImages[vehicle.id]?.["Cover Image"];
+  // Check for database images first
+  const dbImage = vehicle.images && vehicle.images.length > 0 ? vehicle.images[0].url : undefined;
+  const image = vehicleImages[vehicle.id]?.[`Cover Image`];
 
-  const displayImage = image
-    ? getOptimizedImageUrl(image, "display")
-    : undefined;
+  const displayImage = dbImage 
+    ? dbImage 
+    : image
+      ? getOptimizedImageUrl(image, "display")
+      : undefined;
 
 
   return (

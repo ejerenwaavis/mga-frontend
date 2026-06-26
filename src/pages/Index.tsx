@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button";
 import VehicleCard from "@/components/VehicleCard";
 import FadeIn from "@/components/FadeIn";
 import CTAGroup from "@/components/CTAGroup";
-import { vehicles } from "@/data/vehicles";
+import { vehicles as localVehicles } from "@/data/vehicles";
+import { useQuery } from "@tanstack/react-query";
+import { getAllCarsQuery } from "@/services/queries";
 import { Shield, MapPin, FileCheck, Car, Phone, Clock, CreditCard, ShieldCheck, Gauge, UserCheck, Star, ExternalLink } from "lucide-react";
 import heroVideo from "@/assets/hero-video-1.mp4";
 // import FAQSection from "@/components/Faq";
@@ -12,8 +14,6 @@ const PHONE = "(470) 817-6427";
 const ADDRESS = "4814 Old National Hwy, Atlanta, GA 30337";
 // const YELP_URL = "https://www.yelp.com/biz/mead-green-autos-atlanta";
 const MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=4814+Old+National+Hwy,+Atlanta,+GA+30337";
-
-const featuredVehicles = vehicles.slice(0, 6);
 
 
 const trustSignals = [
@@ -156,6 +156,14 @@ function TestimonialMarquee() {
 }
 
 export default function Index() {
+  const { data: carsData } = useQuery({
+    queryKey: ["fleetCars"],
+    queryFn: getAllCarsQuery,
+  });
+
+  const displayVehicles = carsData?.cars?.length ? carsData.cars : localVehicles;
+  const featuredVehicles = displayVehicles.slice(0, 6);
+
   return (
     <>
       {/* Hero */}

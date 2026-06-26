@@ -12,6 +12,7 @@ import {
   TTripWithCount,
   TBookings
 } from "../lib/types";
+import { Vehicle } from "../data/vehicles";
 import { apiInstance } from "./apiInstance";
 
 export const getActiveTrips = async () => {
@@ -112,5 +113,19 @@ export const getAllAdmins = async () => {
   const { data } = await apiInstance.get(`/admin/admins`);
   return {
     users: data.users as TUser[],
+  };
+};
+
+export const getAllCarsQuery = async () => {
+  const { data } = await apiInstance.get(`/cars`);
+  return {
+    cars: data.cars as Vehicle[],
+  };
+};
+
+export const getCarByIdQuery = async (id: string) => {
+  const { data } = await apiInstance.get(`/car/${id}`);
+  return {
+    car: data.car as Vehicle,
   };
 };
