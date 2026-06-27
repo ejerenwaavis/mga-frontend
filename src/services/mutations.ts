@@ -20,7 +20,7 @@ import {
 
 
 export const loginUser = async (loginDetails: LoginDetails) => {
-  const { data } = await apiInstance.post("/login", loginDetails);
+  const { data } = await apiInstance.post("/auth/login", loginDetails);
 
   if (!data.status) {
     throw new Error(data.error || "Login failed");
@@ -83,7 +83,7 @@ export const registerAdmin = async (registerDetails: RegisterDetails) => {
 
 
 export const forgotPassword = async (loginDetails: ForgotDetails) => {
-  const { data } = await apiInstance.post("/password/forgot", loginDetails);
+  const { data } = await apiInstance.post("/auth/password/forgot-password", loginDetails);
 
   if (!data.status) {
     throw new Error(data.error || "failed");
@@ -95,7 +95,7 @@ export const forgotPassword = async (loginDetails: ForgotDetails) => {
 };
 
 export const recoverPassword = async (loginDetails: RecoverDetails) => {
-  const { data } = await apiInstance.post("/password/reset", loginDetails);
+  const { data } = await apiInstance.put("/auth/password/reset-password", loginDetails);
   if (!data.status) {
     throw new Error(data.error || "failed");
   }
@@ -285,6 +285,15 @@ export const updateBooking = async (details: {
 
 export const updateUser = async (details: updateUserPayload) => {
   const { data } = await apiInstance.put("/me/update", details);
+  return { data };
+};
+
+export const updateKYC = async (formData: FormData) => {
+  const { data } = await apiInstance.put("/me/kyc", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
   return { data };
 };
 

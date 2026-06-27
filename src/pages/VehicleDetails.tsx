@@ -8,7 +8,7 @@ import CTAGroup from "@/components/CTAGroup";
 import { Tag, ArrowLeft, ShieldCheck, Gauge, CreditCard, UserCheck } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import { vehicleImages, getOptimizedImageUrl } from "@/data/vehicleImages";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "react-query";
 import { getCarByIdQuery } from "@/services/queries";
 
 export default function VehicleDetails() {
@@ -41,7 +41,7 @@ export default function VehicleDetails() {
       ? `Rent the ${vehicleTitle} in Atlanta. ${vehicle.highlight}. From $${vehicle.pricePerDay}/day. Airport-ready, insured, 24/7 availability.`
       : "Premium vehicle rental in Atlanta, GA.",
     canonical: vehicle
-      ? `https://meadgreenautos.com/fleet/${vehicle.id}`
+      ? `https://meadgreenautos.com/fleet/${vehicle._id || vehicle.id}`
       : undefined,
   });
 
@@ -62,13 +62,16 @@ export default function VehicleDetails() {
   // Determine if using local or DB images
   const dbImages = vehicle?.images || [];
   const hasDbImages = dbImages.length > 0;
-  const localCarImages = vehicle ? vehicleImages[vehicle.id] : undefined;
+  
+  // Try to find matching local vehicle by name and year if it's a DB vehicle
+  const matchingLocalVehicle = localVehicles.find(v => v.name === vehicle?.name && v.year === vehicle?.year) || localVehicle;
+  const localCarImages = matchingLocalVehicle ? vehicleImages[matchingLocalVehicle.id] : undefined;
 
   useEffect(() => {
     if (hasDbImages) {
-      // Find the corresponding db image or fallback to the first one
-      const match = dbImages.find(img => img.url.includes(selectedSlot.key.replace(/ /g, '-').toLowerCase()));
-      setDisplayImage(match ? match.url : dbImages[0]?.url);
+      // Find the corresponding db image by index of selected slot
+      const index = gallerySlots.findIndex(s => s.key === selectedSlot.key);
+      setDisplayImage(dbImages[index]?.url || dbImages[0]?.url);
     } else if (localCarImages) {
       const rawDisplay = localCarImages[selectedSlot.key] ?? localCarImages[selectedSlot.fallback];
       setDisplayImage(rawDisplay ? getOptimizedImageUrl(rawDisplay, "display") : undefined);
@@ -141,12 +144,11 @@ export default function VehicleDetails() {
 
                 {/* Thumbnail grid */}
                 <div className="grid grid-cols-4 gap-3">
-                  {gallerySlots.map((slot) => {
+                  {gallerySlots.map((slot, index) => {
                     let slotImage = undefined;
                     
                     if (hasDbImages) {
-                      const match = dbImages.find(img => img.url.includes(slot.key.replace(/ /g, '-').toLowerCase()));
-                      slotImage = match ? match.url : undefined;
+                      slotImage = dbImages[index] ? dbImages[index].url : undefined;
                     } else if (localCarImages) {
                       const rawSlot = localCarImages[slot.key] ?? localCarImages[slot.fallback];
                       slotImage = rawSlot ? getOptimizedImageUrl(rawSlot, "thumbnail") : undefined;

@@ -4,6 +4,10 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Routes, Route } from "react-router-dom";
 import Layout from "@/components/Layout";
 import Index from "./pages/Index";
+import UserLogin from "./pages/user/UserLogin";
+import ForgotPassword from "./pages/user/ForgotPassword";
+import ResetPassword from "./pages/user/ResetPassword";
+import UserDashboard from "./pages/user/Dashboard";
 import Fleet from "./pages/Fleet";
 import VehicleDetails from "./pages/VehicleDetails";
 import Services from "./pages/Services";
@@ -44,7 +48,6 @@ export function App() {
 
 
   return (
-    // <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <ScrollToTop />
       <Toaster />
@@ -60,6 +63,10 @@ export function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/policies" element={<Policies />} />
           <Route path="/insurance" element={<Insurance />} />
+          <Route path="/login" element={<UserLogin />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/dashboard" element={<UserDashboard />} />
           <Route path="*" element={<NotFound />} />
 
           <Route path="/admin/login" element={<AdminLogin />} />
@@ -71,7 +78,6 @@ export function App() {
       </Layout>
 
     </TooltipProvider>
-    // </QueryClientProvider>
   );
 }
 

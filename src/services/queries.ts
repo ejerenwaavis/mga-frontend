@@ -65,6 +65,13 @@ export const getAllRequests = async (): Promise<TBookings> => {
   };
 };
 
+export const getMyRequests = async (): Promise<{ requests: BookingRequest[] }> => {
+  const { data } = await apiInstance.get(`/my-requests`);
+  return {
+    requests: data.requests as BookingRequest[]
+  };
+};
+
 export const fetchBookingByStatus = async (
   payload: FetchBookingByStatusPayload
 ) => {

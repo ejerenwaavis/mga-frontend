@@ -5,8 +5,9 @@ import VehicleCard from "@/components/VehicleCard";
 import FadeIn from "@/components/FadeIn";
 import CTAGroup from "@/components/CTAGroup";
 import { vehicles as localVehicles } from "@/data/vehicles";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "react-query";
 import { getAllCarsQuery } from "@/services/queries";
+import VehicleCardSkeleton from "@/components/VehicleCardSkeleton";
 import { Shield, MapPin, FileCheck, Car, Phone, Clock, CreditCard, ShieldCheck, Gauge, UserCheck, Star, ExternalLink } from "lucide-react";
 import heroVideo from "@/assets/hero-video-1.mp4";
 // import FAQSection from "@/components/Faq";
@@ -156,13 +157,14 @@ function TestimonialMarquee() {
 }
 
 export default function Index() {
-  const { data: carsData } = useQuery({
+  const { data: carsData, isLoading, isError } = useQuery({
     queryKey: ["fleetCars"],
     queryFn: getAllCarsQuery,
   });
 
-  const displayVehicles = carsData?.cars?.length ? carsData.cars : localVehicles;
-  const featuredVehicles = displayVehicles.slice(0, 6);
+  const featuredVehicles = carsData?.cars?.filter((car: any) => car.isFeatured) || [];
+  // If no cars are explicitly marked as featured, fallback to the first 6 cars
+  const displayVehicles = featuredVehicles.length > 0 ? featuredVehicles : (carsData?.cars?.slice(0, 6) || []);
 
   return (
     <>
@@ -299,11 +301,27 @@ export default function Index() {
             </div>
           </FadeIn>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredVehicles.map((vehicle, i) => (
-              <FadeIn key={vehicle.id} delay={i * 0.05}>
-                <VehicleCard vehicle={vehicle} />
-              </FadeIn>
-            ))}
+            {isLoading ? (
+              Array(6).fill(0).map((_, i) => (
+                <FadeIn key={`skeleton-${i}`} delay={i * 0.05}>
+                  <VehicleCardSkeleton />
+                </FadeIn>
+              ))
+            ) : isError ? (
+              <div className="col-span-full py-12 text-center text-red-500">
+                Oops! Unable to load featured vehicles at this time. Please try again later.
+              </div>
+            ) : displayVehicles.length > 0 ? (
+              displayVehicles.map((vehicle: any, i: number) => (
+                <FadeIn key={vehicle._id || vehicle.id} delay={i * 0.05}>
+                  <VehicleCard vehicle={vehicle} />
+                </FadeIn>
+              ))
+            ) : (
+              <div className="col-span-full py-12 text-center text-muted-foreground">
+                No featured vehicles available at this time.
+              </div>
+            )}
           </div>
           <FadeIn>
             <div className="mt-12 text-center">

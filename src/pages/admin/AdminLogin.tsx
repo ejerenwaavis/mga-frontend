@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
 import { toast } from "sonner";
 import useUserStore from "../../hooks/store/userStore";
-// import { Lock, Mail } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import { loginAdmin } from "../../services/mutations";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,6 +29,7 @@ const AdminLogin = () => {
     password: "",
   });
   const [errors, setErrors] = useState<FormErrors>({});
+  const [showPassword, setShowPassword] = useState(false);
 
   const { mutate: handleLogin, isLoading } = useMutation({
     mutationFn: loginAdmin,
@@ -105,12 +106,25 @@ const AdminLogin = () => {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="svc-phone">Password</Label>
-                <Input id="svc-phone" type="password" placeholder=""
-                  value={formData.password}
-                  onChange={(e) =>
-                    handleInputChange("password", e.target.value)
-                  }
-                  required className="focus-visible:ring-primary" />
+                <div className="relative">
+                  <Input id="svc-phone" type={showPassword ? "text" : "password"} placeholder=""
+                    value={formData.password}
+                    onChange={(e) =>
+                      handleInputChange("password", e.target.value)
+                    }
+                    required className="focus-visible:ring-primary pr-10" />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700"
+                  >
+                    {showPassword ? (
+                      <EyeOff className="h-4 w-4" />
+                    ) : (
+                      <Eye className="h-4 w-4" />
+                    )}
+                  </button>
+                </div>
               </div>
 
 

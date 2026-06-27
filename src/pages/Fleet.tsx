@@ -1,9 +1,10 @@
 import { useState, useMemo } from "react";
 import VehicleCard from "@/components/VehicleCard";
 import FadeIn from "@/components/FadeIn";
-import { vehicles as localVehicles, Vehicle } from "@/data/vehicles";
+import { Vehicle } from "@/data/vehicles";
 import { useSEO } from "@/hooks/useSEO";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "react-query";
+import VehicleCardSkeleton from "@/components/VehicleCardSkeleton";
 import { getAllCarsQuery } from "@/services/queries";
 
 const categories = ["All", "SUV", "Sedan", "Sports Cars"] as const;
@@ -16,12 +17,12 @@ export default function Fleet() {
   });
   const [category, setCategory] = useState<string>("All");
 
-  const { data: carsData } = useQuery({
+  const { data: carsData, isLoading, isError, error } = useQuery({
     queryKey: ["fleetCars"],
     queryFn: getAllCarsQuery,
   });
 
-  const displayVehicles = carsData?.cars?.length ? carsData.cars : localVehicles;
+  const displayVehicles = carsData?.cars || [];
 
   const filtered = useMemo(
   () =>
@@ -78,13 +79,27 @@ export default function Fleet() {
             </div>
           </FadeIn>
 
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((vehicle, i) => (
-              <FadeIn key={vehicle.id} delay={i * 0.04}>
-                <VehicleCard vehicle={vehicle} />
-              </FadeIn>
-            ))}
-          </div>
+          {isLoading ? (
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {Array(6).fill(0).map((_, i) => (
+                <FadeIn key={`skeleton-${i}`} delay={i * 0.04}>
+                  <VehicleCardSkeleton />
+                </FadeIn>
+              ))}
+            </div>
+          ) : isError ? (
+            <div className="mt-12 text-center text-red-500 py-10">
+              Oops! Unable to load vehicles at this time. Please try again later.
+            </div>
+          ) : (
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {filtered.map((vehicle, i) => (
+                <FadeIn key={vehicle._id || vehicle.id} delay={i * 0.04}>
+                  <VehicleCard vehicle={vehicle} />
+                </FadeIn>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </>

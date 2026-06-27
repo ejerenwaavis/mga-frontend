@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Users, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Vehicle } from "@/data/vehicles";
-import { TURO_URL } from "@/data/vehicles";
+import { TURO_URL, vehicles } from "@/data/vehicles";
 import { vehicleImages, getOptimizedImageUrl } from "@/data/vehicleImages";
 
 interface VehicleCardProps {
@@ -12,7 +12,9 @@ interface VehicleCardProps {
 export default function VehicleCard({ vehicle }: VehicleCardProps) {
   // Check for database images first
   const dbImage = vehicle.images && vehicle.images.length > 0 ? vehicle.images[0].url : undefined;
-  const image = vehicleImages[vehicle.id]?.[`Cover Image`];
+  // Try to find matching local vehicle to get fallback images if DB has none
+  const matchingLocalVehicle = vehicle.id ? vehicle : vehicles.find(v => v.name === vehicle.name && v.year === vehicle.year);
+  const image = matchingLocalVehicle ? vehicleImages[matchingLocalVehicle.id]?.[`Cover Image`] : undefined;
 
   const displayImage = dbImage 
     ? dbImage 
@@ -23,7 +25,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
 
   return (
     <div className="group flex flex-col overflow-hidden rounded border border-border bg-card transition-all duration-200 hover:shadow-xl hover:shadow-foreground/5 hover:-translate-y-1.5 hover:border-border/80">
-      <Link to={`/fleet/${vehicle.id}`} className="relative aspect-[16/10] overflow-hidden bg-muted">
+      <Link to={`/fleet/${vehicle._id || vehicle.id}`} className="relative aspect-[16/10] overflow-hidden bg-muted">
         {displayImage ? (
           <img
             src={displayImage}
