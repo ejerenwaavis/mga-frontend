@@ -7,9 +7,11 @@ import FadeIn from "@/components/FadeIn";
 import CTAGroup from "@/components/CTAGroup";
 import { Tag, ArrowLeft, ShieldCheck, Gauge, CreditCard, UserCheck } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
+import { useBookingModal } from "@/hooks/store/useBookingModal";
 import { vehicleImages, getOptimizedImageUrl } from "@/data/vehicleImages";
 import { useQuery } from "react-query";
 import { getCarByIdQuery } from "@/services/queries";
+import { recordTuroClick } from "@/services/mutations";
 
 export default function VehicleDetails() {
   const { vehicleId } = useParams<{ vehicleId: string }>();
@@ -210,12 +212,20 @@ export default function VehicleDetails() {
 
                 {/* CTAs - only 2 */}
                 <div className="mt-6 flex flex-col gap-2">
-                  <Link to="/services">
-                    <Button variant="premium" size="lg" className="w-full text-xs text-white hover:text-foreground">
-                      BOOK DIRECT
-                    </Button>
-                  </Link>
-                  <a href={TURO_URL} target="_blank" rel="noopener noreferrer">
+                  <Button 
+                    variant="premium" 
+                    size="lg" 
+                    className="w-full text-xs text-white hover:text-foreground"
+                    onClick={() => useBookingModal.getState().openModal(vehicle)}
+                  >
+                    BOOK DIRECT
+                  </Button>
+                  <a 
+                    href={TURO_URL} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    onClick={() => recordTuroClick({ vehicleId: vehicle?._id, source: "VehicleDetails" })}
+                  >
                     <Button variant="gold" size="sm" className="w-full text-xs text-white hover:text-foreground">
                       BOOK ON TURO
                     </Button>

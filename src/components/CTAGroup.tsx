@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { TURO_URL } from "@/data/vehicles";
+import { recordTuroClick } from "@/services/mutations";
 
 interface CTAGroupProps {
   variant?: "hero" | "default" | "dark";
@@ -18,7 +19,12 @@ export default function CTAGroup({ variant = "default", showHelper = true, class
               BOOK DIRECT
             </Button>
           </Link>
-          <a href={TURO_URL} target="_blank" rel="noopener noreferrer">
+          <a 
+            href={TURO_URL} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            onClick={() => recordTuroClick({ source: "CTAGroup-Hero" })}
+          >
             <Button variant="gold" size="lg" className="neon-btn min-w-[200px]">
               BOOK ON TURO
             </Button>
@@ -42,7 +48,12 @@ export default function CTAGroup({ variant = "default", showHelper = true, class
               BOOK DIRECT
             </Button>
           </Link>
-          <a href={TURO_URL} target="_blank" rel="noopener noreferrer">
+          <a 
+            href={TURO_URL} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            onClick={() => recordTuroClick({ source: "CTAGroup-Dark" })}
+          >
             <Button variant="gold" size="lg" className="min-w-[200px] border-primary-foreground/20 text-white hover:text-primary-foreground hover:bg-primary-foreground/10">
               BOOK ON TURO
             </Button>
@@ -65,7 +76,12 @@ export default function CTAGroup({ variant = "default", showHelper = true, class
             BOOK DIRECT
           </Button>
         </Link>
-        <a href={TURO_URL} target="_blank" rel="noopener noreferrer">
+        <a 
+          href={TURO_URL} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          onClick={() => recordTuroClick({ source: "CTAGroup-Default" })}
+        >
           <Button variant="gold" size="lg" className="min-w-[200px] text-white hover:text-foreground">
             BOOK ON TURO
           </Button>

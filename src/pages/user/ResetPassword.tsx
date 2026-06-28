@@ -55,18 +55,24 @@ const ResetPassword = () => {
   if (!token) return null;
 
   return (
-    <div className="min-h-screen bg-bg-light flex flex-col justify-center items-center p-4 pt-24">
-      <div className="w-full max-w-md">
-        <div className="bg-white rounded-lg shadow-md p-8">
+    <div className="min-h-screen bg-[#143D2A] flex flex-col justify-center items-center p-4 pt-24 relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+        <div className="absolute -top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-[#C69C45] opacity-5 blur-[120px]"></div>
+        <div className="absolute bottom-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-[#143D2A] opacity-50 blur-[100px]"></div>
+      </div>
+
+      <div className="w-full max-w-md relative z-10">
+        <div className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-8">
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-primary">Create New Password</h1>
-            <p className="text-gray-600 mt-2">Please enter your new password below</p>
+            <h1 className="text-2xl font-serif font-bold text-white">Create New Password</h1>
+            <p className="text-white/60 mt-2">Please enter your new password below</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="password">New Password</Label>
+                <Label htmlFor="password" className="text-white/80">New Password</Label>
                 <Input 
                   id="password" 
                   type="password"
@@ -74,10 +80,11 @@ const ResetPassword = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••" 
                   required 
+                  className="bg-black/20 border-white/10 text-white placeholder:text-white/40 focus-visible:ring-[#C69C45]/50"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword">Confirm Password</Label>
+                <Label htmlFor="confirmPassword" className="text-white/80">Confirm Password</Label>
                 <Input 
                   id="confirmPassword" 
                   type="password"
@@ -85,11 +92,12 @@ const ResetPassword = () => {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="••••••••" 
                   required 
+                  className="bg-black/20 border-white/10 text-white placeholder:text-white/40 focus-visible:ring-[#C69C45]/50"
                 />
               </div>
             </div>
 
-            <Button type="submit" variant="premium" size="lg" disabled={isLoading} className="w-full">
+            <Button type="submit" variant="gold" size="lg" disabled={isLoading} className="w-full rounded-xl shadow-lg">
               {isLoading ? "Resetting..." : "Reset Password"}
             </Button>
           </form>

@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { Users, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useBookingModal } from "@/hooks/store/useBookingModal";
 import type { Vehicle } from "@/data/vehicles";
 import { TURO_URL, vehicles } from "@/data/vehicles";
 import { vehicleImages, getOptimizedImageUrl } from "@/data/vehicleImages";
+import { recordTuroClick } from "@/services/mutations";
 
 interface VehicleCardProps {
   vehicle: Vehicle;
@@ -67,13 +69,22 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
         </div>
 
         <div className="mt-4 flex flex-row gap-3 items-center">
-          <Link to="/services" className="flex-1">
-            <Button variant="premium" size="sm" className="w-full">
-              BOOK DIRECT
-            </Button>
-          </Link>
+          <Button 
+            variant="premium" 
+            size="sm" 
+            className="flex-1"
+            onClick={() => useBookingModal.getState().openModal(vehicle)}
+          >
+            BOOK DIRECT
+          </Button>
 
-          <a href={vehicle.turoURL} target="_blank" rel="noopener noreferrer" className="flex-1">
+          <a 
+            href={vehicle.turoURL} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex-1"
+            onClick={() => recordTuroClick({ vehicleId: vehicle._id, source: "VehicleCard" })}
+          >
             <Button variant="gold" size="sm" className="w-full text-xs text-white hover:text-foreground">
               BOOK ON TURO
             </Button>
