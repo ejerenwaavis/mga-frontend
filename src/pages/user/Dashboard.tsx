@@ -296,6 +296,9 @@ const UserDashboard = () => {
   // Support Timeline State
   const [selectedSupportTicket, setSelectedSupportTicket] = useState<BookingRequest | null>(null);
 
+  // Rental Chat State
+  const [selectedRentalForChat, setSelectedRentalForChat] = useState<BookingRequest | null>(null);
+
   // Sync selected ticket when requests update in the background
   React.useEffect(() => {
     if (selectedSupportTicket && requests.length > 0) {
@@ -304,7 +307,13 @@ const UserDashboard = () => {
         setSelectedSupportTicket(updatedTicket);
       }
     }
-  }, [requests]);
+    if (selectedRentalForChat && requests.length > 0) {
+      const updatedRental = requests.find((r: BookingRequest) => r._id === selectedRentalForChat._id);
+      if (updatedRental) {
+        setSelectedRentalForChat(updatedRental);
+      }
+    }
+  }, [requests, selectedSupportTicket, selectedRentalForChat]);
   const [replyMessage, setReplyMessage] = useState("");
 
   // Modification State
@@ -529,7 +538,11 @@ const UserDashboard = () => {
             ) : (
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {rentalRequests.map((req: BookingRequest) => (
-                  <Card key={req._id} className="shadow-lg bg-white/80 backdrop-blur-xl border border-white hover:-translate-y-1.5 transition-all duration-300 rounded-2xl overflow-hidden group">
+                  <Card 
+                    key={req._id} 
+                    onClick={() => setSelectedRentalForChat(req)}
+                    className="shadow-lg bg-white/80 backdrop-blur-xl border border-white hover:-translate-y-1.5 transition-all duration-300 rounded-2xl overflow-hidden group cursor-pointer"
+                  >
                     <CardHeader className="pb-3 bg-white/50 border-b border-gray-100 group-hover:bg-[#C69C45]/5 transition-colors">
                       <div className="flex justify-between items-start mb-1">
                         <Badge variant="outline" className={`px-3 py-1 text-xs font-semibold rounded-full border-0 ${
@@ -568,7 +581,8 @@ const UserDashboard = () => {
                           variant="outline" 
                           size="sm" 
                           className="mt-4 w-full border-[#C69C45]/40 text-[#C69C45] hover:bg-[#C69C45] hover:text-white"
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation();
                             setModifyingRequest(req);
                             setIsModifyModalOpen(true);
                           }}
@@ -1146,6 +1160,103 @@ const UserDashboard = () => {
           onConfirm={(file) => doVideoUpload(file)}
           isUploading={isUploadingKyc}
         />
+      )}
+
+      {/* Rental Details Chat Modal */}
+      {selectedRentalForChat && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <Card className="w-full max-w-2xl bg-white rounded-2xl shadow-2xl border-0 h-[80vh] flex flex-col animate-in fade-in zoom-in-95 duration-200">
+            <CardHeader className="border-b border-gray-100 bg-white/50 py-4 shrink-0">
+              <div className="flex justify-between items-center">
+                <CardTitle className="text-lg font-serif text-[#143D2A]">Rental Details & Chat</CardTitle>
+                <div className="flex items-center gap-2">
+                  <button 
+                    onClick={() => refetchRequests()} 
+                    disabled={isFetchingRequests}
+                    className={`p-1.5 rounded-full transition-colors text-gray-500 ${isFetchingRequests ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-200'}`}
+                    title="Refresh Chat"
+                  >
+                    <RefreshCw className={`w-4 h-4 ${isFetchingRequests ? 'animate-spin text-[#C69C45]' : ''}`} />
+                  </button>
+                  <Badge variant="outline" className="bg-gray-100 border-0">{selectedRentalForChat.status}</Badge>
+                  <button
+                    onClick={() => setSelectedRentalForChat(null)}
+                    className="p-1.5 hover:bg-gray-100 rounded-full transition-colors text-gray-500 ml-2"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="p-0 flex-1 flex flex-col overflow-hidden bg-gray-50/50">
+              <div className="flex-1 overflow-y-auto p-6 space-y-6">
+                {/* Initial Message / Rental Info */}
+                <div className="flex flex-col items-end">
+                  <div className="bg-[#143D2A] text-white p-4 rounded-2xl rounded-tr-sm max-w-[85%] shadow-sm">
+                    <p className="text-sm">
+                      <strong>Vehicle:</strong> {selectedRentalForChat.desiredVehicleId === 'any' ? 'Not Specified' : selectedRentalForChat.desiredVehicleId}<br/>
+                      <strong>Dates:</strong> {new Date(selectedRentalForChat.startDate).toLocaleDateString()} - {new Date(selectedRentalForChat.endDate).toLocaleDateString()}<br/>
+                      {selectedRentalForChat.time && <><br/><strong>Time:</strong> {selectedRentalForChat.time}</>}
+                      {selectedRentalForChat.notes && <><br/><br/><strong>Notes:</strong> {selectedRentalForChat.notes}</>}
+                    </p>
+                  </div>
+                  <span className="text-[10px] text-gray-400 mt-1 font-medium">{new Date(selectedRentalForChat.createdAt).toLocaleString()}</span>
+                </div>
+
+                {/* Timeline Notes */}
+                {selectedRentalForChat.notesTimeline?.map((note, idx) => {
+                  const isUser = !!note.userMessage;
+                  return (
+                    <div key={idx} className={`flex flex-col ${isUser ? 'items-end' : 'items-start'}`}>
+                      <span className="text-xs text-gray-500 mb-1 font-medium px-1">{note.author || (isUser ? 'You' : 'Support Team')}</span>
+                      <div className={`p-4 rounded-2xl max-w-[85%] shadow-sm ${
+                        isUser ? 'bg-[#143D2A] text-white rounded-tr-sm' : 'bg-white text-gray-800 rounded-tl-sm border border-gray-100'
+                      }`}>
+                        <p className="text-sm whitespace-pre-wrap">{isUser ? note.userMessage : note.adminNote}</p>
+                        {note.statusChangedTo && (
+                          <div className={`mt-2 text-xs font-semibold px-2 py-1 inline-block rounded border ${isUser ? 'bg-black/20 border-black/10' : 'bg-gray-100 border-gray-200'}`}>
+                            Status changed to: {note.statusChangedTo}
+                          </div>
+                        )}
+                      </div>
+                      <span className="text-[10px] text-gray-400 mt-1 font-medium">
+                        {new Date(note.timestamp || "").toLocaleString()}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Reply Box */}
+              {selectedRentalForChat.status !== 'completed' && selectedRentalForChat.status !== 'cancelled' && (
+                <div className="p-4 bg-white border-t border-gray-100 shrink-0">
+                  <form 
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      if (!replyMessage.trim()) return;
+                      handleSupportReply({ requestId: selectedRentalForChat._id!, message: replyMessage });
+                    }}
+                    className="flex gap-2"
+                  >
+                    <Input 
+                      placeholder="Type your reply..." 
+                      value={replyMessage}
+                      onChange={(e) => setReplyMessage(e.target.value)}
+                      className="bg-gray-50 border-gray-200 focus-visible:ring-[#C69C45]/50 rounded-full px-4"
+                    />
+                    <Button 
+                      type="submit" 
+                      disabled={isSendingReply || !replyMessage.trim()}
+                      className="bg-[#143D2A] hover:bg-[#143D2A]/90 text-white rounded-full px-6 shrink-0"
+                    >
+                      {isSendingReply ? "..." : "Send"}
+                    </Button>
+                  </form>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
       )}
     </div>
   );

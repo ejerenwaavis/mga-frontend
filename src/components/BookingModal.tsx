@@ -135,7 +135,7 @@ export default function BookingModal() {
 
     const requestDetails: CreateRequestPayload = {
       ...formData,
-      vehicleId: selectedVehicle?._id,
+      vehicleId: selectedVehicle ? `${selectedVehicle.year} ${selectedVehicle.name}` : undefined,
       phone: formData.phone.replace(/[^\d+]/g, ""),
     };
 
