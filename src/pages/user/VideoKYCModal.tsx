@@ -13,6 +13,7 @@ interface VideoKYCModalProps {
 const VideoKYCModal: React.FC<VideoKYCModalProps> = ({ onClose, onConfirm, isUploading }) => {
   const webcamRef = useRef<Webcam>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
   const [capturing, setCapturing] = useState(false);
   const [recordedChunks, setRecordedChunks] = useState<Blob[]>([]);
   const [step, setStep] = useState<"instruction" | "recording" | "preview">("instruction");
@@ -63,7 +64,7 @@ const VideoKYCModal: React.FC<VideoKYCModalProps> = ({ onClose, onConfirm, isUpl
         mimeType: "video/webm"
       });
       mediaRecorderRef.current.addEventListener("dataavailable", handleDataAvailable);
-      mediaRecorderRef.current.start();
+      mediaRecorderRef.current.start(200);
       
       // Safety timeout: stop after 15s if they don't complete it
       recordingTimeoutRef.current = setTimeout(() => {
@@ -87,43 +88,55 @@ const VideoKYCModal: React.FC<VideoKYCModalProps> = ({ onClose, onConfirm, isUpl
     let active = true;
     const trackFace = async () => {
       if (!capturing || !active || step !== "recording") return;
-      if (webcamRef.current && webcamRef.current.video?.readyState === 4) {
-        const video = webcamRef.current.video;
-        const detection = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks();
-        
-        if (detection && active) {
-            const nose = detection.landmarks.positions[30];
-            const leftEdge = detection.landmarks.positions[0];
-            const rightEdge = detection.landmarks.positions[16];
-            const ratio = (nose.x - leftEdge.x) / (rightEdge.x - leftEdge.x);
-            
-            if (guideStateRef.current === 0) {
-                // Wait for them to turn LEFT (ratio < 0.35)
-                if (ratio < 0.35) {
-                    setGuideText("Great! Now turn your head slowly to the RIGHT");
-                    guideStateRef.current = 1;
-                } else if (ratio > 0.65) {
-                    setGuideText("Great! Now turn your head slowly to the LEFT");
-                    guideStateRef.current = 2; // turned right first
-                }
-            } else if (guideStateRef.current === 1) {
-                // Wait for them to turn RIGHT (ratio > 0.65)
-                if (ratio > 0.65) {
-                    setGuideText("Perfect! Processing video...");
-                    guideStateRef.current = 3;
-                    handleStopCaptureClick();
-                }
-            } else if (guideStateRef.current === 2) {
-                // Wait for them to turn LEFT
-                if (ratio < 0.35) {
-                    setGuideText("Perfect! Processing video...");
-                    guideStateRef.current = 3;
-                    handleStopCaptureClick();
-                }
-            }
-        } else if (!detection && active) {
-            // Face lost
+      try {
+        if (webcamRef.current && webcamRef.current.video && webcamRef.current.video.readyState === 4) {
+          const video = webcamRef.current.video;
+          const detection = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks();
+          
+          if (detection && active) {
+              const nose = detection.landmarks.positions[30];
+              const leftEdge = detection.landmarks.positions[0];
+              const rightEdge = detection.landmarks.positions[16];
+              const ratio = (nose.x - leftEdge.x) / (rightEdge.x - leftEdge.x);
+              
+              if (progressBarRef.current) {
+                 let clamped = Math.max(0.3, Math.min(0.7, ratio));
+                 let normalized = (clamped - 0.3) / 0.4;
+                 let pct = normalized * 100;
+                 if (normalized < 0.5) {
+                    progressBarRef.current.style.left = `${pct}%`;
+                    progressBarRef.current.style.right = `50%`;
+                 } else {
+                    progressBarRef.current.style.left = `50%`;
+                    progressBarRef.current.style.right = `${100 - pct}%`;
+                 }
+              }
+
+              if (guideStateRef.current === 0) {
+                  if (ratio < 0.42) {
+                      setGuideText("Great! Now turn your head slowly to the RIGHT");
+                      guideStateRef.current = 1;
+                  } else if (ratio > 0.58) {
+                      setGuideText("Great! Now turn your head slowly to the LEFT");
+                      guideStateRef.current = 2;
+                  }
+              } else if (guideStateRef.current === 1) {
+                  if (ratio > 0.58) {
+                      setGuideText("Perfect! Processing video...");
+                      guideStateRef.current = 3;
+                      handleStopCaptureClick();
+                  }
+              } else if (guideStateRef.current === 2) {
+                  if (ratio < 0.42) {
+                      setGuideText("Perfect! Processing video...");
+                      guideStateRef.current = 3;
+                      handleStopCaptureClick();
+                  }
+              }
+          }
         }
+      } catch (err) {
+        console.error("Face tracking error:", err);
       }
       if (active && guideStateRef.current !== 3) {
          requestAnimationFrame(trackFace);
@@ -134,7 +147,7 @@ const VideoKYCModal: React.FC<VideoKYCModalProps> = ({ onClose, onConfirm, isUpl
        trackFace();
     }
     return () => { active = false; };
-  }, [capturing, step]);
+  }, [capturing, step, handleStopCaptureClick]);
 
   // Once recording stops and chunks are populated, show preview
   React.useEffect(() => {
@@ -224,10 +237,19 @@ const VideoKYCModal: React.FC<VideoKYCModalProps> = ({ onClose, onConfirm, isUpl
                     <span className="text-white text-xs font-medium tracking-widest">REC</span>
                   </div>
                </div>
-               <div className="h-8 flex items-center justify-center">
-                 <p className="text-center font-bold text-lg text-[#143D2A] transition-all duration-300 transform scale-105">
+               <div className="flex flex-col items-center w-full mt-2 space-y-3">
+                 <p className="text-center font-bold text-lg text-[#143D2A] transition-all duration-300 transform scale-105 h-6">
                     {guideText}
                  </p>
+                 <div className="w-full max-w-[200px] bg-gray-200 h-2 rounded-full overflow-hidden relative">
+                    {/* The centered pivot */}
+                    <div className="absolute left-[49.5%] right-[49.5%] top-0 bottom-0 bg-gray-400 z-10" />
+                    <div 
+                      ref={progressBarRef} 
+                      className="absolute top-0 bottom-0 bg-[#C69C45] transition-all duration-75 ease-out"
+                      style={{ left: '50%', right: '50%' }}
+                    />
+                 </div>
                </div>
             </div>
           )}
