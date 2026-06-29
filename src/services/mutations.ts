@@ -20,8 +20,10 @@ import {
 import useUserStore from "../hooks/store/userStore";
 
 export const recordTuroClick = async (payload: { vehicleId?: string; source?: string }) => {
-  const userId = useUserStore.getState().user?._id;
-  const enhancedPayload = { ...payload, userId };
+  const user = useUserStore.getState().user;
+  const userId = user?._id;
+  const email = user?.email;
+  const enhancedPayload = { ...payload, userId, email };
   const { data } = await apiInstance.post("/metrics/turo-click", enhancedPayload);
   return data;
 };
