@@ -197,6 +197,7 @@ export default function BookingModal() {
                   onChange={(e) => handleInputChange("fullName", e.target.value)}
                   placeholder="John Doe"
                   required
+                  className="text-white placeholder:text-white/40 focus-visible:ring-primary"
                 />
               </div>
               <div className="space-y-2">
@@ -208,6 +209,7 @@ export default function BookingModal() {
                   onChange={(e) => handleInputChange("email", e.target.value)}
                   placeholder="john@example.com"
                   required
+                  className="text-white placeholder:text-white/40 focus-visible:ring-primary"
                 />
               </div>
             </div>
@@ -222,6 +224,7 @@ export default function BookingModal() {
                   onChange={(e) => handleInputChange("phone", e.target.value)}
                   placeholder="+1 (555) 000-0000"
                   required
+                  className="text-white placeholder:text-white/40 focus-visible:ring-primary"
                 />
               </div>
               <div className="space-y-2">
@@ -230,7 +233,7 @@ export default function BookingModal() {
                   id="modal-serviceType"
                   value={formData.serviceType}
                   onChange={(e) => handleInputChange("serviceType", e.target.value)}
-                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-gray-900"
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
                   required
                 >
                   <option value="">Select a service</option>
@@ -252,6 +255,7 @@ export default function BookingModal() {
                   value={formData.startDate}
                   onChange={(e) => handleInputChange("startDate", e.target.value)}
                   required
+                  className="text-white/60 placeholder:text-white/40 [color-scheme:dark] focus-visible:ring-primary"
                 />
               </div>
               <div className="space-y-2">
@@ -262,6 +266,7 @@ export default function BookingModal() {
                   value={formData.time}
                   onChange={(e) => handleInputChange("time", e.target.value)}
                   required
+                  className="text-white/60 placeholder:text-white/40 [color-scheme:dark] focus-visible:ring-primary"
                 />
               </div>
             </div>
@@ -276,6 +281,7 @@ export default function BookingModal() {
                   value={formData.endDate}
                   onChange={(e) => handleInputChange("endDate", e.target.value)}
                   required
+                  className="text-white/60 placeholder:text-white/40 [color-scheme:dark] focus-visible:ring-primary"
                 />
               </div>
               <div className="space-y-2">
@@ -286,6 +292,7 @@ export default function BookingModal() {
                   value={formData.endTime}
                   onChange={(e) => handleInputChange("endTime", e.target.value)}
                   required
+                  className="text-white/60 placeholder:text-white/40 [color-scheme:dark] focus-visible:ring-primary"
                 />
               </div>
             </div>
@@ -358,6 +365,7 @@ export default function BookingModal() {
                 onChange={(e) => handleInputChange("notes", e.target.value)}
                 placeholder="Any special requests or delivery instructions?"
                 rows={3}
+                className="text-white placeholder:text-white/40 focus-visible:ring-primary"
               />
             </div>
 
