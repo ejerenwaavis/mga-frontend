@@ -12,6 +12,7 @@ import {
   TTripWithCount,
   TBookings
 } from "../lib/types";
+import { Vehicle } from "../data/vehicles";
 import { apiInstance } from "./apiInstance";
 
 export const getActiveTrips = async () => {
@@ -64,6 +65,13 @@ export const getAllRequests = async (): Promise<TBookings> => {
   };
 };
 
+export const getMyRequests = async (): Promise<{ requests: BookingRequest[] }> => {
+  const { data } = await apiInstance.get(`/my-requests`);
+  return {
+    requests: data.requests as BookingRequest[]
+  };
+};
+
 export const fetchBookingByStatus = async (
   payload: FetchBookingByStatusPayload
 ) => {
@@ -78,7 +86,8 @@ export const fetchBookingByStatus = async (
 export const getCurrentUser = async () => {
   const { data } = await apiInstance.get(`/me`);
   return {
-    user: data.user as TUser,
+    // The backend returns { success: true, data: { user: ..., paymentDetails: ... } }
+    user: data?.data?.user as TUser,
   };
 };
 
@@ -112,5 +121,19 @@ export const getAllAdmins = async () => {
   const { data } = await apiInstance.get(`/admin/admins`);
   return {
     users: data.users as TUser[],
+  };
+};
+
+export const getAllCarsQuery = async () => {
+  const { data } = await apiInstance.get(`/cars`);
+  return {
+    cars: data.cars as Vehicle[],
+  };
+};
+
+export const getCarByIdQuery = async (id: string) => {
+  const { data } = await apiInstance.get(`/car/${id}`);
+  return {
+    car: data.car as Vehicle,
   };
 };

@@ -5,7 +5,8 @@ import {
   Ticket,
   Users,
   X,
-  LogOut
+  LogOut,
+  Shield
 } from "lucide-react";
 import { getRequestStats, getAllAdmins } from "../../services/queries";
 import { useQuery } from "react-query";
@@ -209,6 +210,17 @@ const Dashboard = () => {
           )
         }
 
+        <div className="bg-white rounded-lg shadow-sm p-5 border-l-4 border-[#C69C45] flex flex-col justify-center cursor-pointer hover:shadow-md transition-shadow" onClick={() => navigate("/admin/verifications")}>
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-[#C69C45]/10 rounded-full">
+              <Shield className="w-6 h-6 text-[#C69C45]" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-gray-800">Verification Queue</h3>
+              <p className="text-sm text-gray-500">Review pending KYC & docs</p>
+            </div>
+          </div>
+        </div>
       </div>
 
 

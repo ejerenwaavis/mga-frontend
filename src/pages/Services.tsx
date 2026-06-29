@@ -145,6 +145,38 @@ export default function Services() {
       newErrors.phone = "Please enter a valid US phone number (e.g., (404) 555-0100)";
     }
 
+    if (formData.startDate && formData.endDate && formData.startDate === formData.endDate) {
+      if (formData.time && formData.endTime && formData.time >= formData.endTime) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Invalid Time',
+          text: 'End time must be after the start time for same-day bookings.',
+          confirmButtonColor: "hsl(var(--primary))",
+        });
+        return false;
+      }
+    }
+
+    if (!licenseFilePreview) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Missing License',
+        text: 'Please upload a valid driver\'s license.',
+        confirmButtonColor: "hsl(var(--primary))",
+      });
+      return false;
+    }
+
+    if (!insuranceFilePreview) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Missing Insurance',
+        text: 'Please upload valid insurance documentation.',
+        confirmButtonColor: "hsl(var(--primary))",
+      });
+      return false;
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -501,10 +533,9 @@ export default function Services() {
                           handleInputChange("time", e.target.value)
                         }
                         disabled={isLoading}
-                        type="text"
-                        placeholder="04:30 PM"
+                        type="time"
                         required
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
                       />
                     </div>
 
@@ -517,10 +548,9 @@ export default function Services() {
                           handleInputChange("endTime", e.target.value)
                         }
                         disabled={isLoading}
-                        type="text"
-                        placeholder="06:30 PM"
+                        type="time"
                         required
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
                       />
                     </div>
 
@@ -580,7 +610,6 @@ export default function Services() {
                           accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
                           type="file"
                           disabled={isLoading}
-                          required
                           className="hidden"
                           onChange={(e) => {
                             const file = e.target.files?.[0];
@@ -613,7 +642,6 @@ export default function Services() {
                           id="svc-insurance"
                           type="file"
                           disabled={isLoading}
-                          required
                           className="hidden"
                           accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
                           onChange={(e) => {

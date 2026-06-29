@@ -59,7 +59,6 @@ export default function Contact() {
     canonical: "https://meadgreenautos.com/contact",
   });
   const [submitted, setSubmitted] = useState(false);
-  const [selectedService, setSelectedService] = useState<string | null>(null);
 
 
   // const handleSubmit = (e: React.FormEvent) => {
@@ -68,60 +67,36 @@ export default function Contact() {
   // };
 
   interface FormData {
-    fullName: string;
+    firstName: string;
+    lastName: string;
     email: string;
     phone: string;
-    serviceType: string;
-    vehicleId: string;
-    startDate: string;
-    endDate: string;
-    time?: string;
-    endTime?: string;
+    subject: string;
     notes?: string;
-    license?: any;
-    insurance?: any;
   }
 
   interface FormErrors {
-    fullName?: string;
+    firstName?: string;
+    lastName?: string;
     email?: string;
     phone?: string;
-    serviceType?: string;
-    vehicleId?: string;
-    startDate?: string;
-    endDate?: string;
-    time?: string;
-    endTime?: string;
+    subject?: string;
     notes?: string;
-    license?: any;
-    insurance?: any;
   }
 
   const initialFormState: FormData = {
-    fullName: "",
+    firstName: "",
+    lastName: "",
     email: "",
     phone: "",
-    serviceType: "",
-    vehicleId: "",
-    startDate: "",
-    endDate: "",
-    time: "",
-    endTime: "",
+    subject: "",
     notes: "",
-    license: "",
-    insurance: ""
   };
 
 
 
   const [formData, setFormData] = useState<FormData>(initialFormState);
-
   const [errors, setErrors] = useState<FormErrors>(initialFormState);
-  const today = new Date().toISOString().split("T")[0];
-  const licenseInputRef = useRef<HTMLInputElement>(null);
-  const insuranceInputRef = useRef<HTMLInputElement>(null);
-  const [licenseFilePreview, setLicenseFilePreview] = useState<{ file: File; url: string } | null>(null);
-  const [insuranceFilePreview, setInsuranceFilePreview] = useState<{ file: File; url: string } | null>(null);
 
 
 
@@ -129,19 +104,14 @@ export default function Contact() {
     const newErrors: FormErrors = {};
 
     const usPhoneRegex = /^(?:\+1\s?)?(?:\(\d{3}\)|\d{3})(?:[\s.-]?)\d{3}(?:[\s.-]?)\d{4}$/;
-    const titles = /^(mr|mrs|ms|miss|dr|prof|engr|sir|chief)\.?\s+/i;
+    // First name validation
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = 'First name is required';
+    }
 
-    // Full name validation
-    if (!formData.fullName.trim()) {
-      newErrors.fullName = 'Full name is required';
-    } else {
-      const fullName = formData.fullName.trim();
-      const finalName = fullName.replace(titles, "");
-      const nameParts = finalName.trim().split(/\s+/);
-
-      if (nameParts.length !== 2) {
-        newErrors.fullName = 'Please enter your first and last name';
-      }
+    // Last name validation
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = 'Last name is required';
     }
 
     // Email validation
@@ -158,29 +128,12 @@ export default function Contact() {
       newErrors.phone = "Please enter a valid US phone number (e.g., (404) 555-0100)";
     }
 
-    // Service type validation
-    if (!formData.serviceType.trim()) {
-      newErrors.serviceType = "Service type is required";
+    if (!formData.subject.trim()) {
+      newErrors.subject = "Subject is required";
     }
 
-    // Start date validation
-    if (!formData.startDate.trim()) {
-      newErrors.startDate = "Start date is required";
-    }
-
-    // End date validation
-    if (!formData.endDate.trim()) {
-      newErrors.endDate = "End date is required";
-    }
-
-    // License file validation
-    if (!licenseFilePreview) {
-      newErrors.license = "Driver's license is required";
-    }
-
-    // Insurance file validation
-    if (!insuranceFilePreview) {
-      newErrors.insurance = "Insurance document is required";
+    if (!formData.notes?.trim()) {
+      newErrors.notes = "Message is required";
     }
 
     setErrors(newErrors);
@@ -205,55 +158,6 @@ export default function Contact() {
     }
   };
 
-  const handleFileSelect = async (file: File, type: 'license' | 'insurance') => {
-    let processedFile = file;
-
-    // 1. Detect HEIC/HEIF files (Common on iOS)
-    const isHeic = file.type === "image/heic" ||
-      file.type === "image/heif" ||
-      file.name.toLowerCase().endsWith(".heic") ||
-      file.name.toLowerCase().endsWith(".heif");
-
-    if (isHeic) {
-      try {
-        // 2. Convert HEIC to JPEG
-        const convertedBlob = await heic2any({
-          blob: file,
-          toType: "image/jpeg",
-          quality: 0.8 // Adjust quality as needed
-        });
-
-        // Handle the result (heic2any can return an array if the HEIC has multiple frames)
-        const blob = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
-
-        // 3. Create a new File object from the Blob
-        processedFile = new File([blob], file.name.replace(/\.(heic|heif)$/i, ".jpg"), {
-          type: "image/jpeg",
-          lastModified: Date.now()
-        });
-      } catch (error) {
-        console.error("HEIC conversion failed:", error);
-        // Fallback: Continue with original file if conversion fails
-      }
-    }
-
-    // 4. Create Preview URL for the (potentially converted) file
-    const url = URL.createObjectURL(processedFile);
-
-    if (type === 'license') {
-      if (licenseFilePreview) {
-        URL.revokeObjectURL(licenseFilePreview.url);
-      }
-      setLicenseFilePreview({ file: processedFile, url });
-    } else {
-      if (insuranceFilePreview) {
-        URL.revokeObjectURL(insuranceFilePreview.url);
-      }
-      setInsuranceFilePreview({ file: processedFile, url });
-    }
-
-  };
-
 
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -262,44 +166,17 @@ export default function Contact() {
     try {
 
       if (validateForm()) {
-
-
-        if (licenseFilePreview) {
-          formData.license = licenseFilePreview.file
-        }
-        if (insuranceFilePreview) {
-          formData.insurance = insuranceFilePreview.file;
-        }
-
-        const requestDetails: CreateRequestPayload = {
-          ...formData,
-          phone: formData.phone.replace(/[^\d+]/g, "")
-
-        };
+        const today = new Date().toISOString().split("T")[0];
 
         const data = new FormData();
-
-        data.append("fullName", requestDetails.fullName);
-        data.append("email", requestDetails.email);
-        data.append("phone", requestDetails.phone);
+        data.append("fullName", `${formData.firstName.trim()} ${formData.lastName.trim()}`);
+        data.append("email", formData.email);
+        data.append("phone", formData.phone.replace(/[^\d+]/g, ""));
         data.append("recipientEmail", CONTACT_EMAIL);
-        data.append("serviceType", requestDetails.serviceType);
-        data.append("startDate", requestDetails.startDate);
-        data.append("endDate", requestDetails.endDate);
-
-        if (requestDetails.vehicleId) data.append("vehicleId", requestDetails.vehicleId);
-        if (requestDetails.time) data.append("time", requestDetails.time);
-        if (requestDetails.endTime) data.append("endTime", requestDetails.endTime);
-        if (requestDetails.notes) data.append("notes", requestDetails.notes);
-
-        // 2. Append the binary files
-        // IMPORTANT: The key names must match your Multer .fields() names
-        if (requestDetails.license) {
-          data.append("license", requestDetails.license);
-        }
-        if (requestDetails.insurance) {
-          data.append("insurance", requestDetails.insurance);
-        }
+        data.append("serviceType", "support");
+        data.append("startDate", today);
+        data.append("endDate", today);
+        data.append("notes", `Subject: ${formData.subject}\n\n${formData.notes || ''}`);
 
         handleCreateRequest(data);
       } else {
@@ -331,8 +208,6 @@ export default function Contact() {
       });
       setSubmitted(true);
       setFormData(initialFormState);
-      setLicenseFilePreview(null);
-      setInsuranceFilePreview(null);
     },
     onError: (error: any) => {
       const msg: string = error?.message || "We couldn't send your request right now.";
@@ -401,21 +276,39 @@ export default function Contact() {
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div className="space-y-2">
-                      <Label htmlFor="svc-name" className="text-white">Full Name</Label>
+                      <Label htmlFor="svc-firstname" className="text-white">First Name</Label>
                       <Input 
-                        id="svc-name" 
-                        value={formData.fullName}
+                        id="svc-firstname" 
+                        value={formData.firstName}
                         onChange={(e) =>
-                          handleInputChange("fullName", e.target.value)
+                          handleInputChange("firstName", e.target.value)
                         } 
                         disabled={isLoading} 
-                        placeholder="Your full name" 
+                        placeholder="Your first name" 
                         required 
                         className="focus-visible:ring-primary text-white placeholder:text-white/40"
                       />
-                      {errors.fullName && <p className="text-xs text-red-500">{errors.fullName}</p>}
+                      {errors.firstName && <p className="text-xs text-red-500">{errors.firstName}</p>}
                     </div>
 
+                    <div className="space-y-2">
+                      <Label htmlFor="svc-lastname" className="text-white">Last Name</Label>
+                      <Input 
+                        id="svc-lastname" 
+                        value={formData.lastName}
+                        onChange={(e) =>
+                          handleInputChange("lastName", e.target.value)
+                        } 
+                        disabled={isLoading} 
+                        placeholder="Your last name" 
+                        required 
+                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                      />
+                      {errors.lastName && <p className="text-xs text-red-500">{errors.lastName}</p>}
+                    </div>
+                  </div>
+
+                  <div className="grid gap-5 sm:grid-cols-2">
                     <div className="space-y-2">
                       <Label htmlFor="svc-email" className="text-white">Email</Label>
                       <Input 
@@ -449,159 +342,22 @@ export default function Contact() {
                       />
                       {errors.phone && <p className="text-xs text-red-500">{errors.phone}</p>}
                     </div>
+                  </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-type" className="text-white">Service</Label>
-                      <select
-                        id="svc-type"
-                        disabled={isLoading}
-                        value={formData.serviceType}
-                        onChange={(e) => {
-                          setSelectedService(e.target.value)
-                          handleInputChange("serviceType", e.target.value)
-                        }}
-                        className="flex h-10 w-full text-white rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                        required
-                      >
-                        <option value="">Select a service</option>
-                        {serviceTypes.map((s) => (
-                          <option key={s.id} value={s.id}>{s.title}</option>
-                        ))}
-                      </select>
-                      {errors.serviceType && <p className="text-xs text-red-500">{errors.serviceType}</p>}
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-time" className="text-white">Start Time</Label>
-                      <Input 
-                        id="svc-time" 
-                        value={formData.time}
-                        onChange={(e) =>
-                          handleInputChange("time", e.target.value)
-                        } 
-                        disabled={isLoading} 
-                        type="text" 
-                        placeholder="04:30 PM" 
-                        required 
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-endtime" className="text-white">End Time</Label>
-                      <Input 
-                        id="svc-endtime" 
-                        value={formData.endTime}
-                        onChange={(e) =>
-                          handleInputChange("endTime", e.target.value)
-                        } 
-                        disabled={isLoading} 
-                        type="text" 
-                        placeholder="06:30 PM" 
-                        required 
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-start" className="text-white">Start Date</Label>
-                      <Input 
-                        id="svc-start"
-                        value={formData.startDate}
-                        min={today}
-                        onChange={(e) =>
-                          handleInputChange("startDate", e.target.value)
-                        } 
-                        type="date" 
-                        disabled={isLoading} 
-                        required 
-                        className="w-full min-w-0 appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
-                      />
-                      {errors.startDate && <p className="text-xs text-red-500">{errors.startDate}</p>}
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-end" className="text-white">End Date</Label>
-                      <Input 
-                        id="svc-end"
-                        value={formData.endDate}
-                        min={today}
-                        onChange={(e) =>
-                          handleInputChange("endDate", e.target.value)
-                        } 
-                        type="date" 
-                        disabled={isLoading} 
-                        required 
-                        className="w-full min-w-0 appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
-                      />
-                      {errors.endDate && <p className="text-xs text-red-500">{errors.endDate}</p>}
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-license" className="text-white">License</Label>
-                      <div className="flex items-center gap-3">
-                        <Button
-                          type="button"
-                          variant="premiumOutline"
-                          size="sm"
-                          onClick={() => licenseInputRef.current?.click()}
-                          disabled={isLoading}
-                          className="text-white"
-                        >
-                          Choose File
-                        </Button>
-                        <span className="text-sm text-white/60 flex-1 truncate">
-                          {licenseFilePreview ? licenseFilePreview.file.name : "No file selected"}
-                        </span>
-                        <Input 
-                          id="svc-license"
-                          ref={licenseInputRef}
-                          accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
-                          type="file" 
-                          disabled={isLoading} 
-                          required 
-                          className="hidden"
-                          onChange={(e) => {
-                            const file = e.target.files?.[0];
-                            if (file) handleFileSelect(file, 'license');
-                          }}
-                        />
-                      </div>
-                      {errors.license && <p className="text-xs text-red-500">{errors.license}</p>}
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-insurance" className="text-white">Insurance</Label>
-                      <div className="flex items-center gap-3">
-                        <Button
-                          type="button"
-                          variant="premiumOutline"
-                          size="sm"
-                          onClick={() => insuranceInputRef.current?.click()}
-                          disabled={isLoading}
-                          className="text-white"
-                        >
-                          Choose File
-                        </Button>
-                        <span className="text-sm text-white/60 flex-1 truncate">
-                          {insuranceFilePreview ? insuranceFilePreview.file.name : "No file selected"}
-                        </span>
-                        <Input
-                          ref={insuranceInputRef}
-                          id="svc-insurance"
-                          type="file" 
-                          disabled={isLoading} 
-                          required 
-                          className="hidden"
-                          accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
-                          onChange={(e) => {
-                            const file = e.target.files?.[0];
-                            if (file) handleFileSelect(file, 'insurance');
-                          }}
-                        />
-                      </div>
-                      {errors.insurance && <p className="text-xs text-red-500">{errors.insurance}</p>}
-                    </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="svc-subject" className="text-white">Subject</Label>
+                    <Input 
+                      id="svc-subject" 
+                      value={formData.subject}
+                      onChange={(e) =>
+                        handleInputChange("subject", e.target.value)
+                      } 
+                      disabled={isLoading} 
+                      placeholder="Subject of your message" 
+                      required 
+                      className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                    />
+                    {errors.subject && <p className="text-xs text-red-500">{errors.subject}</p>}
                   </div>
 
                   <div className="space-y-2">
@@ -613,10 +369,12 @@ export default function Contact() {
                         handleInputChange("notes", e.target.value)
                       } 
                       disabled={isLoading} 
-                      placeholder="Make and model of the car and any additional details or requests" 
-                      rows={3} 
+                      required
+                      placeholder="How can we help you?" 
+                      rows={5} 
                       className="focus-visible:ring-primary text-white placeholder:text-white/40"
                     />
+                    {errors.notes && <p className="text-xs text-red-500">{errors.notes}</p>}
                   </div>
 
                   <Button type="submit" disabled={isLoading} variant="premium" size="lg" className="w-full">

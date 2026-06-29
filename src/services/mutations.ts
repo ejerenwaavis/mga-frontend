@@ -17,10 +17,16 @@ import {
   CreateRequestPayload
 } from "../lib/types";
 
+import useUserStore from "../hooks/store/userStore";
 
-
+export const recordTuroClick = async (payload: { vehicleId?: string; source?: string }) => {
+  const userId = useUserStore.getState().user?._id;
+  const enhancedPayload = { ...payload, userId };
+  const { data } = await apiInstance.post("/metrics/turo-click", enhancedPayload);
+  return data;
+};
 export const loginUser = async (loginDetails: LoginDetails) => {
-  const { data } = await apiInstance.post("/login", loginDetails);
+  const { data } = await apiInstance.post("/auth/login", loginDetails);
 
   if (!data.status) {
     throw new Error(data.error || "Login failed");
@@ -83,7 +89,7 @@ export const registerAdmin = async (registerDetails: RegisterDetails) => {
 
 
 export const forgotPassword = async (loginDetails: ForgotDetails) => {
-  const { data } = await apiInstance.post("/password/forgot", loginDetails);
+  const { data } = await apiInstance.post("/auth/password/forgot-password", loginDetails);
 
   if (!data.status) {
     throw new Error(data.error || "failed");
@@ -95,7 +101,7 @@ export const forgotPassword = async (loginDetails: ForgotDetails) => {
 };
 
 export const recoverPassword = async (loginDetails: RecoverDetails) => {
-  const { data } = await apiInstance.post("/password/reset", loginDetails);
+  const { data } = await apiInstance.put("/auth/password/reset-password", loginDetails);
   if (!data.status) {
     throw new Error(data.error || "failed");
   }
@@ -205,6 +211,26 @@ export const updateRequest = async (details: {
   return { data };
 };
 
+export const userReplyRequest = async (details: {
+  requestId: string;
+  message: string;
+}) => {
+  const { data } = await apiInstance.post(`/my-requests/${details.requestId}/reply`, { message: details.message });
+  return { data };
+};
+
+export const userModifyRequest = async (details: {
+  requestId: string;
+  newEndDate?: string;
+  notes?: string;
+}) => {
+  const { data } = await apiInstance.post(`/my-requests/${details.requestId}/modify`, {
+    newEndDate: details.newEndDate,
+    notes: details.notes
+  });
+  return { data };
+};
+
 export const assignDriverToVehicle = async (details: {
   vehicleId: string;
   driverId: string;
@@ -288,6 +314,15 @@ export const updateUser = async (details: updateUserPayload) => {
   return { data };
 };
 
+export const updateKYC = async (formData: FormData) => {
+  const { data } = await apiInstance.put("/me/kyc", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+  return { data };
+};
+
 export const verifyPayment = async (reference: string): Promise<PaymentVerificationResponse> => {
   try {
     const { data } = await apiInstance.post("/verifyPayment", { reference });
@@ -311,3 +346,30 @@ export const acceptPayment = async (details: acceptPaymentPayload): Promise<acce
   }
   return data;
 };
+
+// Account Deletion
+export const requestDeletionOtp = async () => {
+  const { data } = await apiInstance.post("/me/delete/request-otp");
+  if (!data.success) {
+    throw new Error(data.message || "Failed to request OTP");
+  }
+  return data;
+};
+
+export const deleteAccount = async (payload: { otp: string; deletionReason: string }) => {
+  const { data } = await apiInstance.post("/me/delete", payload);
+  if (!data.success) {
+    throw new Error(data.message || "Failed to delete account");
+  }
+  return data;
+};
+
+// Admin KYC Verification
+export const verifyKYCAdmin = async (payload: { userId: string; status: "Verified" | "Rejected"; reason?: string; docType?: string }) => {
+  const { data } = await apiInstance.post("/admin/verifyUser", payload);
+  if (!data.success) {
+    throw new Error(data.error || "Failed to verify KYC");
+  }
+  return data;
+};
+

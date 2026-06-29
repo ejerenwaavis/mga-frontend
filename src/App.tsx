@@ -4,6 +4,10 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Routes, Route } from "react-router-dom";
 import Layout from "@/components/Layout";
 import Index from "./pages/Index";
+import UserLogin from "./pages/user/UserLogin";
+import ForgotPassword from "./pages/user/ForgotPassword";
+import ResetPassword from "./pages/user/ResetPassword";
+import UserDashboard from "./pages/user/Dashboard";
 import Fleet from "./pages/Fleet";
 import VehicleDetails from "./pages/VehicleDetails";
 import Services from "./pages/Services";
@@ -19,6 +23,7 @@ import AdminDashboard from "./pages/admin/Dashboard";
 import Requests from "./pages/admin/Requests";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminProfile from "./pages/admin/adminProfile";
+import VerificationQueue from "./pages/admin/VerificationQueue";
 // import FAQ from "./pages/FAQ";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -44,11 +49,8 @@ export function App() {
 
 
   return (
-    // <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <ScrollToTop />
-      <Toaster />
-      <Sonner />
       <Layout>
         <Routes>
           <Route path="/" element={<Index />} />
@@ -60,6 +62,10 @@ export function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/policies" element={<Policies />} />
           <Route path="/insurance" element={<Insurance />} />
+          <Route path="/login" element={<UserLogin />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/dashboard" element={<UserDashboard />} />
           <Route path="*" element={<NotFound />} />
 
           <Route path="/admin/login" element={<AdminLogin />} />
@@ -67,11 +73,11 @@ export function App() {
           <Route path="/admin/requests" element={<Requests />} />
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/profile" element={<AdminProfile />} />
+          <Route path="/admin/verifications" element={<VerificationQueue />} />
         </Routes>
       </Layout>
 
     </TooltipProvider>
-    // </QueryClientProvider>
   );
 }
 

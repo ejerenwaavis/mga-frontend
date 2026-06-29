@@ -1,25 +1,33 @@
 import { Link } from "react-router-dom";
 import { Users, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useBookingModal } from "@/hooks/store/useBookingModal";
 import type { Vehicle } from "@/data/vehicles";
-import { TURO_URL } from "@/data/vehicles";
+import { TURO_URL, vehicles } from "@/data/vehicles";
 import { vehicleImages, getOptimizedImageUrl } from "@/data/vehicleImages";
+import { recordTuroClick } from "@/services/mutations";
 
 interface VehicleCardProps {
   vehicle: Vehicle;
 }
 
 export default function VehicleCard({ vehicle }: VehicleCardProps) {
-  const image = vehicleImages[vehicle.id]?.["Cover Image"];
+  // Check for database images first
+  const dbImage = vehicle.images && vehicle.images.length > 0 ? vehicle.images[0].url : undefined;
+  // Try to find matching local vehicle to get fallback images if DB has none
+  const matchingLocalVehicle = vehicle.id ? vehicle : vehicles.find(v => v.name === vehicle.name && v.year === vehicle.year);
+  const image = matchingLocalVehicle ? vehicleImages[matchingLocalVehicle.id]?.[`Cover Image`] : undefined;
 
-  const displayImage = image
-    ? getOptimizedImageUrl(image, "display")
-    : undefined;
+  const displayImage = dbImage 
+    ? dbImage 
+    : image
+      ? getOptimizedImageUrl(image, "display")
+      : undefined;
 
 
   return (
     <div className="group flex flex-col overflow-hidden rounded border border-border bg-card transition-all duration-200 hover:shadow-xl hover:shadow-foreground/5 hover:-translate-y-1.5 hover:border-border/80">
-      <Link to={`/fleet/${vehicle.id}`} className="relative aspect-[16/10] overflow-hidden bg-muted">
+      <Link to={`/fleet/${vehicle._id || vehicle.id}`} className="relative aspect-[16/10] overflow-hidden bg-muted">
         {displayImage ? (
           <img
             src={displayImage}
@@ -61,13 +69,22 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
         </div>
 
         <div className="mt-4 flex flex-row gap-3 items-center">
-          <Link to="/services" className="flex-1">
-            <Button variant="premium" size="sm" className="w-full">
-              BOOK DIRECT
-            </Button>
-          </Link>
+          <Button 
+            variant="premium" 
+            size="sm" 
+            className="flex-1"
+            onClick={() => useBookingModal.getState().openModal(vehicle)}
+          >
+            BOOK DIRECT
+          </Button>
 
-          <a href={vehicle.turoURL} target="_blank" rel="noopener noreferrer" className="flex-1">
+          <a 
+            href={vehicle.turoURL} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex-1"
+            onClick={() => recordTuroClick({ vehicleId: vehicle._id, source: "VehicleCard" })}
+          >
             <Button variant="gold" size="sm" className="w-full text-xs text-white hover:text-foreground">
               BOOK ON TURO
             </Button>
