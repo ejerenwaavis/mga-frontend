@@ -584,6 +584,14 @@ const UserDashboard = () => {
 
           {/* ──────────── PROFILE TAB ──────────── */}
           <TabsContent value="profile" className="fade-in-up">
+            {user?.pendingNameChange && user.pendingNameChange.firstName && (
+              <div className="bg-blue-50 border border-blue-200 p-4 rounded-xl mb-6 flex items-start gap-3">
+                 <AlertTriangle className="text-blue-600 mt-0.5" size={20} />
+                 <p className="text-sm text-blue-800">
+                   Your requested name change to <strong>{user.pendingNameChange.firstName} {user.pendingNameChange.lastName}</strong> is pending review. It will be applied once your KYC document is verified.
+                 </p>
+              </div>
+            )}
             <div className="grid lg:grid-cols-2 gap-8">
 
               {/* Personal Details */}

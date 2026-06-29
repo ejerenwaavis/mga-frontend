@@ -1,7 +1,8 @@
-import React, { useRef, useState, useCallback } from "react";
+import React, { useRef, useState, useCallback, useEffect } from "react";
 import Webcam from "react-webcam";
 import { X, Check, RefreshCw, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import * as faceapi from "@vladmandic/face-api";
 
 interface VideoKYCModalProps {
   onClose: () => void;
@@ -26,48 +27,114 @@ const VideoKYCModal: React.FC<VideoKYCModalProps> = ({ onClose, onConfirm, isUpl
     [setRecordedChunks]
   );
 
+  const [guideText, setGuideText] = useState("Loading face tracking engine...");
+  const [modelsLoaded, setModelsLoaded] = useState(false);
+  const guideStateRef = useRef<number>(0);
+  const recordingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const loadModels = async () => {
+      try {
+        const MODEL_URL = "https://cdn.jsdelivr.net/npm/@vladmandic/face-api/model/";
+        await Promise.all([
+          faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
+          faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
+        ]);
+        setModelsLoaded(true);
+        setGuideText("Look straight at the camera");
+      } catch (err) {
+        console.error("Failed to load face-api models", err);
+        setGuideText("Error loading face tracking. Please refresh.");
+      }
+    };
+    loadModels();
+  }, []);
+
   const handleStartCaptureClick = useCallback(() => {
+    if (!modelsLoaded) return;
     setStep("recording");
     setCapturing(true);
     setRecordedChunks([]);
+    guideStateRef.current = 0;
+    setGuideText("Turn your head slowly to the LEFT");
     
-    // We start recording using MediaRecorder from the webcam stream
     if (webcamRef.current && webcamRef.current.stream) {
       mediaRecorderRef.current = new MediaRecorder(webcamRef.current.stream, {
         mimeType: "video/webm"
       });
-      mediaRecorderRef.current.addEventListener(
-        "dataavailable",
-        handleDataAvailable
-      );
+      mediaRecorderRef.current.addEventListener("dataavailable", handleDataAvailable);
       mediaRecorderRef.current.start();
       
-      // Auto-stop after 7 seconds for the head rotation
-      setTimeout(() => {
-        handleStopCaptureClick();
-      }, 7000);
+      // Safety timeout: stop after 15s if they don't complete it
+      recordingTimeoutRef.current = setTimeout(() => {
+        if (guideStateRef.current !== 3) {
+           setGuideText("Time limit reached. Processing what we have...");
+           handleStopCaptureClick();
+        }
+      }, 15000);
     }
-  }, [webcamRef, setCapturing, mediaRecorderRef, handleDataAvailable]);
+  }, [webcamRef, setCapturing, mediaRecorderRef, handleDataAvailable, modelsLoaded]);
 
   const handleStopCaptureClick = useCallback(() => {
+    if (recordingTimeoutRef.current) clearTimeout(recordingTimeoutRef.current);
     if (mediaRecorderRef.current && mediaRecorderRef.current.state !== "inactive") {
       mediaRecorderRef.current.stop();
     }
     setCapturing(false);
   }, [mediaRecorderRef, setCapturing]);
 
-  // Guided Instructions state
-  const [guideText, setGuideText] = useState("Look straight at the camera");
-  React.useEffect(() => {
-    if (step === "recording") {
-      setGuideText("Look straight at the camera");
-      const timers = [
-        setTimeout(() => setGuideText("Turn your head slowly to the LEFT"), 2000),
-        setTimeout(() => setGuideText("Turn your head slowly to the RIGHT"), 4500)
-      ];
-      return () => timers.forEach(clearTimeout);
+  useEffect(() => {
+    let active = true;
+    const trackFace = async () => {
+      if (!capturing || !active || step !== "recording") return;
+      if (webcamRef.current && webcamRef.current.video?.readyState === 4) {
+        const video = webcamRef.current.video;
+        const detection = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks();
+        
+        if (detection && active) {
+            const nose = detection.landmarks.positions[30];
+            const leftEdge = detection.landmarks.positions[0];
+            const rightEdge = detection.landmarks.positions[16];
+            const ratio = (nose.x - leftEdge.x) / (rightEdge.x - leftEdge.x);
+            
+            if (guideStateRef.current === 0) {
+                // Wait for them to turn LEFT (ratio < 0.35)
+                if (ratio < 0.35) {
+                    setGuideText("Great! Now turn your head slowly to the RIGHT");
+                    guideStateRef.current = 1;
+                } else if (ratio > 0.65) {
+                    setGuideText("Great! Now turn your head slowly to the LEFT");
+                    guideStateRef.current = 2; // turned right first
+                }
+            } else if (guideStateRef.current === 1) {
+                // Wait for them to turn RIGHT (ratio > 0.65)
+                if (ratio > 0.65) {
+                    setGuideText("Perfect! Processing video...");
+                    guideStateRef.current = 3;
+                    handleStopCaptureClick();
+                }
+            } else if (guideStateRef.current === 2) {
+                // Wait for them to turn LEFT
+                if (ratio < 0.35) {
+                    setGuideText("Perfect! Processing video...");
+                    guideStateRef.current = 3;
+                    handleStopCaptureClick();
+                }
+            }
+        } else if (!detection && active) {
+            // Face lost
+        }
+      }
+      if (active && guideStateRef.current !== 3) {
+         requestAnimationFrame(trackFace);
+      }
+    };
+
+    if (capturing) {
+       trackFace();
     }
-  }, [step]);
+    return () => { active = false; };
+  }, [capturing, step]);
 
   // Once recording stops and chunks are populated, show preview
   React.useEffect(() => {
@@ -129,8 +196,12 @@ const VideoKYCModal: React.FC<VideoKYCModalProps> = ({ onClose, onConfirm, isUpl
                   Center your face in the camera, start recording, and slowly turn your head from side to side for 7 seconds.
                 </p>
               </div>
-              <Button onClick={handleStartCaptureClick} className="w-full bg-[#143D2A] hover:bg-[#143D2A]/90 text-white rounded-xl py-6 text-lg">
-                I'm Ready, Start Camera
+              <Button 
+                onClick={handleStartCaptureClick} 
+                disabled={!modelsLoaded}
+                className={`w-full bg-[#143D2A] hover:bg-[#143D2A]/90 text-white rounded-xl py-6 text-lg ${!modelsLoaded ? 'opacity-70 cursor-not-allowed' : ''}`}
+              >
+                {!modelsLoaded ? "Loading Tracking Engine..." : "I'm Ready, Start Camera"}
               </Button>
             </div>
           )}
