@@ -245,10 +245,10 @@ export default function UserProfileModal({ user, onClose }: UserProfileModalProp
                                         )}
                                     </div>
                                     <div className="border border-border rounded-lg p-3 bg-gray-50">
-                                        <p className="text-sm font-medium text-gray-700 mb-2">Video KYC</p>
+                                        <p className="text-sm font-medium text-gray-700 mb-2">Selfie KYC</p>
                                         {user.videoKyc?.url ? (
                                             <a href={user.videoKyc.url} target="_blank" rel="noreferrer" className="block text-primary hover:underline text-sm truncate">
-                                                Watch Video
+                                                View Selfie
                                             </a>
                                         ) : (
                                             <span className="text-sm text-gray-400">Not uploaded</span>

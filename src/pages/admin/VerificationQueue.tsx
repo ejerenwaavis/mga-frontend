@@ -13,6 +13,7 @@ import useUserStore from "../../hooks/store/userStore";
 import { useNavigate } from "react-router-dom";
 
 type DocType = "kyc" | "insurance" | "videoKyc";
+const isVideoUrl = (url?: string) => !!url && /\.(webm|mp4|mov|m4v|ogg|ogv)(\?|#|$)/i.test(url);
 
 const VerificationQueue = () => {
   const navigate = useNavigate();
@@ -255,7 +256,11 @@ const VerificationQueue = () => {
               {/* Document Preview */}
               <div className="flex-1 bg-gray-900 flex items-center justify-center p-4 relative overflow-y-auto">
                 {selectedDocType === "videoKyc" ? (
-                  <video src={getDocUrl(selectedUser, selectedDocType)} className="max-w-full max-h-full object-contain rounded-lg" controls autoPlay />
+                  isVideoUrl(getDocUrl(selectedUser, selectedDocType)) ? (
+                    <video src={getDocUrl(selectedUser, selectedDocType)} className="max-w-full max-h-full object-contain rounded-lg" controls autoPlay />
+                  ) : (
+                    <img src={getDocUrl(selectedUser, selectedDocType)} alt="Selfie KYC" className="max-w-full max-h-full object-contain rounded-lg shadow-2xl" />
+                  )
                 ) : (
                   getDocUrl(selectedUser, selectedDocType)?.includes(".pdf") ? (
                     <iframe src={getDocUrl(selectedUser, selectedDocType)} className="w-full h-full min-h-[500px] rounded-lg bg-white" title="Document" />

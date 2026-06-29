@@ -21,6 +21,7 @@ import VideoKYCModal from "./VideoKYCModal";
 
 /* ─── small helper ─── */
 const isPdf = (url?: string) => url?.toLowerCase().includes(".pdf") || url?.toLowerCase().includes("application/pdf");
+const isVideoUrl = (url?: string) => !!url && /\.(webm|mp4|mov|m4v|ogg|ogv)(\?|#|$)/i.test(url);
 
 /* ─────────────────────────────────────────────────────── */
 /*  Document upload card (license or insurance)            */
@@ -714,7 +715,7 @@ const UserDashboard = () => {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <Video className="h-4 w-4 text-[#C69C45]" />
-                        <h3 className="font-semibold text-gray-900">Selfie Video KYC</h3>
+                        <h3 className="font-semibold text-gray-900">Selfie KYC</h3>
                       </div>
                       <div className="flex items-center gap-2">
                         {user?.videoKyc?.status ? (
@@ -739,7 +740,11 @@ const UserDashboard = () => {
                     </div>
                     {user?.videoKyc?.url ? (
                       <div className="relative w-full h-36 bg-black rounded-xl overflow-hidden border border-gray-200">
-                        <video src={user.videoKyc.url} className="w-full h-full object-cover" controls playsInline />
+                        {isVideoUrl(user.videoKyc.url) ? (
+                          <video src={user.videoKyc.url} className="w-full h-full object-cover" controls playsInline />
+                        ) : (
+                          <img src={user.videoKyc.url} alt="Selfie KYC" className="w-full h-full object-cover" />
+                        )}
                       </div>
                     ) : (
                       <div className="flex flex-col gap-4 p-5 bg-amber-50 rounded-2xl border border-amber-200 shadow-sm">
@@ -748,8 +753,8 @@ const UserDashboard = () => {
                             <AlertCircle className="h-4 w-4 text-amber-600" />
                           </div>
                           <div>
-                            <p className="font-semibold text-amber-900">Video Needed</p>
-                            <p className="text-sm text-amber-800/80 mt-0.5">Please record a short selfie video to verify your identity.</p>
+                            <p className="font-semibold text-amber-900">Selfie KYC Needed</p>
+                            <p className="text-sm text-amber-800/80 mt-0.5">Please complete selfie capture to verify your identity.</p>
                           </div>
                         </div>
                         <Button
@@ -757,7 +762,7 @@ const UserDashboard = () => {
                           className="bg-[#C69C45] hover:bg-[#C69C45]/90 text-white self-start rounded-xl px-5"
                           onClick={() => setIsVideoKycModalOpen(true)}
                         >
-                          Record Video
+                          Capture Selfie
                         </Button>
                       </div>
                     )}
