@@ -322,3 +322,30 @@ export const acceptPayment = async (details: acceptPaymentPayload): Promise<acce
   }
   return data;
 };
+
+// Account Deletion
+export const requestDeletionOtp = async () => {
+  const { data } = await apiInstance.post("/me/delete/request-otp");
+  if (!data.success) {
+    throw new Error(data.message || "Failed to request OTP");
+  }
+  return data;
+};
+
+export const deleteAccount = async (payload: { otp: string; deletionReason: string }) => {
+  const { data } = await apiInstance.post("/me/delete", payload);
+  if (!data.success) {
+    throw new Error(data.message || "Failed to delete account");
+  }
+  return data;
+};
+
+// Admin KYC Verification
+export const verifyKYCAdmin = async (payload: { userId: string; status: "Verified" | "Rejected"; reason?: string; docType?: string }) => {
+  const { data } = await apiInstance.post("/admin/verifyUser", payload);
+  if (!data.success) {
+    throw new Error(data.error || "Failed to verify KYC");
+  }
+  return data;
+};
+

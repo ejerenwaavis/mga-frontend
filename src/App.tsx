@@ -23,6 +23,7 @@ import AdminDashboard from "./pages/admin/Dashboard";
 import Requests from "./pages/admin/Requests";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminProfile from "./pages/admin/adminProfile";
+import VerificationQueue from "./pages/admin/VerificationQueue";
 // import FAQ from "./pages/FAQ";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -74,6 +75,7 @@ export function App() {
           <Route path="/admin/requests" element={<Requests />} />
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/profile" element={<AdminProfile />} />
+          <Route path="/admin/verifications" element={<VerificationQueue />} />
         </Routes>
       </Layout>
 

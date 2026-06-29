@@ -86,7 +86,8 @@ export const fetchBookingByStatus = async (
 export const getCurrentUser = async () => {
   const { data } = await apiInstance.get(`/me`);
   return {
-    user: data.user as TUser,
+    // The backend returns { success: true, data: { user: ..., paymentDetails: ... } }
+    user: data?.data?.user as TUser,
   };
 };
 

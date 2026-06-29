@@ -41,6 +41,8 @@ const Requests = () => {
   const [filteredRequests, setFilteredRequests] = useState<BookingRequest[] | undefined>();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [statusPick, setStatusPick] = useState("");
+  const [adminNote, setAdminNote] = useState("");
+  const [userMessage, setUserMessage] = useState("");
 
   const { user: storeUser, clearAuth } = useUserStore();
 
@@ -134,6 +136,8 @@ const Requests = () => {
       requestId: string;
       status: string;
       admin: string;
+      adminNote?: string;
+      userMessage?: string;
     }) => updateRequest(requestData),
     onSuccess: () => {
       toast.success("Request updated successfully!");
@@ -153,7 +157,9 @@ const Requests = () => {
       updateRequestMutation({
         requestId: selectedRequest._id,
         status: statusPick,
-        admin: storeUser.email
+        admin: storeUser.email,
+        adminNote,
+        userMessage
       });
     } catch (error: any) {
       console.error("Error updating request:", error);
@@ -162,10 +168,11 @@ const Requests = () => {
       );
     } finally {
       setSelectedRequest(null);
+      setEditRequestModalOpen(false);
       setIsSubmitting(false);
+      setAdminNote("");
+      setUserMessage("");
     }
-
-
   };
 
 
@@ -382,23 +389,89 @@ const Requests = () => {
             >
 
 
-              <div className="space-y-2">
-                <Label htmlFor="svc-type">Status Response</Label>
-                <select
-                  id="svc-type"
-                  disabled={isSubmitting}
-                  value={statusPick}
-                  onChange={(e) => setStatusPick(e.target.value as any)}
-                  className="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                  required
-                >
-                  <option value="">Select response</option>
-                  <option value="pending">Pending</option>
-                  <option value="confirmed">Confirm</option>
-                  <option value="completed">Completed</option>
-                  <option value="cancelled">Cancel</option>
-                </select>
+              <div className="space-y-4">
+                <div>
+                  <Label htmlFor="svc-type">Status Response</Label>
+                  <select
+                    id="svc-type"
+                    disabled={isSubmitting}
+                    value={statusPick}
+                    onChange={(e) => setStatusPick(e.target.value as any)}
+                    className="flex h-10 w-full mt-1 rounded-md border border-input bg-white px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    required
+                  >
+                    <option value="">Select response</option>
+                    <option value="pending">Pending</option>
+                    <option value="confirmed">Confirm</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancel</option>
+                  </select>
+                </div>
 
+                {/* Admin Note and User Message Textareas */}
+                {statusPick && (
+                  <>
+                    <div>
+                      <Label htmlFor="adminNote">Admin Note (Internal Only)</Label>
+                      <textarea
+                        id="adminNote"
+                        className="flex min-h-[80px] w-full mt-1 rounded-md border border-input bg-white px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                        placeholder="Add an internal note about this status change..."
+                        value={adminNote}
+                        onChange={(e) => setAdminNote(e.target.value)}
+                        disabled={isSubmitting}
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="userMessage">Message to User (Included in Email)</Label>
+                      <textarea
+                        id="userMessage"
+                        className="flex min-h-[80px] w-full mt-1 rounded-md border border-input bg-white px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                        placeholder="Add a personalized message that will be included in the notification email..."
+                        value={userMessage}
+                        onChange={(e) => setUserMessage(e.target.value)}
+                        disabled={isSubmitting}
+                      />
+                    </div>
+                  </>
+                )}
+                
+                {/* Notes Timeline */}
+                {selectedRequest?.notesTimeline && selectedRequest.notesTimeline.length > 0 && (
+                  <div className="pt-4 mt-4 border-t border-gray-100 max-h-[250px] overflow-y-auto pr-2">
+                    <h3 className="text-sm font-semibold text-gray-700 mb-3">Request Timeline</h3>
+                    <div className="space-y-4 pl-2 border-l-2 border-gray-200">
+                      {selectedRequest.notesTimeline.map((note, idx) => (
+                        <div key={idx} className="relative pl-4">
+                          <div className="absolute -left-[21px] top-1 h-2 w-2 rounded-full bg-primary ring-4 ring-white" />
+                          <div className="flex flex-col gap-1">
+                            <div className="flex items-center gap-2">
+                              <span className="text-xs font-semibold text-gray-800">{note.author}</span>
+                              <span className="text-[10px] text-gray-500">
+                                changed status to <span className="font-medium text-gray-800">{note.statusChangedTo}</span>
+                              </span>
+                            </div>
+                            <span className="text-[10px] text-gray-400">
+                              {new Date(note.timestamp).toLocaleString()}
+                            </span>
+                            {note.adminNote && (
+                              <div className="mt-1 rounded-md bg-gray-100 p-2 text-xs text-gray-700">
+                                <p className="font-semibold text-[10px] text-gray-500 mb-0.5">Admin Note (Internal)</p>
+                                {note.adminNote}
+                              </div>
+                            )}
+                            {note.userMessage && (
+                              <div className="mt-1 rounded-md bg-blue-50 p-2 text-xs text-blue-900 border border-blue-100">
+                                <p className="font-semibold text-[10px] text-blue-700 mb-0.5">Message sent to user</p>
+                                {note.userMessage}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
 
 

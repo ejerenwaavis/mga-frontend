@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import { getMyRequests, getCurrentUser } from "../../services/queries";
-import { updateKYC, submitRequest, updateUser } from "../../services/mutations";
+import { updateKYC, submitRequest, updateUser, requestDeletionOtp, deleteAccount } from "../../services/mutations";
 import { BookingRequest } from "../../lib/types";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -15,8 +15,9 @@ import useUserStore from "../../hooks/store/userStore";
 import { useNavigate } from "react-router-dom";
 import {
   LogOut, User as UserIcon, Clock, Mail, Shield, AlertCircle,
-  Pencil, X, Check, FileImage, RefreshCw
+  Pencil, X, Check, FileImage, RefreshCw, Video
 } from "lucide-react";
+import VideoKYCModal from "./VideoKYCModal";
 
 /* ─── small helper ─── */
 const isPdf = (url?: string) => url?.toLowerCase().includes(".pdf") || url?.toLowerCase().includes("application/pdf");
@@ -27,13 +28,14 @@ const isPdf = (url?: string) => url?.toLowerCase().includes(".pdf") || url?.toLo
 interface DocCardProps {
   label: string;
   doc: { url?: string; status?: string; rejectedReason?: string } | undefined;
+  pendingDoc?: { url?: string; status?: string; rejectedReason?: string } | undefined;
   isUploading: boolean;
   onUpload: (file: File) => void;
   /** true when this doc already existed before and is being replaced */
   isReplace?: boolean;
 }
 
-const DocCard: React.FC<DocCardProps> = ({ label, doc, isUploading, onUpload, isReplace }) => {
+const DocCard: React.FC<DocCardProps> = ({ label, doc, pendingDoc, isUploading, onUpload, isReplace }) => {
   const [editMode, setEditMode] = useState(false);
   const [preview, setPreview] = useState<string | null>(null);
   const [pendingFile, setPendingFile] = useState<File | null>(null);
@@ -136,7 +138,7 @@ const DocCard: React.FC<DocCardProps> = ({ label, doc, isUploading, onUpload, is
             size="sm"
             variant="outline"
             onClick={() => inputRef.current?.click()}
-            className="flex-1"
+            className="flex-1 bg-white border-[#C69C45] text-[#C69C45] hover:bg-[#C69C45] hover:text-white transition-colors"
           >
             {pendingFile ? "Change File" : "Choose File"}
           </Button>
@@ -170,43 +172,86 @@ const DocCard: React.FC<DocCardProps> = ({ label, doc, isUploading, onUpload, is
         </div>
         <div className="flex items-center gap-2">
           {statusBadge(doc?.status)}
-          {doc?.status !== "Verified" && (
-            <button
-              onClick={() => setEditMode(true)}
-              title={`Replace ${label}`}
-              className="p-1.5 rounded-lg text-gray-400 hover:text-[#143D2A] hover:bg-gray-200 transition-colors"
-            >
-              <RefreshCw className="h-3.5 w-3.5" />
-            </button>
-          )}
+          <button
+            onClick={() => setEditMode(true)}
+            title={`Replace ${label}`}
+            className="p-1.5 rounded-lg text-gray-400 hover:text-[#143D2A] hover:bg-gray-200 transition-colors"
+          >
+            <RefreshCw className="h-3.5 w-3.5" />
+          </button>
         </div>
       </div>
 
-      {/* Image or PDF preview */}
-      {doc?.url && !isPdf(doc.url) ? (
-        <a href={doc.url} target="_blank" rel="noreferrer">
-          <img
-            src={doc.url}
-            alt={label}
-            className="w-full h-36 object-cover rounded-xl border border-gray-200 hover:opacity-90 transition-opacity cursor-pointer"
-          />
-        </a>
-      ) : doc?.url ? (
-        <a
-          href={doc.url}
-          target="_blank"
-          rel="noreferrer"
-          className="flex items-center gap-2 p-3 bg-white rounded-xl border border-gray-200 text-sm text-[#143D2A] font-medium hover:bg-gray-50 transition-colors"
-        >
-          <FileImage className="h-4 w-4 text-[#C69C45]" /> View {label} (PDF)
-        </a>
-      ) : null}
+      <div className={`grid gap-4 ${pendingDoc?.url ? 'grid-cols-2' : 'grid-cols-1'}`}>
+        {/* Main Document */}
+        <div className="relative">
+          {doc?.url && !isPdf(doc.url) ? (
+            <a href={doc.url} target="_blank" rel="noreferrer">
+              <img
+                src={doc.url}
+                alt={label}
+                className="w-full h-36 object-cover rounded-xl border border-gray-200 hover:opacity-90 transition-opacity cursor-pointer"
+              />
+            </a>
+          ) : doc?.url ? (
+            <a
+              href={doc.url}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 p-3 bg-white rounded-xl border border-gray-200 text-sm text-[#143D2A] font-medium hover:bg-gray-50 transition-colors h-36"
+            >
+              <FileImage className="h-4 w-4 text-[#C69C45]" /> View {label} (PDF)
+            </a>
+          ) : null}
+        </div>
+
+        {/* Pending Document (if exists) */}
+        {pendingDoc?.url && (
+          <div className="relative opacity-60 hover:opacity-90 transition-opacity">
+            <div className="absolute top-2 right-2 z-10">
+               {statusBadge(pendingDoc.status)}
+            </div>
+            {!isPdf(pendingDoc.url) ? (
+              <a href={pendingDoc.url} target="_blank" rel="noreferrer">
+                <img
+                  src={pendingDoc.url}
+                  alt={`Pending ${label}`}
+                  className="w-full h-36 object-cover rounded-xl border-2 border-dashed border-amber-300 cursor-pointer"
+                />
+              </a>
+            ) : (
+              <a
+                href={pendingDoc.url}
+                target="_blank"
+                rel="noreferrer"
+                className="flex flex-col justify-center items-center gap-2 p-3 bg-white rounded-xl border-2 border-dashed border-amber-300 text-sm text-[#143D2A] font-medium h-36"
+              >
+                <FileImage className="h-6 w-6 text-amber-500" /> Pending (PDF)
+              </a>
+            )}
+            <div className="text-xs text-center mt-1 text-gray-500 font-medium">Pending Update</div>
+          </div>
+        )}
+      </div>
 
       {/* Rejection reason */}
       {doc?.status === "Rejected" && doc?.rejectedReason && (
         <div className="p-3 bg-red-50 border border-red-100 rounded-xl text-sm text-red-800">
           <p className="font-semibold mb-0.5">Reason for Rejection:</p>
           <p>{doc.rejectedReason}</p>
+          <Button
+            size="sm"
+            className="mt-3 bg-[#C69C45] hover:bg-[#C69C45]/90 text-white"
+            onClick={() => setEditMode(true)}
+          >
+            Re-upload
+          </Button>
+        </div>
+      )}
+      {pendingDoc?.status === "Rejected" && pendingDoc?.rejectedReason && (
+        <div className="p-3 bg-red-50 border border-red-100 rounded-xl text-sm text-red-800">
+          <p className="font-semibold mb-0.5">Pending Upload Rejected:</p>
+          <p>{pendingDoc.rejectedReason}</p>
           <Button
             size="sm"
             className="mt-3 bg-[#C69C45] hover:bg-[#C69C45]/90 text-white"
@@ -231,8 +276,32 @@ const UserDashboard = () => {
   const [isEditingProfile, setIsEditingProfile] = useState(false);
   const [profileForm, setProfileForm] = useState({ firstName: "", lastName: "", phone: "" });
 
+  // Account Deletion State
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [deleteStep, setDeleteStep] = useState<1 | 2>(1);
+  const [deletionReason, setDeletionReason] = useState("");
+  const [deletionOtp, setDeletionOtp] = useState("");
+  const [isVideoKycModalOpen, setIsVideoKycModalOpen] = useState(false);
+
   const { data: userResponse, isLoading: loadingUser, refetch: refetchUser } = useQuery("currentUser", getCurrentUser);
   const { data: requestsResponse, isLoading: loadingRequests } = useQuery("myRequests", getMyRequests);
+
+  const { mutate: reqDeleteOtp, isLoading: isRequestingDeleteOtp } = useMutation(requestDeletionOtp, {
+    onSuccess: () => {
+      toast.success("OTP sent to your email!");
+      setDeleteStep(2);
+    },
+    onError: (error: any) => toast.error(error.message || "Failed to send OTP"),
+  });
+
+  const { mutate: confirmDeleteAccount, isLoading: isDeletingAccount } = useMutation(deleteAccount, {
+    onSuccess: () => {
+      toast.success("Account deleted successfully.");
+      clearAuth();
+      navigate("/");
+    },
+    onError: (error: any) => toast.error(error.message || "Failed to delete account"),
+  });
 
   const { isAuthenticated, clearAuth, setUser } = useUserStore();
 
@@ -259,8 +328,13 @@ const UserDashboard = () => {
   const { mutate: handleKycUpload, isLoading: isUploadingKyc } = useMutation({
     mutationFn: updateKYC,
     onSuccess: (_, variables) => {
-      const isInsurance = variables.get("docType") === "insurance";
-      toast.success(`${isInsurance ? "Insurance" : "Driver's license"} uploaded — pending admin review.`);
+      if (variables.has("videoKyc")) {
+        toast.success("Video KYC uploaded — pending admin review.");
+        setIsVideoKycModalOpen(false);
+      } else {
+        const isInsurance = variables.get("docType") === "insurance";
+        toast.success(`${isInsurance ? "Insurance" : "Driver's license"} uploaded — pending admin review.`);
+      }
       refetchUser();
     },
     onError: (error: any) => toast.error(error.message || "Upload failed"),
@@ -269,10 +343,15 @@ const UserDashboard = () => {
   const { mutate: handleProfileUpdate, isLoading: isUpdatingProfile } = useMutation({
     mutationFn: updateUser,
     onSuccess: (data: any) => {
-      toast.success("Profile updated!");
+      const responseData = data?.data;
+      if (responseData?.nameChanged) {
+        toast.success("Update request submitted! Name verification in progress.");
+      } else {
+        toast.success("Profile updated successfully!");
+      }
       setIsEditingProfile(false);
-      // Backend returns { success, data: user } — apiInstance wraps in data
-      const updatedUser = data?.data;
+      // mutationFn returns { data }, where data is { success: true, data: user }
+      const updatedUser = responseData?.data;
       if (updatedUser) setUser(updatedUser);
       refetchUser();
     },
@@ -310,6 +389,13 @@ const UserDashboard = () => {
     const formData = new FormData();
     formData.append("kycDocument", file);
     formData.append("docType", docType);
+    handleKycUpload(formData);
+  };
+
+  const doVideoUpload = (file: File) => {
+    const formData = new FormData();
+    formData.append("videoKyc", file);
+    formData.append("docType", "videoKyc");
     handleKycUpload(formData);
   };
 
@@ -447,8 +533,12 @@ const UserDashboard = () => {
                       </div>
                       Personal Details
                     </div>
-                    {/* Edit / Cancel toggle — disabled if KYC verified */}
-                    {!isKycVerified && (
+                    <div className="flex items-center gap-3">
+                      {isKycVerified && (
+                        <div className="flex items-center gap-1.5 text-xs text-emerald-700 font-medium">
+                          <Shield className="h-3.5 w-3.5" /> Verified
+                        </div>
+                      )}
                       <button
                         onClick={() => {
                           if (isEditingProfile) {
@@ -462,15 +552,16 @@ const UserDashboard = () => {
                       >
                         {isEditingProfile ? <X className="h-4 w-4" /> : <Pencil className="h-4 w-4" />}
                       </button>
-                    )}
-                    {isKycVerified && (
-                      <div className="flex items-center gap-1.5 text-xs text-emerald-700 font-medium">
-                        <Shield className="h-3.5 w-3.5" /> Verified & Locked
-                      </div>
-                    )}
+                    </div>
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-6 space-y-5">
+                  {isKycVerified && isEditingProfile && (
+                    <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-sm text-amber-800 flex items-start gap-2">
+                      <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
+                      <p>Names must match the name on your license. Updates to your name are subject to verification.</p>
+                    </div>
+                  )}
                   {/* First + Last name row */}
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1.5">
@@ -479,7 +570,7 @@ const UserDashboard = () => {
                         <Input
                           value={profileForm.firstName}
                           onChange={(e) => setProfileForm({ ...profileForm, firstName: e.target.value })}
-                          className="bg-white border-[#C69C45]/40 focus-visible:ring-[#C69C45]/50"
+                          className="bg-white text-gray-900 border-[#C69C45]/40 focus-visible:ring-[#C69C45]/50"
                         />
                       ) : (
                         <p className="font-medium text-gray-900 text-base px-1">{user?.firstName || "—"}</p>
@@ -491,7 +582,7 @@ const UserDashboard = () => {
                         <Input
                           value={profileForm.lastName}
                           onChange={(e) => setProfileForm({ ...profileForm, lastName: e.target.value })}
-                          className="bg-white border-[#C69C45]/40 focus-visible:ring-[#C69C45]/50"
+                          className="bg-white text-gray-900 border-[#C69C45]/40 focus-visible:ring-[#C69C45]/50"
                         />
                       ) : (
                         <p className="font-medium text-gray-900 text-base px-1">{user?.lastName || "—"}</p>
@@ -513,7 +604,7 @@ const UserDashboard = () => {
                         value={profileForm.phone}
                         onChange={(e) => setProfileForm({ ...profileForm, phone: e.target.value })}
                         placeholder="(404) 555-0000"
-                        className="bg-white border-[#C69C45]/40 focus-visible:ring-[#C69C45]/50"
+                        className="bg-white text-gray-900 border-[#C69C45]/40 focus-visible:ring-[#C69C45]/50"
                       />
                     ) : (
                       <p className="font-medium text-gray-900 text-base px-1">{user?.phone || "Not provided"}</p>
@@ -547,10 +638,65 @@ const UserDashboard = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-6 space-y-5">
+                  {/* Selfie Video KYC */}
+                  <div className="p-4 border border-gray-100 rounded-2xl bg-gray-50 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Video className="h-4 w-4 text-[#C69C45]" />
+                        <h3 className="font-semibold text-gray-900">Selfie Video KYC</h3>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        {user?.videoKyc?.status ? (
+                          <Badge variant="outline" className={`px-3 py-1 rounded-full text-xs font-semibold border-0 ${
+                            user.videoKyc.status === "Verified" ? "bg-emerald-100 text-emerald-800" :
+                            user.videoKyc.status === "Rejected" ? "bg-red-100 text-red-800" :
+                            "bg-amber-100 text-amber-800"
+                          }`}>
+                            {user.videoKyc.status.replace("_", " ")}
+                          </Badge>
+                        ) : null}
+                        {user?.videoKyc?.url && (
+                          <button
+                            onClick={() => setIsVideoKycModalOpen(true)}
+                            title="Retake Video"
+                            className="p-1.5 rounded-lg text-gray-400 hover:text-[#143D2A] hover:bg-gray-200 transition-colors"
+                          >
+                            <RefreshCw className="h-3.5 w-3.5" />
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                    {user?.videoKyc?.url ? (
+                      <div className="relative w-full h-36 bg-black rounded-xl overflow-hidden border border-gray-200">
+                        <video src={user.videoKyc.url} className="w-full h-full object-cover" controls playsInline />
+                      </div>
+                    ) : (
+                      <div className="flex flex-col gap-4 p-5 bg-amber-50 rounded-2xl border border-amber-200 shadow-sm">
+                        <div className="flex items-start gap-3">
+                          <div className="mt-0.5 p-1.5 bg-amber-100 rounded-full shrink-0">
+                            <AlertCircle className="h-4 w-4 text-amber-600" />
+                          </div>
+                          <div>
+                            <p className="font-semibold text-amber-900">Video Needed</p>
+                            <p className="text-sm text-amber-800/80 mt-0.5">Please record a short selfie video to verify your identity.</p>
+                          </div>
+                        </div>
+                        <Button
+                          size="sm"
+                          className="bg-[#C69C45] hover:bg-[#C69C45]/90 text-white self-start rounded-xl px-5"
+                          onClick={() => setIsVideoKycModalOpen(true)}
+                        >
+                          Record Video
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+
                   {/* Driver's License */}
                   <DocCard
                     label="Driver's License"
                     doc={user?.kycDocument}
+                    pendingDoc={user?.pendingKycDocument}
                     isUploading={isUploadingKyc}
                     isReplace={!!user?.kycDocument?.url}
                     onUpload={(file) => doUpload(file, "license")}
@@ -560,12 +706,48 @@ const UserDashboard = () => {
                   <DocCard
                     label="Insurance"
                     doc={user?.insuranceDocument}
+                    pendingDoc={user?.pendingInsuranceDocument}
                     isUploading={isUploadingKyc}
                     isReplace={!!user?.insuranceDocument?.url}
                     onUpload={(file) => doUpload(file, "insurance")}
                   />
                 </CardContent>
               </Card>
+
+              {/* Account Deletion */}
+              <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-xl rounded-2xl border border-red-100 mt-6">
+                <CardHeader className="border-b border-red-50 bg-red-50/50 pb-5">
+                  <CardTitle className="flex items-center gap-3 text-xl font-serif text-red-900">
+                    <div className="p-2 bg-red-100 rounded-xl border border-red-200">
+                      <AlertCircle className="h-5 w-5 text-red-600" />
+                    </div>
+                    Danger Zone
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Delete Account</h4>
+                      <p className="text-sm text-gray-500 mt-1">
+                        Permanently delete your account and all associated data. This action cannot be undone.
+                      </p>
+                    </div>
+                    <Button
+                      variant="outline"
+                      className="text-red-600 border-red-200 hover:bg-red-50 hover:text-red-700 w-full sm:w-auto shrink-0"
+                      onClick={() => {
+                        setDeleteStep(1);
+                        setDeletionReason("");
+                        setDeletionOtp("");
+                        setIsDeleteModalOpen(true);
+                      }}
+                    >
+                      Delete My Account
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+
             </div>
           </TabsContent>
 
@@ -606,6 +788,86 @@ const UserDashboard = () => {
           </TabsContent>
         </Tabs>
       </div>
+
+      {/* Account Deletion Modal */}
+      {isDeleteModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <Card className="w-full max-w-md bg-white rounded-2xl shadow-2xl border-0 animate-in fade-in zoom-in-95 duration-200">
+            <div className="flex items-center justify-between p-6 border-b border-gray-100">
+              <div className="flex items-center gap-3 text-red-600">
+                <div className="p-2 bg-red-100 rounded-full">
+                  <AlertCircle className="w-5 h-5" />
+                </div>
+                <h2 className="text-lg font-bold">Delete Account</h2>
+              </div>
+              <button
+                onClick={() => setIsDeleteModalOpen(false)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-500"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <div className="p-6">
+              {deleteStep === 1 ? (
+                <div className="space-y-4">
+                  <p className="text-gray-600 text-sm">
+                    Are you sure you want to delete your account? This action is permanent and will remove all your data, bookings, and uploaded documents.
+                  </p>
+                  <Button
+                    onClick={() => reqDeleteOtp()}
+                    disabled={isRequestingDeleteOtp}
+                    className="w-full bg-red-600 hover:bg-red-700 text-white rounded-xl py-6"
+                  >
+                    {isRequestingDeleteOtp ? "Sending OTP..." : "Yes, Send OTP"}
+                  </Button>
+                </div>
+              ) : (
+                <div className="space-y-5">
+                  <p className="text-sm text-gray-600 bg-gray-50 p-3 rounded-xl border border-gray-200">
+                    An OTP has been sent to your email. Please enter it below to confirm deletion.
+                  </p>
+                  <div className="space-y-2">
+                    <Label>OTP Code</Label>
+                    <Input
+                      value={deletionOtp}
+                      onChange={(e) => setDeletionOtp(e.target.value)}
+                      placeholder="Enter 6-digit OTP"
+                      className="text-center tracking-widest text-lg"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Reason for Deletion</Label>
+                    <Textarea
+                      value={deletionReason}
+                      onChange={(e) => setDeletionReason(e.target.value)}
+                      placeholder="Please tell us why you are leaving (Optional)"
+                      rows={3}
+                      className="resize-none"
+                    />
+                  </div>
+                  <Button
+                    onClick={() => confirmDeleteAccount({ otp: deletionOtp, deletionReason })}
+                    disabled={!deletionOtp || isDeletingAccount}
+                    className="w-full bg-red-600 hover:bg-red-700 text-white rounded-xl py-6"
+                  >
+                    {isDeletingAccount ? "Deleting Account..." : "Confirm Deletion"}
+                  </Button>
+                </div>
+              )}
+            </div>
+          </Card>
+        </div>
+      )}
+
+      {/* Video KYC Modal */}
+      {isVideoKycModalOpen && (
+        <VideoKYCModal
+          onClose={() => setIsVideoKycModalOpen(false)}
+          onConfirm={(file) => doVideoUpload(file)}
+          isUploading={isUploadingKyc}
+        />
+      )}
     </div>
   );
 };

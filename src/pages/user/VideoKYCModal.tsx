@@ -1,0 +1,180 @@
+import React, { useRef, useState, useCallback } from "react";
+import Webcam from "react-webcam";
+import { X, Check, RefreshCw, Video } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+interface VideoKYCModalProps {
+  onClose: () => void;
+  onConfirm: (file: File) => void;
+  isUploading?: boolean;
+}
+
+const VideoKYCModal: React.FC<VideoKYCModalProps> = ({ onClose, onConfirm, isUploading }) => {
+  const webcamRef = useRef<Webcam>(null);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const [capturing, setCapturing] = useState(false);
+  const [recordedChunks, setRecordedChunks] = useState<Blob[]>([]);
+  const [step, setStep] = useState<"instruction" | "recording" | "preview">("instruction");
+  const [videoUrl, setVideoUrl] = useState<string | null>(null);
+
+  const handleDataAvailable = useCallback(
+    ({ data }: BlobEvent) => {
+      if (data.size > 0) {
+        setRecordedChunks((prev) => prev.concat(data));
+      }
+    },
+    [setRecordedChunks]
+  );
+
+  const handleStartCaptureClick = useCallback(() => {
+    setStep("recording");
+    setCapturing(true);
+    setRecordedChunks([]);
+    
+    // We start recording using MediaRecorder from the webcam stream
+    if (webcamRef.current && webcamRef.current.stream) {
+      mediaRecorderRef.current = new MediaRecorder(webcamRef.current.stream, {
+        mimeType: "video/webm"
+      });
+      mediaRecorderRef.current.addEventListener(
+        "dataavailable",
+        handleDataAvailable
+      );
+      mediaRecorderRef.current.start();
+      
+      // Auto-stop after 7 seconds for the head rotation
+      setTimeout(() => {
+        handleStopCaptureClick();
+      }, 7000);
+    }
+  }, [webcamRef, setCapturing, mediaRecorderRef, handleDataAvailable]);
+
+  const handleStopCaptureClick = useCallback(() => {
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state !== "inactive") {
+      mediaRecorderRef.current.stop();
+    }
+    setCapturing(false);
+  }, [mediaRecorderRef, setCapturing]);
+
+  // Once recording stops and chunks are populated, show preview
+  React.useEffect(() => {
+    if (!capturing && recordedChunks.length > 0) {
+      const blob = new Blob(recordedChunks, {
+        type: "video/webm"
+      });
+      const url = URL.createObjectURL(blob);
+      setVideoUrl(url);
+      setStep("preview");
+    }
+  }, [capturing, recordedChunks]);
+
+  const handleRetake = () => {
+    setRecordedChunks([]);
+    setVideoUrl(null);
+    setStep("instruction");
+  };
+
+  const handleUpload = () => {
+    if (recordedChunks.length) {
+      const blob = new Blob(recordedChunks, {
+        type: "video/webm"
+      });
+      // create a File from Blob
+      const file = new File([blob], "video_kyc.webm", { type: "video/webm" });
+      onConfirm(file);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+      <div className="w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        <div className="flex items-center justify-between p-5 border-b border-gray-100 bg-gray-50/50">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-[#C69C45]/10 rounded-full">
+              <Video className="w-5 h-5 text-[#C69C45]" />
+            </div>
+            <h2 className="text-xl font-bold text-[#143D2A]">Selfie Video KYC</h2>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-2 hover:bg-gray-200 rounded-full transition-colors text-gray-500"
+            disabled={isUploading}
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        <div className="p-6 flex flex-col items-center flex-1 overflow-y-auto">
+          {step === "instruction" && (
+            <div className="space-y-6 text-center">
+              <div className="w-32 h-32 mx-auto bg-gray-100 rounded-full flex items-center justify-center overflow-hidden border-4 border-white shadow-inner">
+                 <img src="https://cdn-icons-png.flaticon.com/512/8110/8110996.png" className="w-20 h-20 opacity-60" alt="Face scan icon" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900">Record a short selfie video</h3>
+                <p className="text-gray-500 mt-2 text-sm leading-relaxed max-w-[280px] mx-auto">
+                  Center your face in the camera, start recording, and slowly turn your head from side to side for 7 seconds.
+                </p>
+              </div>
+              <Button onClick={handleStartCaptureClick} className="w-full bg-[#143D2A] hover:bg-[#143D2A]/90 text-white rounded-xl py-6 text-lg">
+                I'm Ready, Start Camera
+              </Button>
+            </div>
+          )}
+
+          {step === "recording" && (
+            <div className="w-full flex flex-col items-center space-y-4">
+               <div className="relative w-full aspect-[3/4] max-w-[320px] bg-black rounded-3xl overflow-hidden border-4 border-[#C69C45] shadow-[0_0_20px_rgba(198,156,69,0.3)]">
+                  <Webcam
+                    audio={false}
+                    ref={webcamRef}
+                    mirrored={true}
+                    videoConstraints={{ facingMode: "user" }}
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Face outline overlay */}
+                  <div className="absolute inset-0 border-[6px] border-dashed border-white/40 m-6 rounded-[100px] pointer-events-none" />
+                  
+                  <div className="absolute top-4 right-4 flex items-center gap-2 bg-black/60 px-3 py-1.5 rounded-full">
+                    <div className="w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse" />
+                    <span className="text-white text-xs font-medium tracking-widest">REC</span>
+                  </div>
+               </div>
+               <p className="text-center font-medium text-[#143D2A] animate-pulse">
+                  Please rotate your head slowly...
+               </p>
+            </div>
+          )}
+
+          {step === "preview" && videoUrl && (
+             <div className="w-full flex flex-col items-center space-y-6">
+               <div className="relative w-full aspect-[3/4] max-w-[320px] bg-black rounded-3xl overflow-hidden border-4 border-gray-200">
+                 <video src={videoUrl} autoPlay loop playsInline className="w-full h-full object-cover" />
+               </div>
+               
+               <div className="flex gap-3 w-full">
+                 <Button
+                   variant="outline"
+                   onClick={handleRetake}
+                   disabled={isUploading}
+                   className="flex-1 rounded-xl py-6 border-[#C69C45] text-[#C69C45] hover:bg-[#C69C45] hover:text-white"
+                 >
+                   <RefreshCw className="w-4 h-4 mr-2" /> Retake
+                 </Button>
+                 <Button
+                   onClick={handleUpload}
+                   disabled={isUploading}
+                   className="flex-1 bg-[#143D2A] hover:bg-[#143D2A]/90 text-white rounded-xl py-6"
+                 >
+                   {isUploading ? "Uploading..." : <><Check className="w-4 h-4 mr-2" /> Use Video</>}
+                 </Button>
+               </div>
+             </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default VideoKYCModal;
