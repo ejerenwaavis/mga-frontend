@@ -51,8 +51,6 @@ export function App() {
   return (
     <TooltipProvider>
       <ScrollToTop />
-      <Toaster />
-      <Sonner />
       <Layout>
         <Routes>
           <Route path="/" element={<Index />} />

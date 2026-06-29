@@ -211,6 +211,26 @@ export const updateRequest = async (details: {
   return { data };
 };
 
+export const userReplyRequest = async (details: {
+  requestId: string;
+  message: string;
+}) => {
+  const { data } = await apiInstance.post(`/my-requests/${details.requestId}/reply`, { message: details.message });
+  return { data };
+};
+
+export const userModifyRequest = async (details: {
+  requestId: string;
+  newEndDate?: string;
+  notes?: string;
+}) => {
+  const { data } = await apiInstance.post(`/my-requests/${details.requestId}/modify`, {
+    newEndDate: details.newEndDate,
+    notes: details.notes
+  });
+  return { data };
+};
+
 export const assignDriverToVehicle = async (details: {
   vehicleId: string;
   driverId: string;

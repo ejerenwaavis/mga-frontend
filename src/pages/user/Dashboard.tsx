@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import { getMyRequests, getCurrentUser } from "../../services/queries";
-import { updateKYC, submitRequest, updateUser, requestDeletionOtp, deleteAccount } from "../../services/mutations";
+import { updateKYC, submitRequest, updateUser, requestDeletionOtp, deleteAccount, userReplyRequest, userModifyRequest } from "../../services/mutations";
 import { BookingRequest } from "../../lib/types";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -284,7 +284,33 @@ const UserDashboard = () => {
   const [isVideoKycModalOpen, setIsVideoKycModalOpen] = useState(false);
 
   const { data: userResponse, isLoading: loadingUser, refetch: refetchUser } = useQuery("currentUser", getCurrentUser);
-  const { data: requestsResponse, isLoading: loadingRequests } = useQuery("myRequests", getMyRequests);
+  const { data: requestsResponse, isLoading: loadingRequests, refetch: refetchRequests, isFetching: isFetchingRequests } = useQuery("myRequests", getMyRequests, {
+    refetchInterval: 10000 // Poll every 10 seconds
+  });
+
+  const requests = requestsResponse?.requests || [];
+  const rentalRequests = requests.filter((r: BookingRequest) => r.serviceType !== "support");
+  const supportRequests = requests.filter((r: BookingRequest) => r.serviceType === "support");
+
+  // Support Timeline State
+  const [selectedSupportTicket, setSelectedSupportTicket] = useState<BookingRequest | null>(null);
+
+  // Sync selected ticket when requests update in the background
+  React.useEffect(() => {
+    if (selectedSupportTicket && requests.length > 0) {
+      const updatedTicket = requests.find((r: BookingRequest) => r._id === selectedSupportTicket._id);
+      if (updatedTicket) {
+        setSelectedSupportTicket(updatedTicket);
+      }
+    }
+  }, [requests]);
+  const [replyMessage, setReplyMessage] = useState("");
+
+  // Modification State
+  const [isModifyModalOpen, setIsModifyModalOpen] = useState(false);
+  const [modifyingRequest, setModifyingRequest] = useState<BookingRequest | null>(null);
+  const [modEndDate, setModEndDate] = useState("");
+  const [modNotes, setModNotes] = useState("");
 
   const { mutate: reqDeleteOtp, isLoading: isRequestingDeleteOtp } = useMutation(requestDeletionOtp, {
     onSuccess: () => {
@@ -310,7 +336,6 @@ const UserDashboard = () => {
   }, [isAuthenticated, navigate]);
 
   const user = userResponse?.user;
-  const requests = requestsResponse?.requests || [];
   const isKycVerified = user?.kycDocument?.status === "Verified";
 
   // Pre-fill form when user data loads
@@ -363,8 +388,32 @@ const UserDashboard = () => {
     onSuccess: () => {
       toast.success("Message sent! We'll reply to your email shortly.");
       setSupportMessage("");
+      refetchRequests();
     },
     onError: (error: any) => toast.error(error.message || "Failed to send message."),
+  });
+
+  const { mutate: handleSupportReply, isLoading: isSendingReply } = useMutation({
+    mutationFn: userReplyRequest,
+    onSuccess: (res: any) => {
+      toast.success("Reply sent!");
+      setReplyMessage("");
+      if (res?.data?.request) {
+        setSelectedSupportTicket(res.data.request);
+      }
+      refetchRequests();
+    },
+    onError: (error: any) => toast.error(error.message || "Failed to send reply."),
+  });
+
+  const { mutate: handleModification, isLoading: isSendingModification } = useMutation({
+    mutationFn: userModifyRequest,
+    onSuccess: () => {
+      toast.success("Modification request submitted for approval.");
+      setIsModifyModalOpen(false);
+      refetchRequests();
+    },
+    onError: (error: any) => toast.error(error.message || "Failed to submit modification request."),
   });
 
   /* ── Handlers ── */
@@ -465,7 +514,7 @@ const UserDashboard = () => {
 
           {/* ──────────── RENTALS TAB ──────────── */}
           <TabsContent value="rentals" className="space-y-6">
-            {requests.length === 0 ? (
+            {rentalRequests.length === 0 ? (
               <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-xl rounded-2xl border border-white">
                 <CardContent className="flex flex-col items-center justify-center h-72 text-center p-8">
                   <div className="w-20 h-20 bg-[#C69C45]/10 rounded-full flex items-center justify-center mb-6 border border-[#C69C45]/20">
@@ -478,7 +527,7 @@ const UserDashboard = () => {
               </Card>
             ) : (
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {requests.map((req: BookingRequest) => (
+                {rentalRequests.map((req: BookingRequest) => (
                   <Card key={req._id} className="shadow-lg bg-white/80 backdrop-blur-xl border border-white hover:-translate-y-1.5 transition-all duration-300 rounded-2xl overflow-hidden group">
                     <CardHeader className="pb-3 bg-white/50 border-b border-gray-100 group-hover:bg-[#C69C45]/5 transition-colors">
                       <div className="flex justify-between items-start mb-1">
@@ -488,7 +537,7 @@ const UserDashboard = () => {
                           req.status === "cancelled" ? "bg-red-100 text-red-700" :
                           "bg-amber-100 text-amber-700"
                         }`}>
-                          {req.status.charAt(0).toUpperCase() + req.status.slice(1)}
+                          {req.status.replace("_", " ").charAt(0).toUpperCase() + req.status.replace("_", " ").slice(1)}
                         </Badge>
                         <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">
                           {new Date(req.createdAt).toLocaleDateString()}
@@ -499,7 +548,7 @@ const UserDashboard = () => {
                         {new Date(req.startDate).toLocaleDateString()} &mdash; {new Date(req.endDate).toLocaleDateString()}
                       </CardDescription>
                     </CardHeader>
-                    <CardContent className="pt-5">
+                    <CardContent className="pt-5 flex flex-col justify-between h-[120px]">
                       <div className="text-sm space-y-3">
                         <div className="flex justify-between items-center p-2 rounded-lg bg-gray-50 border border-gray-100">
                           <span className="text-gray-500 font-medium">Vehicle</span>
@@ -512,6 +561,20 @@ const UserDashboard = () => {
                           <span className="font-semibold text-gray-900">{req.time || "N/A"}</span>
                         </div>
                       </div>
+                      
+                      {["pending", "confirmed", "in_progress"].includes(req.status) && (
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          className="mt-4 w-full border-[#C69C45]/40 text-[#C69C45] hover:bg-[#C69C45] hover:text-white"
+                          onClick={() => {
+                            setModifyingRequest(req);
+                            setIsModifyModalOpen(true);
+                          }}
+                        >
+                          Modify / Extend Rental
+                        </Button>
+                      )}
                     </CardContent>
                   </Card>
                 ))}
@@ -753,41 +816,244 @@ const UserDashboard = () => {
 
           {/* ──────────── SUPPORT TAB ──────────── */}
           <TabsContent value="support" className="fade-in-up">
-            <Card className="max-w-2xl border-0 shadow-lg bg-white/80 backdrop-blur-xl rounded-2xl border border-white">
-              <CardHeader className="border-b border-gray-100 bg-white/50 pb-5">
-                <CardTitle className="flex items-center gap-3 text-xl font-serif text-[#143D2A]">
-                  <div className="p-2 bg-[#C69C45]/10 rounded-xl border border-[#C69C45]/20">
-                    <Mail className="h-5 w-5 text-[#C69C45]" />
-                  </div>
-                  Contact Support
-                </CardTitle>
-                <CardDescription className="text-gray-500 mt-2">
-                  Have a question about your rental or need to make changes? Send us a message and we'll reply to your email.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-6">
-                <form onSubmit={onSubmitSupport} className="space-y-5">
-                  <div className="space-y-2">
-                    <Label htmlFor="message" className="text-gray-700 font-medium">How can we help you?</Label>
-                    <Textarea
-                      id="message"
-                      rows={6}
-                      className="resize-none rounded-xl bg-gray-50 border-gray-200 text-gray-900 focus-visible:ring-[#C69C45]/50 text-base p-4 placeholder:text-gray-400"
-                      placeholder="Please include your request details, preferred vehicle, or dates…"
-                      value={supportMessage}
-                      onChange={(e) => setSupportMessage(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <Button type="submit" disabled={isSendingSupport} variant="gold" className="rounded-full px-8 py-6 w-full sm:w-auto shadow-lg text-[#143D2A] font-semibold">
-                    {isSendingSupport ? "Sending…" : "Send Message"}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+            <div className="grid lg:grid-cols-3 gap-6">
+              {/* Left Column: Tickets List */}
+              <div className="lg:col-span-1 space-y-4">
+                <Button 
+                  onClick={() => setSelectedSupportTicket(null)} 
+                  variant="gold" 
+                  className="w-full justify-center gap-2 rounded-xl h-12 shadow-md font-semibold text-[#143D2A]"
+                >
+                  <Pencil className="w-4 h-4" /> New Ticket
+                </Button>
+                
+                <div className="space-y-3">
+                  {supportRequests.map(ticket => (
+                    <Card 
+                      key={ticket._id} 
+                      className={`cursor-pointer transition-all duration-200 border-l-4 ${selectedSupportTicket?._id === ticket._id ? 'border-l-[#C69C45] bg-[#C69C45]/5 shadow-md' : 'border-l-transparent hover:bg-gray-50'}`}
+                      onClick={() => setSelectedSupportTicket(ticket)}
+                    >
+                      <CardHeader className="p-4 pb-2">
+                        <div className="flex justify-between items-start">
+                          <Badge variant="outline" className={`px-2 py-0.5 text-[10px] uppercase font-bold border-0 ${
+                            ticket.status === 'completed' ? 'bg-gray-100 text-gray-600' :
+                            'bg-amber-100 text-amber-700'
+                          }`}>
+                            {ticket.status}
+                          </Badge>
+                          <span className="text-xs text-gray-400 font-medium">
+                            {new Date(ticket.createdAt).toLocaleDateString()}
+                          </span>
+                        </div>
+                        <CardTitle className="text-sm font-semibold mt-2 text-[#143D2A] truncate">
+                          {ticket.notes || "Support Request"}
+                        </CardTitle>
+                      </CardHeader>
+                    </Card>
+                  ))}
+                  {supportRequests.length === 0 && (
+                     <div className="text-center p-6 bg-white/50 rounded-xl border border-dashed border-gray-200 text-gray-500 text-sm">
+                       No past tickets.
+                     </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Right Column: Detail / Timeline */}
+              <div className="lg:col-span-2">
+                {!selectedSupportTicket ? (
+                  <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-xl rounded-2xl border border-white h-full">
+                    <CardHeader className="border-b border-gray-100 bg-white/50 pb-5">
+                      <CardTitle className="flex items-center gap-3 text-xl font-serif text-[#143D2A]">
+                        <div className="p-2 bg-[#C69C45]/10 rounded-xl border border-[#C69C45]/20">
+                          <Mail className="h-5 w-5 text-[#C69C45]" />
+                        </div>
+                        Contact Support
+                      </CardTitle>
+                      <CardDescription className="text-gray-500 mt-2">
+                        Have a question about your rental or need to make changes? Send us a message and we'll reply to your email.
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="p-6">
+                      <form onSubmit={onSubmitSupport} className="space-y-5">
+                        <div className="space-y-2">
+                          <Label htmlFor="message" className="text-gray-700 font-medium">How can we help you?</Label>
+                          <Textarea
+                            id="message"
+                            rows={6}
+                            className="resize-none rounded-xl bg-gray-50 border-gray-200 text-gray-900 focus-visible:ring-[#C69C45]/50 text-base p-4 placeholder:text-gray-400"
+                            placeholder="Please include your request details, preferred vehicle, or dates…"
+                            value={supportMessage}
+                            onChange={(e) => setSupportMessage(e.target.value)}
+                            required
+                          />
+                        </div>
+                        <Button type="submit" disabled={isSendingSupport} variant="gold" className="rounded-full px-8 py-6 w-full sm:w-auto shadow-lg text-[#143D2A] font-semibold">
+                          {isSendingSupport ? "Sending…" : "Send Message"}
+                        </Button>
+                      </form>
+                    </CardContent>
+                  </Card>
+                ) : (
+                  <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-xl rounded-2xl border border-white h-[600px] flex flex-col">
+                    <CardHeader className="border-b border-gray-100 bg-white/50 py-4 shrink-0">
+                      <div className="flex justify-between items-center">
+                        <CardTitle className="text-lg font-serif text-[#143D2A]">Ticket Details</CardTitle>
+                        <div className="flex items-center gap-2">
+                          <button 
+                            onClick={() => refetchRequests()} 
+                            disabled={isFetchingRequests}
+                            className={`p-1.5 rounded-full transition-colors text-gray-500 ${isFetchingRequests ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-200'}`}
+                            title="Refresh Chat"
+                          >
+                            <RefreshCw className={`w-4 h-4 ${isFetchingRequests ? 'animate-spin text-[#C69C45]' : ''}`} />
+                          </button>
+                          <Badge variant="outline" className="bg-gray-100 border-0">{selectedSupportTicket.status}</Badge>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="p-0 flex-1 flex flex-col overflow-hidden bg-gray-50/50">
+                      <div className="flex-1 overflow-y-auto p-6 space-y-6">
+                        {/* Initial Message */}
+                        <div className="flex flex-col items-end">
+                          <div className="bg-[#143D2A] text-white p-4 rounded-2xl rounded-tr-sm max-w-[85%] shadow-sm">
+                            <p className="text-sm">{selectedSupportTicket.notes}</p>
+                          </div>
+                          <span className="text-[10px] text-gray-400 mt-1 font-medium">{new Date(selectedSupportTicket.createdAt).toLocaleString()}</span>
+                        </div>
+
+                        {/* Timeline Notes */}
+                        {selectedSupportTicket.notesTimeline?.map((note, idx) => {
+                          const isUser = !!note.userMessage;
+                          return (
+                            <div key={idx} className={`flex flex-col ${isUser ? 'items-end' : 'items-start'}`}>
+                              <span className="text-xs text-gray-500 mb-1 font-medium px-1">{note.author || (isUser ? 'You' : 'Support Team')}</span>
+                              <div className={`p-4 rounded-2xl max-w-[85%] shadow-sm ${
+                                isUser ? 'bg-[#143D2A] text-white rounded-tr-sm' : 'bg-white text-gray-800 rounded-tl-sm border border-gray-100'
+                              }`}>
+                                <p className="text-sm whitespace-pre-wrap">{isUser ? note.userMessage : note.adminNote}</p>
+                                {note.statusChangedTo && (
+                                  <div className={`mt-2 text-xs font-semibold px-2 py-1 inline-block rounded border ${isUser ? 'bg-black/20 border-black/10' : 'bg-gray-100 border-gray-200'}`}>
+                                    Status changed to: {note.statusChangedTo}
+                                  </div>
+                                )}
+                              </div>
+                              <span className="text-[10px] text-gray-400 mt-1 font-medium">
+                                {new Date(note.timestamp || "").toLocaleString()}
+                              </span>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      {/* Reply Box */}
+                      {selectedSupportTicket.status !== 'completed' && selectedSupportTicket.status !== 'cancelled' && (
+                        <div className="p-4 bg-white border-t border-gray-100 shrink-0">
+                          <form 
+                            onSubmit={(e) => {
+                              e.preventDefault();
+                              if (!replyMessage.trim()) return;
+                              handleSupportReply({ requestId: selectedSupportTicket._id!, message: replyMessage });
+                            }}
+                            className="flex gap-2"
+                          >
+                            <Input 
+                              placeholder="Type your reply..." 
+                              value={replyMessage}
+                              onChange={(e) => setReplyMessage(e.target.value)}
+                              className="bg-gray-50 border-gray-200 focus-visible:ring-[#C69C45]/50 rounded-full px-4"
+                            />
+                            <Button 
+                              type="submit" 
+                              disabled={isSendingReply || !replyMessage.trim()}
+                              className="bg-[#143D2A] hover:bg-[#143D2A]/90 text-white rounded-full px-6 shrink-0"
+                            >
+                              {isSendingReply ? "..." : "Send"}
+                            </Button>
+                          </form>
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
+            </div>
           </TabsContent>
         </Tabs>
       </div>
+
+      {/* Modification Modal */}
+      {isModifyModalOpen && modifyingRequest && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <Card className="w-full max-w-md bg-white rounded-2xl shadow-2xl border-0 animate-in fade-in zoom-in-95 duration-200">
+            <div className="flex items-center justify-between p-6 border-b border-gray-100">
+              <div className="flex items-center gap-3 text-[#143D2A]">
+                <div className="p-2 bg-[#C69C45]/10 rounded-full">
+                  <Pencil className="w-5 h-5 text-[#C69C45]" />
+                </div>
+                <h2 className="text-lg font-bold">Modify / Extend Rental</h2>
+              </div>
+              <button
+                onClick={() => {
+                  setIsModifyModalOpen(false);
+                  setModifyingRequest(null);
+                  setModEndDate("");
+                  setModNotes("");
+                }}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-500"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <div className="p-6">
+              <form onSubmit={(e) => {
+                e.preventDefault();
+                handleModification({
+                  requestId: modifyingRequest._id!,
+                  newEndDate: modEndDate,
+                  notes: modNotes
+                });
+              }} className="space-y-5">
+                <div className="space-y-2">
+                  <Label>Current End Date</Label>
+                  <p className="font-medium">{new Date(modifyingRequest.endDate).toLocaleDateString()}</p>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="newEndDate">New End Date (Optional)</Label>
+                  <Input 
+                    id="newEndDate" 
+                    type="date" 
+                    value={modEndDate}
+                    onChange={(e) => setModEndDate(e.target.value)}
+                    min={new Date().toISOString().split("T")[0]}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="modNotes">Reason / Notes (Required)</Label>
+                  <Textarea
+                    id="modNotes"
+                    value={modNotes}
+                    onChange={(e) => setModNotes(e.target.value)}
+                    placeholder="Why are you modifying this booking?"
+                    required
+                    rows={3}
+                    className="resize-none"
+                  />
+                </div>
+                <Button 
+                  type="submit" 
+                  disabled={isSendingModification}
+                  className="w-full bg-[#143D2A] hover:bg-[#143D2A]/90 text-white rounded-xl py-6"
+                >
+                  {isSendingModification ? "Submitting..." : "Submit Modification Request"}
+                </Button>
+              </form>
+            </div>
+          </Card>
+        </div>
+      )}
 
       {/* Account Deletion Modal */}
       {isDeleteModalOpen && (

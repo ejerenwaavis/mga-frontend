@@ -56,6 +56,19 @@ const VideoKYCModal: React.FC<VideoKYCModalProps> = ({ onClose, onConfirm, isUpl
     setCapturing(false);
   }, [mediaRecorderRef, setCapturing]);
 
+  // Guided Instructions state
+  const [guideText, setGuideText] = useState("Look straight at the camera");
+  React.useEffect(() => {
+    if (step === "recording") {
+      setGuideText("Look straight at the camera");
+      const timers = [
+        setTimeout(() => setGuideText("Turn your head slowly to the LEFT"), 2000),
+        setTimeout(() => setGuideText("Turn your head slowly to the RIGHT"), 4500)
+      ];
+      return () => timers.forEach(clearTimeout);
+    }
+  }, [step]);
+
   // Once recording stops and chunks are populated, show preview
   React.useEffect(() => {
     if (!capturing && recordedChunks.length > 0) {
@@ -140,9 +153,11 @@ const VideoKYCModal: React.FC<VideoKYCModalProps> = ({ onClose, onConfirm, isUpl
                     <span className="text-white text-xs font-medium tracking-widest">REC</span>
                   </div>
                </div>
-               <p className="text-center font-medium text-[#143D2A] animate-pulse">
-                  Please rotate your head slowly...
-               </p>
+               <div className="h-8 flex items-center justify-center">
+                 <p className="text-center font-bold text-lg text-[#143D2A] transition-all duration-300 transform scale-105">
+                    {guideText}
+                 </p>
+               </div>
             </div>
           )}
 
