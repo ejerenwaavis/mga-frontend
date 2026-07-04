@@ -6,9 +6,14 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useSEO } from "@/hooks/useSEO";
-import { faqs } from "@/lib/faqs";
+import { useQuery } from "react-query";
+import { getAllFaqsQuery } from "@/services/queries";
+import { faqs as staticFaqs } from "@/lib/faqs";
 
 export default function FAQ() {
+  const { data: faqData, isLoading } = useQuery("faqs", getAllFaqsQuery);
+  const displayFaqs = faqData?.faqs && faqData.faqs.length > 0 ? faqData.faqs : staticFaqs;
+
   useSEO({
     title: "FAQ | Mead Green Autos — Atlanta Car Rental Questions",
     description: "Frequently asked questions about Mead Green Autos car rentals in Atlanta. Deposits, insurance, pickup, corporate rentals, and more.",
@@ -36,18 +41,22 @@ export default function FAQ() {
         <div className="container max-w-3xl">
           <FadeIn>
             <div className="rounded-xl bg-white p-6 shadow-lg md:p-8">
-              <Accordion type="single" collapsible className="w-full">
-                {faqs.map((faq, i) => (
-                  <AccordionItem key={i} value={`faq-${i}`} className="border-gray-200 last:border-0">
-                    <AccordionTrigger className="text-left font-serif text-base font-semibold text-gray-900 hover:text-gray-600">
-                      {faq.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-sm leading-relaxed text-gray-600">
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
+              {isLoading && !faqData ? (
+                 <div className="text-gray-500 text-center py-4">Loading FAQs...</div>
+              ) : (
+                <Accordion type="single" collapsible className="w-full">
+                  {displayFaqs.map((faq, i) => (
+                    <AccordionItem key={i} value={`faq-${i}`} className="border-gray-200 last:border-0">
+                      <AccordionTrigger className="text-left font-serif text-base font-semibold text-gray-900 hover:text-gray-600">
+                        {faq.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-sm leading-relaxed text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              )}
             </div>
           </FadeIn>
         </div>

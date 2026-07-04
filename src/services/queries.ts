@@ -137,3 +137,10 @@ export const getCarByIdQuery = async (id: string) => {
     car: data.car as Vehicle,
   };
 };
+
+export const getAllFaqsQuery = async () => {
+  const { data } = await apiInstance.get(`/faqs`);
+  return {
+    faqs: data.faqs as any[],
+  };
+};
