@@ -275,12 +275,13 @@ export default function BookingModal() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="modal-time">Start Time *</Label>
+                <Label htmlFor="modal-endDate">End Date *</Label>
                 <Input
-                  id="modal-time"
-                  type="time"
-                  value={formData.time}
-                  onChange={(e) => handleInputChange("time", e.target.value)}
+                  id="modal-endDate"
+                  type="date"
+                  min={today}
+                  value={formData.endDate}
+                  onChange={(e) => handleInputChange("endDate", e.target.value)}
                   required
                   className="text-white/60 placeholder:text-white/40 [color-scheme:dark] focus-visible:ring-primary"
                 />
@@ -289,13 +290,12 @@ export default function BookingModal() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="modal-endDate">End Date *</Label>
+                <Label htmlFor="modal-time">Start Time *</Label>
                 <Input
-                  id="modal-endDate"
-                  type="date"
-                  min={today}
-                  value={formData.endDate}
-                  onChange={(e) => handleInputChange("endDate", e.target.value)}
+                  id="modal-time"
+                  type="time"
+                  value={formData.time}
+                  onChange={(e) => handleInputChange("time", e.target.value)}
                   required
                   className="text-white/60 placeholder:text-white/40 [color-scheme:dark] focus-visible:ring-primary"
                 />

@@ -464,7 +464,7 @@ export default function Services() {
                       />
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-2 sm:col-span-2">
                       <Label htmlFor="svc-email">Email</Label>
                       <Input
                         id="svc-email"
@@ -519,36 +519,6 @@ export default function Services() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-time">Start Time</Label>
-                      <Input
-                        id="svc-time"
-                        value={formData.time}
-                        onChange={(e) =>
-                          handleInputChange("time", e.target.value)
-                        }
-                        disabled={isLoading}
-                        type="time"
-                        required
-                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-endtime">End Time</Label>
-                      <Input
-                        id="svc-endtime"
-                        value={formData.endTime}
-                        onChange={(e) =>
-                          handleInputChange("endTime", e.target.value)
-                        }
-                        disabled={isLoading}
-                        type="time"
-                        required
-                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
                       <Label htmlFor="svc-start">Start Date</Label>
                       <Input
                         id="svc-start"
@@ -577,6 +547,36 @@ export default function Services() {
                         disabled={isLoading}
                         required
                         className="h-10 w-full appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="svc-time">Start Time</Label>
+                      <Input
+                        id="svc-time"
+                        value={formData.time}
+                        onChange={(e) =>
+                          handleInputChange("time", e.target.value)
+                        }
+                        disabled={isLoading}
+                        type="time"
+                        required
+                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="svc-endtime">End Time</Label>
+                      <Input
+                        id="svc-endtime"
+                        value={formData.endTime}
+                        onChange={(e) =>
+                          handleInputChange("endTime", e.target.value)
+                        }
+                        disabled={isLoading}
+                        type="time"
+                        required
+                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
                       />
                     </div>
 
