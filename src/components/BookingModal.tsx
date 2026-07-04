@@ -217,19 +217,17 @@ export default function BookingModal() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="modal-email">Email *</Label>
-                <Input
-                  id="modal-email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => handleInputChange("email", e.target.value)}
-                  placeholder="john@example.com"
-                  required
-                  className="text-white placeholder:text-white/40 focus-visible:ring-primary"
-                />
-              </div>
+            <div className="space-y-2">
+              <Label htmlFor="modal-email">Email *</Label>
+              <Input
+                id="modal-email"
+                type="email"
+                value={formData.email}
+                onChange={(e) => handleInputChange("email", e.target.value)}
+                placeholder="john@example.com"
+                required
+                className="text-white placeholder:text-white/40 focus-visible:ring-primary"
+              />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

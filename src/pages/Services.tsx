@@ -64,7 +64,8 @@ export default function Services() {
   const [submitted, setSubmitted] = useState(false);
 
   interface FormData {
-    fullName: string;
+    firstName: string;
+    lastName: string;
     email: string;
     phone: string;
     serviceType: string;
@@ -79,7 +80,8 @@ export default function Services() {
   }
 
   interface FormErrors {
-    fullName?: string;
+    firstName?: string;
+    lastName?: string;
     email?: string;
     phone?: string;
     serviceType?: string;
@@ -94,7 +96,8 @@ export default function Services() {
   }
 
   const initialFormState: FormData = {
-    fullName: "",
+    firstName: "",
+    lastName: "",
     email: "",
     phone: "",
     serviceType: "",
@@ -123,17 +126,12 @@ export default function Services() {
     const newErrors: FormErrors = {};
 
     const usPhoneRegex = /^(?:\+1\s?)?(?:\(\d{3}\)|\d{3})(?:[\s.-]?)\d{3}(?:[\s.-]?)\d{4}$/;
-    const titles = /^(mr|mrs|ms|miss|dr|prof|engr|sir|chief)\.?\s+/i;
 
-    if (formData.fullName.trim()) {
-      const fullName = formData.fullName.trim();
-      const finalName = fullName.replace(titles, "");
-      const nameParts = finalName.trim().split(/\s+/);
-
-      if (nameParts.length !== 2) {
-        errors['fullName'] = 'Please enter actual (First and Last name)';
-        return false;
-      }
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = "First name is required";
+    }
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = "Last name is required";
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
@@ -155,26 +153,6 @@ export default function Services() {
         });
         return false;
       }
-    }
-
-    if (!licenseFilePreview) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Missing License',
-        text: 'Please upload a valid driver\'s license.',
-        confirmButtonColor: "hsl(var(--primary))",
-      });
-      return false;
-    }
-
-    if (!insuranceFilePreview) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Missing Insurance',
-        text: 'Please upload valid insurance documentation.',
-        confirmButtonColor: "hsl(var(--primary))",
-      });
-      return false;
     }
 
     setErrors(newErrors);
@@ -260,7 +238,8 @@ export default function Services() {
 
         const data = new FormData();
 
-        data.append("fullName", requestDetails.fullName);
+        data.append("firstName", requestDetails.firstName || "");
+        data.append("lastName", requestDetails.lastName || "");
         data.append("email", requestDetails.email);
         data.append("phone", requestDetails.phone);
         data.append("recipientEmail", CONTACT_EMAIL);
@@ -456,15 +435,30 @@ export default function Services() {
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div className="space-y-2">
-                      <Label htmlFor="svc-name">Full Name</Label>
+                      <Label htmlFor="svc-firstname">First Name</Label>
                       <Input
-                        id="svc-name"
-                        value={formData.fullName}
+                        id="svc-firstname"
+                        value={formData.firstName}
                         onChange={(e) =>
-                          handleInputChange("fullName", e.target.value)
+                          handleInputChange("firstName", e.target.value)
                         }
                         disabled={isLoading}
-                        placeholder="Your full name"
+                        placeholder="First Name"
+                        required
+                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="svc-lastname">Last Name</Label>
+                      <Input
+                        id="svc-lastname"
+                        value={formData.lastName}
+                        onChange={(e) =>
+                          handleInputChange("lastName", e.target.value)
+                        }
+                        disabled={isLoading}
+                        placeholder="Last Name"
                         required
                         className="focus-visible:ring-primary text-white placeholder:text-white/40"
                       />
@@ -587,7 +581,7 @@ export default function Services() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-license">License</Label>
+                      <Label htmlFor="svc-license">Driver's License (Optional)</Label>
                       <div className="flex items-center gap-3">
                         <Button
                           type="button"
@@ -620,7 +614,7 @@ export default function Services() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-insurance">Insurance</Label>
+                      <Label htmlFor="svc-insurance">Insurance Card (Optional)</Label>
                       <div className="flex items-center gap-3">
                         <Button
                           type="button"
@@ -654,6 +648,9 @@ export default function Services() {
                   </div>
 
                   <div className="space-y-2">
+                    <p className="text-xs text-white/70 bg-white/5 p-2 rounded border border-white/10 mb-2">
+                      Optional document uploads may help expedite your booking. All submitted documents are handled securely and used solely to verify your rental eligibility.
+                    </p>
                     <Label htmlFor="svc-notes">Message</Label>
                     <Textarea
                       id="svc-notes"
