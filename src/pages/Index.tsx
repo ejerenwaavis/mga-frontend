@@ -10,11 +10,11 @@ import { getAllCarsQuery } from "@/services/queries";
 import VehicleCardSkeleton from "@/components/VehicleCardSkeleton";
 import { Shield, MapPin, FileCheck, Car, Phone, Clock, CreditCard, ShieldCheck, Gauge, UserCheck, Star, ExternalLink } from "lucide-react";
 import heroVideo from "@/assets/hero-video-1.mp4";
+import { MAPS_URL } from "@/data/contact";
 // import FAQSection from "@/components/Faq";
 const PHONE = "(470) 817-6427";
 const ADDRESS = "4814 Old National Hwy, Atlanta, GA 30337";
 // const YELP_URL = "https://www.yelp.com/biz/mead-green-autos-atlanta";
-const MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=4814+Old+National+Hwy,+Atlanta,+GA+30337";
 
 
 const trustSignals = [

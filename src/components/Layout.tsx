@@ -58,7 +58,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-function NavItem({ link, currentPath }: { link: typeof navLinks[0]; currentPath: string }) {
+function NavItem({ link, currentPath, navTextColor }: { link: typeof navLinks[0]; currentPath: string; navTextColor?: string }) {
   const [open, setOpen] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isActive = currentPath === link.to || (link.to !== "/" && currentPath.startsWith(link.to));
@@ -82,7 +82,7 @@ function NavItem({ link, currentPath }: { link: typeof navLinks[0]; currentPath:
             e.preventDefault();
           }
         }}
-        className={`nav-hover-link flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest transition-colors duration-150 hover:text-gold ${isActive ? "text-white active" : "text-white"
+        className={`nav-hover-link flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest transition-colors duration-150 hover:text-gold ${isActive ? `${navTextColor || "text-white"} active` : (navTextColor || "text-white")
           }`}
       >
         {link.label}
@@ -139,6 +139,8 @@ function Navbar() {
   const { isAuthenticated } = useUserStore();
 
   const isVehicleDetailsPage = location.pathname !== '/fleet' && location.pathname.startsWith('/fleet/');
+  const isLightPage = ["/dashboard", "/login", "/forgot-password", "/reset-password", "/policies", "/insurance"].some(p => location.pathname.startsWith(p));
+
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -200,6 +202,8 @@ function Navbar() {
     headerClasses += " bg-transparent";
   }
 
+  const navTextColor = (!scrolled && isLightPage) ? "text-foreground" : "text-white";
+
   return (
     <header className={headerClasses}>
       <div className="mx-auto max-w-6xl px-4 md:px-1 flex h-16 items-center justify-between md:h-20">
@@ -213,9 +217,9 @@ function Navbar() {
 
         <nav className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => (
-            <NavItem key={link.to} link={link} currentPath={location.pathname} />
+            <NavItem key={link.to} link={link} currentPath={location.pathname} navTextColor={navTextColor} />
           ))}
-          <Link to={isAuthenticated ? "/dashboard" : "/login"} className="flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest text-white hover:text-gold transition-colors duration-150">
+          <Link to={isAuthenticated ? "/dashboard" : "/login"} className={`flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest hover:text-gold transition-colors duration-150 ${navTextColor}`}>
             {isAuthenticated ? <LayoutDashboard className="h-3 w-3" /> : <LogIn className="h-3 w-3" />}
             {isAuthenticated ? "Dashboard" : "Login"}
           </Link>
@@ -223,7 +227,7 @@ function Navbar() {
 
         <button
           onClick={() => setOpen(!open)}
-          className="inline-flex items-center justify-center rounded-sm p-2 text-white lg:hidden"
+          className={`inline-flex items-center justify-center rounded-sm p-2 lg:hidden ${navTextColor}`}
           aria-label="Toggle menu"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -239,7 +243,7 @@ function Navbar() {
                   <Link
                     to={link.to}
                     onClick={() => !link.children && setOpen(false)}
-                    className={`flex-1 rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest transition-colors hover:bg-muted ${location.pathname === link.to ? "text-white" : "text-white"
+                    className={`flex-1 rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest transition-colors hover:bg-muted ${location.pathname === link.to ? "text-foreground" : "text-foreground"
                       }`}
                   >
                     {link.label}
