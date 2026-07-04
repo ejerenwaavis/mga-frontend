@@ -247,7 +247,7 @@ export default function BookingModal() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="modal-startDate">Pickup Date *</Label>
+                <Label htmlFor="modal-startDate">Start Date *</Label>
                 <Input
                   id="modal-startDate"
                   type="date"
@@ -259,7 +259,7 @@ export default function BookingModal() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="modal-time">Pickup Time *</Label>
+                <Label htmlFor="modal-time">Start Time *</Label>
                 <Input
                   id="modal-time"
                   type="time"
@@ -273,7 +273,7 @@ export default function BookingModal() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="modal-endDate">Return Date *</Label>
+                <Label htmlFor="modal-endDate">End Date *</Label>
                 <Input
                   id="modal-endDate"
                   type="date"
@@ -285,7 +285,7 @@ export default function BookingModal() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="modal-endTime">Return Time *</Label>
+                <Label htmlFor="modal-endTime">End Time *</Label>
                 <Input
                   id="modal-endTime"
                   type="time"
@@ -299,15 +299,14 @@ export default function BookingModal() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="modal-license">Driver's License {isLicenseRequired && "*"}</Label>
-                <div className="flex items-center gap-3">
+                <Label htmlFor="modal-license">License {isLicenseRequired && "*"}</Label>
+                <div className="flex items-center">
                   <Button
                     type="button"
                     variant="outline"
-                    size="sm"
                     onClick={() => licenseInputRef.current?.click()}
                     disabled={isLoading || (!isLicenseRequired && !licenseFilePreview)}
-                    className="bg-white text-gray-900 border-gray-300 w-full"
+                    className="bg-white text-gray-900 border-gray-300 w-full font-normal justify-start px-3"
                   >
                     {!isLicenseRequired ? "Uploaded (Verified)" : "Choose File"}
                   </Button>
@@ -328,15 +327,14 @@ export default function BookingModal() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="modal-insurance">Insurance Document *</Label>
-                <div className="flex items-center gap-3">
+                <Label htmlFor="modal-insurance">Insurance *</Label>
+                <div className="flex items-center">
                   <Button
                     type="button"
                     variant="outline"
-                    size="sm"
                     onClick={() => insuranceInputRef.current?.click()}
                     disabled={isLoading}
-                    className="bg-white text-gray-900 border-gray-300 w-full"
+                    className="bg-white text-gray-900 border-gray-300 w-full font-normal justify-start px-3"
                   >
                     Choose File
                   </Button>
@@ -358,12 +356,12 @@ export default function BookingModal() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="modal-notes">Additional Notes</Label>
+              <Label htmlFor="modal-notes">Message</Label>
               <Textarea
                 id="modal-notes"
                 value={formData.notes}
                 onChange={(e) => handleInputChange("notes", e.target.value)}
-                placeholder="Any special requests or delivery instructions?"
+                placeholder="Make and model of the vehicle and any additional details and requests"
                 rows={3}
                 className="text-white placeholder:text-white/40 focus-visible:ring-primary"
               />

@@ -77,7 +77,7 @@ const rentalRequirements = [
   { 
     icon: ShieldCheck, 
     title: "Coverage requirements", 
-    description: "Valid full-coverage insurance in the renter’s name is required for every rental." 
+    description: "Qualifying full-coverage insurance or MGA coverage is required." 
   },
   { 
     icon: CreditCard, 
@@ -193,7 +193,7 @@ export default function Index() {
 
       {/* Trust strip */}
       <div className="border-b border-border bg-card">
-        <div className="container px-4 md:px-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 py-3 text-[12px] sm:text-[13.5px] font-sans tracking-wide text-muted-foreground">
+        <div className="container px-4 md:px-6 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-x-3 gap-y-2 py-3 text-[12px] sm:text-[13.5px] font-sans tracking-wide text-muted-foreground">
           <span className="whitespace-nowrap">Trusted by hundreds of 5-star trips</span>
           <span className="hidden sm:inline text-border">|</span>
 
