@@ -319,7 +319,7 @@ export default function Contact() {
                     <p className="mt-2 text-sm text-muted-foreground">
                       Complete the form below and we'll review your request, confirm availability, and contact you shortly.
                     </p>
-                    <p className="mt-2 text-sm font-medium text-white/80">
+                    <p className="mt-2 text-sm font-medium text-primary">
                       Questions before booking? Call (470) 817-6427 or email us—we're happy to help.
                     </p>
                   </div>
