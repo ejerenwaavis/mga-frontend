@@ -195,7 +195,7 @@ function Navbar() {
   if (isVehicleDetailsPage) {
     headerClasses += " bg-[#1a3a2a] border-b border-white/10";
   } else if (scrolled) {
-    headerClasses += " bg-[#143D2A]/90 backdrop-blur-md shadow-lg";
+    headerClasses += " bg-[#143D2A]/50 backdrop-blur-lg shadow-lg";
   } else {
     headerClasses += " bg-transparent";
   }
