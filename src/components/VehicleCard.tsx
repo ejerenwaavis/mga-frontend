@@ -51,7 +51,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
       </Link>
 
       <div className="flex flex-1 flex-col p-5">
-        <div className="mb-1 grid grid-cols-[1fr_auto] gap-3 items-start">
+        <div className="mb-1 grid grid-cols-[1fr_auto] gap-3 items-center">
           <div>
             <h3 className="font-serif text-base font-semibold text-foreground leading-tight">
               {vehicle.year} {vehicle.name}
