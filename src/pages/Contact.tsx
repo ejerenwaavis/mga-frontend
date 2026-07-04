@@ -243,7 +243,9 @@ export default function Contact() {
                         disabled={isLoading}
                         placeholder="First Name"
                         required
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                        className={`text-white placeholder:text-white/40 ${
+                          errors.firstName ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-primary"
+                        }`}
                       />
                     </div>
                     
@@ -258,7 +260,9 @@ export default function Contact() {
                         disabled={isLoading}
                         placeholder="Last Name"
                         required
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                        className={`text-white placeholder:text-white/40 ${
+                          errors.lastName ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-primary"
+                        }`}
                       />
                     </div>
 
@@ -274,7 +278,9 @@ export default function Contact() {
                         disabled={isLoading}
                         placeholder="you@example.com"
                         required
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                        className={`text-white placeholder:text-white/40 ${
+                          errors.email ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-primary"
+                        }`}
                       />
                     </div>
 
@@ -290,7 +296,9 @@ export default function Contact() {
                         type="tel"
                         placeholder="(404) 555-0000"
                         required
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                        className={`text-white placeholder:text-white/40 ${
+                          errors.phone ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-primary"
+                        }`}
                       />
                     </div>
 
@@ -307,7 +315,9 @@ export default function Contact() {
                       disabled={isLoading}
                       placeholder="Make and model of the car and any additional details or requests"
                       rows={3}
-                      className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                      className={`text-white placeholder:text-white/40 ${
+                        errors.notes ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-primary"
+                      }`}
                     />
                   </div>
 

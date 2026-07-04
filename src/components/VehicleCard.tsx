@@ -54,7 +54,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
         <div className="mb-1 grid grid-cols-[1fr_auto] gap-3 items-center">
           <div>
             <h3 className="font-serif text-base font-semibold text-foreground leading-tight">
-              {vehicle.year} {vehicle.name}
+              {vehicle.name}
             </h3>
             {/* <span className="text-xs font-sans uppercase tracking-wider text-muted-foreground">
               {vehicle.category}

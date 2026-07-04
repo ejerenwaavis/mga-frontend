@@ -136,7 +136,6 @@ export default function Services() {
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
       newErrors.email = "Invalid email address";
-      return false;
     }
 
     if (!usPhoneRegex.test(formData.phone.trim())) {
@@ -445,7 +444,9 @@ export default function Services() {
                         disabled={isLoading}
                         placeholder="First Name"
                         required
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                        className={`text-white placeholder:text-white/40 ${
+                          errors.firstName ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-primary"
+                        }`}
                       />
                     </div>
 
@@ -460,7 +461,9 @@ export default function Services() {
                         disabled={isLoading}
                         placeholder="Last Name"
                         required
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                        className={`text-white placeholder:text-white/40 ${
+                          errors.lastName ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-primary"
+                        }`}
                       />
                     </div>
 
@@ -476,7 +479,9 @@ export default function Services() {
                         disabled={isLoading}
                         placeholder="you@example.com"
                         required
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                        className={`text-white placeholder:text-white/40 ${
+                          errors.email ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-primary"
+                        }`}
                       />
                     </div>
 
@@ -492,7 +497,9 @@ export default function Services() {
                         type="tel"
                         placeholder="(404) 555-0000"
                         required
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                        className={`text-white placeholder:text-white/40 ${
+                          errors.phone ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-primary"
+                        }`}
                       />
                     </div>
 
