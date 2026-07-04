@@ -10,6 +10,7 @@ import { submitRequest } from "@/services/mutations";
 import { useMutation } from "react-query";
 import { toast } from "sonner";
 import { CONTACT_EMAIL } from "@/data/contact";
+import { countryCodes } from "@/data/countryCodes";
 import { CreateRequestPayload } from "@/lib/types";
 import heic2any from "heic2any";
 import Swal from "sweetalert2";
@@ -19,6 +20,7 @@ interface FormData {
   lastName: string;
   email: string;
   phone: string;
+  countryCode: string;
   serviceType: string;
   startDate: string;
   endDate: string;
@@ -34,6 +36,7 @@ const initialFormState: FormData = {
   lastName: "",
   email: "",
   phone: "",
+  countryCode: "+1",
   serviceType: "",
   startDate: "",
   endDate: "",
@@ -116,6 +119,17 @@ export default function BookingModal() {
   };
 
   const validateForm = () => {
+    const phoneRegex = /^[0-9\s\-()]{7,20}$/;
+    if (!phoneRegex.test(formData.phone.trim())) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid Phone',
+        text: 'Please enter a valid phone number (e.g., 404 555 0100).',
+        confirmButtonColor: "hsl(var(--primary))",
+      });
+      return false;
+    }
+
     if (formData.startDate && formData.endDate && formData.startDate === formData.endDate) {
       if (formData.time && formData.endTime && formData.time >= formData.endTime) {
         Swal.fire({
@@ -138,7 +152,7 @@ export default function BookingModal() {
     const requestDetails: CreateRequestPayload = {
       ...formData,
       vehicleId: selectedVehicle ? `${selectedVehicle.year} ${selectedVehicle.name}` : undefined,
-      phone: formData.phone.replace(/[^\d+]/g, ""),
+      phone: `${formData.countryCode} ${formData.phone}`.replace(/[^\d+]/g, ""),
     };
 
     const data = new FormData();
@@ -233,15 +247,30 @@ export default function BookingModal() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="modal-phone">Phone Number *</Label>
-                <Input
-                  id="modal-phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => handleInputChange("phone", e.target.value)}
-                  placeholder="+1 (555) 000-0000"
-                  required
-                  className="text-white placeholder:text-white/40 focus-visible:ring-primary"
-                />
+                <div className="flex gap-2">
+                  <select
+                    id="modal-country-code"
+                    value={formData.countryCode}
+                    onChange={(e) => handleInputChange("countryCode", e.target.value)}
+                    disabled={isLoading}
+                    className="flex h-10 w-[110px] rounded-md border border-input bg-transparent px-2 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-black"
+                  >
+                    {countryCodes.map((c) => (
+                      <option key={c.code} value={c.code} className="text-black">
+                        {c.code} {c.flag}
+                      </option>
+                    ))}
+                  </select>
+                  <Input
+                    id="modal-phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange("phone", e.target.value)}
+                    placeholder="555-0000"
+                    required
+                    className="flex-1 text-white placeholder:text-white/40 focus-visible:ring-primary"
+                  />
+                </div>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="modal-serviceType">Service Type *</Label>

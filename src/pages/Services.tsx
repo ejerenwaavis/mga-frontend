@@ -14,6 +14,7 @@ import Swal from "sweetalert2";
 import { useMutation } from "react-query";
 import { toast } from "sonner";
 import { CONTACT_EMAIL } from "@/data/contact";
+import { countryCodes } from "@/data/countryCodes";
 
 const serviceTypes = [
   {
@@ -68,6 +69,7 @@ export default function Services() {
     lastName: string;
     email: string;
     phone: string;
+    countryCode: string;
     serviceType: string;
     vehicleId: string;
     startDate: string;
@@ -100,6 +102,7 @@ export default function Services() {
     lastName: "",
     email: "",
     phone: "",
+    countryCode: "+1",
     serviceType: "",
     vehicleId: "",
     startDate: "",
@@ -125,7 +128,7 @@ export default function Services() {
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
-    const phoneRegex = /^\+?[0-9\s\-\(\)]{7,20}$/;
+    const phoneRegex = /^[0-9\s\-()]{7,20}$/;
 
     if (!formData.firstName.trim()) {
       newErrors.firstName = "First name is required";
@@ -140,7 +143,7 @@ export default function Services() {
     }
 
     if (!phoneRegex.test(formData.phone.trim())) {
-      newErrors.phone = "Please enter a valid phone number (including country code if outside US)";
+      newErrors.phone = "Please enter a valid phone number (e.g., 404 555 0100)";
     }
 
     if (formData.startDate && formData.endDate && formData.startDate === formData.endDate) {
@@ -233,7 +236,7 @@ export default function Services() {
 
         const requestDetails: CreateRequestPayload = {
           ...formData,
-          phone: formData.phone.replace(/[^\d+]/g, "")
+          phone: `${formData.countryCode} ${formData.phone}`.replace(/[^\d+]/g, "")
         };
 
         const data = new FormData();
@@ -481,17 +484,35 @@ export default function Services() {
                     </div>
 
                     <div className="space-y-2">
-                      <Input
-                        id="svc-phone"
-                        value={formData.phone}
-                        onChange={(e) =>
-                          handleInputChange("phone", e.target.value)
-                        }
-                        disabled={isLoading}
-                        type="tel"
-                        placeholder="(404) 555-0000 or +44 20 7123 4567"
-                        className={`focus-visible:ring-primary text-white placeholder:text-white/40 ${errors.phone ? 'border-red-500' : ''}`}
-                      />
+                      <Label htmlFor="svc-phone">Phone</Label>
+                      <div className="flex gap-2">
+                        <select
+                          id="svc-country-code"
+                          value={formData.countryCode}
+                          onChange={(e) =>
+                            handleInputChange("countryCode", e.target.value)
+                          }
+                          disabled={isLoading}
+                          className="flex h-10 w-[110px] rounded-md border border-input bg-transparent px-2 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
+                        >
+                          {countryCodes.map((c) => (
+                            <option key={c.code} value={c.code} className="text-black">
+                              {c.code} {c.flag}
+                            </option>
+                          ))}
+                        </select>
+                        <Input
+                          id="svc-phone"
+                          value={formData.phone}
+                          onChange={(e) =>
+                            handleInputChange("phone", e.target.value)
+                          }
+                          disabled={isLoading}
+                          type="tel"
+                          placeholder="(404) 555-0000"
+                          className={`flex-1 focus-visible:ring-primary text-white placeholder:text-white/40 ${errors.phone ? 'border-red-500' : ''}`}
+                        />
+                      </div>
                       {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                     </div>
 
