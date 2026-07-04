@@ -15,7 +15,8 @@ import heic2any from "heic2any";
 import Swal from "sweetalert2";
 
 interface FormData {
-  fullName: string;
+  firstName: string;
+  lastName: string;
   email: string;
   phone: string;
   serviceType: string;
@@ -29,7 +30,8 @@ interface FormData {
 }
 
 const initialFormState: FormData = {
-  fullName: "",
+  firstName: "",
+  lastName: "",
   email: "",
   phone: "",
   serviceType: "",
@@ -140,7 +142,8 @@ export default function BookingModal() {
     };
 
     const data = new FormData();
-    data.append("fullName", requestDetails.fullName);
+    data.append("firstName", requestDetails.firstName || "");
+    data.append("lastName", requestDetails.lastName || "");
     data.append("email", requestDetails.email);
     data.append("phone", requestDetails.phone);
     data.append("recipientEmail", CONTACT_EMAIL);
@@ -162,7 +165,8 @@ export default function BookingModal() {
 
   const today = new Date().toISOString().split("T")[0];
   const hasUploadedLicense = user?.kycDocument?.url ? true : false;
-  const isLicenseRequired = !hasUploadedLicense;
+  // Make documents optional for this form as requested
+  const isLicenseRequired = false;
 
   return (
     <Dialog open={isOpen} onOpenChange={closeModal}>
@@ -190,16 +194,30 @@ export default function BookingModal() {
           <form onSubmit={handleSubmit} className="space-y-5 mt-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="modal-fullName">Full Name *</Label>
+                <Label htmlFor="modal-firstname">First Name *</Label>
                 <Input
-                  id="modal-fullName"
-                  value={formData.fullName}
-                  onChange={(e) => handleInputChange("fullName", e.target.value)}
-                  placeholder="John Doe"
+                  id="modal-firstname"
+                  value={formData.firstName}
+                  onChange={(e) => handleInputChange("firstName", e.target.value)}
+                  placeholder="John"
                   required
                   className="text-white placeholder:text-white/40 focus-visible:ring-primary"
                 />
               </div>
+              <div className="space-y-2">
+                <Label htmlFor="modal-lastname">Last Name *</Label>
+                <Input
+                  id="modal-lastname"
+                  value={formData.lastName}
+                  onChange={(e) => handleInputChange("lastName", e.target.value)}
+                  placeholder="Doe"
+                  required
+                  className="text-white placeholder:text-white/40 focus-visible:ring-primary"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="modal-email">Email *</Label>
                 <Input
@@ -299,8 +317,8 @@ export default function BookingModal() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="modal-license">License {isLicenseRequired && "*"}</Label>
-                <div className="flex items-center">
+                <Label htmlFor="modal-license">Driver's License (Optional)</Label>
+                <div className="flex items-center gap-3">
                   <Button
                     type="button"
                     variant="outline"
@@ -327,8 +345,8 @@ export default function BookingModal() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="modal-insurance">Insurance *</Label>
-                <div className="flex items-center">
+                <Label htmlFor="modal-insurance">Insurance Card (Optional)</Label>
+                <div className="flex items-center gap-3">
                   <Button
                     type="button"
                     variant="outline"
@@ -343,7 +361,6 @@ export default function BookingModal() {
                     ref={insuranceInputRef}
                     accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
                     type="file" 
-                    required={!insuranceFilePreview}
                     className="hidden"
                     onChange={(e) => {
                       const file = e.target.files?.[0];
@@ -356,7 +373,10 @@ export default function BookingModal() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="modal-notes">Message</Label>
+              <p className="text-xs text-white/70 bg-white/5 p-2 rounded border border-white/10 mb-2">
+                Optional document uploads may help expedite your booking. All submitted documents are handled securely and used solely to verify your rental eligibility.
+              </p>
+              <Label htmlFor="modal-notes">Additional Notes</Label>
               <Textarea
                 id="modal-notes"
                 value={formData.notes}

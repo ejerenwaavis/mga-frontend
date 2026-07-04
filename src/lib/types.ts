@@ -278,7 +278,9 @@ export interface BookingRequest {
 
 
 export type CreateRequestPayload = {
-  fullName: string;
+  fullName?: string;
+  firstName?: string;
+  lastName?: string;
   email: string;
   phone: string;
   serviceType: string;
