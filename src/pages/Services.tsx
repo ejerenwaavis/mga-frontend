@@ -125,7 +125,7 @@ export default function Services() {
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
-    const usPhoneRegex = /^(?:\+1\s?)?(?:\(\d{3}\)|\d{3})(?:[\s.-]?)\d{3}(?:[\s.-]?)\d{4}$/;
+    const phoneRegex = /^\+?[0-9\s\-\(\)]{7,20}$/;
 
     if (!formData.firstName.trim()) {
       newErrors.firstName = "First name is required";
@@ -136,10 +136,11 @@ export default function Services() {
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
       newErrors.email = "Invalid email address";
+      return false;
     }
 
-    if (!usPhoneRegex.test(formData.phone.trim())) {
-      newErrors.phone = "Please enter a valid US phone number (e.g., (404) 555-0100)";
+    if (!phoneRegex.test(formData.phone.trim())) {
+      newErrors.phone = "Please enter a valid phone number (including country code if outside US)";
     }
 
     if (formData.startDate && formData.endDate && formData.startDate === formData.endDate) {
@@ -443,11 +444,9 @@ export default function Services() {
                         }
                         disabled={isLoading}
                         placeholder="First Name"
-                        required
-                        className={`text-white placeholder:text-white/40 ${
-                          errors.firstName ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-primary"
-                        }`}
+                        className={`focus-visible:ring-primary text-white placeholder:text-white/40 ${errors.firstName ? 'border-red-500' : ''}`}
                       />
+                      {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
                     </div>
 
                     <div className="space-y-2">
@@ -460,11 +459,9 @@ export default function Services() {
                         }
                         disabled={isLoading}
                         placeholder="Last Name"
-                        required
-                        className={`text-white placeholder:text-white/40 ${
-                          errors.lastName ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-primary"
-                        }`}
+                        className={`focus-visible:ring-primary text-white placeholder:text-white/40 ${errors.lastName ? 'border-red-500' : ''}`}
                       />
+                      {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>}
                     </div>
 
                     <div className="space-y-2 sm:col-span-2">
@@ -478,15 +475,12 @@ export default function Services() {
                         type="email"
                         disabled={isLoading}
                         placeholder="you@example.com"
-                        required
-                        className={`text-white placeholder:text-white/40 ${
-                          errors.email ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-primary"
-                        }`}
+                        className={`focus-visible:ring-primary text-white placeholder:text-white/40 ${errors.email ? 'border-red-500' : ''}`}
                       />
+                      {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-phone">Phone</Label>
                       <Input
                         id="svc-phone"
                         value={formData.phone}
@@ -495,12 +489,10 @@ export default function Services() {
                         }
                         disabled={isLoading}
                         type="tel"
-                        placeholder="(404) 555-0000"
-                        required
-                        className={`text-white placeholder:text-white/40 ${
-                          errors.phone ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-primary"
-                        }`}
+                        placeholder="(404) 555-0000 or +44 20 7123 4567"
+                        className={`focus-visible:ring-primary text-white placeholder:text-white/40 ${errors.phone ? 'border-red-500' : ''}`}
                       />
+                      {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                     </div>
 
                     <div className="space-y-2">
