@@ -10,7 +10,7 @@ import { submitRequest } from "@/services/mutations";
 import { useMutation } from "react-query";
 import { toast } from "sonner";
 import { CONTACT_EMAIL } from "@/data/contact";
-import { countryCodes } from "@/data/countryCodes";
+import { countryCodes } from "@/lib/countryCodes";
 import { CreateRequestPayload } from "@/lib/types";
 import heic2any from "heic2any";
 import Swal from "sweetalert2";

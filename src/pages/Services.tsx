@@ -14,7 +14,7 @@ import Swal from "sweetalert2";
 import { useMutation } from "react-query";
 import { toast } from "sonner";
 import { CONTACT_EMAIL } from "@/data/contact";
-import { countryCodes } from "@/data/countryCodes";
+import { countryCodes } from "@/lib/countryCodes";
 
 const serviceTypes = [
   {
