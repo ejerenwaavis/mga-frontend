@@ -122,7 +122,7 @@ export default function Contact() {
       <section className="relative overflow-hidden bg-stone py-24 md:py-32">
         <div className="absolute inset-0 z-0">
           <img
-            src="/vehicles/contact-hero-image.webp"
+            src="https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287256/mga/vehicles/contact-hero-image.webp"
             alt="Contact Us"
             className="h-full w-full object-cover object-center"
           />

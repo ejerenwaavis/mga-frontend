@@ -23,7 +23,7 @@ const serviceTypes = [
     title: "Airport Service",
     description:
       "Convenient vehicle pickup and drop-off at Hartsfield–Jackson Atlanta International Airport, designed for a fast and seamless arrival or departure.",
-    image: "/vehicles/areoplane.webp",
+    image: "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287207/mga/vehicles/areoplane.webp",
     imagePosition: "right"
   },
   {
@@ -32,7 +32,7 @@ const serviceTypes = [
     title: "Standard Rental",
     description:
       "Premium vehicles with transparent pricing, flexible rental terms, and professionally maintained standards for everyday rental needs.",
-    image: "/vehicles/standard-rental-cover-image.webp",
+    image: "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287439/mga/vehicles/standard-rental-cover-image.webp",
     imagePosition: "left"
   },
   {
@@ -41,7 +41,7 @@ const serviceTypes = [
     title: "Custom Delivery",
     description:
       "Vehicle delivery and pickup tailored to your location and schedule throughout Atlanta for added convenience.",
-    image: "/vehicles/custom-delivery-cover-image.webp",
+    image: "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287277/mga/vehicles/custom-delivery-cover-image.webp",
     imagePosition: "right"
   },
   {
@@ -50,7 +50,7 @@ const serviceTypes = [
     title: "Corporate Services",
     description:
       "Professional rental solutions for employee travel, client transportation, and short-term business vehicle needs.",
-    image: "/vehicles/corporate-services-cover-image.webp",
+    image: "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287258/mga/vehicles/corporate-services-cover-image.webp",
     imagePosition: "left"
   },
 ];
@@ -272,7 +272,7 @@ export default function Services() {
       <section className="relative overflow-hidden bg-stone py-24 md:py-32">
         <div className="absolute inset-0 z-0">
           <img
-            src="/vehicles/Services-Hero.webp"
+            src="https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287437/mga/vehicles/Services-Hero.webp"
             alt="Luxury Fleet"
             className="h-full w-full object-cover object-bottom"
           />

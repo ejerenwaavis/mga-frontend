@@ -171,7 +171,7 @@ export default function Index() {
       {/* Hero */}
       <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden bg-secondary">
         <img
-          src="/vehicles/MGA_HERO.webp"
+          src="https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287388/mga/vehicles/MGA_HERO.webp"
           alt="Mead Green Autos hero background"
           className="absolute inset-0 h-full w-full object-cover object-bottom"
         />
@@ -262,7 +262,7 @@ export default function Index() {
               <div className="w-full md:w-1/2 flex justify-center md:justify-end">
                 <div className="w-full h-full  rounded-lg shadow-2xl overflow-hidden">
                   <img
-                    src="/vehicles/WELCOME_TO_MGA.webp"
+                    src="https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287441/mga/vehicles/WELCOME_TO_MGA.webp"
                     alt="Welcome to Mead Green Autos"
                     className="h-full w-full object-cover"
                   />
