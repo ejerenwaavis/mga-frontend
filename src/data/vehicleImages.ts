@@ -16,7 +16,7 @@ export const vehicleImages: Record<string, Record<string, string>> = {
   "chevrolet-corvette-2025": {
     "Cover Image": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287247/mga/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-cover-image.jpg",
     "Exterior — Front": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287250/mga/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-front-view.png",
-    "Exterior — Rear": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287250/mgahttps://res.cloudinary.com/di1mj1zqc/image/upload/v1783287251/mga/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-rear-view.jpg",
+    "Exterior — Rear": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287250/mga/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-rear-view.jpg",
     "Exterior — Wheel": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287246/mga/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-close-up-wheel-image.jpg",
     "Interior — Dashboard": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287247/mga/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-dash-board-interior-image.jpg",
     "Interior — Rear-Seats": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287252/mga/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-seats-image.jpg",
@@ -26,9 +26,9 @@ export const vehicleImages: Record<string, Record<string, string>> = {
 
   "porsche-cayenne-2023": {
     "Cover Image": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287394/mga/vehicles/porsche-cayenne-2023-cover-image.png",
-    "Exterior — Front": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287396/mgahttps://res.cloudinary.com/di1mj1zqc/image/upload/v1783287397/mga/vehicles/porsche-cayenne-2023-front-view.jpg",
-    "Exterior — Rear": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287399/mgahttps://res.cloudinary.com/di1mj1zqc/image/upload/v1783287400/mga/vehicles/porsche-cayenne-2023-rear-view.jpg",
-    "Exterior — Wheel": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287392/mgahttps://res.cloudinary.com/di1mj1zqc/image/upload/v1783287392/mga/vehicles/porsche-cayenne-2023-close-up-wheel-image.jpg",
+    "Exterior — Front": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287396/mga/vehicles/porsche-cayenne-2023-front-view.jpg",
+    "Exterior — Rear": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287399/mga/vehicles/porsche-cayenne-2023-rear-view.jpg",
+    "Exterior — Wheel": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287392/mga/vehicles/porsche-cayenne-2023-close-up-wheel-image.jpg",
     "Interior — Dashboard": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287395/mga/vehicles/porsche-cayenne-2023-dash-board-interior-image.jpg",
     "Interior — Rear-Seats": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287401/mga/vehicles/porsche-cayenne-2023-seats-image.jpg",
     "Exterior — Side": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287404/mga/vehicles/porsche-cayenne-2023-side-view.jpg",
@@ -82,9 +82,9 @@ export const vehicleImages: Record<string, Record<string, string>> = {
 
   "porsche-mecan-2023": {
     "Cover Image": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287408/mga/vehicles/porsche-macan-2023-cover-image.png",
-    "Exterior — Front": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287410/mgahttps://res.cloudinary.com/di1mj1zqc/image/upload/v1783287410/mga/vehicles/porsche-macan-2023-front-view.jpg",
-    "Exterior — Rear": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287411/mgahttps://res.cloudinary.com/di1mj1zqc/image/upload/v1783287411/mga/vehicles/porsche-macan-2023-rear-view.jpg",
-    "Exterior — Wheel": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287406/mgahttps://res.cloudinary.com/di1mj1zqc/image/upload/v1783287407/mga/vehicles/porsche-macan-2023-close-up-wheel-image.jpg",
+    "Exterior — Front": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287410/mga/vehicles/porsche-macan-2023-front-view.jpg",
+    "Exterior — Rear": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287411/mga/vehicles/porsche-macan-2023-rear-view.jpg",
+    "Exterior — Wheel": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287406/mga/vehicles/porsche-macan-2023-close-up-wheel-image.jpg",
     "Interior — Dashboard": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287409/mga/vehicles/porsche-macan-2023-dash-board-interior-image.jpg",
     "Interior — Rear-Seats": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287412/mga/vehicles/porsche-macan-2023-seats-image.jpg",
     "Exterior — Side": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287413/mga/vehicles/porsche-macan-2023-side-view.jpg",
@@ -115,9 +115,9 @@ export const vehicleImages: Record<string, Record<string, string>> = {
 
   "bmw-3-series-2023": {
     "Cover Image": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287223/mga/vehicles/bmw-330i-2023-cover-image.png",
-    "Exterior — Front": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287225/mgahttps://res.cloudinary.com/di1mj1zqc/image/upload/v1783287226/mga/vehicles/bmw-330i-2023-front-view.jpg",
-    "Exterior — Rear": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287226/mgahttps://res.cloudinary.com/di1mj1zqc/image/upload/v1783287227/mga/vehicles/bmw-330i-2023-rear-view.jpg",
-    "Exterior — Wheel": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287221/mgahttps://res.cloudinary.com/di1mj1zqc/image/upload/v1783287222/mga/vehicles/bmw-330i-2023-close-up-wheel-image.jpg",
+    "Exterior — Front": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287225/mga/vehicles/bmw-330i-2023-front-view.jpg",
+    "Exterior — Rear": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287226/mga/vehicles/bmw-330i-2023-rear-view.jpg",
+    "Exterior — Wheel": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287221/mga/vehicles/bmw-330i-2023-close-up-wheel-image.jpg",
     "Interior — Dashboard": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287224/mga/vehicles/bmw-330i-2023-dash-board-interior-image.jpg",
     "Interior — Rear-Seats": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287229/mga/vehicles/bmw-330i-2023-seats-image.jpg",
     "Exterior — Side": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287229/mga/vehicles/bmw-330i-2023-side-view.jpg",
@@ -137,11 +137,11 @@ export const vehicleImages: Record<string, Record<string, string>> = {
 
   "ford-bronco-sport-2024": {
     "Cover Image": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287287/mga/vehicles/ford-bronco-sport-outer-banks-2024-cover-image.png",
-    "Exterior — Front": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287289/mgahttps://res.cloudinary.com/di1mj1zqc/image/upload/v1783287289/mga/vehicles/ford-bronco-sport-outer-banks-2024-front-view.jpg",
-    "Exterior — Rear": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287290/mgahttps://res.cloudinary.com/di1mj1zqc/image/upload/v1783287290/mga/vehicles/ford-bronco-sport-outer-banks-2024-rear-view.jpg",
-    "Exterior — Wheel": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287285/mgahttps://res.cloudinary.com/di1mj1zqc/image/upload/v1783287285/mga/vehicles/ford-bronco-sport-outer-banks-2024-close-up-wheel-image.jpg",
-    "Interior — Dashboard": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287288/mgahttps://res.cloudinary.com/di1mj1zqc/image/upload/v1783287288/mga/vehicles/ford-bronco-sport-outer-banks-2024-dash-board-interior-image.jpg",
-    "Interior — Rear-Seats": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287291/mgahttps://res.cloudinary.com/di1mj1zqc/image/upload/v1783287291/mga/vehicles/ford-bronco-sport-outer-banks-2024-seats-image.jpg",
+    "Exterior — Front": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287289/mga/vehicles/ford-bronco-sport-outer-banks-2024-front-view.jpg",
+    "Exterior — Rear": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287290/mga/vehicles/ford-bronco-sport-outer-banks-2024-rear-view.jpg",
+    "Exterior — Wheel": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287285/mga/vehicles/ford-bronco-sport-outer-banks-2024-close-up-wheel-image.jpg",
+    "Interior — Dashboard": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287288/mga/vehicles/ford-bronco-sport-outer-banks-2024-dash-board-interior-image.jpg",
+    "Interior — Rear-Seats": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287291/mga/vehicles/ford-bronco-sport-outer-banks-2024-seats-image.jpg",
     "Exterior — Side": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287292/mga/vehicles/ford-bronco-sport-outer-banks-2024-side-view.jpg",
     "Detail Shot": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287284/mga/vehicles/ford-bronco-sport-outer-banks-2024-close-up-front-view.jpg",
   },
