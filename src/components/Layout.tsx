@@ -1,9 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, Mail, ChevronDown, MapPin, Clock } from "lucide-react";
+import { Menu, X, Phone, Mail, ChevronDown, MapPin, Clock, LayoutDashboard, LogIn } from "lucide-react";
 import { TURO_URL } from "@/data/vehicles";
+import { recordTuroClick } from "@/services/mutations";
 import FAQSection from "@/components/Faq";
 import { CONTACT_ADDRESS, CONTACT_EMAIL, CONTACT_PHONE } from "@/data/contact";
+import BookingModal from "./BookingModal";
+import useUserStore from "@/hooks/store/userStore";
 
 const serviceSubLinks = [
   { label: "AIRPORT SERVICE", to: "/services", hash: "airport" },
@@ -23,6 +26,7 @@ const navLinks = [
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
+  const { isAuthenticated } = useUserStore();
 
   useEffect(() => {
     if (!location.hash) {
@@ -49,11 +53,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {showFaqExtra && <Extra />}
         <Footer />
       </div>
+      <BookingModal />
     </div>
   );
 }
 
-function NavItem({ link, currentPath }: { link: typeof navLinks[0]; currentPath: string }) {
+function NavItem({ link, currentPath, navTextColor }: { link: typeof navLinks[0]; currentPath: string; navTextColor?: string }) {
   const [open, setOpen] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isActive = currentPath === link.to || (link.to !== "/" && currentPath.startsWith(link.to));
@@ -77,7 +82,7 @@ function NavItem({ link, currentPath }: { link: typeof navLinks[0]; currentPath:
             e.preventDefault();
           }
         }}
-        className={`nav-hover-link flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest transition-colors duration-150 hover:text-gold ${isActive ? "text-white active" : "text-white"
+        className={`nav-hover-link flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest transition-colors duration-150 hover:text-gold ${isActive ? `${navTextColor || "text-white"} active` : (navTextColor || "text-white")
           }`}
       >
         {link.label}
@@ -100,7 +105,7 @@ function NavItem({ link, currentPath }: { link: typeof navLinks[0]; currentPath:
           >
             {link.children.map((child) => (
               <Link
-                key={child.to}
+                key={child.label}
                 to={child.to}
                 onClick={(e) => {
                   e.preventDefault();
@@ -131,9 +136,11 @@ function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [expandedMobile, setExpandedMobile] = useState<string | null>(null);
   const location = useLocation();
+  const { isAuthenticated } = useUserStore();
 
-  // Check if we're on a vehicle details page (e.g., /fleet/bmw-x6)
   const isVehicleDetailsPage = location.pathname !== '/fleet' && location.pathname.startsWith('/fleet/');
+  const isLightPage = ["/dashboard", "/login", "/forgot-password", "/reset-password"].some(p => location.pathname.startsWith(p));
+
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -184,20 +191,18 @@ function Navbar() {
     }
   }, [location]);
 
-  // Build header classes
   let headerClasses = "fixed top-0 left-0 right-0 z-50 transition-all duration-500 transform ";
   headerClasses += isVisible ? "translate-y-0" : "-translate-y-full";
   
   if (isVehicleDetailsPage) {
-    // Dark green background for vehicle details pages
     headerClasses += " bg-[#1a3a2a] border-b border-white/10";
   } else if (scrolled) {
-    // Translucent black with blur for scrolled state on other pages
-    headerClasses += " bg-black/40 backdrop-blur-md shadow-lg";
+    headerClasses += " bg-[#143D2A]/50 backdrop-blur-lg shadow-lg";
   } else {
-    // Transparent for top of other pages
     headerClasses += " bg-transparent";
   }
+
+  const navTextColor = (!scrolled && isLightPage) ? "text-foreground" : "text-white";
 
   return (
     <header className={headerClasses}>
@@ -212,13 +217,17 @@ function Navbar() {
 
         <nav className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => (
-            <NavItem key={link.to} link={link} currentPath={location.pathname} />
+            <NavItem key={link.to} link={link} currentPath={location.pathname} navTextColor={navTextColor} />
           ))}
+          <Link to={isAuthenticated ? "/dashboard" : "/login"} className={`flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest hover:text-gold transition-colors duration-150 ${navTextColor}`}>
+            {isAuthenticated ? <LayoutDashboard className="h-3 w-3" /> : <LogIn className="h-3 w-3" />}
+            {isAuthenticated ? "Dashboard" : "Login"}
+          </Link>
         </nav>
 
         <button
           onClick={() => setOpen(!open)}
-          className="inline-flex items-center justify-center rounded-sm p-2 text-white lg:hidden"
+          className={`inline-flex items-center justify-center rounded-sm p-2 lg:hidden ${navTextColor}`}
           aria-label="Toggle menu"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -234,7 +243,7 @@ function Navbar() {
                   <Link
                     to={link.to}
                     onClick={() => !link.children && setOpen(false)}
-                    className={`flex-1 rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest transition-colors hover:bg-muted ${location.pathname === link.to ? "text-white" : "text-white"
+                    className={`flex-1 rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest transition-colors hover:bg-muted hover:text-foreground ${location.pathname === link.to ? "text-white" : "text-white"
                       }`}
                   >
                     {link.label}
@@ -252,7 +261,7 @@ function Navbar() {
                   <div className="ml-4 flex flex-col gap-1 pb-2">
                     {link.children.map((child) => (
                       <Link
-                        key={child.to}
+                        key={child.label}
                         to={child.to}
                         onClick={(e) => {
                           e.preventDefault();
@@ -266,7 +275,7 @@ function Navbar() {
                             }
                           }
                         }}
-                        className="rounded-sm px-3 py-2 text-[10px] font-sans font-semibold uppercase tracking-widest text-white transition-colors hover:bg-muted hover:text-foreground"
+                        className="rounded-sm px-3 py-2 text-[10px] font-sans font-semibold uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-black"
                       >
                         {child.label}
                       </Link>
@@ -275,6 +284,9 @@ function Navbar() {
                 )}
               </div>
             ))}
+            <Link to={isAuthenticated ? "/dashboard" : "/login"} onClick={() => setOpen(false)} className="rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest text-white hover:bg-muted hover:text-foreground transition-colors">
+              {isAuthenticated ? "Dashboard" : "Login"}
+            </Link>
           </nav>
         </div>
       )}
@@ -292,6 +304,7 @@ function Extra() {
 
 function Footer() {
   const location = useLocation();
+  const { isAuthenticated } = useUserStore();
 
   const handleScrollToForm = () => {
     if (location.pathname !== "/services") {
@@ -310,7 +323,6 @@ function Footer() {
 
       <div className="mx-auto max-w-6xl pl-4 md:pl-1 pr-0 py-8 md:py-12">
         
-        {/* Logo */}
         <div className="mb-3">
           <img
             src="/MGA-SHORT-LOGO-Round.svg"
@@ -319,19 +331,12 @@ function Footer() {
           />
         </div>
 
-        {/* Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-[2.5fr_1fr_1fr_2.0fr] gap-2 gap-y-8 lg:gap-y-2">
 
-          {/* Column 1 */}
           <div className="lg:pr-10">
             <p className="text-sm leading-relaxed text-secondary-foreground/70 mb-4">
               Premium car rentals across Atlanta, built around convenience, flexibility, and a professionally maintained fleet.
             </p>
-
-            {/* <div className="flex items-center gap-1 text-xs text-secondary-foreground/50 mb-4">
-              <MapPin className="h-3 w-3 shrink-0" />
-              <span>Atlanta • Open 7 days a week</span>
-            </div> */}
 
             <div className="flex gap-3">
               {[
@@ -356,7 +361,6 @@ function Footer() {
             </div>
           </div>
 
-          {/* Column 2 */}
           <div>
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-secondary-foreground/50">
               Quick Links
@@ -372,10 +376,12 @@ function Footer() {
                   {link.label}
                 </Link>
               ))}
+              <Link to={isAuthenticated ? "/dashboard" : "/login"} className="text-sm text-secondary-foreground/70 hover:text-secondary-foreground">
+                {isAuthenticated ? "Dashboard" : "Login"}
+              </Link>
             </nav>
           </div>
 
-          {/* Column 3 */}
           <div className="lg:pr-8"> 
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-secondary-foreground/50">
               Resources
@@ -430,7 +436,13 @@ function Footer() {
                 BOOK DIRECT
               </button>
 
-              <a href={TURO_URL} target="_blank" rel="noopener noreferrer" className="text-xs font-semibold uppercase tracking-widest text-secondary-foreground/50 hover:text-secondary-foreground">
+              <a 
+                href={TURO_URL} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-xs font-semibold uppercase tracking-widest text-secondary-foreground/50 hover:text-secondary-foreground"
+                onClick={() => recordTuroClick({ source: "Footer" })}
+              >
                 BOOK ON TURO
               </a>
             </div>

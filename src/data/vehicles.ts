@@ -1,10 +1,11 @@
 export const TURO_URL = "https://turo.com/us/en/host/31653198";
 
 export interface Vehicle {
-  id: string;
+  _id?: string;
+  id: string; // The local id used in URLs
   name: string;
   year: number;
-  category: "SUV" | "Sedan" | "Sports Cars";
+  category: "SUV" | "Sedan" | "Sports Cars" | string;
   pricePerDay: number;
   seats: number;
   luggage: number;
@@ -15,6 +16,8 @@ export interface Vehicle {
   deposit: string;
   insuranceRequirement: string;
   turoURL: string;
+  images?: { public_id: string; url: string }[];
+  isAvailable?: boolean;
 }
 
 

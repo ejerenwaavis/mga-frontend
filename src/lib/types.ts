@@ -14,6 +14,16 @@ export type TUser = {
   status: string;
   updatedAt: string;
   createdAt: string;
+  kycDocument?: { url?: string; status?: string; rejectedReason?: string; idType?: string };
+  pendingKycDocument?: { url?: string; status?: string; rejectedReason?: string; idType?: string };
+  insuranceDocument?: { url?: string; status?: string; rejectedReason?: string };
+  pendingInsuranceDocument?: { url?: string; status?: string; rejectedReason?: string };
+  videoKyc?: { url?: string; status?: string; rejectedReason?: string };
+  isDeleted?: boolean;
+  deletedAt?: string;
+  isBanned?: boolean;
+  banReason?: string;
+  bannedAt?: string;
 };
 
 export type LoginDetails = { email: string; password: string };
@@ -268,7 +278,9 @@ export interface BookingRequest {
 
 
 export type CreateRequestPayload = {
-  fullName: string;
+  fullName?: string;
+  firstName?: string;
+  lastName?: string;
   email: string;
   phone: string;
   serviceType: string;

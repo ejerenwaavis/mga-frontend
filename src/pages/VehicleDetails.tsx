@@ -1,23 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { vehicles, TURO_URL } from "@/data/vehicles";
+import { vehicles as localVehicles, TURO_URL, Vehicle } from "@/data/vehicles";
 // import { vehicleImages } from "@/data/vehicleImages";
 import { Button } from "@/components/ui/button";
 import FadeIn from "@/components/FadeIn";
 import CTAGroup from "@/components/CTAGroup";
 import { Tag, ArrowLeft, ShieldCheck, Gauge, CreditCard, UserCheck } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
+import { useBookingModal } from "@/hooks/store/useBookingModal";
 import { vehicleImages, getOptimizedImageUrl } from "@/data/vehicleImages";
+import { useQuery } from "react-query";
+import { getCarByIdQuery } from "@/services/queries";
+import { recordTuroClick } from "@/services/mutations";
 
 export default function VehicleDetails() {
   const { vehicleId } = useParams<{ vehicleId: string }>();
-  const vehicle = vehicles.find((v) => v.id === vehicleId);
+  
+  // Try to find the vehicle locally as a fallback
+  const localVehicle = localVehicles.find((v) => v.id === vehicleId);
+
+  // Fetch from the backend API
+  const { data: carData, isLoading } = useQuery({
+    queryKey: ["carDetails", vehicleId],
+    queryFn: () => getCarByIdQuery(vehicleId || ""),
+    enabled: !!vehicleId,
+  });
+
+  // Use the fetched car if available, otherwise use local fallback
+  const vehicle = carData?.car || localVehicle;
+
   const vehicleTitle = vehicle
     ? vehicle.name.includes(vehicle.year.toString())
       ? vehicle.name
       : `${vehicle.year} ${vehicle.name}`
     : "Vehicle Details";
-  // const [selectedImage, setSelectedImage] = useState(0);
 
   useSEO({
     title: vehicle
@@ -27,28 +43,9 @@ export default function VehicleDetails() {
       ? `Rent the ${vehicleTitle} in Atlanta. ${vehicle.highlight}. From $${vehicle.pricePerDay}/day. Airport-ready, insured, 24/7 availability.`
       : "Premium vehicle rental in Atlanta, GA.",
     canonical: vehicle
-      ? `https://meadgreenautos.com/fleet/${vehicle.id}`
+      ? `https://meadgreenautos.com/fleet/${vehicle._id || vehicle.id}`
       : undefined,
   });
-
-  if (!vehicle) {
-    return (
-      <section className="py-20">
-        <div className="container text-center">
-          <h1 className="font-serif text-2xl font-semibold">Vehicle Not Found</h1>
-          <Link to="/fleet" className="mt-4 inline-block text-sm text-primary underline">
-            Return to Fleet
-          </Link>
-        </div>
-      </section>
-    );
-  }
-
-  // const carImages = vehicleImages[vehicle.id];
-
-  const carImages = vehicleImages[vehicle.id];
-
-
 
   const gallerySlots = [
     { label: "Cover Image", key: "Cover Image", fallback: "Cover Image" },
@@ -62,12 +59,50 @@ export default function VehicleDetails() {
   ];
 
   const [selectedSlot, setSelectedSlot] = useState(gallerySlots[0]);
-  const rawDisplay = carImages[selectedSlot.key] ?? carImages[selectedSlot.fallback];
+  const [displayImage, setDisplayImage] = useState<string | undefined>(undefined);
+
+  // Determine if using local or DB images
+  const dbImages = vehicle?.images || [];
+  const hasDbImages = dbImages.length > 0;
+  
+  // Try to find matching local vehicle by name and year if it's a DB vehicle
+  const matchingLocalVehicle = localVehicles.find(v => v.name === vehicle?.name && v.year === vehicle?.year) || localVehicle;
+  const localCarImages = matchingLocalVehicle ? vehicleImages[matchingLocalVehicle.id] : undefined;
+
+  useEffect(() => {
+    if (hasDbImages) {
+      // Find the corresponding db image by index of selected slot
+      const index = gallerySlots.findIndex(s => s.key === selectedSlot.key);
+      setDisplayImage(dbImages[index]?.url || dbImages[0]?.url);
+    } else if (localCarImages) {
+      const rawDisplay = localCarImages[selectedSlot.key] ?? localCarImages[selectedSlot.fallback];
+      setDisplayImage(rawDisplay ? getOptimizedImageUrl(rawDisplay, "display") : undefined);
+    }
+  }, [selectedSlot, hasDbImages, dbImages, localCarImages]);
 
 
-  const displayImage = rawDisplay
-    ? getOptimizedImageUrl(rawDisplay, "display")
-    : undefined;
+  if (isLoading && !localVehicle) {
+    return (
+      <section className="py-20">
+        <div className="container text-center">
+          <h1 className="font-serif text-2xl font-semibold">Loading...</h1>
+        </div>
+      </section>
+    );
+  }
+
+  if (!vehicle) {
+    return (
+      <section className="py-20">
+        <div className="container text-center">
+          <h1 className="font-serif text-2xl font-semibold">Vehicle Not Found</h1>
+          <Link to="/fleet" className="mt-4 inline-block text-sm text-primary underline">
+            Return to Fleet
+          </Link>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <>
@@ -111,12 +146,16 @@ export default function VehicleDetails() {
 
                 {/* Thumbnail grid */}
                 <div className="grid grid-cols-4 gap-3">
-                  {gallerySlots.map((slot) => {
-                    const rawSlot = carImages[slot.key] ?? carImages[slot.fallback];
-                    // Use the "thumbnail" size (320px WebP) for grid slots
-                    const slotImage = rawSlot
-                      ? getOptimizedImageUrl(rawSlot, "thumbnail")
-                      : undefined;
+                  {gallerySlots.map((slot, index) => {
+                    let slotImage = undefined;
+                    
+                    if (hasDbImages) {
+                      slotImage = dbImages[index] ? dbImages[index].url : undefined;
+                    } else if (localCarImages) {
+                      const rawSlot = localCarImages[slot.key] ?? localCarImages[slot.fallback];
+                      slotImage = rawSlot ? getOptimizedImageUrl(rawSlot, "thumbnail") : undefined;
+                    }
+
                     const isActive = selectedSlot.key === slot.key;
 
                     return (
@@ -173,12 +212,20 @@ export default function VehicleDetails() {
 
                 {/* CTAs - only 2 */}
                 <div className="mt-6 flex flex-col gap-2">
-                  <Link to="/services">
-                    <Button variant="premium" size="lg" className="w-full text-xs text-white hover:text-foreground">
-                      BOOK DIRECT
-                    </Button>
-                  </Link>
-                  <a href={TURO_URL} target="_blank" rel="noopener noreferrer">
+                  <Button 
+                    variant="premium" 
+                    size="lg" 
+                    className="w-full text-xs text-white hover:text-foreground"
+                    onClick={() => useBookingModal.getState().openModal(vehicle)}
+                  >
+                    BOOK DIRECT
+                  </Button>
+                  <a 
+                    href={TURO_URL} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    onClick={() => recordTuroClick({ vehicleId: vehicle?._id, source: "VehicleDetails" })}
+                  >
                     <Button variant="gold" size="sm" className="w-full text-xs text-white hover:text-foreground">
                       BOOK ON TURO
                     </Button>

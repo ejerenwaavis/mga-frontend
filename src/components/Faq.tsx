@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { FiPlus, FiMinus } from 'react-icons/fi';
 import FadeIn from "@/components/FadeIn";
 import CTAGroup from "@/components/CTAGroup";
-import { faqs } from "@/lib/faqs";
+import { useQuery } from "react-query";
+import { getAllFaqsQuery } from "@/services/queries";
+import { faqs as staticFaqs } from "@/lib/faqs";
 
 const FAQItem = ({ question, answer }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -34,6 +36,11 @@ const FAQItem = ({ question, answer }) => {
 };
 
 const FAQSection = () => {
+    const { data: faqData, isLoading } = useQuery("faqs", getAllFaqsQuery);
+    
+    // Fallback to static faqs if the API fails or is loading and we want to show something
+    const displayFaqs = faqData?.faqs && faqData.faqs.length > 0 ? faqData.faqs : staticFaqs;
+
     return (
         <div>
             {/* CTA Section - removed background */}
@@ -57,9 +64,13 @@ const FAQSection = () => {
                     Frequently Asked Questions
                 </h2>
                 <div className="rounded-2xl p-6">
-                    {faqs.map((faq, index) => (
-                        <FAQItem key={index} question={faq.question} answer={faq.answer} />
-                    ))}
+                    {isLoading && !faqData ? (
+                        <div className="text-white/60 text-center">Loading FAQs...</div>
+                    ) : (
+                        displayFaqs.map((faq, index) => (
+                            <FAQItem key={index} question={faq.question} answer={faq.answer} />
+                        ))
+                    )}
                 </div>
             </section>
         </div>

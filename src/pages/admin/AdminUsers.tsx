@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Search, X } from "lucide-react";
 import { useQuery } from "react-query";
-import { getAllAdmins } from "../../services/queries";
+import { getAllUsers, getAllAdmins } from "../../services/queries";
 import { TUser } from "../../lib/types";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,12 +11,15 @@ import { useMutation } from "react-query";
 import { toast } from "sonner";
 
 
+import UserProfileModal from "./components/UserProfileModal";
+
 const AdminUsers = () => {
 
     const [searchTerm, setSearchTerm] = useState("");
     const [statusFilter, setStatusFilter] = useState("all");
     const [isCreateAdminModalOpen, setIsCreateAdminModalOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [selectedUser, setSelectedUser] = useState<TUser | null>(null);
 
     interface FormData {
         firstName: string;
@@ -47,9 +50,9 @@ const AdminUsers = () => {
     const [formData, setFormData] = useState<FormData>(initialFormState);
     const [errors, setErrors] = useState<FormErrors>(initialFormState);
 
-    const { data, isLoading } = useQuery({
+    const { data, isLoading, refetch } = useQuery({
         queryKey: ["users"],
-        queryFn: getAllAdmins,
+        queryFn: getAllUsers,
     });
 
     const admins: TUser[] = data?.users ?? [];
@@ -201,12 +204,12 @@ const AdminUsers = () => {
                             <th scope="col" className="px-6 py-4 font-semibold text-gray-900">Mobile</th>
                             <th scope="col" className="px-6 py-4 font-semibold text-gray-900">Status</th>
                             <th scope="col" className="px-6 py-4 font-semibold text-gray-900">Date Created</th>
-                            {/* <th scope="col" className="px-6 py-4 font-semibold text-gray-900 text-center">Actions</th> */}
+                            <th scope="col" className="px-6 py-4 font-semibold text-gray-900 text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100 border-t border-gray-100">
                         {filteredAdmins.map((user) => (
-                            <tr key={user._id} className="hover:bg-gray-50 transition-colors">
+                            <tr key={user._id} className={`transition-colors ${user.isDeleted ? 'bg-red-50 hover:bg-red-100' : 'hover:bg-gray-50'}`}>
                                 {/* 1. Name & Email */}
                                 <td className="px-6 py-4">
                                     <div className="flex flex-col">
@@ -242,7 +245,14 @@ const AdminUsers = () => {
                                 </td>
 
                                 {/* 5. Actions */}
-
+                                <td className="px-6 py-4 text-center">
+                                    <button
+                                        onClick={() => setSelectedUser(user)}
+                                        className="text-primary hover:text-primary-dark font-medium text-sm"
+                                    >
+                                        View
+                                    </button>
+                                </td>
                             </tr>
                         ))}
 
@@ -332,6 +342,13 @@ const AdminUsers = () => {
                         </form>
                     </div>
                 </div>
+            )}
+            
+            {selectedUser && (
+                <UserProfileModal
+                    user={selectedUser}
+                    onClose={() => setSelectedUser(null)}
+                />
             )}
 
 

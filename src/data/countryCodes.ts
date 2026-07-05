@@ -1,0 +1,17 @@
+export const countryCodes = [
+  { code: "+1", country: "US/Canada", flag: "🇺🇸/🇨🇦" },
+  { code: "+44", country: "UK", flag: "🇬🇧" },
+  { code: "+61", country: "Australia", flag: "🇦🇺" },
+  { code: "+234", country: "Nigeria", flag: "🇳🇬" },
+  { code: "+49", country: "Germany", flag: "🇩🇪" },
+  { code: "+33", country: "France", flag: "🇫🇷" },
+  { code: "+39", country: "Italy", flag: "🇮🇹" },
+  { code: "+34", country: "Spain", flag: "🇪🇸" },
+  { code: "+81", country: "Japan", flag: "🇯🇵" },
+  { code: "+86", country: "China", flag: "🇨🇳" },
+  { code: "+91", country: "India", flag: "🇮🇳" },
+  { code: "+971", country: "UAE", flag: "🇦🇪" },
+  { code: "+27", country: "South Africa", flag: "🇿🇦" },
+  { code: "+52", country: "Mexico", flag: "🇲🇽" },
+  { code: "+55", country: "Brazil", flag: "🇧🇷" },
+];
