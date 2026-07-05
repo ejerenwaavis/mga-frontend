@@ -8,7 +8,6 @@ import { vehicles } from "@/data/vehicles";
 import { Plane, Car, Clock, Building2, Sparkles, X } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import { CreateRequestPayload } from "@/lib/types";
-import { countryCodes } from "@/lib/countryCodes";
 import { submitRequest } from "@/services/mutations";
 import heic2any from "heic2any";
 import Swal from "sweetalert2";

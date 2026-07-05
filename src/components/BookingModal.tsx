@@ -12,7 +12,6 @@ import { toast } from "sonner";
 import { CONTACT_EMAIL } from "@/data/contact";
 import { countryCodes } from "@/data/countryCodes";
 import { CreateRequestPayload } from "@/lib/types";
-import { countryCodes } from "@/lib/countryCodes";
 import heic2any from "heic2any";
 import Swal from "sweetalert2";
 

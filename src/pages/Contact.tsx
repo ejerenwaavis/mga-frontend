@@ -9,7 +9,6 @@ import { Plane, Car, Clock, Building2, Sparkles, X, Phone, Mail, MapPin } from "
 import { useSEO } from "@/hooks/useSEO";
 import { submitRequest } from "@/services/mutations";
 import { CreateRequestPayload } from "@/lib/types";
-import { countryCodes } from "@/lib/countryCodes";
 import heic2any from "heic2any";
 import Swal from "sweetalert2";
 import { useMutation } from "react-query";
