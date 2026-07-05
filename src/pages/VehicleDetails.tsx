@@ -24,6 +24,7 @@ export default function VehicleDetails() {
     queryKey: ["carDetails", vehicleId],
     queryFn: () => getCarByIdQuery(vehicleId || ""),
     enabled: !!vehicleId,
+    retry: false, // Don't retry on failure so we show the "Not Found" UI immediately
   });
 
   // Use the fetched car if available, otherwise use local fallback
