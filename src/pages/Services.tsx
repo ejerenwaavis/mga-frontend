@@ -493,7 +493,7 @@ export default function Services() {
                             handleInputChange("countryCode", e.target.value)
                           }
                           disabled={isLoading}
-                          className="flex h-10 w-[110px] rounded-md border border-input bg-transparent px-2 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
+                          className="flex h-10 w-[110px] rounded-md border border-input bg-background px-2 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
                         >
                           {countryCodes.map((c) => (
                             <option key={c.code} value={c.code} className="text-black">
