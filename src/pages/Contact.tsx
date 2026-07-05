@@ -55,7 +55,7 @@ export default function Contact() {
   const [errors, setErrors] = useState<FormErrors>({});
 
 
-  const validateForm = (): boolean => {
+  const validateForm = (): FormErrors => {
     const newErrors: FormErrors = {};
     const phoneRegex = /^[0-9\s\-()]{7,20}$/;
 
@@ -75,7 +75,7 @@ export default function Contact() {
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    return newErrors;
   };
 
 
@@ -103,7 +103,8 @@ export default function Contact() {
     e.preventDefault();
 
     try {
-      if (validateForm()) {
+      const validationErrors = validateForm();
+      if (Object.keys(validationErrors).length === 0) {
         const requestDetails: CreateRequestPayload = {
           ...formData,
           serviceType: "support",
@@ -126,7 +127,7 @@ export default function Contact() {
 
         handleCreateRequest(data);
       } else {
-        const errorMessages = Object.values(errors).filter(Boolean).join("\n");
+        const errorMessages = Object.values(validationErrors).filter(Boolean).join("\n");
 
         Swal.fire({
           icon: "warning",

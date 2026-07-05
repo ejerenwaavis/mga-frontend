@@ -125,7 +125,7 @@ export default function Services() {
   const [insuranceFilePreview, setInsuranceFilePreview] = useState<{ file: File; url: string } | null>(null);
 
 
-  const validateForm = (): boolean => {
+  const validateForm = (): FormErrors => {
     const newErrors: FormErrors = {};
 
     const phoneRegex = /^[0-9\s\-()]{7,20}$/;
@@ -139,7 +139,6 @@ export default function Services() {
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
       newErrors.email = "Invalid email address";
-      return false;
     }
 
     if (!phoneRegex.test(formData.phone.trim())) {
@@ -148,18 +147,12 @@ export default function Services() {
 
     if (formData.startDate && formData.endDate && formData.startDate === formData.endDate) {
       if (formData.time && formData.endTime && formData.time >= formData.endTime) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Invalid Time',
-          text: 'End time must be after the start time for same-day bookings.',
-          confirmButtonColor: "hsl(var(--primary))",
-        });
-        return false;
+        newErrors.time = "End time must be after the start time for same-day bookings.";
       }
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    return newErrors;
   };
 
 
@@ -226,7 +219,8 @@ export default function Services() {
     e.preventDefault();
 
     try {
-      if (validateForm()) {
+      const validationErrors = validateForm();
+      if (Object.keys(validationErrors).length === 0) {
         if (licenseFilePreview) {
           formData.license = licenseFilePreview.file
         }
@@ -264,7 +258,7 @@ export default function Services() {
 
         handleCreateRequest(data);
       } else {
-        const errorMessages = Object.values(errors).filter(Boolean).join("\n");
+        const errorMessages = Object.values(validationErrors).filter(Boolean).join("\n");
 
         Swal.fire({
           icon: "warning",
@@ -581,8 +575,9 @@ export default function Services() {
                         disabled={isLoading}
                         type="time"
                         required
-                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
+                        className={`focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark] ${errors.time ? 'border-red-500' : ''}`}
                       />
+                      {errors.time && <p className="text-red-500 text-xs mt-1">{errors.time}</p>}
                     </div>
 
                     <div className="space-y-2">
