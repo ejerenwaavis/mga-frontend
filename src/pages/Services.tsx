@@ -15,6 +15,7 @@ import Swal from "sweetalert2";
 import { useMutation } from "react-query";
 import { toast } from "sonner";
 import { CONTACT_EMAIL } from "@/data/contact";
+import { countryCodes } from "@/data/countryCodes";
 
 const serviceTypes = [
   {
@@ -192,7 +193,8 @@ export default function Services() {
     e.preventDefault();
 
     try {
-      if (validateForm()) {
+      const validationErrors = validateForm();
+      if (Object.keys(validationErrors).length === 0) {
         if (licenseFilePreview) {
           formData.license = licenseFilePreview.file
         }
@@ -408,6 +410,7 @@ export default function Services() {
                         required
                         className="text-white placeholder:text-white/40 focus-visible:ring-primary"
                       />
+                      {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
                     </div>
 
                     <div className="space-y-2">
@@ -423,6 +426,7 @@ export default function Services() {
                         required
                         className="text-white placeholder:text-white/40 focus-visible:ring-primary"
                       />
+                      {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>}
                     </div>
 
                     <div className="space-y-2 sm:col-span-2">
@@ -439,6 +443,7 @@ export default function Services() {
                         required
                         className="text-white placeholder:text-white/40 focus-visible:ring-primary"
                       />
+                      {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                     </div>
 
                     <div className="space-y-2">
@@ -541,6 +546,7 @@ export default function Services() {
                         required
                         className="focus-visible:ring-primary text-white/60 placeholder:text-white/40"
                       />
+                      {errors.time && <p className="text-red-500 text-xs mt-1">{errors.time}</p>}
                     </div>
 
                     <div className="space-y-2">

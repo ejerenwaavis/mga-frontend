@@ -275,7 +275,7 @@ function Navbar() {
                             }
                           }
                         }}
-                        className="rounded-sm px-3 py-2 text-[10px] font-sans font-semibold uppercase tracking-widest text-white transition-colors hover:bg-muted hover:text-foreground"
+                        className="rounded-sm px-3 py-2 text-[10px] font-sans font-semibold uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-black"
                       >
                         {child.label}
                       </Link>
