@@ -243,8 +243,9 @@ function Navbar() {
                   <Link
                     to={link.to}
                     onClick={() => !link.children && setOpen(false)}
-                    className={`flex-1 rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest transition-colors hover:bg-muted ${location.pathname === link.to ? "text-foreground" : "text-foreground"
-                      }`}
+                    className={`flex-1 rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest transition-colors hover:bg-white hover:text-black ${
+                      location.pathname === link.to ? "bg-white text-black" : "text-white"
+                    }`}
                   >
                     {link.label}
                   </Link>
@@ -275,7 +276,7 @@ function Navbar() {
                             }
                           }
                         }}
-                        className="rounded-sm px-3 py-2 text-[10px] font-sans font-semibold uppercase tracking-widest text-white transition-colors hover:bg-muted hover:text-foreground"
+                        className="rounded-sm px-3 py-2 text-[10px] font-sans font-semibold uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-black"
                       >
                         {child.label}
                       </Link>
@@ -284,7 +285,7 @@ function Navbar() {
                 )}
               </div>
             ))}
-            <Link to={isAuthenticated ? "/dashboard" : "/login"} onClick={() => setOpen(false)} className="rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest text-white hover:bg-muted transition-colors">
+            <Link to={isAuthenticated ? "/dashboard" : "/login"} onClick={() => setOpen(false)} className="rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest text-white hover:bg-white hover:text-black transition-colors">
               {isAuthenticated ? "Dashboard" : "Login"}
             </Link>
           </nav>
