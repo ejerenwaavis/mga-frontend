@@ -105,7 +105,7 @@ function NavItem({ link, currentPath, navTextColor }: { link: typeof navLinks[0]
           >
             {link.children.map((child) => (
               <Link
-                key={child.to}
+                key={child.label}
                 to={child.to}
                 onClick={(e) => {
                   e.preventDefault();
@@ -139,7 +139,7 @@ function Navbar() {
   const { isAuthenticated } = useUserStore();
 
   const isVehicleDetailsPage = location.pathname !== '/fleet' && location.pathname.startsWith('/fleet/');
-  const isLightPage = ["/dashboard", "/login", "/forgot-password", "/reset-password", "/policies", "/insurance"].some(p => location.pathname.startsWith(p));
+  const isLightPage = ["/dashboard", "/login", "/forgot-password", "/reset-password"].some(p => location.pathname.startsWith(p));
 
 
   useEffect(() => {
@@ -243,7 +243,7 @@ function Navbar() {
                   <Link
                     to={link.to}
                     onClick={() => !link.children && setOpen(false)}
-                    className={`flex-1 rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest transition-colors hover:bg-muted ${location.pathname === link.to ? "text-foreground" : "text-foreground"
+                    className={`flex-1 rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest transition-colors hover:bg-muted hover:text-foreground ${location.pathname === link.to ? "text-white" : "text-white"
                       }`}
                   >
                     {link.label}
@@ -261,7 +261,7 @@ function Navbar() {
                   <div className="ml-4 flex flex-col gap-1 pb-2">
                     {link.children.map((child) => (
                       <Link
-                        key={child.to}
+                        key={child.label}
                         to={child.to}
                         onClick={(e) => {
                           e.preventDefault();
@@ -284,7 +284,7 @@ function Navbar() {
                 )}
               </div>
             ))}
-            <Link to={isAuthenticated ? "/dashboard" : "/login"} onClick={() => setOpen(false)} className="rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest text-white hover:bg-muted transition-colors">
+            <Link to={isAuthenticated ? "/dashboard" : "/login"} onClick={() => setOpen(false)} className="rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest text-white hover:bg-muted hover:text-foreground transition-colors">
               {isAuthenticated ? "Dashboard" : "Login"}
             </Link>
           </nav>

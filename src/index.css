@@ -217,3 +217,14 @@
 
 
 /* --primary: 152 45% 20%; */
+
+/* Invert native date/time icons to white on dark backgrounds when color-scheme is light */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(0.8);
+  opacity: 0.6;
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover,
+input[type="time"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}

@@ -11,6 +11,7 @@ import { useMutation } from "react-query";
 import { toast } from "sonner";
 import { CONTACT_EMAIL } from "@/data/contact";
 import { CreateRequestPayload } from "@/lib/types";
+import { countryCodes } from "@/lib/countryCodes";
 import heic2any from "heic2any";
 import Swal from "sweetalert2";
 
@@ -19,6 +20,7 @@ interface FormData {
   lastName: string;
   email: string;
   phone: string;
+  countryCode: string;
   serviceType: string;
   startDate: string;
   endDate: string;
@@ -34,6 +36,7 @@ const initialFormState: FormData = {
   lastName: "",
   email: "",
   phone: "",
+  countryCode: "+1",
   serviceType: "",
   startDate: "",
   endDate: "",
@@ -75,7 +78,14 @@ export default function BookingModal() {
   });
 
   const handleInputChange = (field: keyof FormData, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+    const el = document.getElementById(`modal-${field}`) as HTMLInputElement;
+    if (el) {
+      el.setCustomValidity("");
+    }
   };
 
   const handleFileSelect = async (file: File, type: 'license' | 'insurance') => {
@@ -116,15 +126,24 @@ export default function BookingModal() {
   };
 
   const validateForm = () => {
-    if (formData.startDate && formData.endDate && formData.startDate === formData.endDate) {
-      if (formData.time && formData.endTime && formData.time >= formData.endTime) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Invalid Time',
-          text: 'End time must be after the start time for same-day bookings.',
-          confirmButtonColor: "hsl(var(--primary))",
-        });
+    if (formData.startDate && formData.endDate) {
+      if (formData.endDate < formData.startDate) {
+        const endDateInput = document.getElementById("modal-endDate") as HTMLInputElement;
+        if (endDateInput) {
+          endDateInput.setCustomValidity("End date cannot be earlier than start date.");
+          endDateInput.reportValidity();
+        }
         return false;
+      }
+      if (formData.startDate === formData.endDate) {
+        if (formData.time && formData.endTime && formData.time >= formData.endTime) {
+          const endTimeInput = document.getElementById("modal-endTime") as HTMLInputElement;
+          if (endTimeInput) {
+            endTimeInput.setCustomValidity("End time must be after the start time for same-day bookings.");
+            endTimeInput.reportValidity();
+          }
+          return false;
+        }
       }
     }
     return true;
@@ -135,10 +154,11 @@ export default function BookingModal() {
 
     if (!validateForm()) return;
 
+    const fullPhone = `${formData.countryCode} ${formData.phone}`;
     const requestDetails: CreateRequestPayload = {
       ...formData,
       vehicleId: selectedVehicle ? `${selectedVehicle.year} ${selectedVehicle.name}` : undefined,
-      phone: formData.phone.replace(/[^\d+]/g, ""),
+      phone: fullPhone.replace(/[^\d+]/g, ""),
     };
 
     const data = new FormData();
@@ -165,7 +185,6 @@ export default function BookingModal() {
 
   const today = new Date().toISOString().split("T")[0];
   const hasUploadedLicense = user?.kycDocument?.url ? true : false;
-  // Make documents optional for this form as requested
   const isLicenseRequired = false;
 
   return (
@@ -233,15 +252,31 @@ export default function BookingModal() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="modal-phone">Phone Number *</Label>
-                <Input
-                  id="modal-phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => handleInputChange("phone", e.target.value)}
-                  placeholder="+1 (555) 000-0000"
-                  required
-                  className="text-white placeholder:text-white/40 focus-visible:ring-primary"
-                />
+                <div className="flex gap-2">
+                  <select
+                    value={formData.countryCode}
+                    onChange={(e) => handleInputChange("countryCode", e.target.value)}
+                    className="flex h-10 w-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
+                  >
+                    {countryCodes.map((country) => (
+                      <option key={country.code} value={country.code}>
+                        {country.code} {country.label}
+                      </option>
+                    ))}
+                  </select>
+                  <Input
+                    id="modal-phone"
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange("phone", e.target.value)}
+                    type="tel"
+                    placeholder="555-0000"
+                    required
+                    minLength={5}
+                    pattern="^[0-9\-\s\(\)]+$"
+                    title="Please enter a valid phone number with at least 5 digits"
+                    className="flex-1 text-white placeholder:text-white/40 focus-visible:ring-primary"
+                  />
+                </div>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="modal-serviceType">Service Type *</Label>
@@ -271,7 +306,7 @@ export default function BookingModal() {
                   value={formData.startDate}
                   onChange={(e) => handleInputChange("startDate", e.target.value)}
                   required
-                  className="text-white/60 placeholder:text-white/40 [color-scheme:dark] focus-visible:ring-primary"
+                  className="text-white/60 placeholder:text-white/40 focus-visible:ring-primary"
                 />
               </div>
               <div className="space-y-2">
@@ -283,7 +318,7 @@ export default function BookingModal() {
                   value={formData.endDate}
                   onChange={(e) => handleInputChange("endDate", e.target.value)}
                   required
-                  className="text-white/60 placeholder:text-white/40 [color-scheme:dark] focus-visible:ring-primary"
+                  className="text-white/60 placeholder:text-white/40 focus-visible:ring-primary"
                 />
               </div>
             </div>
@@ -297,7 +332,7 @@ export default function BookingModal() {
                   value={formData.time}
                   onChange={(e) => handleInputChange("time", e.target.value)}
                   required
-                  className="text-white/60 placeholder:text-white/40 [color-scheme:dark] focus-visible:ring-primary"
+                  className="text-white/60 placeholder:text-white/40 focus-visible:ring-primary"
                 />
               </div>
               <div className="space-y-2">
@@ -308,7 +343,7 @@ export default function BookingModal() {
                   value={formData.endTime}
                   onChange={(e) => handleInputChange("endTime", e.target.value)}
                   required
-                  className="text-white/60 placeholder:text-white/40 [color-scheme:dark] focus-visible:ring-primary"
+                  className="text-white/60 placeholder:text-white/40 focus-visible:ring-primary"
                 />
               </div>
             </div>
@@ -371,7 +406,7 @@ export default function BookingModal() {
             </div>
 
             <div className="space-y-2">
-              <p className="text-xs text-white/70 bg-white/5 p-2 rounded border border-white/10 mb-2">
+              <p className="text-xs text-black bg-gray-100 p-2 rounded border border-gray-300 mb-2">
                 Optional document uploads may help expedite your booking. All submitted documents are handled securely and used solely to verify your rental eligibility.
               </p>
               <Label htmlFor="modal-notes">Additional Notes</Label>

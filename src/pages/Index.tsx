@@ -77,7 +77,7 @@ const rentalRequirements = [
   { 
     icon: ShieldCheck, 
     title: "Coverage requirements", 
-    description: "Qualifying full-coverage insurance or MGA coverage is required." 
+    description: "Qualifying full-coverage insurance or MGA rental coverage is required for every reservation." 
   },
   { 
     icon: CreditCard, 

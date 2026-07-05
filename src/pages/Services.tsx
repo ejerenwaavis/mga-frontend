@@ -7,8 +7,9 @@ import FadeIn from "@/components/FadeIn";
 import { vehicles } from "@/data/vehicles";
 import { Plane, Car, Clock, Building2, Sparkles, X } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
-import { submitRequest } from "@/services/mutations";
 import { CreateRequestPayload } from "@/lib/types";
+import { countryCodes } from "@/lib/countryCodes";
+import { submitRequest } from "@/services/mutations";
 import heic2any from "heic2any";
 import Swal from "sweetalert2";
 import { useMutation } from "react-query";
@@ -68,26 +69,11 @@ export default function Services() {
     lastName: string;
     email: string;
     phone: string;
+    countryCode: string;
     serviceType: string;
     vehicleId: string;
     startDate: string;
     endDate: string;
-    time?: string;
-    endTime?: string;
-    notes?: string;
-    license?: any;
-    insurance?: any;
-  }
-
-  interface FormErrors {
-    firstName?: string;
-    lastName?: string;
-    email?: string;
-    phone?: string;
-    serviceType?: string;
-    vehicleId?: string;
-    startDate?: string;
-    endDate?: string;
     time?: string;
     endTime?: string;
     notes?: string;
@@ -100,6 +86,7 @@ export default function Services() {
     lastName: "",
     email: "",
     phone: "",
+    countryCode: "+1",
     serviceType: "",
     vehicleId: "",
     startDate: "",
@@ -113,49 +100,35 @@ export default function Services() {
 
 
   const [formData, setFormData] = useState<FormData>(initialFormState);
-
-  const [errors, setErrors] = useState<FormErrors>(initialFormState);
   const today = new Date().toISOString().split("T")[0];
   const licenseInputRef = useRef<HTMLInputElement>(null);
   const insuranceInputRef = useRef<HTMLInputElement>(null);
   const [licenseFilePreview, setLicenseFilePreview] = useState<{ file: File; url: string } | null>(null);
   const [insuranceFilePreview, setInsuranceFilePreview] = useState<{ file: File; url: string } | null>(null);
 
-
   const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
-
-    const usPhoneRegex = /^(?:\+1\s?)?(?:\(\d{3}\)|\d{3})(?:[\s.-]?)\d{3}(?:[\s.-]?)\d{4}$/;
-
-    if (!formData.firstName.trim()) {
-      newErrors.firstName = "First name is required";
-    }
-    if (!formData.lastName.trim()) {
-      newErrors.lastName = "Last name is required";
-    }
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      newErrors.email = "Invalid email address";
-    }
-
-    if (!usPhoneRegex.test(formData.phone.trim())) {
-      newErrors.phone = "Please enter a valid US phone number (e.g., (404) 555-0100)";
-    }
-
-    if (formData.startDate && formData.endDate && formData.startDate === formData.endDate) {
-      if (formData.time && formData.endTime && formData.time >= formData.endTime) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Invalid Time',
-          text: 'End time must be after the start time for same-day bookings.',
-          confirmButtonColor: "hsl(var(--primary))",
-        });
+    if (formData.startDate && formData.endDate) {
+      if (formData.endDate < formData.startDate) {
+        const endDateInput = document.getElementById("svc-endDate") as HTMLInputElement;
+        if (endDateInput) {
+          endDateInput.setCustomValidity("End date cannot be earlier than start date.");
+          endDateInput.reportValidity();
+        }
         return false;
+      }
+      if (formData.startDate === formData.endDate) {
+        if (formData.time && formData.endTime && formData.time >= formData.endTime) {
+          const endTimeInput = document.getElementById("svc-endTime") as HTMLInputElement;
+          if (endTimeInput) {
+            endTimeInput.setCustomValidity("End time must be after the start time for same-day bookings.");
+            endTimeInput.reportValidity();
+          }
+          return false;
+        }
       }
     }
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    return true;
   };
 
 
@@ -166,12 +139,9 @@ export default function Services() {
       ...prev,
       [field]: value,
     }));
-
-    if (errors[field]) {
-      setErrors((prev) => ({
-        ...prev,
-        [field]: ""
-      }));
+    const el = document.getElementById(`svc-${field}`) as HTMLInputElement;
+    if (el) {
+      el.setCustomValidity("");
     }
   };
 
@@ -230,9 +200,10 @@ export default function Services() {
           formData.insurance = insuranceFilePreview.file;
         }
 
+        const fullPhone = `${formData.countryCode} ${formData.phone}`;
         const requestDetails: CreateRequestPayload = {
           ...formData,
-          phone: formData.phone.replace(/[^\d+]/g, "")
+          phone: fullPhone.replace(/[^\d+]/g, "")
         };
 
         const data = new FormData();
@@ -259,15 +230,6 @@ export default function Services() {
         }
 
         handleCreateRequest(data);
-      } else {
-        const errorMessages = Object.values(errors).filter(Boolean).join("\n");
-
-        Swal.fire({
-          icon: "warning",
-          title: "Please check the following:",
-          text: errorMessages,
-          confirmButtonColor: "hsl(var(--primary))",
-        });
       }
     } catch (error) {
       console.log(error);
@@ -444,9 +406,7 @@ export default function Services() {
                         disabled={isLoading}
                         placeholder="First Name"
                         required
-                        className={`text-white placeholder:text-white/40 ${
-                          errors.firstName ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-primary"
-                        }`}
+                        className="text-white placeholder:text-white/40 focus-visible:ring-primary"
                       />
                     </div>
 
@@ -461,9 +421,7 @@ export default function Services() {
                         disabled={isLoading}
                         placeholder="Last Name"
                         required
-                        className={`text-white placeholder:text-white/40 ${
-                          errors.lastName ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-primary"
-                        }`}
+                        className="text-white placeholder:text-white/40 focus-visible:ring-primary"
                       />
                     </div>
 
@@ -479,28 +437,41 @@ export default function Services() {
                         disabled={isLoading}
                         placeholder="you@example.com"
                         required
-                        className={`text-white placeholder:text-white/40 ${
-                          errors.email ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-primary"
-                        }`}
+                        className="text-white placeholder:text-white/40 focus-visible:ring-primary"
                       />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="svc-phone">Phone</Label>
-                      <Input
-                        id="svc-phone"
-                        value={formData.phone}
-                        onChange={(e) =>
-                          handleInputChange("phone", e.target.value)
-                        }
-                        disabled={isLoading}
-                        type="tel"
-                        placeholder="(404) 555-0000"
-                        required
-                        className={`text-white placeholder:text-white/40 ${
-                          errors.phone ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-primary"
-                        }`}
-                      />
+                      <div className="flex gap-2">
+                        <select
+                          value={formData.countryCode}
+                          onChange={(e) => handleInputChange("countryCode", e.target.value)}
+                          disabled={isLoading}
+                          className="flex h-10 w-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
+                        >
+                          {countryCodes.map((country) => (
+                            <option key={country.code} value={country.code}>
+                              {country.code} {country.label}
+                            </option>
+                          ))}
+                        </select>
+                        <Input
+                          id="svc-phone"
+                          value={formData.phone}
+                          onChange={(e) =>
+                            handleInputChange("phone", e.target.value)
+                          }
+                          disabled={isLoading}
+                          type="tel"
+                          placeholder="555-0000"
+                          required
+                          minLength={5}
+                          pattern="^[0-9\-\s\(\)]+$"
+                          title="Please enter a valid phone number with at least 5 digits"
+                          className="flex-1 text-white placeholder:text-white/40 focus-visible:ring-primary"
+                        />
+                      </div>
                     </div>
 
                     <div className="space-y-2">
@@ -526,9 +497,9 @@ export default function Services() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-start">Start Date</Label>
+                      <Label htmlFor="svc-startDate">Start Date</Label>
                       <Input
-                        id="svc-start"
+                        id="svc-startDate"
                         value={formData.startDate}
                         min={today}
                         onChange={(e) =>
@@ -537,14 +508,14 @@ export default function Services() {
                         type="date"
                         disabled={isLoading}
                         required
-                        className="h-10 w-full appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
+                        className="h-10 w-full appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-end">End Date</Label>
+                      <Label htmlFor="svc-endDate">End Date</Label>
                       <Input
-                        id="svc-end"
+                        id="svc-endDate"
                         value={formData.endDate}
                         min={today}
                         onChange={(e) =>
@@ -553,7 +524,7 @@ export default function Services() {
                         type="date"
                         disabled={isLoading}
                         required
-                        className="h-10 w-full appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
+                        className="h-10 w-full appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40"
                       />
                     </div>
 
@@ -568,14 +539,14 @@ export default function Services() {
                         disabled={isLoading}
                         type="time"
                         required
-                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
+                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-endtime">End Time</Label>
+                      <Label htmlFor="svc-endTime">End Time</Label>
                       <Input
-                        id="svc-endtime"
+                        id="svc-endTime"
                         value={formData.endTime}
                         onChange={(e) =>
                           handleInputChange("endTime", e.target.value)
@@ -583,7 +554,7 @@ export default function Services() {
                         disabled={isLoading}
                         type="time"
                         required
-                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
+                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40"
                       />
                     </div>
 
@@ -593,18 +564,12 @@ export default function Services() {
                         <Button
                           type="button"
                           variant="outline"
-                          size="sm"
                           onClick={() => licenseInputRef.current?.click()}
                           disabled={isLoading}
-                          className="bg-white text-gray-900 hover:bg-gray-100 border-gray-300"
+                          className="bg-white text-gray-900 border-gray-300 w-full font-normal justify-start px-3"
                         >
                           Choose File
                         </Button>
-                        <span className="text-sm text-gray-700 flex-1 truncate">
-                          {licenseFilePreview
-                            ? licenseFilePreview.file.name
-                            : "No file selected"}
-                        </span>
                         <Input
                           id="svc-license"
                           ref={licenseInputRef}
@@ -618,6 +583,7 @@ export default function Services() {
                           }}
                         />
                       </div>
+                      {licenseFilePreview && <span className="text-xs text-gray-500 truncate mt-1 block">{licenseFilePreview.file.name}</span>}
                     </div>
 
                     <div className="space-y-2">
@@ -626,18 +592,12 @@ export default function Services() {
                         <Button
                           type="button"
                           variant="outline"
-                          size="sm"
                           onClick={() => insuranceInputRef.current?.click()}
                           disabled={isLoading}
-                          className="bg-white text-gray-900 hover:bg-gray-100 border-gray-300"
+                          className="bg-white text-gray-900 border-gray-300 w-full font-normal justify-start px-3"
                         >
                           Choose File
                         </Button>
-                        <span className="text-sm text-gray-700 flex-1 truncate">
-                          {insuranceFilePreview
-                            ? insuranceFilePreview.file.name
-                            : "No file selected"}
-                        </span>
                         <Input
                           ref={insuranceInputRef}
                           id="svc-insurance"
@@ -651,11 +611,12 @@ export default function Services() {
                           }}
                         />
                       </div>
+                      {insuranceFilePreview && <span className="text-xs text-gray-500 truncate mt-1 block">{insuranceFilePreview.file.name}</span>}
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <p className="text-xs text-white/70 bg-white/5 p-2 rounded border border-white/10 mb-2">
+                    <p className="text-xs text-black bg-gray-100 p-2 rounded border border-gray-300 mb-2">
                       Optional document uploads may help expedite your booking. All submitted documents are handled securely and used solely to verify your rental eligibility.
                     </p>
                     <Label htmlFor="svc-notes">Message</Label>
