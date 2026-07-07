@@ -28,6 +28,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   const { isAuthenticated } = useUserStore();
   const [isFaqOpen, setIsFaqOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     if (!location.hash) {
@@ -47,8 +55,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         className="relative overflow-hidden transition-[background-size] duration-700 ease-in-out"
         style={{
           backgroundImage: `linear-gradient(rgba(2, 34, 19, 0.80), rgba(2, 34, 19, 0.85)), url('https://res.cloudinary.com/di1mj1zqc/image/upload/c_scale,w_0.6/v1783287304/mga/vehicles/home-faq-image.webp')`,
-          backgroundSize: isFaqOpen ? 'max(130vw, 231vh) auto' : 'max(100vw, 177vh) auto',
+          backgroundSize: isMobile 
+            ? (isFaqOpen ? 'auto 130vh' : 'auto 100vh') 
+            : (isFaqOpen ? 'max(130vw, 231vh) auto' : 'max(100vw, 177vh) auto'),
           backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
           backgroundAttachment: 'fixed'
         }}
       >
