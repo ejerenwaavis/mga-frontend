@@ -27,6 +27,7 @@ const navLinks = [
 export default function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   const { isAuthenticated } = useUserStore();
+  const [isFaqOpen, setIsFaqOpen] = useState(false);
 
   useEffect(() => {
     if (!location.hash) {
@@ -43,14 +44,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       
       {/* Wrapper with background image from FAQ section to Footer */}
       <div
-        className="relative overflow-hidden"
+        className="relative overflow-hidden transition-[background-size] duration-700 ease-in-out"
         style={{
-          backgroundImage: `linear-gradient(rgba(2, 34, 19, 0.80), rgba(2, 34, 19, 0.85)), url('/vehicles/home-faq-image.webp')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
+          backgroundImage: `linear-gradient(rgba(2, 34, 19, 0.80), rgba(2, 34, 19, 0.85)), url('https://res.cloudinary.com/di1mj1zqc/image/upload/c_scale,w_0.6/v1783287304/mga/vehicles/home-faq-image.webp')`,
+          backgroundSize: isFaqOpen ? 'max(130vw, 231vh) auto' : 'max(100vw, 177vh) auto',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
         }}
       >
-        {showFaqExtra && <Extra />}
+        {showFaqExtra && <Extra onFaqToggle={setIsFaqOpen} />}
         <Footer />
       </div>
       <BookingModal />
@@ -294,10 +296,10 @@ function Navbar() {
   );
 }
 
-function Extra() {
+function Extra({ onFaqToggle }: { onFaqToggle?: (isOpen: boolean) => void }) {
   return (
     <section id="faqs" className="scroll-mt-20">
-      <FAQSection />
+      <FAQSection onAnyOpenChange={onFaqToggle} />
     </section>
   )
 }
