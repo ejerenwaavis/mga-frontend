@@ -15,6 +15,7 @@ import { useMutation } from "react-query";
 import { toast } from "sonner";
 import { CONTACT_EMAIL } from "@/data/contact";
 import { countryCodes } from "@/lib/countryCodes";
+import useUserStore from "@/hooks/store/userStore";
 
 const serviceTypes = [
   {
@@ -63,6 +64,7 @@ export default function Services() {
   });
   const [selectedService, setSelectedService] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const { user } = useUserStore();
 
   interface FormData {
     firstName: string;
@@ -101,6 +103,8 @@ export default function Services() {
 
   const [formData, setFormData] = useState<FormData>(initialFormState);
   const today = new Date().toISOString().split("T")[0];
+  const hasUploadedLicense = user?.kycDocument?.url ? true : false;
+  const hasUploadedInsurance = user?.insuranceDocument?.url ? true : false;
   const licenseInputRef = useRef<HTMLInputElement>(null);
   const insuranceInputRef = useRef<HTMLInputElement>(null);
   const [licenseFilePreview, setLicenseFilePreview] = useState<{ file: File; url: string } | null>(null);
@@ -569,10 +573,10 @@ export default function Services() {
                           type="button"
                           variant="outline"
                           onClick={() => licenseInputRef.current?.click()}
-                          disabled={isLoading}
+                          disabled={isLoading || hasUploadedLicense}
                           className="bg-white text-gray-900 border-gray-300 w-full font-normal justify-start px-3"
                         >
-                          Choose File
+                          {hasUploadedLicense ? "Uploaded (Verified)" : "Choose File"}
                         </Button>
                         <Input
                           id="svc-license"
@@ -597,10 +601,10 @@ export default function Services() {
                           type="button"
                           variant="outline"
                           onClick={() => insuranceInputRef.current?.click()}
-                          disabled={isLoading}
+                          disabled={isLoading || hasUploadedInsurance}
                           className="bg-white text-gray-900 border-gray-300 w-full font-normal justify-start px-3"
                         >
-                          Choose File
+                          {hasUploadedInsurance ? "Uploaded (Verified)" : "Choose File"}
                         </Button>
                         <Input
                           ref={insuranceInputRef}

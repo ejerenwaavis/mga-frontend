@@ -201,7 +201,7 @@ export default function BookingModal() {
 
   const today = new Date().toISOString().split("T")[0];
   const hasUploadedLicense = user?.kycDocument?.url ? true : false;
-  const isLicenseRequired = false;
+  const hasUploadedInsurance = user?.insuranceDocument?.url ? true : false;
 
   return (
     <Dialog open={isOpen} onOpenChange={closeModal}>
@@ -380,17 +380,16 @@ export default function BookingModal() {
                     type="button"
                     variant="outline"
                     onClick={() => licenseInputRef.current?.click()}
-                    disabled={isLoading || (!isLicenseRequired && !licenseFilePreview)}
+                    disabled={isLoading || hasUploadedLicense}
                     className="bg-white text-gray-900 border-gray-300 w-full font-normal justify-start px-3"
                   >
-                    {!isLicenseRequired ? "Uploaded (Verified)" : "Choose File"}
+                    {hasUploadedLicense ? "Uploaded (Verified)" : "Choose File"}
                   </Button>
                   <Input 
                     id="modal-license"
                     ref={licenseInputRef}
                     accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
                     type="file" 
-                    required={isLicenseRequired && !licenseFilePreview}
                     className="hidden"
                     onChange={(e) => {
                       const file = e.target.files?.[0];
@@ -408,10 +407,10 @@ export default function BookingModal() {
                     type="button"
                     variant="outline"
                     onClick={() => insuranceInputRef.current?.click()}
-                    disabled={isLoading}
+                    disabled={isLoading || hasUploadedInsurance}
                     className="bg-white text-gray-900 border-gray-300 w-full font-normal justify-start px-3"
                   >
-                    Choose File
+                    {hasUploadedInsurance ? "Uploaded (Verified)" : "Choose File"}
                   </Button>
                   <Input 
                     id="modal-insurance"
