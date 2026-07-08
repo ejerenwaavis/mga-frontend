@@ -583,7 +583,7 @@ export default function Services() {
                           ref={licenseInputRef}
                           accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
                           type="file"
-                          disabled={isLoading}
+                          disabled={isLoading || hasUploadedLicense}
                           className="hidden"
                           onChange={(e) => {
                             const file = e.target.files?.[0];
@@ -610,7 +610,7 @@ export default function Services() {
                           ref={insuranceInputRef}
                           id="svc-insurance"
                           type="file"
-                          disabled={isLoading}
+                          disabled={isLoading || hasUploadedInsurance}
                           className="hidden"
                           accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
                           onChange={(e) => {

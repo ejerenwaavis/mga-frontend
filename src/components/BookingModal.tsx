@@ -391,6 +391,7 @@ export default function BookingModal() {
                     accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
                     type="file" 
                     className="hidden"
+                    disabled={isLoading || hasUploadedLicense}
                     onChange={(e) => {
                       const file = e.target.files?.[0];
                       if (file) handleFileSelect(file, 'license');
@@ -418,6 +419,7 @@ export default function BookingModal() {
                     accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
                     type="file" 
                     className="hidden"
+                    disabled={isLoading || hasUploadedInsurance}
                     onChange={(e) => {
                       const file = e.target.files?.[0];
                       if (file) handleFileSelect(file, 'insurance');
