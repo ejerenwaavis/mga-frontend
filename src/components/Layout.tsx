@@ -7,6 +7,8 @@ import FAQSection from "@/components/Faq";
 import { CONTACT_ADDRESS, CONTACT_EMAIL, CONTACT_PHONE } from "@/data/contact";
 import BookingModal from "./BookingModal";
 import useUserStore from "@/hooks/store/userStore";
+import { useQuery } from "react-query";
+import { getCurrentUser } from "@/services/queries";
 
 const serviceSubLinks = [
   { label: "AIRPORT SERVICE", to: "/services", hash: "airport" },
@@ -26,7 +28,17 @@ const navLinks = [
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
-  const { isAuthenticated } = useUserStore();
+  const { isAuthenticated, setUser } = useUserStore();
+
+  useQuery("currentUser", getCurrentUser, {
+    enabled: isAuthenticated,
+    onSuccess: (data: any) => {
+      if (data?.user) {
+        setUser(data.user);
+      }
+    },
+    refetchOnWindowFocus: true,
+  });
   const [isFaqOpen, setIsFaqOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
