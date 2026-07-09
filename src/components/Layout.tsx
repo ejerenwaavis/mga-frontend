@@ -64,15 +64,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       
       {/* Wrapper with background image from FAQ section to Footer */}
       <div
-        className="relative overflow-hidden transition-[background-size] duration-700 ease-in-out"
+        className="mga-footer-bg-wrapper relative overflow-hidden transition-[background-size] duration-700 ease-in-out"
         style={{
           backgroundImage: `linear-gradient(rgba(2, 34, 19, 0.80), rgba(2, 34, 19, 0.85)), url('https://res.cloudinary.com/di1mj1zqc/image/upload/c_scale,w_0.6/v1783287304/mga/vehicles/home-faq-image.webp')`,
           backgroundSize: isMobile 
             ? (isFaqOpen ? 'auto 130vh' : 'auto 100vh') 
             : (isFaqOpen ? 'max(130vw, 231vh) auto' : 'max(100vw, 177vh) auto'),
           backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          backgroundAttachment: 'fixed'
+          backgroundRepeat: 'no-repeat'
         }}
       >
         {showFaqExtra && <Extra onFaqToggle={setIsFaqOpen} />}

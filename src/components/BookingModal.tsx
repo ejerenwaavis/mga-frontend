@@ -326,7 +326,7 @@ export default function BookingModal() {
                   value={formData.startDate}
                   onChange={(e) => handleInputChange("startDate", e.target.value)}
                   required
-                  className="text-white/60 placeholder:text-white/40 focus-visible:ring-primary"
+                  className="appearance-none w-full h-10 text-white/60 placeholder:text-white/40 focus-visible:ring-primary"
                 />
                 
               </div>
@@ -339,7 +339,7 @@ export default function BookingModal() {
                   value={formData.endDate}
                   onChange={(e) => handleInputChange("endDate", e.target.value)}
                   required
-                  className="text-white/60 placeholder:text-white/40 focus-visible:ring-primary"
+                  className="appearance-none w-full h-10 text-white/60 placeholder:text-white/40 focus-visible:ring-primary"
                 />
                 
               </div>
@@ -354,7 +354,7 @@ export default function BookingModal() {
                   value={formData.time}
                   onChange={(e) => handleInputChange("time", e.target.value)}
                   required
-                  className="text-white/60 placeholder:text-white/40 focus-visible:ring-primary"
+                  className="appearance-none w-full h-10 text-white/60 placeholder:text-white/40 focus-visible:ring-primary"
                 />
                 
               </div>
@@ -366,7 +366,7 @@ export default function BookingModal() {
                   value={formData.endTime}
                   onChange={(e) => handleInputChange("endTime", e.target.value)}
                   required
-                  className="text-white/60 placeholder:text-white/40 focus-visible:ring-primary"
+                  className="appearance-none w-full h-10 text-white/60 placeholder:text-white/40 focus-visible:ring-primary"
                 />
                 
               </div>
