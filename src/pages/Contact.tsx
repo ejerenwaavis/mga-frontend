@@ -14,7 +14,7 @@ import Swal from "sweetalert2";
 import { useMutation } from "react-query";
 import { toast } from "sonner";
 import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_ADDRESS, MAPS_URL } from "@/data/contact";
-import { countryCodes } from "@/data/countryCodes";
+import { countryCodes } from "@/lib/countryCodes";
 
 export default function Contact() {
   useSEO({
@@ -33,14 +33,6 @@ export default function Contact() {
     notes?: string;
   }
 
-  interface FormErrors {
-    firstName?: string;
-    lastName?: string;
-    email?: string;
-    phone?: string;
-    notes?: string;
-  }
-
   const initialFormState: FormData = {
     firstName: "",
     lastName: "",
@@ -52,33 +44,6 @@ export default function Contact() {
 
 
   const [formData, setFormData] = useState<FormData>(initialFormState);
-  const [errors, setErrors] = useState<FormErrors>({});
-
-
-  const validateForm = (): FormErrors => {
-    const newErrors: FormErrors = {};
-    const phoneRegex = /^[0-9\s\-()]{7,20}$/;
-
-    if (!formData.firstName.trim()) {
-      newErrors.firstName = "First name is required";
-    }
-    if (!formData.lastName.trim()) {
-      newErrors.lastName = "Last name is required";
-    }
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      newErrors.email = "Invalid email address";
-    }
-
-    if (!phoneRegex.test(formData.phone.trim())) {
-      newErrors.phone = "Please enter a valid phone number (e.g., 404 555 0100)";
-    }
-
-    setErrors(newErrors);
-    return newErrors;
-  };
-
-
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setSubmitted(false);
@@ -86,13 +51,6 @@ export default function Contact() {
       ...prev,
       [field]: value,
     }));
-
-    if (errors[field]) {
-      setErrors((prev) => ({
-        ...prev,
-        [field]: ""
-      }));
-    }
   };
 
 
@@ -103,39 +61,28 @@ export default function Contact() {
     e.preventDefault();
 
     try {
-      const validationErrors = validateForm();
-      if (Object.keys(validationErrors).length === 0) {
-        const requestDetails: CreateRequestPayload = {
-          ...formData,
-          serviceType: "support",
-          startDate: new Date().toISOString(),
-          endDate: new Date().toISOString(),
-          phone: `${formData.countryCode} ${formData.phone}`.replace(/[^\d+]/g, "")
-        };
+      const fullPhone = `${formData.countryCode} ${formData.phone}`;
+      const requestDetails: CreateRequestPayload = {
+        ...formData,
+        serviceType: "support",
+        startDate: new Date().toISOString(),
+        endDate: new Date().toISOString(),
+        phone: fullPhone.replace(/[^\d+]/g, "")
+      };
 
-        const data = new FormData();
+      const data = new FormData();
 
-        data.append("firstName", requestDetails.firstName || "");
-        data.append("lastName", requestDetails.lastName || "");
-        data.append("email", requestDetails.email);
-        data.append("phone", requestDetails.phone);
-        data.append("recipientEmail", CONTACT_EMAIL);
-        data.append("serviceType", requestDetails.serviceType);
-        data.append("startDate", requestDetails.startDate);
-        data.append("endDate", requestDetails.endDate);
-        if (requestDetails.notes) data.append("notes", requestDetails.notes);
+      data.append("firstName", requestDetails.firstName || "");
+      data.append("lastName", requestDetails.lastName || "");
+      data.append("email", requestDetails.email);
+      data.append("phone", requestDetails.phone);
+      data.append("recipientEmail", CONTACT_EMAIL);
+      data.append("serviceType", requestDetails.serviceType);
+      data.append("startDate", requestDetails.startDate);
+      data.append("endDate", requestDetails.endDate);
+      if (requestDetails.notes) data.append("notes", requestDetails.notes);
 
-        handleCreateRequest(data);
-      } else {
-        const errorMessages = Object.values(validationErrors).filter(Boolean).join("\n");
-
-        Swal.fire({
-          icon: "warning",
-          title: "Please check the following:",
-          text: errorMessages,
-          confirmButtonColor: "hsl(var(--primary))",
-        });
-      }
+      handleCreateRequest(data);
     } catch (error) {
       console.log(error);
     }
@@ -175,9 +122,9 @@ export default function Contact() {
       <section className="relative overflow-hidden bg-stone py-24 md:py-32">
         <div className="absolute inset-0 z-0">
           <img
-            src="/vehicles/Services-Hero.webp"
-            alt="Luxury Fleet"
-            className="h-full w-full object-cover object-bottom"
+            src="https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287256/mga/vehicles/contact-hero-image.webp"
+            alt="Contact Us"
+            className="h-full w-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
@@ -199,107 +146,101 @@ export default function Contact() {
         <div className="container">
           <div className="grid gap-12 lg:grid-cols-2 items-stretch">
             <FadeIn>
-            {submitted ? (
-              <div className="rounded border border-border bg-card p-8 text-center">
-                <h2 className="font-serif text-2xl font-semibold">
-                  Request Received
-                </h2>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  Thank you for your request. We review all submissions within 4
-                  hours during business hours and will contact you to confirm
-                  details and next steps.
-                </p>
-                <Button
-                  variant="premiumOutline"
-                  size="sm"
-                  className="mt-6"
-                  onClick={() => setSubmitted(false)}
-                >
-                  Submit Another Request
-                </Button>
-              </div>
-            ) : (
-              <div className="rounded border border-border bg-card p-8">
-                <div className="flex items-center justify-between mb-6">
-                  <div>
-                    <h2 className="font-serif text-xl font-semibold">
-                      CONTACT US
-                    </h2>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      Complete the form below and we'll review your request, confirm availability, and contact you shortly.
-                    </p>
-                    <p className="mt-2 text-sm font-medium text-primary">
-                      Questions before booking? Call (470) 817-6427 or email us—we're happy to help.
-                    </p>
-                  </div>
+              {submitted ? (
+                <div className="rounded border border-border bg-card p-8 text-center">
+                  <h2 className="font-serif text-2xl font-semibold">
+                    Request Received
+                  </h2>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                    Thank you for your request. We review all submissions within 4
+                    hours during business hours and will contact you to confirm
+                    details and next steps.
+                  </p>
+                  <Button
+                    variant="premiumOutline"
+                    size="sm"
+                    className="mt-6"
+                    onClick={() => setSubmitted(false)}
+                  >
+                    Submit Another Request
+                  </Button>
                 </div>
-
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-firstname">First Name</Label>
-                      <Input
-                        id="svc-firstname"
-                        value={formData.firstName}
-                        onChange={(e) =>
-                          handleInputChange("firstName", e.target.value)
-                        }
-                        disabled={isLoading}
-                        placeholder="First Name"
-                        required
-                        className={`focus-visible:ring-primary text-white placeholder:text-white/40 ${errors.firstName ? 'border-red-500' : ''}`}
-                      />
-                      {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
+              ) : (
+                <div className="rounded border border-border bg-card p-8">
+                  <div className="flex items-center justify-between mb-6">
+                    <div>
+                      <h2 className="font-serif text-xl font-semibold">
+                        CONTACT US
+                      </h2>
+                      <p className="mt-2 text-sm text-muted-foreground">
+                        Complete the form below and we'll review your request, confirm availability, and contact you shortly.
+                      </p>
+                      <p className="mt-2 text-sm font-medium text-primary">
+                        Questions before booking? Call (470) 817-6427 or email us—we're happy to help.
+                      </p>
                     </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-lastname">Last Name</Label>
-                      <Input
-                        id="svc-lastname"
-                        value={formData.lastName}
-                        onChange={(e) =>
-                          handleInputChange("lastName", e.target.value)
-                        }
-                        disabled={isLoading}
-                        placeholder="Last Name"
-                        required
-                        className={`focus-visible:ring-primary text-white placeholder:text-white/40 ${errors.lastName ? 'border-red-500' : ''}`}
-                      />
-                      {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>}
-                    </div>
+                  </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-email">Email</Label>
-                      <Input
-                        id="svc-email"
-                        value={formData.email}
-                        onChange={(e) =>
-                          handleInputChange("email", e.target.value)
-                        }
-                        type="email"
-                        disabled={isLoading}
-                        placeholder="you@example.com"
-                        required
-                        className={`focus-visible:ring-primary text-white placeholder:text-white/40 ${errors.email ? 'border-red-500' : ''}`}
-                      />
-                      {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
-                    </div>
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid gap-5 sm:grid-cols-2">
+                      <div className="space-y-2">
+                        <Label htmlFor="svc-firstname">First Name</Label>
+                        <Input
+                          id="svc-firstname"
+                          value={formData.firstName}
+                          onChange={(e) =>
+                            handleInputChange("firstName", e.target.value)
+                          }
+                          disabled={isLoading}
+                          placeholder="First Name"
+                          required
+                          className="text-white placeholder:text-white/40 focus-visible:ring-primary"
+                        />
+                      </div>
 
-                    <div className="space-y-2">
+                      <div className="space-y-2">
+                        <Label htmlFor="svc-lastname">Last Name</Label>
+                        <Input
+                          id="svc-lastname"
+                          value={formData.lastName}
+                          onChange={(e) =>
+                            handleInputChange("lastName", e.target.value)
+                          }
+                          disabled={isLoading}
+                          placeholder="Last Name"
+                          required
+                          className="text-white placeholder:text-white/40 focus-visible:ring-primary"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="svc-email">Email</Label>
+                        <Input
+                          id="svc-email"
+                          value={formData.email}
+                          onChange={(e) =>
+                            handleInputChange("email", e.target.value)
+                          }
+                          type="email"
+                          disabled={isLoading}
+                          placeholder="you@example.com"
+                          required
+                          className="text-white placeholder:text-white/40 focus-visible:ring-primary"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
                       <Label htmlFor="svc-phone">Phone</Label>
                       <div className="flex gap-2">
                         <select
-                          id="svc-country-code"
                           value={formData.countryCode}
-                          onChange={(e) =>
-                            handleInputChange("countryCode", e.target.value)
-                          }
+                          onChange={(e) => handleInputChange("countryCode", e.target.value)}
                           disabled={isLoading}
-                          className="flex h-10 w-[110px] rounded-md border border-input bg-background px-2 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
+                          className="flex h-10 w-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
                         >
-                          {countryCodes.map((c) => (
-                            <option key={c.code} value={c.code} className="text-white">
-                              {c.code} {c.flag}
+                          {countryCodes.map((country) => (
+                            <option key={country.code} value={country.code}>
+                              {country.code} {country.label}
                             </option>
                           ))}
                         </select>
@@ -311,94 +252,96 @@ export default function Contact() {
                           }
                           disabled={isLoading}
                           type="tel"
-                          placeholder="(404) 555-0000"
+                          placeholder="555-0000"
                           required
-                          className={`flex-1 focus-visible:ring-primary text-white placeholder:text-white/40 ${errors.phone ? 'border-red-500' : ''}`}
+                          minLength={5}
+                          pattern="^[0-9\-\s\(\)]+$"
+                          title="Please enter a valid phone number with at least 5 digits"
+                          className="flex-1 text-white placeholder:text-white/40 focus-visible:ring-primary"
                         />
                       </div>
-                      {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                     </div>
 
-                  </div>
+                    </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="svc-notes">Message</Label>
-                    <Textarea
-                      id="svc-notes"
-                      value={formData.notes}
-                      onChange={(e) =>
-                        handleInputChange("notes", e.target.value)
-                      }
+                    <div className="space-y-2">
+                      <Label htmlFor="svc-notes">Message</Label>
+                      <Textarea
+                        id="svc-notes"
+                        value={formData.notes}
+                        onChange={(e) =>
+                          handleInputChange("notes", e.target.value)
+                        }
+                        disabled={isLoading}
+                        placeholder="Make and model of the car and any additional details or requests"
+                        rows={3}
+                        className="text-white placeholder:text-white/40 focus-visible:ring-primary"
+                      />
+                    </div>
+
+                    <Button
+                      type="submit"
                       disabled={isLoading}
-                      placeholder="Make and model of the car and any additional details or requests"
-                      rows={3}
-                      className="focus-visible:ring-primary text-white placeholder:text-white/40"
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    disabled={isLoading}
-                    variant="premium"
-                    size="lg"
-                    className="w-full"
-                  >
-                    {isLoading ? "Processing" : "Submit Request"}
-                  </Button>
-                </form>
-              </div>
-            )}
-          </FadeIn>
-
-          <FadeIn delay={0.15}>
-            <div className="space-y-8 h-full flex flex-col">
-              <div>
-                <h2 className="font-serif text-xl text-white font-semibold">
-                  Direct Contact
-                </h2>
-                <div className="mt-4 space-y-3">
-                  <a
-                    href={`tel:${CONTACT_PHONE.replace(/[^+\d]/g, "")}`}
-                    className="flex items-center gap-3 text-sm text-white hover:text-foreground transition-colors"
-                  >
-                    <Phone className="h-4 w-4 text-primary" />
-                    {CONTACT_PHONE}
-                  </a>
-                  <a
-                    href={`mailto:${CONTACT_EMAIL}`}
-                    className="flex items-center gap-3 text-sm text-white hover:text-foreground transition-colors"
-                  >
-                    <Mail className="h-4 w-4 text-primary" />
-                    {CONTACT_EMAIL}
-                  </a>
-                  <div className="flex items-center gap-3 text-sm text-white">
-                    <MapPin className="h-4 w-4 text-primary" />
-                    {CONTACT_ADDRESS}
-                  </div>
-                </div>
-                <div className="mt-4 flex flex-wrap gap-3 text-white">
-                  <a href={MAPS_URL} target="_blank" rel="noopener noreferrer">
-                    <Button variant="premiumOutline" size="sm" className="text-white">
-                      Get Directions
+                      variant="premium"
+                      size="lg"
+                      className="w-full"
+                    >
+                      {isLoading ? "Processing" : "Submit Request"}
                     </Button>
-                  </a>
+                  </form>
+                </div>
+              )}
+            </FadeIn>
+
+            <FadeIn delay={0.15}>
+              <div className="space-y-8 h-full flex flex-col">
+                <div>
+                  <h2 className="font-serif text-xl text-white font-semibold">
+                    Direct Contact
+                  </h2>
+                  <div className="mt-4 space-y-3">
+                    <a
+                      href={`tel:${CONTACT_PHONE.replace(/[^+\d]/g, "")}`}
+                      className="flex items-center gap-3 text-sm text-white hover:text-gold transition-colors"
+                    >
+                      <Phone className="h-4 w-4 text-primary" />
+                      {CONTACT_PHONE}
+                    </a>
+                    <a
+                      href={`mailto:${CONTACT_EMAIL}`}
+                      className="flex items-center gap-3 text-sm text-white hover:text-gold transition-colors"
+                    >
+                      <Mail className="h-4 w-4 text-primary" />
+                      {CONTACT_EMAIL}
+                    </a>
+                    <div className="flex items-center gap-3 text-sm text-white">
+                      <MapPin className="h-4 w-4 text-primary" />
+                      {CONTACT_ADDRESS}
+                    </div>
+                  </div>
+                  <div className="mt-4 flex flex-wrap gap-3 text-white">
+                    <a href={MAPS_URL} target="_blank" rel="noopener noreferrer">
+                      <Button variant="premiumOutline" size="sm" className="text-white">
+                        Get Directions
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex-1 min-h-64 w-full overflow-hidden rounded border border-border">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3322.2711608896607!2d-84.4736799!3d33.6242105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f4e30394d673e3%3A0xa2f5da71d3f0eff1!2s4814%20Old%20National%20Hwy%2C%20Atlanta%2C%20GA%3030337%2C%20USA!5e0!3m2!1sen!2sng!4v1776526361183!5m2!1sen!2sng"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Mead Green Autos — Atlanta"
+                  />
                 </div>
               </div>
-
-              <div className="flex-1 min-h-64 w-full overflow-hidden rounded border border-border">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3322.2711608896607!2d-84.4736799!3d33.6242105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f4e30394d673e3%3A0xa2f5da71d3f0eff1!2s4814%20Old%20National%20Hwy%2C%20Atlanta%2C%20GA%3030337%2C%20USA!5e0!3m2!1sen!2sng!4v1776526361183!5m2!1sen!2sng"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Mead Green Autos — Atlanta"
-                />
-              </div>
-            </div>
-          </FadeIn>
+            </FadeIn>
           </div>
         </div>
       </section>

@@ -284,7 +284,13 @@ const UserDashboard = () => {
   const [deletionOtp, setDeletionOtp] = useState("");
   const [isVideoKycModalOpen, setIsVideoKycModalOpen] = useState(false);
 
-  const { data: userResponse, isLoading: loadingUser, refetch: refetchUser } = useQuery("currentUser", getCurrentUser);
+  const { data: userResponse, isLoading: loadingUser, refetch: refetchUser } = useQuery("currentUser", getCurrentUser, {
+    onSuccess: (data: any) => {
+      if (data?.user) {
+        setUser(data.user);
+      }
+    }
+  });
   const { data: requestsResponse, isLoading: loadingRequests, refetch: refetchRequests, isFetching: isFetchingRequests } = useQuery("myRequests", getMyRequests, {
     refetchInterval: 10000 // Poll every 10 seconds
   });

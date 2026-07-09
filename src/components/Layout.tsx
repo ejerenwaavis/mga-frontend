@@ -7,6 +7,8 @@ import FAQSection from "@/components/Faq";
 import { CONTACT_ADDRESS, CONTACT_EMAIL, CONTACT_PHONE } from "@/data/contact";
 import BookingModal from "./BookingModal";
 import useUserStore from "@/hooks/store/userStore";
+import { useQuery } from "react-query";
+import { getCurrentUser } from "@/services/queries";
 
 const serviceSubLinks = [
   { label: "AIRPORT SERVICE", to: "/services", hash: "airport" },
@@ -26,7 +28,26 @@ const navLinks = [
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
-  const { isAuthenticated } = useUserStore();
+  const { isAuthenticated, setUser } = useUserStore();
+
+  useQuery("currentUser", getCurrentUser, {
+    enabled: isAuthenticated,
+    onSuccess: (data: any) => {
+      if (data?.user) {
+        setUser(data.user);
+      }
+    },
+    refetchOnWindowFocus: true,
+  });
+  const [isFaqOpen, setIsFaqOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     if (!location.hash) {
@@ -43,14 +64,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       
       {/* Wrapper with background image from FAQ section to Footer */}
       <div
-        className="relative overflow-hidden"
+        className="relative overflow-hidden transition-[background-size] duration-700 ease-in-out"
         style={{
-          backgroundImage: `linear-gradient(rgba(2, 34, 19, 0.80), rgba(2, 34, 19, 0.85)), url('/vehicles/home-faq-image.webp')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
+          backgroundImage: `linear-gradient(rgba(2, 34, 19, 0.80), rgba(2, 34, 19, 0.85)), url('https://res.cloudinary.com/di1mj1zqc/image/upload/c_scale,w_0.6/v1783287304/mga/vehicles/home-faq-image.webp')`,
+          backgroundSize: isMobile 
+            ? (isFaqOpen ? 'auto 130vh' : 'auto 100vh') 
+            : (isFaqOpen ? 'max(130vw, 231vh) auto' : 'max(100vw, 177vh) auto'),
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed'
         }}
       >
-        {showFaqExtra && <Extra />}
+        {showFaqExtra && <Extra onFaqToggle={setIsFaqOpen} />}
         <Footer />
       </div>
       <BookingModal />
@@ -105,7 +130,7 @@ function NavItem({ link, currentPath, navTextColor }: { link: typeof navLinks[0]
           >
             {link.children.map((child) => (
               <Link
-                key={child.to}
+                key={child.label}
                 to={child.to}
                 onClick={(e) => {
                   e.preventDefault();
@@ -139,7 +164,7 @@ function Navbar() {
   const { isAuthenticated } = useUserStore();
 
   const isVehicleDetailsPage = location.pathname !== '/fleet' && location.pathname.startsWith('/fleet/');
-  const isLightPage = ["/dashboard", "/login", "/forgot-password", "/reset-password", "/policies", "/insurance"].some(p => location.pathname.startsWith(p));
+  const isLightPage = ["/dashboard", "/login", "/forgot-password", "/reset-password"].some(p => location.pathname.startsWith(p));
 
 
   useEffect(() => {
@@ -243,9 +268,8 @@ function Navbar() {
                   <Link
                     to={link.to}
                     onClick={() => !link.children && setOpen(false)}
-                    className={`flex-1 rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest transition-colors hover:bg-white hover:text-black ${
-                      location.pathname === link.to ? "bg-white text-black" : "text-white"
-                    }`}
+                    className={`flex-1 rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest transition-colors hover:bg-muted hover:text-foreground ${location.pathname === link.to ? "text-white" : "text-white"
+                      }`}
                   >
                     {link.label}
                   </Link>
@@ -262,7 +286,7 @@ function Navbar() {
                   <div className="ml-4 flex flex-col gap-1 pb-2">
                     {link.children.map((child) => (
                       <Link
-                        key={child.to}
+                        key={child.label}
                         to={child.to}
                         onClick={(e) => {
                           e.preventDefault();
@@ -285,7 +309,7 @@ function Navbar() {
                 )}
               </div>
             ))}
-            <Link to={isAuthenticated ? "/dashboard" : "/login"} onClick={() => setOpen(false)} className="rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest text-white hover:bg-white hover:text-black transition-colors">
+            <Link to={isAuthenticated ? "/dashboard" : "/login"} onClick={() => setOpen(false)} className="rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest text-white hover:bg-muted hover:text-foreground transition-colors">
               {isAuthenticated ? "Dashboard" : "Login"}
             </Link>
           </nav>
@@ -295,10 +319,10 @@ function Navbar() {
   );
 }
 
-function Extra() {
+function Extra({ onFaqToggle }: { onFaqToggle?: (isOpen: boolean) => void }) {
   return (
     <section id="faqs" className="scroll-mt-20">
-      <FAQSection />
+      <FAQSection onAnyOpenChange={onFaqToggle} />
     </section>
   )
 }

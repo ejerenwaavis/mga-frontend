@@ -39,7 +39,7 @@ export default function Fleet() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/vehicles/fleet-hero-image.webp"
+            src="https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287279/mga/vehicles/fleet-hero-image.webp"
             alt="Luxury Fleet"
             className="h-full w-full object-cover"
           />

@@ -38,7 +38,10 @@ export default function Insurance() {
                     Insurance Requirements
                   </h2>
                   <p className="mt-4 text-sm leading-relaxed text-gray-600">
-                    For all private rentals, renters are generally required to maintain active full coverage auto insurance that extends to rental vehicles. This typically includes:
+                    For all private rentals, guests must either maintain qualifying full coverage auto insurance that extends to rental vehicles or purchase eligible MGA rental coverage.
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                    Qualifying personal insurance typically includes:
                   </p>
                   <ul className="mt-4 space-y-3 pl-4 text-sm text-gray-600 list-disc">
                     <li>Liability coverage</li>
@@ -46,10 +49,10 @@ export default function Insurance() {
                     <li>Comprehensive coverage</li>
                   </ul>
                   <p className="mt-4 text-sm leading-relaxed text-gray-600">
-                    Proof of insurance and a valid driver’s license must be provided prior to pickup.
+                    Proof of insurance (if using your own policy) and a valid driver's license must be provided prior to pickup.
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                    Coverage must remain active for the full duration of the rental period.
+                    Whichever coverage option is selected must remain valid for the full duration of the rental period.
                   </p>
                 </div>
 

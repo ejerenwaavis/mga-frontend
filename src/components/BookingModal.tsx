@@ -10,22 +10,12 @@ import { submitRequest } from "@/services/mutations";
 import { useMutation } from "react-query";
 import { toast } from "sonner";
 import { CONTACT_EMAIL } from "@/data/contact";
-import { countryCodes } from "@/data/countryCodes";
+import { countryCodes } from "@/lib/countryCodes";
 import { CreateRequestPayload } from "@/lib/types";
 import heic2any from "heic2any";
 import Swal from "sweetalert2";
 
-interface FormErrors {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  phone?: string;
-  serviceType?: string;
-  startDate?: string;
-  endDate?: string;
-  time?: string;
-  endTime?: string;
-}
+
 
 interface FormData {
   firstName: string;
@@ -63,7 +53,7 @@ export default function BookingModal() {
   const { isOpen, selectedVehicle, closeModal } = useBookingModal();
   const { user } = useUserStore();
   const [formData, setFormData] = useState<FormData>(initialFormState);
-  const [errors, setErrors] = useState<FormErrors>({});
+  
   const [submitted, setSubmitted] = useState(false);
   const [licenseFilePreview, setLicenseFilePreview] = useState<{ file: File; url: string } | null>(null);
   const [insuranceFilePreview, setInsuranceFilePreview] = useState<{ file: File; url: string } | null>(null);
@@ -73,7 +63,7 @@ export default function BookingModal() {
   useEffect(() => {
     if (isOpen) {
       setFormData(initialFormState);
-      setErrors({});
+      
       setSubmitted(false);
       setLicenseFilePreview(null);
       setInsuranceFilePreview(null);
@@ -92,9 +82,13 @@ export default function BookingModal() {
   });
 
   const handleInputChange = (field: keyof FormData, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-    if (errors[field as keyof FormErrors]) {
-      setErrors((prev) => ({ ...prev, [field]: undefined }));
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+    const el = document.getElementById(`modal-${field}`) as HTMLInputElement;
+    if (el) {
+      el.setCustomValidity("");
     }
   };
 
@@ -135,35 +129,30 @@ export default function BookingModal() {
     }
   };
 
-  const validateForm = (): FormErrors => {
-    const newErrors: FormErrors = {};
-    const phoneRegex = /^[0-9\s\-()]{7,20}$/;
-
-    if (!formData.firstName.trim()) newErrors.firstName = "First name is required";
-    if (!formData.lastName.trim()) newErrors.lastName = "Last name is required";
-    
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      newErrors.email = "Invalid email address";
-    }
-
-    if (!phoneRegex.test(formData.phone.trim())) {
-      newErrors.phone = "Please enter a valid phone number (e.g., 404 555 0100)";
-    }
-
-    if (!formData.serviceType) newErrors.serviceType = "Service type is required";
-    if (!formData.startDate) newErrors.startDate = "Start date is required";
-    if (!formData.endDate) newErrors.endDate = "End date is required";
-    if (!formData.time) newErrors.time = "Start time is required";
-    if (!formData.endTime) newErrors.endTime = "End time is required";
-
-    if (formData.startDate && formData.endDate && formData.startDate === formData.endDate) {
-      if (formData.time && formData.endTime && formData.time >= formData.endTime) {
-        newErrors.time = "End time must be after the start time for same-day bookings.";
+  const validateForm = () => {
+    if (formData.startDate && formData.endDate) {
+      if (formData.endDate < formData.startDate) {
+        const endDateInput = document.getElementById("modal-endDate") as HTMLInputElement;
+        if (endDateInput) {
+          endDateInput.setCustomValidity("End date cannot be earlier than start date.");
+          endDateInput.reportValidity();
+        }
+        return false;
+      }
+      if (formData.startDate === formData.endDate) {
+        if (formData.time && formData.endTime && formData.time >= formData.endTime) {
+          const endTimeInput = document.getElementById("modal-endTime") as HTMLInputElement;
+          if (endTimeInput) {
+            endTimeInput.setCustomValidity("End time must be after the start time for same-day bookings.");
+            endTimeInput.reportValidity();
+          }
+          return false;
+        }
       }
     }
 
-    setErrors(newErrors);
-    return newErrors;
+    
+    return true;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -181,10 +170,11 @@ export default function BookingModal() {
       return;
     }
 
+    const fullPhone = `${formData.countryCode} ${formData.phone}`;
     const requestDetails: CreateRequestPayload = {
       ...formData,
       vehicleId: selectedVehicle ? `${selectedVehicle.year} ${selectedVehicle.name}` : undefined,
-      phone: `${formData.countryCode} ${formData.phone}`.replace(/[^\d+]/g, ""),
+      phone: fullPhone.replace(/[^\d+]/g, ""),
     };
 
     const data = new FormData();
@@ -211,8 +201,7 @@ export default function BookingModal() {
 
   const today = new Date().toISOString().split("T")[0];
   const hasUploadedLicense = user?.kycDocument?.url ? true : false;
-  // Make documents optional for this form as requested
-  const isLicenseRequired = false;
+  const hasUploadedInsurance = user?.insuranceDocument?.url ? true : false;
 
   return (
     <Dialog open={isOpen} onOpenChange={closeModal}>
@@ -247,9 +236,9 @@ export default function BookingModal() {
                   onChange={(e) => handleInputChange("firstName", e.target.value)}
                   placeholder="John"
                   required
-                  className={`text-white placeholder:text-white/40 focus-visible:ring-primary ${errors.firstName ? 'border-red-500' : ''}`}
+                  className="text-white placeholder:text-white/40 focus-visible:ring-primary"
                 />
-                {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
+                
               </div>
               <div className="space-y-2">
                 <Label htmlFor="modal-lastname">Last Name *</Label>
@@ -259,9 +248,9 @@ export default function BookingModal() {
                   onChange={(e) => handleInputChange("lastName", e.target.value)}
                   placeholder="Doe"
                   required
-                  className={`text-white placeholder:text-white/40 focus-visible:ring-primary ${errors.lastName ? 'border-red-500' : ''}`}
+                  className="text-white placeholder:text-white/40 focus-visible:ring-primary"
                 />
-                {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>}
+                
               </div>
             </div>
 
@@ -274,9 +263,9 @@ export default function BookingModal() {
                 onChange={(e) => handleInputChange("email", e.target.value)}
                 placeholder="john@example.com"
                 required
-                className={`text-white placeholder:text-white/40 focus-visible:ring-primary ${errors.email ? 'border-red-500' : ''}`}
+                className="text-white placeholder:text-white/40 focus-visible:ring-primary"
               />
-              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+              
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -284,29 +273,29 @@ export default function BookingModal() {
                 <Label htmlFor="modal-phone">Phone Number *</Label>
                 <div className="flex gap-2">
                   <select
-                    id="modal-country-code"
                     value={formData.countryCode}
                     onChange={(e) => handleInputChange("countryCode", e.target.value)}
-                    disabled={isLoading}
-                    className="flex h-10 w-[110px] rounded-md border border-input bg-background px-2 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
+                    className="flex h-10 w-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
                   >
-                    {countryCodes.map((c) => (
-                      <option key={c.code} value={c.code} className="text-white">
-                        {c.code} {c.flag}
+                    {countryCodes.map((country) => (
+                      <option key={country.code} value={country.code}>
+                        {country.code} {country.label}
                       </option>
                     ))}
                   </select>
                   <Input
                     id="modal-phone"
-                    type="tel"
                     value={formData.phone}
                     onChange={(e) => handleInputChange("phone", e.target.value)}
+                    type="tel"
                     placeholder="555-0000"
                     required
-                    className={`flex-1 text-white placeholder:text-white/40 focus-visible:ring-primary ${errors.phone ? 'border-red-500' : ''}`}
+                    minLength={5}
+                    pattern="^[0-9\-\s\(\)]+$"
+                    title="Please enter a valid phone number with at least 5 digits"
+                    className="flex-1 text-white placeholder:text-white/40 focus-visible:ring-primary"
                   />
                 </div>
-                {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
               </div>
               <div className="space-y-2">
                 <Label htmlFor="modal-serviceType">Service Type *</Label>
@@ -314,7 +303,7 @@ export default function BookingModal() {
                   id="modal-serviceType"
                   value={formData.serviceType}
                   onChange={(e) => handleInputChange("serviceType", e.target.value)}
-                  className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white ${errors.serviceType ? 'border-red-500' : ''}`}
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
                   required
                 >
                   <option value="">Select a service</option>
@@ -323,7 +312,7 @@ export default function BookingModal() {
                   <option value="custom-delivery">Custom Delivery</option>
                   <option value="cooperate-service">Corporate Services</option>
                 </select>
-                {errors.serviceType && <p className="text-red-500 text-xs mt-1">{errors.serviceType}</p>}
+                
               </div>
             </div>
 
@@ -337,9 +326,9 @@ export default function BookingModal() {
                   value={formData.startDate}
                   onChange={(e) => handleInputChange("startDate", e.target.value)}
                   required
-                  className={`text-white/60 placeholder:text-white/40 [color-scheme:dark] focus-visible:ring-primary ${errors.startDate ? 'border-red-500' : ''}`}
+                  className="text-white/60 placeholder:text-white/40 focus-visible:ring-primary"
                 />
-                {errors.startDate && <p className="text-red-500 text-xs mt-1">{errors.startDate}</p>}
+                
               </div>
               <div className="space-y-2">
                 <Label htmlFor="modal-endDate">End Date *</Label>
@@ -350,9 +339,9 @@ export default function BookingModal() {
                   value={formData.endDate}
                   onChange={(e) => handleInputChange("endDate", e.target.value)}
                   required
-                  className={`text-white/60 placeholder:text-white/40 [color-scheme:dark] focus-visible:ring-primary ${errors.endDate ? 'border-red-500' : ''}`}
+                  className="text-white/60 placeholder:text-white/40 focus-visible:ring-primary"
                 />
-                {errors.endDate && <p className="text-red-500 text-xs mt-1">{errors.endDate}</p>}
+                
               </div>
             </div>
 
@@ -365,9 +354,9 @@ export default function BookingModal() {
                   value={formData.time}
                   onChange={(e) => handleInputChange("time", e.target.value)}
                   required
-                  className={`text-white/60 placeholder:text-white/40 [color-scheme:dark] focus-visible:ring-primary ${errors.time ? 'border-red-500' : ''}`}
+                  className="text-white/60 placeholder:text-white/40 focus-visible:ring-primary"
                 />
-                {errors.time && <p className="text-red-500 text-xs mt-1">{errors.time}</p>}
+                
               </div>
               <div className="space-y-2">
                 <Label htmlFor="modal-endTime">End Time *</Label>
@@ -377,9 +366,9 @@ export default function BookingModal() {
                   value={formData.endTime}
                   onChange={(e) => handleInputChange("endTime", e.target.value)}
                   required
-                  className={`text-white/60 placeholder:text-white/40 [color-scheme:dark] focus-visible:ring-primary ${errors.endTime ? 'border-red-500' : ''}`}
+                  className="text-white/60 placeholder:text-white/40 focus-visible:ring-primary"
                 />
-                {errors.endTime && <p className="text-red-500 text-xs mt-1">{errors.endTime}</p>}
+                
               </div>
             </div>
 
@@ -391,18 +380,18 @@ export default function BookingModal() {
                     type="button"
                     variant="outline"
                     onClick={() => licenseInputRef.current?.click()}
-                    disabled={isLoading || (!isLicenseRequired && !licenseFilePreview)}
+                    disabled={isLoading || hasUploadedLicense}
                     className="bg-white text-gray-900 border-gray-300 w-full font-normal justify-start px-3"
                   >
-                    {!isLicenseRequired ? "Uploaded (Verified)" : "Choose File"}
+                    {hasUploadedLicense ? "Uploaded (Verified)" : "Choose File"}
                   </Button>
                   <Input 
                     id="modal-license"
                     ref={licenseInputRef}
                     accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
                     type="file" 
-                    required={isLicenseRequired && !licenseFilePreview}
                     className="hidden"
+                    disabled={isLoading || hasUploadedLicense}
                     onChange={(e) => {
                       const file = e.target.files?.[0];
                       if (file) handleFileSelect(file, 'license');
@@ -419,10 +408,10 @@ export default function BookingModal() {
                     type="button"
                     variant="outline"
                     onClick={() => insuranceInputRef.current?.click()}
-                    disabled={isLoading}
+                    disabled={isLoading || hasUploadedInsurance}
                     className="bg-white text-gray-900 border-gray-300 w-full font-normal justify-start px-3"
                   >
-                    Choose File
+                    {hasUploadedInsurance ? "Uploaded (Verified)" : "Choose File"}
                   </Button>
                   <Input 
                     id="modal-insurance"
@@ -430,6 +419,7 @@ export default function BookingModal() {
                     accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
                     type="file" 
                     className="hidden"
+                    disabled={isLoading || hasUploadedInsurance}
                     onChange={(e) => {
                       const file = e.target.files?.[0];
                       if (file) handleFileSelect(file, 'insurance');
@@ -441,7 +431,7 @@ export default function BookingModal() {
             </div>
 
             <div className="space-y-2">
-              <p className="text-xs text-white/70 bg-white/5 p-2 rounded border border-white/10 mb-2">
+              <p className="text-xs text-black bg-gray-100 p-2 rounded border border-gray-300 mb-2">
                 Optional document uploads may help expedite your booking. All submitted documents are handled securely and used solely to verify your rental eligibility.
               </p>
               <Label htmlFor="modal-notes">Additional Notes</Label>

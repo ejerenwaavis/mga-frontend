@@ -7,14 +7,15 @@ import FadeIn from "@/components/FadeIn";
 import { vehicles } from "@/data/vehicles";
 import { Plane, Car, Clock, Building2, Sparkles, X } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
-import { submitRequest } from "@/services/mutations";
 import { CreateRequestPayload } from "@/lib/types";
+import { submitRequest } from "@/services/mutations";
 import heic2any from "heic2any";
 import Swal from "sweetalert2";
 import { useMutation } from "react-query";
 import { toast } from "sonner";
 import { CONTACT_EMAIL } from "@/data/contact";
-import { countryCodes } from "@/data/countryCodes";
+import { countryCodes } from "@/lib/countryCodes";
+import useUserStore from "@/hooks/store/userStore";
 
 const serviceTypes = [
   {
@@ -23,7 +24,7 @@ const serviceTypes = [
     title: "Airport Service",
     description:
       "Convenient vehicle pickup and drop-off at Hartsfield–Jackson Atlanta International Airport, designed for a fast and seamless arrival or departure.",
-    image: "/vehicles/areoplane.webp",
+    image: "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287207/mga/vehicles/areoplane.webp",
     imagePosition: "right"
   },
   {
@@ -32,7 +33,7 @@ const serviceTypes = [
     title: "Standard Rental",
     description:
       "Premium vehicles with transparent pricing, flexible rental terms, and professionally maintained standards for everyday rental needs.",
-    image: "/vehicles/standard-rental-cover-image.webp",
+    image: "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287439/mga/vehicles/standard-rental-cover-image.webp",
     imagePosition: "left"
   },
   {
@@ -41,7 +42,7 @@ const serviceTypes = [
     title: "Custom Delivery",
     description:
       "Vehicle delivery and pickup tailored to your location and schedule throughout Atlanta for added convenience.",
-    image: "/vehicles/custom-delivery-cover-image.webp",
+    image: "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287277/mga/vehicles/custom-delivery-cover-image.webp",
     imagePosition: "right"
   },
   {
@@ -50,7 +51,7 @@ const serviceTypes = [
     title: "Corporate Services",
     description:
       "Professional rental solutions for employee travel, client transportation, and short-term business vehicle needs.",
-    image: "/vehicles/corporate-services-cover-image.webp",
+    image: "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287258/mga/vehicles/corporate-services-cover-image.webp",
     imagePosition: "left"
   },
 ];
@@ -63,6 +64,7 @@ export default function Services() {
   });
   const [selectedService, setSelectedService] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const { user } = useUserStore();
 
   interface FormData {
     firstName: string;
@@ -74,22 +76,6 @@ export default function Services() {
     vehicleId: string;
     startDate: string;
     endDate: string;
-    time?: string;
-    endTime?: string;
-    notes?: string;
-    license?: any;
-    insurance?: any;
-  }
-
-  interface FormErrors {
-    firstName?: string;
-    lastName?: string;
-    email?: string;
-    phone?: string;
-    serviceType?: string;
-    vehicleId?: string;
-    startDate?: string;
-    endDate?: string;
     time?: string;
     endTime?: string;
     notes?: string;
@@ -116,43 +102,37 @@ export default function Services() {
 
 
   const [formData, setFormData] = useState<FormData>(initialFormState);
-
-  const [errors, setErrors] = useState<FormErrors>(initialFormState);
   const today = new Date().toISOString().split("T")[0];
+  const hasUploadedLicense = user?.kycDocument?.url ? true : false;
+  const hasUploadedInsurance = user?.insuranceDocument?.url ? true : false;
   const licenseInputRef = useRef<HTMLInputElement>(null);
   const insuranceInputRef = useRef<HTMLInputElement>(null);
   const [licenseFilePreview, setLicenseFilePreview] = useState<{ file: File; url: string } | null>(null);
   const [insuranceFilePreview, setInsuranceFilePreview] = useState<{ file: File; url: string } | null>(null);
 
-
-  const validateForm = (): FormErrors => {
-    const newErrors: FormErrors = {};
-
-    const phoneRegex = /^[0-9\s\-()]{7,20}$/;
-
-    if (!formData.firstName.trim()) {
-      newErrors.firstName = "First name is required";
-    }
-    if (!formData.lastName.trim()) {
-      newErrors.lastName = "Last name is required";
-    }
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      newErrors.email = "Invalid email address";
-    }
-
-    if (!phoneRegex.test(formData.phone.trim())) {
-      newErrors.phone = "Please enter a valid phone number (e.g., 404 555 0100)";
-    }
-
-    if (formData.startDate && formData.endDate && formData.startDate === formData.endDate) {
-      if (formData.time && formData.endTime && formData.time >= formData.endTime) {
-        newErrors.time = "End time must be after the start time for same-day bookings.";
+  const validateForm = (): boolean => {
+    if (formData.startDate && formData.endDate) {
+      if (formData.endDate < formData.startDate) {
+        const endDateInput = document.getElementById("svc-endDate") as HTMLInputElement;
+        if (endDateInput) {
+          endDateInput.setCustomValidity("End date cannot be earlier than start date.");
+          endDateInput.reportValidity();
+        }
+        return false;
+      }
+      if (formData.startDate === formData.endDate) {
+        if (formData.time && formData.endTime && formData.time >= formData.endTime) {
+          const endTimeInput = document.getElementById("svc-endTime") as HTMLInputElement;
+          if (endTimeInput) {
+            endTimeInput.setCustomValidity("End time must be after the start time for same-day bookings.");
+            endTimeInput.reportValidity();
+          }
+          return false;
+        }
       }
     }
 
-    setErrors(newErrors);
-    return newErrors;
+    return true;
   };
 
 
@@ -163,12 +143,9 @@ export default function Services() {
       ...prev,
       [field]: value,
     }));
-
-    if (errors[field]) {
-      setErrors((prev) => ({
-        ...prev,
-        [field]: ""
-      }));
+    const el = document.getElementById(`svc-${field}`) as HTMLInputElement;
+    if (el) {
+      el.setCustomValidity("");
     }
   };
 
@@ -219,8 +196,7 @@ export default function Services() {
     e.preventDefault();
 
     try {
-      const validationErrors = validateForm();
-      if (Object.keys(validationErrors).length === 0) {
+      if (validateForm()) {
         if (licenseFilePreview) {
           formData.license = licenseFilePreview.file
         }
@@ -228,9 +204,10 @@ export default function Services() {
           formData.insurance = insuranceFilePreview.file;
         }
 
+        const fullPhone = `${formData.countryCode} ${formData.phone}`;
         const requestDetails: CreateRequestPayload = {
           ...formData,
-          phone: `${formData.countryCode} ${formData.phone}`.replace(/[^\d+]/g, "")
+          phone: fullPhone.replace(/[^\d+]/g, "")
         };
 
         const data = new FormData();
@@ -257,15 +234,6 @@ export default function Services() {
         }
 
         handleCreateRequest(data);
-      } else {
-        const errorMessages = Object.values(validationErrors).filter(Boolean).join("\n");
-
-        Swal.fire({
-          icon: "warning",
-          title: "Please check the following:",
-          text: errorMessages,
-          confirmButtonColor: "hsl(var(--primary))",
-        });
       }
     } catch (error) {
       console.log(error);
@@ -308,7 +276,7 @@ export default function Services() {
       <section className="relative overflow-hidden bg-stone py-24 md:py-32">
         <div className="absolute inset-0 z-0">
           <img
-            src="/vehicles/Services-Hero.webp"
+            src="https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287437/mga/vehicles/Services-Hero.webp"
             alt="Luxury Fleet"
             className="h-full w-full object-cover object-bottom"
           />
@@ -441,9 +409,10 @@ export default function Services() {
                         }
                         disabled={isLoading}
                         placeholder="First Name"
-                        className={`focus-visible:ring-primary text-white placeholder:text-white/40 ${errors.firstName ? 'border-red-500' : ''}`}
+                        required
+                        className="text-white placeholder:text-white/40 focus-visible:ring-primary"
                       />
-                      {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
+                      
                     </div>
 
                     <div className="space-y-2">
@@ -456,9 +425,10 @@ export default function Services() {
                         }
                         disabled={isLoading}
                         placeholder="Last Name"
-                        className={`focus-visible:ring-primary text-white placeholder:text-white/40 ${errors.lastName ? 'border-red-500' : ''}`}
+                        required
+                        className="text-white placeholder:text-white/40 focus-visible:ring-primary"
                       />
-                      {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>}
+                      
                     </div>
 
                     <div className="space-y-2 sm:col-span-2">
@@ -472,26 +442,24 @@ export default function Services() {
                         type="email"
                         disabled={isLoading}
                         placeholder="you@example.com"
-                        className={`focus-visible:ring-primary text-white placeholder:text-white/40 ${errors.email ? 'border-red-500' : ''}`}
+                        required
+                        className="text-white placeholder:text-white/40 focus-visible:ring-primary"
                       />
-                      {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+                      
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="svc-phone">Phone</Label>
                       <div className="flex gap-2">
                         <select
-                          id="svc-country-code"
                           value={formData.countryCode}
-                          onChange={(e) =>
-                            handleInputChange("countryCode", e.target.value)
-                          }
+                          onChange={(e) => handleInputChange("countryCode", e.target.value)}
                           disabled={isLoading}
-                          className="flex h-10 w-[110px] rounded-md border border-input bg-background px-2 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
+                          className="flex h-10 w-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
                         >
-                          {countryCodes.map((c) => (
-                            <option key={c.code} value={c.code} className="text-white">
-                              {c.code} {c.flag}
+                          {countryCodes.map((country) => (
+                            <option key={country.code} value={country.code}>
+                              {country.code} {country.label}
                             </option>
                           ))}
                         </select>
@@ -503,11 +471,14 @@ export default function Services() {
                           }
                           disabled={isLoading}
                           type="tel"
-                          placeholder="(404) 555-0000"
-                          className={`flex-1 focus-visible:ring-primary text-white placeholder:text-white/40 ${errors.phone ? 'border-red-500' : ''}`}
+                          placeholder="555-0000"
+                          required
+                          minLength={5}
+                          pattern="^[0-9\-\s\(\)]+$"
+                          title="Please enter a valid phone number with at least 5 digits"
+                          className="flex-1 text-white placeholder:text-white/40 focus-visible:ring-primary"
                         />
                       </div>
-                      {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                     </div>
 
                     <div className="space-y-2">
@@ -533,9 +504,9 @@ export default function Services() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-start">Start Date</Label>
+                      <Label htmlFor="svc-startDate">Start Date</Label>
                       <Input
-                        id="svc-start"
+                        id="svc-startDate"
                         value={formData.startDate}
                         min={today}
                         onChange={(e) =>
@@ -544,14 +515,14 @@ export default function Services() {
                         type="date"
                         disabled={isLoading}
                         required
-                        className="h-10 w-full appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
+                        className="h-10 w-full appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-end">End Date</Label>
+                      <Label htmlFor="svc-endDate">End Date</Label>
                       <Input
-                        id="svc-end"
+                        id="svc-endDate"
                         value={formData.endDate}
                         min={today}
                         onChange={(e) =>
@@ -560,7 +531,7 @@ export default function Services() {
                         type="date"
                         disabled={isLoading}
                         required
-                        className="h-10 w-full appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
+                        className="h-10 w-full appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40"
                       />
                     </div>
 
@@ -575,15 +546,15 @@ export default function Services() {
                         disabled={isLoading}
                         type="time"
                         required
-                        className={`focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark] ${errors.time ? 'border-red-500' : ''}`}
+                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40"
                       />
-                      {errors.time && <p className="text-red-500 text-xs mt-1">{errors.time}</p>}
+                      
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="svc-endtime">End Time</Label>
+                      <Label htmlFor="svc-endTime">End Time</Label>
                       <Input
-                        id="svc-endtime"
+                        id="svc-endTime"
                         value={formData.endTime}
                         onChange={(e) =>
                           handleInputChange("endTime", e.target.value)
@@ -591,7 +562,7 @@ export default function Services() {
                         disabled={isLoading}
                         type="time"
                         required
-                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
+                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40"
                       />
                     </div>
 
@@ -601,24 +572,18 @@ export default function Services() {
                         <Button
                           type="button"
                           variant="outline"
-                          size="sm"
                           onClick={() => licenseInputRef.current?.click()}
-                          disabled={isLoading}
-                          className="bg-white text-gray-900 hover:bg-gray-100 border-gray-300"
+                          disabled={isLoading || hasUploadedLicense}
+                          className="bg-white text-gray-900 border-gray-300 w-full font-normal justify-start px-3"
                         >
-                          Choose File
+                          {hasUploadedLicense ? "Uploaded (Verified)" : "Choose File"}
                         </Button>
-                        <span className="text-sm text-gray-700 flex-1 truncate">
-                          {licenseFilePreview
-                            ? licenseFilePreview.file.name
-                            : "No file selected"}
-                        </span>
                         <Input
                           id="svc-license"
                           ref={licenseInputRef}
                           accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
                           type="file"
-                          disabled={isLoading}
+                          disabled={isLoading || hasUploadedLicense}
                           className="hidden"
                           onChange={(e) => {
                             const file = e.target.files?.[0];
@@ -626,6 +591,7 @@ export default function Services() {
                           }}
                         />
                       </div>
+                      {licenseFilePreview && <span className="text-xs text-gray-500 truncate mt-1 block">{licenseFilePreview.file.name}</span>}
                     </div>
 
                     <div className="space-y-2">
@@ -634,23 +600,17 @@ export default function Services() {
                         <Button
                           type="button"
                           variant="outline"
-                          size="sm"
                           onClick={() => insuranceInputRef.current?.click()}
-                          disabled={isLoading}
-                          className="bg-white text-gray-900 hover:bg-gray-100 border-gray-300"
+                          disabled={isLoading || hasUploadedInsurance}
+                          className="bg-white text-gray-900 border-gray-300 w-full font-normal justify-start px-3"
                         >
-                          Choose File
+                          {hasUploadedInsurance ? "Uploaded (Verified)" : "Choose File"}
                         </Button>
-                        <span className="text-sm text-gray-700 flex-1 truncate">
-                          {insuranceFilePreview
-                            ? insuranceFilePreview.file.name
-                            : "No file selected"}
-                        </span>
                         <Input
                           ref={insuranceInputRef}
                           id="svc-insurance"
                           type="file"
-                          disabled={isLoading}
+                          disabled={isLoading || hasUploadedInsurance}
                           className="hidden"
                           accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
                           onChange={(e) => {
@@ -659,11 +619,12 @@ export default function Services() {
                           }}
                         />
                       </div>
+                      {insuranceFilePreview && <span className="text-xs text-gray-500 truncate mt-1 block">{insuranceFilePreview.file.name}</span>}
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <p className="text-xs text-white/70 bg-white/5 p-2 rounded border border-white/10 mb-2">
+                    <p className="text-xs text-black bg-gray-100 p-2 rounded border border-gray-300 mb-2">
                       Optional document uploads may help expedite your booking. All submitted documents are handled securely and used solely to verify your rental eligibility.
                     </p>
                     <Label htmlFor="svc-notes">Message</Label>
