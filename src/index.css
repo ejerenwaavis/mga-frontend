@@ -237,3 +237,28 @@ input[type="time"] {
     -webkit-appearance: none;
 }
 
+/* Force stubborn elements to obey layout rules on iOS */
+select, 
+input[type="file"],
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="tel"] {
+    -webkit-appearance: none; /* Removes iOS default rounding/shadows */
+    appearance: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Background image attachment for footer */
+.mga-footer-bg-wrapper {
+    background-attachment: fixed;
+}
+
+/* Fix for iOS Safari breaking fixed backgrounds */
+@supports (-webkit-touch-callout: none) {
+    .mga-footer-bg-wrapper {
+        background-attachment: scroll !important;
+    }
+}
+
