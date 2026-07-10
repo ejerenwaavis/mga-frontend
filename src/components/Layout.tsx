@@ -63,19 +63,30 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <main className="flex-1">{children}</main>
       
       {/* Wrapper with background image from FAQ section to Footer */}
-      <div
-        className="mga-footer-bg-wrapper relative overflow-hidden transition-[background-size] duration-700 ease-in-out"
-        style={{
-          backgroundImage: `linear-gradient(rgba(2, 34, 19, 0.80), rgba(2, 34, 19, 0.85)), url('https://res.cloudinary.com/di1mj1zqc/image/upload/c_scale,w_0.6/v1783287304/mga/vehicles/home-faq-image.webp')`,
-          backgroundSize: isMobile 
-            ? (isFaqOpen ? 'auto 130vh' : 'auto 100vh') 
-            : (isFaqOpen ? 'max(130vw, 231vh) auto' : 'max(100vw, 177vh) auto'),
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
-      >
-        {showFaqExtra && <Extra onFaqToggle={setIsFaqOpen} />}
-        <Footer />
+      <div className="relative w-full" style={{ clipPath: 'inset(0 0 0 0)' }}>
+        {/* Sticky Background Layer */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="sticky top-0 left-0 w-full h-[100dvh] overflow-hidden">
+            <div 
+              className="absolute inset-0 w-full h-full transition-[background-size,transform] duration-700 ease-in-out"
+              style={{
+                backgroundImage: `linear-gradient(rgba(2, 34, 19, 0.80), rgba(2, 34, 19, 0.85)), url('https://res.cloudinary.com/di1mj1zqc/image/upload/c_scale,w_0.6/v1783287304/mga/vehicles/home-faq-image.webp')`,
+                backgroundSize: isMobile 
+                  ? 'cover'
+                  : (isFaqOpen ? 'max(130vw, 231vh) auto' : 'max(100vw, 177vh) auto'),
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                transform: isMobile && isFaqOpen ? 'scale(1.15)' : 'scale(1)'
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Content Layer */}
+        <div className="relative z-10 w-full">
+          {showFaqExtra && <Extra onFaqToggle={setIsFaqOpen} />}
+          <Footer />
+        </div>
       </div>
       <BookingModal />
     </div>

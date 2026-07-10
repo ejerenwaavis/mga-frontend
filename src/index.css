@@ -250,15 +250,4 @@ input[type="tel"] {
     box-sizing: border-box;
 }
 
-/* Background image attachment for footer */
-.mga-footer-bg-wrapper {
-    background-attachment: fixed;
-}
-
-/* Fix for iOS Safari breaking fixed backgrounds */
-@supports (-webkit-touch-callout: none) {
-    .mga-footer-bg-wrapper {
-        background-attachment: scroll !important;
-    }
-}
 
