@@ -580,6 +580,12 @@ const UserDashboard = () => {
                           <span className="text-gray-500 font-medium">Pickup Time</span>
                           <span className="font-semibold text-gray-900">{req.time || "N/A"}</span>
                         </div>
+                        {req.endTime && (
+                          <div className="flex justify-between items-center p-2 rounded-lg bg-gray-50 border border-gray-100">
+                            <span className="text-gray-500 font-medium">Dropoff Time</span>
+                            <span className="font-semibold text-gray-900">{req.endTime}</span>
+                          </div>
+                        )}
                       </div>
                       
                       {["pending", "confirmed", "in_progress"].includes(req.status) && (
@@ -1202,7 +1208,8 @@ const UserDashboard = () => {
                     <p className="text-sm">
                       <strong>Vehicle:</strong> {selectedRentalForChat.desiredVehicleId === 'any' ? 'Not Specified' : selectedRentalForChat.desiredVehicleId}<br/>
                       <strong>Dates:</strong> {new Date(selectedRentalForChat.startDate).toLocaleDateString()} - {new Date(selectedRentalForChat.endDate).toLocaleDateString()}<br/>
-                      {selectedRentalForChat.time && <><br/><strong>Time:</strong> {selectedRentalForChat.time}</>}
+                      {selectedRentalForChat.time && <><br/><strong>Start Time:</strong> {selectedRentalForChat.time}</>}
+                      {selectedRentalForChat.endTime && <><br/><strong>End Time:</strong> {selectedRentalForChat.endTime}</>}
                       {selectedRentalForChat.notes && <><br/><br/><strong>Notes:</strong> {selectedRentalForChat.notes}</>}
                     </p>
                   </div>
