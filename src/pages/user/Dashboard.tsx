@@ -1025,7 +1025,7 @@ const UserDashboard = () => {
       {/* Modification Modal */}
       {isModifyModalOpen && modifyingRequest && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <Card className="w-full max-w-md bg-white rounded-2xl shadow-2xl border-0 animate-in fade-in zoom-in-95 duration-200">
+          <Card className="w-full max-w-md bg-white rounded-2xl shadow-2xl border-0 animate-in fade-in zoom-in-95 duration-200 overflow-hidden">
             <div className="flex items-center justify-between p-6 border-b border-gray-100">
               <div className="flex items-center gap-3 text-[#143D2A]">
                 <div className="p-2 bg-[#C69C45]/10 rounded-full">
@@ -1097,7 +1097,7 @@ const UserDashboard = () => {
       {/* Account Deletion Modal */}
       {isDeleteModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <Card className="w-full max-w-md bg-white rounded-2xl shadow-2xl border-0 animate-in fade-in zoom-in-95 duration-200">
+          <Card className="w-full max-w-md bg-white rounded-2xl shadow-2xl border-0 animate-in fade-in zoom-in-95 duration-200 overflow-hidden">
             <div className="flex items-center justify-between p-6 border-b border-gray-100">
               <div className="flex items-center gap-3 text-red-600">
                 <div className="p-2 bg-red-100 rounded-full">
@@ -1177,7 +1177,7 @@ const UserDashboard = () => {
       {/* Rental Details Chat Modal */}
       {selectedRentalForChat && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <Card className="w-full max-w-2xl bg-white rounded-2xl shadow-2xl border-0 h-[80vh] flex flex-col animate-in fade-in zoom-in-95 duration-200">
+          <Card className="w-full max-w-2xl bg-white rounded-2xl shadow-2xl border-0 h-[80vh] flex flex-col animate-in fade-in zoom-in-95 duration-200 overflow-hidden">
             <CardHeader className="border-b border-gray-100 bg-white/50 py-4 shrink-0">
               <div className="flex justify-between items-center">
                 <CardTitle className="text-lg font-serif text-[#143D2A]">Rental Details & Chat</CardTitle>
