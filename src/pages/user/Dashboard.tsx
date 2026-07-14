@@ -1207,9 +1207,8 @@ const UserDashboard = () => {
                   <div className="bg-[#143D2A] text-white p-4 rounded-2xl rounded-tr-sm max-w-[85%] shadow-sm">
                     <p className="text-sm">
                       <strong>Vehicle:</strong> {selectedRentalForChat.desiredVehicleId === 'any' ? 'Not Specified' : selectedRentalForChat.desiredVehicleId}<br/>
-                      <strong>Dates:</strong> {new Date(selectedRentalForChat.startDate).toLocaleDateString()} - {new Date(selectedRentalForChat.endDate).toLocaleDateString()}<br/>
-                      {selectedRentalForChat.time && <><br/><strong>Start Time:</strong> {selectedRentalForChat.time}</>}
-                      {selectedRentalForChat.endTime && <><br/><strong>End Time:</strong> {selectedRentalForChat.endTime}</>}
+                      <strong>Pickup:</strong> {new Date(selectedRentalForChat.startDate).toLocaleDateString()}{selectedRentalForChat.time ? ` at ${selectedRentalForChat.time}` : ''}<br/>
+                      <strong>Drop-off:</strong> {new Date(selectedRentalForChat.endDate).toLocaleDateString()}{selectedRentalForChat.endTime ? ` at ${selectedRentalForChat.endTime}` : ''}
                       {selectedRentalForChat.notes && <><br/><br/><strong>Notes:</strong> {selectedRentalForChat.notes}</>}
                     </p>
                   </div>
