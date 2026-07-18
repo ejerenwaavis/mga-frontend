@@ -164,7 +164,7 @@ export default function Index() {
 
   const featuredVehicles = carsData?.cars?.filter((car: any) => car.isFeatured) || [];
   // If no cars are explicitly marked as featured, fallback to the first 6 cars
-  const displayVehicles = featuredVehicles.length > 0 ? featuredVehicles : (carsData?.cars?.slice(0, 6) || []);
+  const displayVehicles = (featuredVehicles.length > 0 ? featuredVehicles : (carsData?.cars?.slice(0, 6) || [])).sort((a: any, b: any) => b.pricePerDay - a.pricePerDay);
 
   return (
     <>
