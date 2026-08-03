@@ -9,10 +9,10 @@ import BookingModal from "./BookingModal";
 import useUserStore from "@/hooks/store/userStore";
 
 const serviceSubLinks = [
+  { label: "GENERAL RENTALS", to: "/services", hash: "general-rentals" },
   { label: "AIRPORT SERVICE", to: "/services", hash: "airport" },
-  { label: "STANDARD RENTAL", to: "/services", hash: "rentals" },
-  { label: "CUSTOM DELIVERY", to: "/services", hash: "custom-delivery" },
-  { label: "CORPORATE SERVICES", to: "/services", hash: "cooperate-service" },
+  { label: "VEHICLE DELIVERY", to: "/services", hash: "vehicle-delivery" },
+  { label: "CORPORATE SERVICES", to: "/services", hash: "corporate-services" },
 ];
 
 const navLinks = [
