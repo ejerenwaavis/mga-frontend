@@ -83,7 +83,7 @@ export default function Services() {
                     {service.shortName}
                   </h2>
                   <p className="text-base leading-relaxed text-white">
-                    {service.description}
+                    {service.shortDescription || service.description}
                   </p>
                   <div className="flex gap-4">
                     <Button
