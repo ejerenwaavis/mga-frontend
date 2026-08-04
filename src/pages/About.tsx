@@ -13,7 +13,7 @@ export default function About() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287205/mga/vehicles/about-hero-image.webp"
+            src="/vehicles/about-hero-image.webp"
             alt="Luxury Fleet"
             className="h-full w-full object-cover object-bottom"
           />
@@ -93,7 +93,7 @@ export default function About() {
           <div className="w-full md:w-1/2">
             <FadeIn delay={0.2}>
               <img
-                src="https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287390/mga/vehicles/our-story-cover-image.webp"
+                src="/vehicles/our-story-cover-image.webp.PNG"
                 alt="Porsche Macan"
                 className="rounded-lg shadow-2xl w-full object-cover aspect-[4/3]"
               />

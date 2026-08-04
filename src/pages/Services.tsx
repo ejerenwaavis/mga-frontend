@@ -1,60 +1,11 @@
-import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import FadeIn from "@/components/FadeIn";
-import { vehicles } from "@/data/vehicles";
-import { Plane, Car, Clock, Building2, Sparkles, X } from "lucide-react";
+import { serviceTypes } from "@/data/services";
 import { useSEO } from "@/hooks/useSEO";
-import { CreateRequestPayload } from "@/lib/types";
-import { submitRequest } from "@/services/mutations";
-import heic2any from "heic2any";
-import Swal from "sweetalert2";
-import { useMutation } from "react-query";
-import { toast } from "sonner";
-import { CONTACT_EMAIL } from "@/data/contact";
-import { countryCodes } from "@/lib/countryCodes";
-import useUserStore from "@/hooks/store/userStore";
-
-const serviceTypes = [
-  {
-    id: "airport",
-    icon: Plane,
-    title: "Airport Service",
-    description:
-      "Convenient vehicle pickup and drop-off at Hartsfield–Jackson Atlanta International Airport, designed for a fast and seamless arrival or departure.",
-    image: "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287207/mga/vehicles/areoplane.webp",
-    imagePosition: "right"
-  },
-  {
-    id: "rentals",
-    icon: Car,
-    title: "Standard Rental",
-    description:
-      "Premium vehicles with transparent pricing, flexible rental terms, and professionally maintained standards for everyday rental needs.",
-    image: "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287439/mga/vehicles/standard-rental-cover-image.webp",
-    imagePosition: "left"
-  },
-  {
-    id: "custom-delivery",
-    icon: Building2,
-    title: "Custom Delivery",
-    description:
-      "Vehicle delivery and pickup tailored to your location and schedule throughout Atlanta for added convenience.",
-    image: "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287277/mga/vehicles/custom-delivery-cover-image.webp",
-    imagePosition: "right"
-  },
-  {
-    id: "cooperate-service",
-    icon: Sparkles,
-    title: "Corporate Services",
-    description:
-      "Professional rental solutions for employee travel, client transportation, and short-term business vehicle needs.",
-    image: "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287258/mga/vehicles/corporate-services-cover-image.webp",
-    imagePosition: "left"
-  },
-];
+import ServiceRequestForm from "@/components/ServiceRequestForm";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function Services() {
   useSEO({
@@ -62,221 +13,25 @@ export default function Services() {
     description: "Airport service, daily rental, long-term rental, corporate & concierge car rental in Atlanta, GA. Open 24/7. Book now or call (470) 817-6427.",
     canonical: "https://meadgreenautos.com/services",
   });
-  const [selectedService, setSelectedService] = useState<string | null>(null);
-  const [submitted, setSubmitted] = useState(false);
-  const { user } = useUserStore();
 
-  interface FormData {
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    countryCode: string;
-    serviceType: string;
-    vehicleId: string;
-    startDate: string;
-    endDate: string;
-    time?: string;
-    endTime?: string;
-    notes?: string;
-    license?: any;
-    insurance?: any;
-  }
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const initialServiceId = queryParams.get("service") || undefined;
 
-  const initialFormState: FormData = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    countryCode: "+1",
-    serviceType: "",
-    vehicleId: "",
-    startDate: "",
-    endDate: "",
-    time: "",
-    endTime: "",
-    notes: "",
-    license: "",
-    insurance: ""
-  };
-
-
-  const [formData, setFormData] = useState<FormData>(initialFormState);
-  const today = new Date().toISOString().split("T")[0];
-  const hasUploadedLicense = user?.kycDocument?.url ? true : false;
-  const hasUploadedInsurance = user?.insuranceDocument?.url ? true : false;
-  const licenseInputRef = useRef<HTMLInputElement>(null);
-  const insuranceInputRef = useRef<HTMLInputElement>(null);
-  const [licenseFilePreview, setLicenseFilePreview] = useState<{ file: File; url: string } | null>(null);
-  const [insuranceFilePreview, setInsuranceFilePreview] = useState<{ file: File; url: string } | null>(null);
-
-  const validateForm = (): boolean => {
-    if (formData.startDate && formData.endDate) {
-      if (formData.endDate < formData.startDate) {
-        const endDateInput = document.getElementById("svc-endDate") as HTMLInputElement;
-        if (endDateInput) {
-          endDateInput.setCustomValidity("End date cannot be earlier than start date.");
-          endDateInput.reportValidity();
-        }
-        return false;
-      }
-      if (formData.startDate === formData.endDate) {
-        if (formData.time && formData.endTime && formData.time >= formData.endTime) {
-          const endTimeInput = document.getElementById("svc-endTime") as HTMLInputElement;
-          if (endTimeInput) {
-            endTimeInput.setCustomValidity("End time must be after the start time for same-day bookings.");
-            endTimeInput.reportValidity();
-          }
-          return false;
-        }
-      }
+  useEffect(() => {
+    if (location.hash === '#service-form') {
+      setTimeout(() => {
+        document.getElementById("service-form")?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
     }
-
-    return true;
-  };
-
-
-
-  const handleInputChange = (field: keyof FormData, value: string) => {
-    setSubmitted(false);
-    setFormData((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
-    const el = document.getElementById(`svc-${field}`) as HTMLInputElement;
-    if (el) {
-      el.setCustomValidity("");
-    }
-  };
-
-  const handleFileSelect = async (file: File, type: 'license' | 'insurance') => {
-    let processedFile = file;
-
-    const isHeic = file.type === "image/heic" ||
-      file.type === "image/heif" ||
-      file.name.toLowerCase().endsWith(".heic") ||
-      file.name.toLowerCase().endsWith(".heif");
-
-    if (isHeic) {
-      try {
-        const convertedBlob = await heic2any({
-          blob: file,
-          toType: "image/jpeg",
-          quality: 0.8
-        });
-
-        const blob = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
-        processedFile = new File([blob], file.name.replace(/\.(heic|heif)$/i, ".jpg"), {
-          type: "image/jpeg",
-          lastModified: Date.now()
-        });
-      } catch (error) {
-        console.error("HEIC conversion failed:", error);
-      }
-    }
-
-    const url = URL.createObjectURL(processedFile);
-
-    if (type === 'license') {
-      if (licenseFilePreview) {
-        URL.revokeObjectURL(licenseFilePreview.url);
-      }
-      setLicenseFilePreview({ file: processedFile, url });
-    } else {
-      if (insuranceFilePreview) {
-        URL.revokeObjectURL(insuranceFilePreview.url);
-      }
-      setInsuranceFilePreview({ file: processedFile, url });
-    }
-  };
-
-
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    try {
-      if (validateForm()) {
-        if (licenseFilePreview) {
-          formData.license = licenseFilePreview.file
-        }
-        if (insuranceFilePreview) {
-          formData.insurance = insuranceFilePreview.file;
-        }
-
-        const fullPhone = `${formData.countryCode} ${formData.phone}`;
-        const requestDetails: CreateRequestPayload = {
-          ...formData,
-          phone: fullPhone.replace(/[^\d+]/g, "")
-        };
-
-        const data = new FormData();
-
-        data.append("firstName", requestDetails.firstName || "");
-        data.append("lastName", requestDetails.lastName || "");
-        data.append("email", requestDetails.email);
-        data.append("phone", requestDetails.phone);
-        data.append("recipientEmail", CONTACT_EMAIL);
-        data.append("serviceType", requestDetails.serviceType);
-        data.append("startDate", requestDetails.startDate);
-        data.append("endDate", requestDetails.endDate);
-
-        if (requestDetails.vehicleId) data.append("vehicleId", requestDetails.vehicleId);
-        if (requestDetails.time) data.append("time", requestDetails.time);
-        if (formData.endTime) data.append("endTime", formData.endTime);
-        if (requestDetails.notes) data.append("notes", requestDetails.notes);
-
-        if (requestDetails.license) {
-          data.append("license", requestDetails.license);
-        }
-        if (requestDetails.insurance) {
-          data.append("insurance", requestDetails.insurance);
-        }
-
-        handleCreateRequest(data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const { mutate: handleCreateRequest, isLoading } =
-    useMutation({
-      mutationFn: submitRequest,
-      onSuccess: () => {
-        toast.success("Request sent");
-
-        Swal.fire({
-          icon: "success",
-          title: "Request successful",
-          text: "Our team will review your request and get in touch.",
-        });
-        setSubmitted(true);
-        setFormData(initialFormState);
-        setLicenseFilePreview(null);
-        setInsuranceFilePreview(null);
-      },
-      onError: (error: any) => {
-        const msg: string = error?.message || "We couldn't send your request right now.";
-        const isNetworkError = msg.toLowerCase().includes("unable to reach");
-        Swal.fire({
-          icon: "error",
-          title: isNetworkError ? "Unable to Reach Server" : "Submission Failed",
-          text: msg,
-          footer: isNetworkError
-            ? 'Please try again later or call us at <a href="tel:4708176427">(470) 817-6427</a>'
-            : undefined,
-          confirmButtonColor: "hsl(var(--primary))",
-        });
-      },
-    });
+  }, [location]);
 
   return (
     <>
       <section className="relative overflow-hidden bg-stone py-24 md:py-32">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287437/mga/vehicles/Services-Hero.webp"
+            src="/vehicles/Services-Hero.webp"
             alt="Luxury Fleet"
             className="h-full w-full object-cover object-bottom"
           />
@@ -314,7 +69,7 @@ export default function Services() {
                   className={`rounded-lg overflow-hidden shadow-xl ${service.imagePosition === "right" ? "md:order-1" : "md:order-0"}`}
                 >
                   <img
-                    src={service.image}
+                    src={service.heroImage}
                     alt={service.title}
                     className="w-full h-80 md:h-96 object-cover hover:scale-105 transition-transform duration-500"
                   />
@@ -325,26 +80,32 @@ export default function Services() {
                   className={`space-y-4 ${service.imagePosition === "right" ? "md:order-0" : "md:order-1"}`}
                 >
                   <h2 className="font-serif text-3xl md:text-4xl font-semibold text-gold">
-                    {service.title}
+                    {service.shortName}
                   </h2>
                   <p className="text-base leading-relaxed text-white">
-                    {service.description}
+                    {service.shortDescription || service.description}
                   </p>
-                  <Button
-                    variant="premium"
-                    size="lg"
-                    onClick={() => {
-                      setSelectedService(service.id);
-                      setSubmitted(false);
-                      setTimeout(() => {
-                        document
-                          .getElementById("service-form")
-                          ?.scrollIntoView({ behavior: "smooth" });
-                      }, 100);
-                    }}
-                  >
-                    Request This Service
-                  </Button>
+                  <div className="flex gap-4">
+                    <Button
+                      variant="premium"
+                      size="lg"
+                      asChild
+                    >
+                      <Link to={`/services/${service.slug}`}>
+                        Learn More
+                      </Link>
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      asChild
+                      className="bg-transparent text-white border-white hover:bg-white hover:text-black"
+                    >
+                      <Link to={`/services?service=${service.id}#service-form`}>
+                        Book Now
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -353,308 +114,8 @@ export default function Services() {
       </section>
 
       {/* Service Request Form */}
-      <section id="service-form" className="bg-stone py-16 md:py-20">
-        <div className="container max-w-2xl">
-          <FadeIn>
-            {submitted ? (
-              <div className="rounded border border-border bg-card p-8 text-center">
-                <h2 className="font-serif text-2xl font-semibold">
-                  Request Received
-                </h2>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  Thank you for your request. We review all submissions within 4
-                  hours during business hours and will contact you to confirm
-                  details and next steps.
-                </p>
-                <Button
-                  variant="premiumOutline"
-                  size="sm"
-                  className="mt-6"
-                  onClick={() => setSubmitted(false)}
-                >
-                  Submit Another Request
-                </Button>
-              </div>
-            ) : (
-              <div className="rounded border border-border bg-card p-8">
-                <div className="flex items-center justify-between mb-6">
-                  <div>
-                    <h2 className="font-serif text-xl font-semibold">
-                      BOOK DIRECT
-                    </h2>
-                    <p className="mt-1 text-sm text-muted-foreground">
-                      Complete the form below to receive pricing, availability, and delivery options.
-                    </p>
-                  </div>
-                  {selectedService && (
-                    <button
-                      onClick={() => setSelectedService(null)}
-                      className="text-muted-foreground hover:text-foreground transition-colors"
-                      aria-label="Clear selection"
-                    >
-                      <X className="h-4 w-4" />
-                    </button>
-                  )}
-                </div>
-
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-firstname">First Name</Label>
-                      <Input
-                        id="svc-firstname"
-                        value={formData.firstName}
-                        onChange={(e) =>
-                          handleInputChange("firstName", e.target.value)
-                        }
-                        disabled={isLoading}
-                        placeholder="First Name"
-                        required
-                        className="text-white placeholder:text-white/40 focus-visible:ring-primary"
-                      />
-                      
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-lastname">Last Name</Label>
-                      <Input
-                        id="svc-lastname"
-                        value={formData.lastName}
-                        onChange={(e) =>
-                          handleInputChange("lastName", e.target.value)
-                        }
-                        disabled={isLoading}
-                        placeholder="Last Name"
-                        required
-                        className="text-white placeholder:text-white/40 focus-visible:ring-primary"
-                      />
-                      
-                    </div>
-
-                    <div className="space-y-2 sm:col-span-2">
-                      <Label htmlFor="svc-email">Email</Label>
-                      <Input
-                        id="svc-email"
-                        value={formData.email}
-                        onChange={(e) =>
-                          handleInputChange("email", e.target.value)
-                        }
-                        type="email"
-                        disabled={isLoading}
-                        placeholder="you@example.com"
-                        required
-                        className="text-white placeholder:text-white/40 focus-visible:ring-primary"
-                      />
-                      
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-phone">Phone</Label>
-                      <div className="flex gap-2">
-                        <select
-                          value={formData.countryCode}
-                          onChange={(e) => handleInputChange("countryCode", e.target.value)}
-                          disabled={isLoading}
-                          className="flex h-10 w-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
-                        >
-                          {countryCodes.map((country) => (
-                            <option key={country.code} value={country.code}>
-                              {country.code} {country.label}
-                            </option>
-                          ))}
-                        </select>
-                        <Input
-                          id="svc-phone"
-                          value={formData.phone}
-                          onChange={(e) =>
-                            handleInputChange("phone", e.target.value)
-                          }
-                          disabled={isLoading}
-                          type="tel"
-                          placeholder="555-0000"
-                          required
-                          minLength={5}
-                          pattern="^[0-9\-\s\(\)]+$"
-                          title="Please enter a valid phone number with at least 5 digits"
-                          className="flex-1 text-white placeholder:text-white/40 focus-visible:ring-primary"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-type">Service Type</Label>
-                      <select
-                        id="svc-type"
-                        disabled={isLoading}
-                        value={formData.serviceType}
-                        onChange={(e) => {
-                          setSelectedService(e.target.value);
-                          handleInputChange("serviceType", e.target.value);
-                        }}
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
-                        required
-                      >
-                        <option value="">Select a service</option>
-                        {serviceTypes.map((s) => (
-                          <option key={s.id} value={s.id}>
-                            {s.title}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-startDate">Start Date</Label>
-                      <Input
-                        id="svc-startDate"
-                        value={formData.startDate}
-                        min={today}
-                        onChange={(e) =>
-                          handleInputChange("startDate", e.target.value)
-                        }
-                        type="date"
-                        disabled={isLoading}
-                        required
-                        className="h-10 w-full appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-endDate">End Date</Label>
-                      <Input
-                        id="svc-endDate"
-                        value={formData.endDate}
-                        min={today}
-                        onChange={(e) =>
-                          handleInputChange("endDate", e.target.value)
-                        }
-                        type="date"
-                        disabled={isLoading}
-                        required
-                        className="h-10 w-full appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-time">Start Time</Label>
-                      <Input
-                        id="svc-time"
-                        value={formData.time}
-                        onChange={(e) =>
-                          handleInputChange("time", e.target.value)
-                        }
-                        disabled={isLoading}
-                        type="time"
-                        required
-                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40"
-                      />
-                      
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-endTime">End Time</Label>
-                      <Input
-                        id="svc-endTime"
-                        value={formData.endTime}
-                        onChange={(e) =>
-                          handleInputChange("endTime", e.target.value)
-                        }
-                        disabled={isLoading}
-                        type="time"
-                        required
-                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-license">Driver's License (Optional)</Label>
-                      <div className="flex items-center gap-3">
-                        <Button
-                          type="button"
-                          variant="outline"
-                          onClick={() => licenseInputRef.current?.click()}
-                          disabled={isLoading || hasUploadedLicense}
-                          className="bg-white text-gray-900 border-gray-300 w-full font-normal justify-start px-3"
-                        >
-                          {hasUploadedLicense ? "Uploaded (Verified)" : "Choose File"}
-                        </Button>
-                        <Input
-                          id="svc-license"
-                          ref={licenseInputRef}
-                          accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
-                          type="file"
-                          disabled={isLoading || hasUploadedLicense}
-                          className="hidden"
-                          onChange={(e) => {
-                            const file = e.target.files?.[0];
-                            if (file) handleFileSelect(file, "license");
-                          }}
-                        />
-                      </div>
-                      {licenseFilePreview && <span className="text-xs text-gray-500 truncate mt-1 block">{licenseFilePreview.file.name}</span>}
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-insurance">Insurance Card (Optional)</Label>
-                      <div className="flex items-center gap-3">
-                        <Button
-                          type="button"
-                          variant="outline"
-                          onClick={() => insuranceInputRef.current?.click()}
-                          disabled={isLoading || hasUploadedInsurance}
-                          className="bg-white text-gray-900 border-gray-300 w-full font-normal justify-start px-3"
-                        >
-                          {hasUploadedInsurance ? "Uploaded (Verified)" : "Choose File"}
-                        </Button>
-                        <Input
-                          ref={insuranceInputRef}
-                          id="svc-insurance"
-                          type="file"
-                          disabled={isLoading || hasUploadedInsurance}
-                          className="hidden"
-                          accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
-                          onChange={(e) => {
-                            const file = e.target.files?.[0];
-                            if (file) handleFileSelect(file, "insurance");
-                          }}
-                        />
-                      </div>
-                      {insuranceFilePreview && <span className="text-xs text-gray-500 truncate mt-1 block">{insuranceFilePreview.file.name}</span>}
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <p className="text-xs text-black bg-gray-100 p-2 rounded border border-gray-300 mb-2">
-                      Optional document uploads may help expedite your booking. All submitted documents are handled securely and used solely to verify your rental eligibility.
-                    </p>
-                    <Label htmlFor="svc-notes">Message</Label>
-                    <Textarea
-                      id="svc-notes"
-                      value={formData.notes}
-                      onChange={(e) =>
-                        handleInputChange("notes", e.target.value)
-                      }
-                      disabled={isLoading}
-                      placeholder="Make and model of the car and any additional details or requests"
-                      rows={3}
-                      className="focus-visible:ring-primary text-white placeholder:text-white/40"
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    disabled={isLoading}
-                    variant="premium"
-                    size="lg"
-                    className="w-full"
-                  >
-                    {isLoading ? "Processing" : "Submit Request"}
-                  </Button>
-                </form>
-              </div>
-            )}
-          </FadeIn>
-        </div>
+      <section className="bg-stone py-16 md:py-20">
+        <ServiceRequestForm initialServiceId={initialServiceId} />
       </section>
     </>
   );

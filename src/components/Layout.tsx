@@ -7,14 +7,12 @@ import FAQSection from "@/components/Faq";
 import { CONTACT_ADDRESS, CONTACT_EMAIL, CONTACT_PHONE } from "@/data/contact";
 import BookingModal from "./BookingModal";
 import useUserStore from "@/hooks/store/userStore";
-import { useQuery } from "react-query";
-import { getCurrentUser } from "@/services/queries";
 
 const serviceSubLinks = [
-  { label: "AIRPORT SERVICE", to: "/services", hash: "airport" },
-  { label: "STANDARD RENTAL", to: "/services", hash: "rentals" },
-  { label: "CUSTOM DELIVERY", to: "/services", hash: "custom-delivery" },
-  { label: "CORPORATE SERVICES", to: "/services", hash: "cooperate-service" },
+  { label: "GENERAL RENTALS", to: "/services/general-rentals" },
+  { label: "AIRPORT SERVICE", to: "/services/airport-service" },
+  { label: "VEHICLE DELIVERY", to: "/services/vehicle-delivery" },
+  { label: "CORPORATE SERVICES", to: "/services/corporate-services" },
 ];
 
 const navLinks = [
@@ -28,26 +26,7 @@ const navLinks = [
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
-  const { isAuthenticated, setUser } = useUserStore();
-
-  useQuery("currentUser", getCurrentUser, {
-    enabled: isAuthenticated,
-    onSuccess: (data: any) => {
-      if (data?.user) {
-        setUser(data.user);
-      }
-    },
-    refetchOnWindowFocus: true,
-  });
-  const [isFaqOpen, setIsFaqOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const { isAuthenticated } = useUserStore();
 
   useEffect(() => {
     if (!location.hash) {
@@ -63,37 +42,23 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <main className="flex-1">{children}</main>
       
       {/* Wrapper with background image from FAQ section to Footer */}
-      <div className="relative w-full" style={{ clipPath: 'inset(0 0 0 0)' }}>
-        {/* Sticky Background Layer */}
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="sticky top-0 left-0 w-full h-[100dvh] overflow-hidden">
-            <div 
-              className="absolute inset-0 w-full h-full transition-[background-size,transform] duration-700 ease-in-out"
-              style={{
-                backgroundImage: `linear-gradient(rgba(2, 34, 19, 0.80), rgba(2, 34, 19, 0.85)), url('https://res.cloudinary.com/di1mj1zqc/image/upload/c_scale,w_0.6/v1783287304/mga/vehicles/home-faq-image.webp')`,
-                backgroundSize: isMobile 
-                  ? 'cover'
-                  : (isFaqOpen ? 'max(130vw, 231vh) auto' : 'max(100vw, 177vh) auto'),
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                transform: isMobile && isFaqOpen ? 'scale(1.15)' : 'scale(1)'
-              }}
-            />
-          </div>
-        </div>
-
-        {/* Content Layer */}
-        <div className="relative z-10 w-full">
-          {showFaqExtra && <Extra onFaqToggle={setIsFaqOpen} />}
-          <Footer />
-        </div>
+      <div
+        className="relative overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(rgba(2, 34, 19, 0.80), rgba(2, 34, 19, 0.85)), url('/vehicles/home-faq-image.webp')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        {showFaqExtra && <Extra />}
+        <Footer />
       </div>
       <BookingModal />
     </div>
   );
 }
 
-function NavItem({ link, currentPath, navTextColor }: { link: typeof navLinks[0]; currentPath: string; navTextColor?: string }) {
+function NavItem({ link, currentPath, isLightContext }: { link: typeof navLinks[0]; currentPath: string; isLightContext?: boolean }) {
   const [open, setOpen] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isActive = currentPath === link.to || (link.to !== "/" && currentPath.startsWith(link.to));
@@ -112,12 +77,8 @@ function NavItem({ link, currentPath, navTextColor }: { link: typeof navLinks[0]
     <div className="relative" onMouseEnter={show} onMouseLeave={hide}>
       <Link
         to={link.to}
-        onClick={(e) => {
-          if (link.children) {
-            e.preventDefault();
-          }
-        }}
-        className={`nav-hover-link flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest transition-colors duration-150 hover:text-gold ${isActive ? `${navTextColor || "text-white"} active` : (navTextColor || "text-white")
+        onClick={() => setOpen(false)}
+        className={`nav-hover-link flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest transition-colors duration-150 hover:text-gold ${isActive ? (isLightContext ? "text-[#143D2A] font-bold active" : "text-white active") : (isLightContext ? "text-[#143D2A]" : "text-white")
           }`}
       >
         {link.label}
@@ -140,17 +101,9 @@ function NavItem({ link, currentPath, navTextColor }: { link: typeof navLinks[0]
           >
             {link.children.map((child) => (
               <Link
-                key={child.label}
+                key={child.to}
                 to={child.to}
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (currentPath !== "/services") {
-                    window.location.href = `/services#${child.hash}`;
-                  } else {
-                    handleScrollToSection(child.hash);
-                  }
-                  setOpen(false);
-                }}
+                onClick={() => setOpen(false)}
                 className="block rounded-md px-3 py-2.5 text-[10px] font-sans font-semibold uppercase tracking-widest text-muted-foreground transition-colors duration-150 hover:text-foreground"
                 style={{ transition: "background-color 150ms ease-out, color 150ms ease-out" }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "hsl(var(--muted))"; }}
@@ -174,8 +127,6 @@ function Navbar() {
   const { isAuthenticated } = useUserStore();
 
   const isVehicleDetailsPage = location.pathname !== '/fleet' && location.pathname.startsWith('/fleet/');
-  const isLightPage = ["/dashboard", "/login", "/forgot-password", "/reset-password"].some(p => location.pathname.startsWith(p));
-
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -229,15 +180,16 @@ function Navbar() {
   let headerClasses = "fixed top-0 left-0 right-0 z-50 transition-all duration-500 transform ";
   headerClasses += isVisible ? "translate-y-0" : "-translate-y-full";
   
+  const isLightPage = location.pathname === '/login' || location.pathname === '/admin/login';
+  const isLightContext = isLightPage && !scrolled;
+  
   if (isVehicleDetailsPage) {
     headerClasses += " bg-[#1a3a2a] border-b border-white/10";
   } else if (scrolled) {
-    headerClasses += " bg-[#143D2A]/50 backdrop-blur-lg shadow-lg";
+    headerClasses += " bg-[#143D2A]/90 backdrop-blur-md shadow-lg";
   } else {
     headerClasses += " bg-transparent";
   }
-
-  const navTextColor = (!scrolled && isLightPage) ? "text-foreground" : "text-white";
 
   return (
     <header className={headerClasses}>
@@ -252,9 +204,9 @@ function Navbar() {
 
         <nav className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => (
-            <NavItem key={link.to} link={link} currentPath={location.pathname} navTextColor={navTextColor} />
+            <NavItem key={link.to} link={link} currentPath={location.pathname} isLightContext={isLightContext} />
           ))}
-          <Link to={isAuthenticated ? "/dashboard" : "/login"} className={`flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest hover:text-gold transition-colors duration-150 ${navTextColor}`}>
+          <Link to={isAuthenticated ? "/dashboard" : "/login"} className={`flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest hover:text-gold transition-colors duration-150 ${isLightContext ? "text-[#143D2A]" : "text-white"}`}>
             {isAuthenticated ? <LayoutDashboard className="h-3 w-3" /> : <LogIn className="h-3 w-3" />}
             {isAuthenticated ? "Dashboard" : "Login"}
           </Link>
@@ -262,7 +214,7 @@ function Navbar() {
 
         <button
           onClick={() => setOpen(!open)}
-          className={`inline-flex items-center justify-center rounded-sm p-2 lg:hidden ${navTextColor}`}
+          className={`inline-flex items-center justify-center rounded-sm p-2 lg:hidden ${isLightContext ? "text-[#143D2A]" : "text-white"}`}
           aria-label="Toggle menu"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -277,8 +229,8 @@ function Navbar() {
                 <div className="flex items-center">
                   <Link
                     to={link.to}
-                    onClick={() => !link.children && setOpen(false)}
-                    className={`flex-1 rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest transition-colors hover:bg-muted hover:text-foreground ${location.pathname === link.to ? "text-white" : "text-white"
+                    onClick={() => setOpen(false)}
+                    className={`flex-1 rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest transition-colors hover:bg-muted/20 ${location.pathname === link.to ? "text-white font-bold" : "text-white/80"
                       }`}
                   >
                     {link.label}
@@ -286,7 +238,7 @@ function Navbar() {
                   {link.children && (
                     <button
                       onClick={() => setExpandedMobile(expandedMobile === link.to ? null : link.to)}
-                      className="px-3 py-2.5 text-white"
+                      className="px-3 py-2.5 text-white/80"
                     >
                       <ChevronDown className={`h-3 w-3 transition-transform ${expandedMobile === link.to ? "rotate-180" : ""}`} />
                     </button>
@@ -296,21 +248,10 @@ function Navbar() {
                   <div className="ml-4 flex flex-col gap-1 pb-2">
                     {link.children.map((child) => (
                       <Link
-                        key={child.label}
+                        key={child.to}
                         to={child.to}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setOpen(false);
-                          if (location.pathname !== "/services") {
-                            window.location.href = `/services#${child.hash}`;
-                          } else {
-                            const element = document.getElementById(child.hash);
-                            if (element) {
-                              element.scrollIntoView({ behavior: "smooth" });
-                            }
-                          }
-                        }}
-                        className="rounded-sm px-3 py-2 text-[10px] font-sans font-semibold uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-black"
+                        onClick={() => setOpen(false)}
+                        className="rounded-sm px-3 py-2 text-[10px] font-sans font-semibold uppercase tracking-widest text-white/70 transition-colors hover:bg-muted/20 hover:text-white"
                       >
                         {child.label}
                       </Link>
@@ -319,7 +260,7 @@ function Navbar() {
                 )}
               </div>
             ))}
-            <Link to={isAuthenticated ? "/dashboard" : "/login"} onClick={() => setOpen(false)} className="rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest text-white hover:bg-muted hover:text-foreground transition-colors">
+            <Link to={isAuthenticated ? "/dashboard" : "/login"} onClick={() => setOpen(false)} className="rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest text-white hover:bg-muted/20 transition-colors">
               {isAuthenticated ? "Dashboard" : "Login"}
             </Link>
           </nav>
@@ -329,10 +270,10 @@ function Navbar() {
   );
 }
 
-function Extra({ onFaqToggle }: { onFaqToggle?: (isOpen: boolean) => void }) {
+function Extra() {
   return (
     <section id="faqs" className="scroll-mt-20">
-      <FAQSection onAnyOpenChange={onFaqToggle} />
+      <FAQSection />
     </section>
   )
 }

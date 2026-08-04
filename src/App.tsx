@@ -11,6 +11,7 @@ import UserDashboard from "./pages/user/Dashboard";
 import Fleet from "./pages/Fleet";
 import VehicleDetails from "./pages/VehicleDetails";
 import Services from "./pages/Services";
+import ServiceLandingPage from "./pages/ServiceLandingPage";
 import About from "./pages/About";
 import FAQ from "./pages/Faq";
 import Contact from "./pages/Contact";
@@ -58,6 +59,7 @@ export function App() {
           <Route path="/fleet/:vehicleId" element={<VehicleDetails />} />
           <Route path="/cars/:vehicleId" element={<VehicleDetails />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/:slug" element={<ServiceLandingPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
