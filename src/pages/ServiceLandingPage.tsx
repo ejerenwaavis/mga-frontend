@@ -55,7 +55,7 @@ export default function ServiceLandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#143D2A] pt-24 pb-16 lg:pt-32 lg:pb-24">
+    <div className="bg-[#143D2A] pt-24 pb-16 lg:pt-32 lg:pb-24">
       <div className="container max-w-6xl flex flex-col lg:flex-row gap-12 xl:gap-16 items-stretch">
         {/* Left Content Column */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center">
