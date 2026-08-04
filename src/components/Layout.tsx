@@ -58,7 +58,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-function NavItem({ link, currentPath }: { link: typeof navLinks[0]; currentPath: string }) {
+function NavItem({ link, currentPath, isLightContext }: { link: typeof navLinks[0]; currentPath: string; isLightContext?: boolean }) {
   const [open, setOpen] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isActive = currentPath === link.to || (link.to !== "/" && currentPath.startsWith(link.to));
@@ -78,7 +78,7 @@ function NavItem({ link, currentPath }: { link: typeof navLinks[0]; currentPath:
       <Link
         to={link.to}
         onClick={() => setOpen(false)}
-        className={`nav-hover-link flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest transition-colors duration-150 hover:text-gold ${isActive ? "text-white active" : "text-white"
+        className={`nav-hover-link flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest transition-colors duration-150 hover:text-gold ${isActive ? (isLightContext ? "text-[#143D2A] font-bold active" : "text-white active") : (isLightContext ? "text-[#143D2A]" : "text-white")
           }`}
       >
         {link.label}
@@ -180,6 +180,9 @@ function Navbar() {
   let headerClasses = "fixed top-0 left-0 right-0 z-50 transition-all duration-500 transform ";
   headerClasses += isVisible ? "translate-y-0" : "-translate-y-full";
   
+  const isLightPage = location.pathname === '/login' || location.pathname === '/admin/login';
+  const isLightContext = isLightPage && !scrolled;
+  
   if (isVehicleDetailsPage) {
     headerClasses += " bg-[#1a3a2a] border-b border-white/10";
   } else if (scrolled) {
@@ -201,9 +204,9 @@ function Navbar() {
 
         <nav className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => (
-            <NavItem key={link.to} link={link} currentPath={location.pathname} />
+            <NavItem key={link.to} link={link} currentPath={location.pathname} isLightContext={isLightContext} />
           ))}
-          <Link to={isAuthenticated ? "/dashboard" : "/login"} className="flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest text-white hover:text-gold transition-colors duration-150">
+          <Link to={isAuthenticated ? "/dashboard" : "/login"} className={`flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest hover:text-gold transition-colors duration-150 ${isLightContext ? "text-[#143D2A]" : "text-white"}`}>
             {isAuthenticated ? <LayoutDashboard className="h-3 w-3" /> : <LogIn className="h-3 w-3" />}
             {isAuthenticated ? "Dashboard" : "Login"}
           </Link>
@@ -211,7 +214,7 @@ function Navbar() {
 
         <button
           onClick={() => setOpen(!open)}
-          className="inline-flex items-center justify-center rounded-sm p-2 text-white lg:hidden"
+          className={`inline-flex items-center justify-center rounded-sm p-2 lg:hidden ${isLightContext ? "text-[#143D2A]" : "text-white"}`}
           aria-label="Toggle menu"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -227,7 +230,7 @@ function Navbar() {
                   <Link
                     to={link.to}
                     onClick={() => setOpen(false)}
-                    className={`flex-1 rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest transition-colors hover:bg-muted ${location.pathname === link.to ? "text-white" : "text-white"
+                    className={`flex-1 rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest transition-colors hover:bg-muted ${location.pathname === link.to ? "text-foreground font-bold" : "text-foreground"
                       }`}
                   >
                     {link.label}
@@ -235,7 +238,7 @@ function Navbar() {
                   {link.children && (
                     <button
                       onClick={() => setExpandedMobile(expandedMobile === link.to ? null : link.to)}
-                      className="px-3 py-2.5 text-white"
+                      className="px-3 py-2.5 text-foreground"
                     >
                       <ChevronDown className={`h-3 w-3 transition-transform ${expandedMobile === link.to ? "rotate-180" : ""}`} />
                     </button>
@@ -248,7 +251,7 @@ function Navbar() {
                         key={child.to}
                         to={child.to}
                         onClick={() => setOpen(false)}
-                        className="rounded-sm px-3 py-2 text-[10px] font-sans font-semibold uppercase tracking-widest text-white transition-colors hover:bg-muted hover:text-foreground"
+                        className="rounded-sm px-3 py-2 text-[10px] font-sans font-semibold uppercase tracking-widest text-foreground transition-colors hover:bg-muted hover:text-foreground"
                       >
                         {child.label}
                       </Link>
@@ -257,7 +260,7 @@ function Navbar() {
                 )}
               </div>
             ))}
-            <Link to={isAuthenticated ? "/dashboard" : "/login"} onClick={() => setOpen(false)} className="rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest text-white hover:bg-muted transition-colors">
+            <Link to={isAuthenticated ? "/dashboard" : "/login"} onClick={() => setOpen(false)} className="rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest text-foreground hover:bg-muted transition-colors">
               {isAuthenticated ? "Dashboard" : "Login"}
             </Link>
           </nav>
