@@ -77,6 +77,7 @@ function NavItem({ link, currentPath }: { link: typeof navLinks[0]; currentPath:
     <div className="relative" onMouseEnter={show} onMouseLeave={hide}>
       <Link
         to={link.to}
+        onClick={() => setOpen(false)}
         className={`nav-hover-link flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest transition-colors duration-150 hover:text-gold ${isActive ? "text-white active" : "text-white"
           }`}
       >
