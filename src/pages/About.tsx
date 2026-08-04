@@ -93,7 +93,7 @@ export default function About() {
           <div className="w-full md:w-1/2">
             <FadeIn delay={0.2}>
               <img
-                src="/vehicles/our-story-cover-image.webp"
+                src="/vehicles/our-story-cover-image.png"
                 alt="Porsche Macan"
                 className="rounded-lg shadow-2xl w-full object-cover aspect-[4/3]"
               />

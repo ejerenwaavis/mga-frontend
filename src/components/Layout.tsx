@@ -9,10 +9,10 @@ import BookingModal from "./BookingModal";
 import useUserStore from "@/hooks/store/userStore";
 
 const serviceSubLinks = [
-  { label: "GENERAL RENTALS", to: "/services", hash: "general-rentals" },
-  { label: "AIRPORT SERVICE", to: "/services", hash: "airport" },
-  { label: "VEHICLE DELIVERY", to: "/services", hash: "vehicle-delivery" },
-  { label: "CORPORATE SERVICES", to: "/services", hash: "corporate-services" },
+  { label: "GENERAL RENTALS", to: "/services/general-rentals" },
+  { label: "AIRPORT SERVICE", to: "/services/airport-service" },
+  { label: "VEHICLE DELIVERY", to: "/services/vehicle-delivery" },
+  { label: "CORPORATE SERVICES", to: "/services/corporate-services" },
 ];
 
 const navLinks = [
@@ -77,11 +77,6 @@ function NavItem({ link, currentPath }: { link: typeof navLinks[0]; currentPath:
     <div className="relative" onMouseEnter={show} onMouseLeave={hide}>
       <Link
         to={link.to}
-        onClick={(e) => {
-          if (link.children) {
-            e.preventDefault();
-          }
-        }}
         className={`nav-hover-link flex items-center gap-1 text-xs font-sans font-medium uppercase tracking-widest transition-colors duration-150 hover:text-gold ${isActive ? "text-white active" : "text-white"
           }`}
       >
@@ -107,15 +102,7 @@ function NavItem({ link, currentPath }: { link: typeof navLinks[0]; currentPath:
               <Link
                 key={child.to}
                 to={child.to}
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (currentPath !== "/services") {
-                    window.location.href = `/services#${child.hash}`;
-                  } else {
-                    handleScrollToSection(child.hash);
-                  }
-                  setOpen(false);
-                }}
+                onClick={() => setOpen(false)}
                 className="block rounded-md px-3 py-2.5 text-[10px] font-sans font-semibold uppercase tracking-widest text-muted-foreground transition-colors duration-150 hover:text-foreground"
                 style={{ transition: "background-color 150ms ease-out, color 150ms ease-out" }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "hsl(var(--muted))"; }}
@@ -238,7 +225,7 @@ function Navbar() {
                 <div className="flex items-center">
                   <Link
                     to={link.to}
-                    onClick={() => !link.children && setOpen(false)}
+                    onClick={() => setOpen(false)}
                     className={`flex-1 rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest transition-colors hover:bg-muted ${location.pathname === link.to ? "text-white" : "text-white"
                       }`}
                   >
@@ -259,18 +246,7 @@ function Navbar() {
                       <Link
                         key={child.to}
                         to={child.to}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setOpen(false);
-                          if (location.pathname !== "/services") {
-                            window.location.href = `/services#${child.hash}`;
-                          } else {
-                            const element = document.getElementById(child.hash);
-                            if (element) {
-                              element.scrollIntoView({ behavior: "smooth" });
-                            }
-                          }
-                        }}
+                        onClick={() => setOpen(false)}
                         className="rounded-sm px-3 py-2 text-[10px] font-sans font-semibold uppercase tracking-widest text-white transition-colors hover:bg-muted hover:text-foreground"
                       >
                         {child.label}

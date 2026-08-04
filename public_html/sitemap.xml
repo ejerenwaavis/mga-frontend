@@ -41,22 +41,22 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://meadgreenautos.com/services/atlanta-airport-car-rental</loc>
+    <loc>https://meadgreenautos.com/services/general-rentals</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://meadgreenautos.com/services/standard-car-rental</loc>
+    <loc>https://meadgreenautos.com/services/airport-service</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://meadgreenautos.com/services/custom-vehicle-delivery</loc>
+    <loc>https://meadgreenautos.com/services/vehicle-delivery</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://meadgreenautos.com/services/corporate-car-rental</loc>
+    <loc>https://meadgreenautos.com/services/corporate-services</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

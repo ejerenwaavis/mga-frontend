@@ -63,7 +63,7 @@ export default function ServiceLandingPage() {
             <h1 className="font-serif text-white text-4xl md:text-5xl lg:text-5xl font-semibold leading-tight mb-6">
               {service.title}
             </h1>
-            <p className="text-white/80 text-lg leading-relaxed mb-12 max-w-xl">
+            <p className="text-white/80 text-base leading-relaxed mb-12 max-w-xl">
               {service.description}
             </p>
 
