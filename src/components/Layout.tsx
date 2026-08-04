@@ -230,7 +230,7 @@ function Navbar() {
                   <Link
                     to={link.to}
                     onClick={() => setOpen(false)}
-                    className={`flex-1 rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest transition-colors hover:bg-muted ${location.pathname === link.to ? "text-foreground font-bold" : "text-foreground"
+                    className={`flex-1 rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest transition-colors hover:bg-muted/20 ${location.pathname === link.to ? "text-white font-bold" : "text-white/80"
                       }`}
                   >
                     {link.label}
@@ -238,7 +238,7 @@ function Navbar() {
                   {link.children && (
                     <button
                       onClick={() => setExpandedMobile(expandedMobile === link.to ? null : link.to)}
-                      className="px-3 py-2.5 text-foreground"
+                      className="px-3 py-2.5 text-white/80"
                     >
                       <ChevronDown className={`h-3 w-3 transition-transform ${expandedMobile === link.to ? "rotate-180" : ""}`} />
                     </button>
@@ -251,7 +251,7 @@ function Navbar() {
                         key={child.to}
                         to={child.to}
                         onClick={() => setOpen(false)}
-                        className="rounded-sm px-3 py-2 text-[10px] font-sans font-semibold uppercase tracking-widest text-foreground transition-colors hover:bg-muted hover:text-foreground"
+                        className="rounded-sm px-3 py-2 text-[10px] font-sans font-semibold uppercase tracking-widest text-white/70 transition-colors hover:bg-muted/20 hover:text-white"
                       >
                         {child.label}
                       </Link>
@@ -260,7 +260,7 @@ function Navbar() {
                 )}
               </div>
             ))}
-            <Link to={isAuthenticated ? "/dashboard" : "/login"} onClick={() => setOpen(false)} className="rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest text-foreground hover:bg-muted transition-colors">
+            <Link to={isAuthenticated ? "/dashboard" : "/login"} onClick={() => setOpen(false)} className="rounded-sm px-3 py-2.5 text-xs font-sans font-medium uppercase tracking-widest text-white hover:bg-muted/20 transition-colors">
               {isAuthenticated ? "Dashboard" : "Login"}
             </Link>
           </nav>
