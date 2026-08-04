@@ -1,0 +1,1868 @@
+{
+  "/vehicles/about-hero-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\about-hero-image.jpeg",
+    "fileName": "about-hero-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287204/mga/vehicles/about-hero-image.jpg"
+  },
+  "/vehicles/about-hero-image.webp": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\about-hero-image.webp",
+    "fileName": "about-hero-image.webp",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287205/mga/vehicles/about-hero-image.webp"
+  },
+  "/vehicles/areoplane.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\areoplane.jpg",
+    "fileName": "areoplane.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287206/mga/vehicles/areoplane.jpg"
+  },
+  "/vehicles/areoplane.webp": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\areoplane.webp",
+    "fileName": "areoplane.webp",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287207/mga/vehicles/areoplane.webp"
+  },
+  "/vehicles/audi-a6-2024.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\audi-a6-2024.jpg",
+    "fileName": "audi-a6-2024.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287207/mga/vehicles/audi-a6-2024.jpg"
+  },
+  "/vehicles/benz-glc-2022-interior-cabin.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\benz-glc-2022-interior-cabin.jpg",
+    "fileName": "benz-glc-2022-interior-cabin.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287208/mga/vehicles/benz-glc-2022-interior-cabin.jpg"
+  },
+  "/vehicles/benz-glc-2022-interior-dashboard.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\benz-glc-2022-interior-dashboard.jpg",
+    "fileName": "benz-glc-2022-interior-dashboard.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287209/mga/vehicles/benz-glc-2022-interior-dashboard.jpg"
+  },
+  "/vehicles/benz-glc-2022-rear-exterior.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\benz-glc-2022-rear-exterior.jpg",
+    "fileName": "benz-glc-2022-rear-exterior.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287209/mga/vehicles/benz-glc-2022-rear-exterior.jpg"
+  },
+  "/vehicles/benz-glc-2022-rear-seats.jpg.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\benz-glc-2022-rear-seats.jpg.jpg",
+    "fileName": "benz-glc-2022-rear-seats.jpg.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287210/mga/vehicles/benz-glc-2022-rear-seats.jpg.jpg"
+  },
+  "/vehicles/benz-glc-2022-side-exterior.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\benz-glc-2022-side-exterior.jpg",
+    "fileName": "benz-glc-2022-side-exterior.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287211/mga/vehicles/benz-glc-2022-side-exterior.jpg"
+  },
+  "/vehicles/benz-glc-2024-cabin.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\benz-glc-2024-cabin.jpg",
+    "fileName": "benz-glc-2024-cabin.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287212/mga/vehicles/benz-glc-2024-cabin.jpg"
+  },
+  "/vehicles/benz-glc-2024-dashboard.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\benz-glc-2024-dashboard.jpg",
+    "fileName": "benz-glc-2024-dashboard.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287213/mga/vehicles/benz-glc-2024-dashboard.jpg"
+  },
+  "/vehicles/benz-glc-2024-ext-rear.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\benz-glc-2024-ext-rear.jpg",
+    "fileName": "benz-glc-2024-ext-rear.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287213/mga/vehicles/benz-glc-2024-ext-rear.jpg"
+  },
+  "/vehicles/benz-glc-2024-ext-side.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\benz-glc-2024-ext-side.jpg",
+    "fileName": "benz-glc-2024-ext-side.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287215/mga/vehicles/benz-glc-2024-ext-side.jpg"
+  },
+  "/vehicles/benz-glc-2024-rear-seat.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\benz-glc-2024-rear-seat.jpg",
+    "fileName": "benz-glc-2024-rear-seat.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287216/mga/vehicles/benz-glc-2024-rear-seat.jpg"
+  },
+  "/vehicles/bmw-3-series-2023-dashboard.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-3-series-2023-dashboard.jpg",
+    "fileName": "bmw-3-series-2023-dashboard.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287217/mga/vehicles/bmw-3-series-2023-dashboard.jpg"
+  },
+  "/vehicles/bmw-3-series-2023-ext-rear.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-3-series-2023-ext-rear.jpg",
+    "fileName": "bmw-3-series-2023-ext-rear.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287218/mga/vehicles/bmw-3-series-2023-ext-rear.jpg"
+  },
+  "/vehicles/bmw-3-series-2023-ext-side.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-3-series-2023-ext-side.jpg",
+    "fileName": "bmw-3-series-2023-ext-side.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287218/mga/vehicles/bmw-3-series-2023-ext-side.jpg"
+  },
+  "/vehicles/bmw-3-series-2023-int-cabin.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-3-series-2023-int-cabin.jpg",
+    "fileName": "bmw-3-series-2023-int-cabin.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287219/mga/vehicles/bmw-3-series-2023-int-cabin.jpg"
+  },
+  "/vehicles/bmw-3-series-2023-rear-seat.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-3-series-2023-rear-seat.jpg",
+    "fileName": "bmw-3-series-2023-rear-seat.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287220/mga/vehicles/bmw-3-series-2023-rear-seat.jpg"
+  },
+  "/vehicles/bmw-330i-2023-close-up-front-view.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-330i-2023-close-up-front-view.jpeg",
+    "fileName": "bmw-330i-2023-close-up-front-view.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287220/mga/vehicles/bmw-330i-2023-close-up-front-view.jpg"
+  },
+  "/vehicles/bmw-330i-2023-close-up-wheel-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-330i-2023-close-up-wheel-image.jpeg",
+    "fileName": "bmw-330i-2023-close-up-wheel-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287221/mga/vehicles/bmw-330i-2023-close-up-wheel-image.jpg"
+  },
+  "/vehicles/bmw-330i-2023-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-330i-2023-close-up-wheel-image.jpg",
+    "fileName": "bmw-330i-2023-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287222/mga/vehicles/bmw-330i-2023-close-up-wheel-image.jpg"
+  },
+  "/vehicles/bmw-330i-2023-cover-image.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-330i-2023-cover-image.png",
+    "fileName": "bmw-330i-2023-cover-image.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287223/mga/vehicles/bmw-330i-2023-cover-image.png"
+  },
+  "/vehicles/bmw-330i-2023-dash-board-interior-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-330i-2023-dash-board-interior-image.jpeg",
+    "fileName": "bmw-330i-2023-dash-board-interior-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287224/mga/vehicles/bmw-330i-2023-dash-board-interior-image.jpg"
+  },
+  "/vehicles/bmw-330i-2023-dash-board-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-330i-2023-dash-board-interior-image.jpg",
+    "fileName": "bmw-330i-2023-dash-board-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287224/mga/vehicles/bmw-330i-2023-dash-board-interior-image.jpg"
+  },
+  "/vehicles/bmw-330i-2023-front-view.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-330i-2023-front-view.jpeg",
+    "fileName": "bmw-330i-2023-front-view.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287225/mga/vehicles/bmw-330i-2023-front-view.jpg"
+  },
+  "/vehicles/bmw-330i-2023-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-330i-2023-front-view.jpg",
+    "fileName": "bmw-330i-2023-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287226/mga/vehicles/bmw-330i-2023-front-view.jpg"
+  },
+  "/vehicles/bmw-330i-2023-rear-view.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-330i-2023-rear-view.jpeg",
+    "fileName": "bmw-330i-2023-rear-view.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287226/mga/vehicles/bmw-330i-2023-rear-view.jpg"
+  },
+  "/vehicles/bmw-330i-2023-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-330i-2023-rear-view.jpg",
+    "fileName": "bmw-330i-2023-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287227/mga/vehicles/bmw-330i-2023-rear-view.jpg"
+  },
+  "/vehicles/bmw-330i-2023-seats-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-330i-2023-seats-image.jpeg",
+    "fileName": "bmw-330i-2023-seats-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287228/mga/vehicles/bmw-330i-2023-seats-image.jpg"
+  },
+  "/vehicles/bmw-330i-2023-seats-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-330i-2023-seats-image.jpg",
+    "fileName": "bmw-330i-2023-seats-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287229/mga/vehicles/bmw-330i-2023-seats-image.jpg"
+  },
+  "/vehicles/bmw-330i-2023-side-view.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-330i-2023-side-view.jpeg",
+    "fileName": "bmw-330i-2023-side-view.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287229/mga/vehicles/bmw-330i-2023-side-view.jpg"
+  },
+  "/vehicles/bmw-7-series-2024.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-7-series-2024.jpg",
+    "fileName": "bmw-7-series-2024.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287230/mga/vehicles/bmw-7-series-2024.jpg"
+  },
+  "/vehicles/bmw-x5-2024.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-x5-2024.jpg",
+    "fileName": "bmw-x5-2024.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287230/mga/vehicles/bmw-x5-2024.jpg"
+  },
+  "/vehicles/BMW-X6-2022-interior-cabin.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\BMW-X6-2022-interior-cabin.jpg",
+    "fileName": "BMW-X6-2022-interior-cabin.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287231/mga/vehicles/BMW-X6-2022-interior-cabin.jpg"
+  },
+  "/vehicles/BMW-X6-2022-interior-dashboard.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\BMW-X6-2022-interior-dashboard.jpg",
+    "fileName": "BMW-X6-2022-interior-dashboard.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287233/mga/vehicles/BMW-X6-2022-interior-dashboard.jpg"
+  },
+  "/vehicles/BMW-X6-2022-interior-rear-seat.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\BMW-X6-2022-interior-rear-seat.jpg",
+    "fileName": "BMW-X6-2022-interior-rear-seat.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287233/mga/vehicles/BMW-X6-2022-interior-rear-seat.jpg"
+  },
+  "/vehicles/BMW-X6-2022-rear-exterior.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\BMW-X6-2022-rear-exterior.jpg",
+    "fileName": "BMW-X6-2022-rear-exterior.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287234/mga/vehicles/BMW-X6-2022-rear-exterior.jpg"
+  },
+  "/vehicles/BMW-X6-2022-side-exterior.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\BMW-X6-2022-side-exterior.jpg",
+    "fileName": "BMW-X6-2022-side-exterior.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287235/mga/vehicles/BMW-X6-2022-side-exterior.jpg"
+  },
+  "/vehicles/bmw-x6-xdrive40i-2022-close-up-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-x6-xdrive40i-2022-close-up-rear-view.jpg",
+    "fileName": "bmw-x6-xdrive40i-2022-close-up-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287236/mga/vehicles/bmw-x6-xdrive40i-2022-close-up-rear-view.jpg"
+  },
+  "/vehicles/bmw-x6-xdrive40i-2022-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-x6-xdrive40i-2022-close-up-wheel-image.jpg",
+    "fileName": "bmw-x6-xdrive40i-2022-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287237/mga/vehicles/bmw-x6-xdrive40i-2022-close-up-wheel-image.jpg"
+  },
+  "/vehicles/bmw-x6-xdrive40i-2022-cover-image.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-x6-xdrive40i-2022-cover-image.png",
+    "fileName": "bmw-x6-xdrive40i-2022-cover-image.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287238/mga/vehicles/bmw-x6-xdrive40i-2022-cover-image.png"
+  },
+  "/vehicles/bmw-x6-xdrive40i-2022-dash-board-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-x6-xdrive40i-2022-dash-board-interior-image.jpg",
+    "fileName": "bmw-x6-xdrive40i-2022-dash-board-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287239/mga/vehicles/bmw-x6-xdrive40i-2022-dash-board-interior-image.jpg"
+  },
+  "/vehicles/bmw-x6-xdrive40i-2022-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-x6-xdrive40i-2022-front-view.jpg",
+    "fileName": "bmw-x6-xdrive40i-2022-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287240/mga/vehicles/bmw-x6-xdrive40i-2022-front-view.jpg"
+  },
+  "/vehicles/bmw-x6-xdrive40i-2022-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-x6-xdrive40i-2022-rear-view.jpg",
+    "fileName": "bmw-x6-xdrive40i-2022-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287241/mga/vehicles/bmw-x6-xdrive40i-2022-rear-view.jpg"
+  },
+  "/vehicles/bmw-x6-xdrive40i-2022-seats-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-x6-xdrive40i-2022-seats-image.jpg",
+    "fileName": "bmw-x6-xdrive40i-2022-seats-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287241/mga/vehicles/bmw-x6-xdrive40i-2022-seats-image.jpg"
+  },
+  "/vehicles/bmw-x6-xdrive40i-2022-side-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\bmw-x6-xdrive40i-2022-side-view.jpg",
+    "fileName": "bmw-x6-xdrive40i-2022-side-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287242/mga/vehicles/bmw-x6-xdrive40i-2022-side-view.jpg"
+  },
+  "/vehicles/cadillac-escalade-2024.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\cadillac-escalade-2024.jpg",
+    "fileName": "cadillac-escalade-2024.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287242/mga/vehicles/cadillac-escalade-2024.jpg"
+  },
+  "/vehicles/Chevrolet-Corvette-cabin.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\Chevrolet-Corvette-cabin.jpeg",
+    "fileName": "Chevrolet-Corvette-cabin.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287243/mga/vehicles/Chevrolet-Corvette-cabin.jpg"
+  },
+  "/vehicles/Chevrolet-Corvette-rear-ext.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\Chevrolet-Corvette-rear-ext.jpeg",
+    "fileName": "Chevrolet-Corvette-rear-ext.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287243/mga/vehicles/Chevrolet-Corvette-rear-ext.jpg"
+  },
+  "/vehicles/Chevrolet-Corvette-seats.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\Chevrolet-Corvette-seats.jpeg",
+    "fileName": "Chevrolet-Corvette-seats.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287244/mga/vehicles/Chevrolet-Corvette-seats.jpg"
+  },
+  "/vehicles/Chevrolet-Corvette-side-ext.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\Chevrolet-Corvette-side-ext.jpeg",
+    "fileName": "Chevrolet-Corvette-side-ext.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287245/mga/vehicles/Chevrolet-Corvette-side-ext.jpg"
+  },
+  "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-close-up-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\chevrolet-corvette-stringray-2lt-convertible-2023-close-up-front-view.jpg",
+    "fileName": "chevrolet-corvette-stringray-2lt-convertible-2023-close-up-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287245/mga/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-close-up-front-view.jpg"
+  },
+  "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\chevrolet-corvette-stringray-2lt-convertible-2023-close-up-wheel-image.jpg",
+    "fileName": "chevrolet-corvette-stringray-2lt-convertible-2023-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287246/mga/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-close-up-wheel-image.jpg"
+  },
+  "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-cover-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\chevrolet-corvette-stringray-2lt-convertible-2023-cover-image.jpeg",
+    "fileName": "chevrolet-corvette-stringray-2lt-convertible-2023-cover-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287247/mga/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-cover-image.jpg"
+  },
+  "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-dash-board-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\chevrolet-corvette-stringray-2lt-convertible-2023-dash-board-interior-image.jpg",
+    "fileName": "chevrolet-corvette-stringray-2lt-convertible-2023-dash-board-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287247/mga/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-dash-board-interior-image.jpg"
+  },
+  "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\chevrolet-corvette-stringray-2lt-convertible-2023-front-view.jpg",
+    "fileName": "chevrolet-corvette-stringray-2lt-convertible-2023-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287248/mga/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-front-view.jpg"
+  },
+  "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-front-view.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\chevrolet-corvette-stringray-2lt-convertible-2023-front-view.png",
+    "fileName": "chevrolet-corvette-stringray-2lt-convertible-2023-front-view.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287250/mga/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-front-view.png"
+  },
+  "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-rear-view.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\chevrolet-corvette-stringray-2lt-convertible-2023-rear-view.jpeg",
+    "fileName": "chevrolet-corvette-stringray-2lt-convertible-2023-rear-view.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287250/mga/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-rear-view.jpg"
+  },
+  "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\chevrolet-corvette-stringray-2lt-convertible-2023-rear-view.jpg",
+    "fileName": "chevrolet-corvette-stringray-2lt-convertible-2023-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287251/mga/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-rear-view.jpg"
+  },
+  "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-seats-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\chevrolet-corvette-stringray-2lt-convertible-2023-seats-image.jpg",
+    "fileName": "chevrolet-corvette-stringray-2lt-convertible-2023-seats-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287252/mga/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-seats-image.jpg"
+  },
+  "/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-side-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\chevrolet-corvette-stringray-2lt-convertible-2023-side-view.jpg",
+    "fileName": "chevrolet-corvette-stringray-2lt-convertible-2023-side-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287252/mga/vehicles/chevrolet-corvette-stringray-2lt-convertible-2023-side-view.jpg"
+  },
+  "/vehicles/chevrolet-corvette-stringray-2lt-convertible-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\chevrolet-corvette-stringray-2lt-convertible-close-up-wheel-image.jpg",
+    "fileName": "chevrolet-corvette-stringray-2lt-convertible-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287253/mga/vehicles/chevrolet-corvette-stringray-2lt-convertible-close-up-wheel-image.jpg"
+  },
+  "/vehicles/chevrolet-tahoe-2024.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\chevrolet-tahoe-2024.jpg",
+    "fileName": "chevrolet-tahoe-2024.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287254/mga/vehicles/chevrolet-tahoe-2024.jpg"
+  },
+  "/vehicles/ChevroletCorvette-dashboard.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ChevroletCorvette-dashboard.png",
+    "fileName": "ChevroletCorvette-dashboard.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287255/mga/vehicles/ChevroletCorvette-dashboard.png"
+  },
+  "/vehicles/contact-hero-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\contact-hero-image.jpg",
+    "fileName": "contact-hero-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287255/mga/vehicles/contact-hero-image.jpg"
+  },
+  "/vehicles/contact-hero-image.webp": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\contact-hero-image.webp",
+    "fileName": "contact-hero-image.webp",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287256/mga/vehicles/contact-hero-image.webp"
+  },
+  "/vehicles/corporate-services-cover-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\corporate-services-cover-image.jpeg",
+    "fileName": "corporate-services-cover-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287257/mga/vehicles/corporate-services-cover-image.jpg"
+  },
+  "/vehicles/corporate-services-cover-image.webp": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\corporate-services-cover-image.webp",
+    "fileName": "corporate-services-cover-image.webp",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287258/mga/vehicles/corporate-services-cover-image.webp"
+  },
+  "/vehicles/COVER-IMAGE-Chevrolet-Corvette.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\COVER-IMAGE-Chevrolet-Corvette.jpeg",
+    "fileName": "COVER-IMAGE-Chevrolet-Corvette.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287258/mga/vehicles/COVER-IMAGE-Chevrolet-Corvette.jpg"
+  },
+  "/vehicles/COVER-IMAGE-Porsche-Cayenne-2023.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\COVER-IMAGE-Porsche-Cayenne-2023.png",
+    "fileName": "COVER-IMAGE-Porsche-Cayenne-2023.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287260/mga/vehicles/COVER-IMAGE-Porsche-Cayenne-2023.png"
+  },
+  "/vehicles/COVER-IMAGE-Porsche-Mecan-2025.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\COVER-IMAGE-Porsche-Mecan-2025.png",
+    "fileName": "COVER-IMAGE-Porsche-Mecan-2025.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287261/mga/vehicles/COVER-IMAGE-Porsche-Mecan-2025.png"
+  },
+  "/vehicles/COVER-IMAGE-TURO -2024-MERCEDES-BENZ-GLC-300-SUV.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\COVER-IMAGE-TURO -2024-MERCEDES-BENZ-GLC-300-SUV.png",
+    "fileName": "COVER-IMAGE-TURO -2024-MERCEDES-BENZ-GLC-300-SUV.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287262/mga/vehicles/COVER-IMAGE-TURO%20-2024-MERCEDES-BENZ-GLC-300-SUV.png"
+  },
+  "/vehicles/COVER-IMAGE-TURO-2022-BMW-X6.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\COVER-IMAGE-TURO-2022-BMW-X6.png",
+    "fileName": "COVER-IMAGE-TURO-2022-BMW-X6.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287264/mga/vehicles/COVER-IMAGE-TURO-2022-BMW-X6.png"
+  },
+  "/vehicles/COVER-IMAGE-TURO-2022-KIA-TELLURIDE.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\COVER-IMAGE-TURO-2022-KIA-TELLURIDE.png",
+    "fileName": "COVER-IMAGE-TURO-2022-KIA-TELLURIDE.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287265/mga/vehicles/COVER-IMAGE-TURO-2022-KIA-TELLURIDE.png"
+  },
+  "/vehicles/COVER-IMAGE-TURO-2022-MERCEDES-BENZ-GLC-300-SUV-COUPE.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\COVER-IMAGE-TURO-2022-MERCEDES-BENZ-GLC-300-SUV-COUPE.png",
+    "fileName": "COVER-IMAGE-TURO-2022-MERCEDES-BENZ-GLC-300-SUV-COUPE.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287266/mga/vehicles/COVER-IMAGE-TURO-2022-MERCEDES-BENZ-GLC-300-SUV-COUPE.png"
+  },
+  "/vehicles/COVER-IMAGE-TURO-2023-BMW-3-SERIES-330I.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\COVER-IMAGE-TURO-2023-BMW-3-SERIES-330I.png",
+    "fileName": "COVER-IMAGE-TURO-2023-BMW-3-SERIES-330I.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287268/mga/vehicles/COVER-IMAGE-TURO-2023-BMW-3-SERIES-330I.png"
+  },
+  "/vehicles/COVER-IMAGE-TURO-2023-FORD-EXPLORER.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\COVER-IMAGE-TURO-2023-FORD-EXPLORER.png",
+    "fileName": "COVER-IMAGE-TURO-2023-FORD-EXPLORER.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287269/mga/vehicles/COVER-IMAGE-TURO-2023-FORD-EXPLORER.png"
+  },
+  "/vehicles/COVER-IMAGE-TURO-2023-PORSCHE-MACAN.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\COVER-IMAGE-TURO-2023-PORSCHE-MACAN.png",
+    "fileName": "COVER-IMAGE-TURO-2023-PORSCHE-MACAN.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287270/mga/vehicles/COVER-IMAGE-TURO-2023-PORSCHE-MACAN.png"
+  },
+  "/vehicles/COVER-IMAGE-TURO-2024-FORD-BRONCO-SPORT.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\COVER-IMAGE-TURO-2024-FORD-BRONCO-SPORT.png",
+    "fileName": "COVER-IMAGE-TURO-2024-FORD-BRONCO-SPORT.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287272/mga/vehicles/COVER-IMAGE-TURO-2024-FORD-BRONCO-SPORT.png"
+  },
+  "/vehicles/COVER-IMAGE-TURO-2024-KIA-K4.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\COVER-IMAGE-TURO-2024-KIA-K4.png",
+    "fileName": "COVER-IMAGE-TURO-2024-KIA-K4.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287273/mga/vehicles/COVER-IMAGE-TURO-2024-KIA-K4.png"
+  },
+  "/vehicles/COVER-IMAGE-TURO-2025-KIA-SORENTO.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\COVER-IMAGE-TURO-2025-KIA-SORENTO.png",
+    "fileName": "COVER-IMAGE-TURO-2025-KIA-SORENTO.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287275/mga/vehicles/COVER-IMAGE-TURO-2025-KIA-SORENTO.png"
+  },
+  "/vehicles/COVER-IMAGE-TURO-2025-MERCEDES-BENZ-GLC-300-SUV-COUPE.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\COVER-IMAGE-TURO-2025-MERCEDES-BENZ-GLC-300-SUV-COUPE.png",
+    "fileName": "COVER-IMAGE-TURO-2025-MERCEDES-BENZ-GLC-300-SUV-COUPE.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287276/mga/vehicles/COVER-IMAGE-TURO-2025-MERCEDES-BENZ-GLC-300-SUV-COUPE.png"
+  },
+  "/vehicles/custom-delivery-cover-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\custom-delivery-cover-image.jpeg",
+    "fileName": "custom-delivery-cover-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287277/mga/vehicles/custom-delivery-cover-image.jpg"
+  },
+  "/vehicles/custom-delivery-cover-image.webp": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\custom-delivery-cover-image.webp",
+    "fileName": "custom-delivery-cover-image.webp",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287277/mga/vehicles/custom-delivery-cover-image.webp"
+  },
+  "/vehicles/fleet-hero-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\fleet-hero-image.jpg",
+    "fileName": "fleet-hero-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287278/mga/vehicles/fleet-hero-image.jpg"
+  },
+  "/vehicles/fleet-hero-image.webp": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\fleet-hero-image.webp",
+    "fileName": "fleet-hero-image.webp",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287279/mga/vehicles/fleet-hero-image.webp"
+  },
+  "/vehicles/ford-bronco-2024-dashboard.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-bronco-2024-dashboard.jpg",
+    "fileName": "ford-bronco-2024-dashboard.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287279/mga/vehicles/ford-bronco-2024-dashboard.jpg"
+  },
+  "/vehicles/ford-bronco-2024-ext-rear.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-bronco-2024-ext-rear.jpg",
+    "fileName": "ford-bronco-2024-ext-rear.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287280/mga/vehicles/ford-bronco-2024-ext-rear.jpg"
+  },
+  "/vehicles/ford-bronco-2024-ext-sde.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-bronco-2024-ext-sde.jpg",
+    "fileName": "ford-bronco-2024-ext-sde.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287281/mga/vehicles/ford-bronco-2024-ext-sde.jpg"
+  },
+  "/vehicles/ford-bronco-2024-int-cabin.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-bronco-2024-int-cabin.jpg",
+    "fileName": "ford-bronco-2024-int-cabin.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287282/mga/vehicles/ford-bronco-2024-int-cabin.jpg"
+  },
+  "/vehicles/ford-bronco-2024-rear-seat.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-bronco-2024-rear-seat.jpg",
+    "fileName": "ford-bronco-2024-rear-seat.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287284/mga/vehicles/ford-bronco-2024-rear-seat.jpg"
+  },
+  "/vehicles/ford-bronco-sport-outer-banks-2024-close-up-front-view.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-bronco-sport-outer-banks-2024-close-up-front-view.jpeg",
+    "fileName": "ford-bronco-sport-outer-banks-2024-close-up-front-view.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287284/mga/vehicles/ford-bronco-sport-outer-banks-2024-close-up-front-view.jpg"
+  },
+  "/vehicles/ford-bronco-sport-outer-banks-2024-close-up-wheel-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-bronco-sport-outer-banks-2024-close-up-wheel-image.jpeg",
+    "fileName": "ford-bronco-sport-outer-banks-2024-close-up-wheel-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287285/mga/vehicles/ford-bronco-sport-outer-banks-2024-close-up-wheel-image.jpg"
+  },
+  "/vehicles/ford-bronco-sport-outer-banks-2024-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-bronco-sport-outer-banks-2024-close-up-wheel-image.jpg",
+    "fileName": "ford-bronco-sport-outer-banks-2024-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287285/mga/vehicles/ford-bronco-sport-outer-banks-2024-close-up-wheel-image.jpg"
+  },
+  "/vehicles/ford-bronco-sport-outer-banks-2024-cover-image.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-bronco-sport-outer-banks-2024-cover-image.png",
+    "fileName": "ford-bronco-sport-outer-banks-2024-cover-image.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287287/mga/vehicles/ford-bronco-sport-outer-banks-2024-cover-image.png"
+  },
+  "/vehicles/ford-bronco-sport-outer-banks-2024-dash-board-interior-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-bronco-sport-outer-banks-2024-dash-board-interior-image.jpeg",
+    "fileName": "ford-bronco-sport-outer-banks-2024-dash-board-interior-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287288/mga/vehicles/ford-bronco-sport-outer-banks-2024-dash-board-interior-image.jpg"
+  },
+  "/vehicles/ford-bronco-sport-outer-banks-2024-dash-board-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-bronco-sport-outer-banks-2024-dash-board-interior-image.jpg",
+    "fileName": "ford-bronco-sport-outer-banks-2024-dash-board-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287288/mga/vehicles/ford-bronco-sport-outer-banks-2024-dash-board-interior-image.jpg"
+  },
+  "/vehicles/ford-bronco-sport-outer-banks-2024-front-view.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-bronco-sport-outer-banks-2024-front-view.jpeg",
+    "fileName": "ford-bronco-sport-outer-banks-2024-front-view.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287289/mga/vehicles/ford-bronco-sport-outer-banks-2024-front-view.jpg"
+  },
+  "/vehicles/ford-bronco-sport-outer-banks-2024-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-bronco-sport-outer-banks-2024-front-view.jpg",
+    "fileName": "ford-bronco-sport-outer-banks-2024-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287289/mga/vehicles/ford-bronco-sport-outer-banks-2024-front-view.jpg"
+  },
+  "/vehicles/ford-bronco-sport-outer-banks-2024-rear-view.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-bronco-sport-outer-banks-2024-rear-view.jpeg",
+    "fileName": "ford-bronco-sport-outer-banks-2024-rear-view.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287290/mga/vehicles/ford-bronco-sport-outer-banks-2024-rear-view.jpg"
+  },
+  "/vehicles/ford-bronco-sport-outer-banks-2024-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-bronco-sport-outer-banks-2024-rear-view.jpg",
+    "fileName": "ford-bronco-sport-outer-banks-2024-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287290/mga/vehicles/ford-bronco-sport-outer-banks-2024-rear-view.jpg"
+  },
+  "/vehicles/ford-bronco-sport-outer-banks-2024-seats-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-bronco-sport-outer-banks-2024-seats-image.jpeg",
+    "fileName": "ford-bronco-sport-outer-banks-2024-seats-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287291/mga/vehicles/ford-bronco-sport-outer-banks-2024-seats-image.jpg"
+  },
+  "/vehicles/ford-bronco-sport-outer-banks-2024-seats-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-bronco-sport-outer-banks-2024-seats-image.jpg",
+    "fileName": "ford-bronco-sport-outer-banks-2024-seats-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287291/mga/vehicles/ford-bronco-sport-outer-banks-2024-seats-image.jpg"
+  },
+  "/vehicles/ford-bronco-sport-outer-banks-2024-side-view.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-bronco-sport-outer-banks-2024-side-view.jpeg",
+    "fileName": "ford-bronco-sport-outer-banks-2024-side-view.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287292/mga/vehicles/ford-bronco-sport-outer-banks-2024-side-view.jpg"
+  },
+  "/vehicles/ford-explorer-2023-dashboard.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-explorer-2023-dashboard.jpg",
+    "fileName": "ford-explorer-2023-dashboard.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287293/mga/vehicles/ford-explorer-2023-dashboard.jpg"
+  },
+  "/vehicles/ford-explorer-2023-ext-rear.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-explorer-2023-ext-rear.jpg",
+    "fileName": "ford-explorer-2023-ext-rear.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287293/mga/vehicles/ford-explorer-2023-ext-rear.jpg"
+  },
+  "/vehicles/ford-explorer-2023-ext-side.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-explorer-2023-ext-side.jpg",
+    "fileName": "ford-explorer-2023-ext-side.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287294/mga/vehicles/ford-explorer-2023-ext-side.jpg"
+  },
+  "/vehicles/ford-explorer-2023-int-cabin.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-explorer-2023-int-cabin.jpg",
+    "fileName": "ford-explorer-2023-int-cabin.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287294/mga/vehicles/ford-explorer-2023-int-cabin.jpg"
+  },
+  "/vehicles/ford-explorer-2023-rear-seats.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-explorer-2023-rear-seats.jpg",
+    "fileName": "ford-explorer-2023-rear-seats.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287295/mga/vehicles/ford-explorer-2023-rear-seats.jpg"
+  },
+  "/vehicles/ford-explorer-xlt-2023-close-up-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-explorer-xlt-2023-close-up-front-view.jpg",
+    "fileName": "ford-explorer-xlt-2023-close-up-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287296/mga/vehicles/ford-explorer-xlt-2023-close-up-front-view.jpg"
+  },
+  "/vehicles/ford-explorer-xlt-2023-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-explorer-xlt-2023-close-up-wheel-image.jpg",
+    "fileName": "ford-explorer-xlt-2023-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287296/mga/vehicles/ford-explorer-xlt-2023-close-up-wheel-image.jpg"
+  },
+  "/vehicles/ford-explorer-xlt-2023-cover-image.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-explorer-xlt-2023-cover-image.png",
+    "fileName": "ford-explorer-xlt-2023-cover-image.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287297/mga/vehicles/ford-explorer-xlt-2023-cover-image.png"
+  },
+  "/vehicles/ford-explorer-xlt-2023-dash-board-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-explorer-xlt-2023-dash-board-interior-image.jpg",
+    "fileName": "ford-explorer-xlt-2023-dash-board-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287298/mga/vehicles/ford-explorer-xlt-2023-dash-board-interior-image.jpg"
+  },
+  "/vehicles/ford-explorer-xlt-2023-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-explorer-xlt-2023-front-view.jpg",
+    "fileName": "ford-explorer-xlt-2023-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287299/mga/vehicles/ford-explorer-xlt-2023-front-view.jpg"
+  },
+  "/vehicles/ford-explorer-xlt-2023-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-explorer-xlt-2023-rear-view.jpg",
+    "fileName": "ford-explorer-xlt-2023-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287300/mga/vehicles/ford-explorer-xlt-2023-rear-view.jpg"
+  },
+  "/vehicles/ford-explorer-xlt-2023-seats-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-explorer-xlt-2023-seats-image.jpg",
+    "fileName": "ford-explorer-xlt-2023-seats-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287300/mga/vehicles/ford-explorer-xlt-2023-seats-image.jpg"
+  },
+  "/vehicles/ford-explorer-xlt-2023-side-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\ford-explorer-xlt-2023-side-view.jpg",
+    "fileName": "ford-explorer-xlt-2023-side-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287301/mga/vehicles/ford-explorer-xlt-2023-side-view.jpg"
+  },
+  "/vehicles/genesis-g80-2024.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\genesis-g80-2024.jpg",
+    "fileName": "genesis-g80-2024.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287302/mga/vehicles/genesis-g80-2024.jpg"
+  },
+  "/vehicles/home-faq-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\home-faq-image.jpg",
+    "fileName": "home-faq-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287303/mga/vehicles/home-faq-image.jpg"
+  },
+  "/vehicles/home-faq-image.webp": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\home-faq-image.webp",
+    "fileName": "home-faq-image.webp",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287304/mga/vehicles/home-faq-image.webp"
+  },
+  "/vehicles/kia-2022-teluride-cabin-interior.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-2022-teluride-cabin-interior.jpg",
+    "fileName": "kia-2022-teluride-cabin-interior.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287305/mga/vehicles/kia-2022-teluride-cabin-interior.jpg"
+  },
+  "/vehicles/kia-2022-teluride-interior-dashboard.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-2022-teluride-interior-dashboard.jpg",
+    "fileName": "kia-2022-teluride-interior-dashboard.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287305/mga/vehicles/kia-2022-teluride-interior-dashboard.jpg"
+  },
+  "/vehicles/kia-2022-teluride-read-exterior.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-2022-teluride-read-exterior.jpg",
+    "fileName": "kia-2022-teluride-read-exterior.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287306/mga/vehicles/kia-2022-teluride-read-exterior.jpg"
+  },
+  "/vehicles/kia-2022-teluride-rear-seat-interior.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-2022-teluride-rear-seat-interior.jpg",
+    "fileName": "kia-2022-teluride-rear-seat-interior.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287307/mga/vehicles/kia-2022-teluride-rear-seat-interior.jpg"
+  },
+  "/vehicles/kia-2022-teluride-side-exterior.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-2022-teluride-side-exterior.jpg",
+    "fileName": "kia-2022-teluride-side-exterior.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287308/mga/vehicles/kia-2022-teluride-side-exterior.jpg"
+  },
+  "/vehicles/kia-gt-line-2025-close-up-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-gt-line-2025-close-up-front-view.jpg",
+    "fileName": "kia-gt-line-2025-close-up-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287309/mga/vehicles/kia-gt-line-2025-close-up-front-view.jpg"
+  },
+  "/vehicles/kia-gt-line-2025-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-gt-line-2025-close-up-wheel-image.jpg",
+    "fileName": "kia-gt-line-2025-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287309/mga/vehicles/kia-gt-line-2025-close-up-wheel-image.jpg"
+  },
+  "/vehicles/kia-gt-line-2025-closeup-wheel-im.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-gt-line-2025-closeup-wheel-im.jpg",
+    "fileName": "kia-gt-line-2025-closeup-wheel-im.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287310/mga/vehicles/kia-gt-line-2025-closeup-wheel-im.jpg"
+  },
+  "/vehicles/kia-gt-line-2025-cover-image.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-gt-line-2025-cover-image.png",
+    "fileName": "kia-gt-line-2025-cover-image.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287311/mga/vehicles/kia-gt-line-2025-cover-image.png"
+  },
+  "/vehicles/kia-gt-line-2025-dash-board-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-gt-line-2025-dash-board-interior-image.jpg",
+    "fileName": "kia-gt-line-2025-dash-board-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287312/mga/vehicles/kia-gt-line-2025-dash-board-interior-image.jpg"
+  },
+  "/vehicles/kia-gt-line-2025-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-gt-line-2025-front-view.jpg",
+    "fileName": "kia-gt-line-2025-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287312/mga/vehicles/kia-gt-line-2025-front-view.jpg"
+  },
+  "/vehicles/kia-gt-line-2025-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-gt-line-2025-rear-view.jpg",
+    "fileName": "kia-gt-line-2025-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287314/mga/vehicles/kia-gt-line-2025-rear-view.jpg"
+  },
+  "/vehicles/kia-gt-line-2025-seats-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-gt-line-2025-seats-image.jpg",
+    "fileName": "kia-gt-line-2025-seats-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287315/mga/vehicles/kia-gt-line-2025-seats-image.jpg"
+  },
+  "/vehicles/kia-gt-line-2025-side-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-gt-line-2025-side-view.jpg",
+    "fileName": "kia-gt-line-2025-side-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287316/mga/vehicles/kia-gt-line-2025-side-view.jpg"
+  },
+  "/vehicles/kia-k4-2024-cabin.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-k4-2024-cabin.jpg",
+    "fileName": "kia-k4-2024-cabin.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287318/mga/vehicles/kia-k4-2024-cabin.jpg"
+  },
+  "/vehicles/kia-k4-2024-dashboard.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-k4-2024-dashboard.jpg",
+    "fileName": "kia-k4-2024-dashboard.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287318/mga/vehicles/kia-k4-2024-dashboard.jpg"
+  },
+  "/vehicles/kia-k4-2024-ext-rear.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-k4-2024-ext-rear.jpg",
+    "fileName": "kia-k4-2024-ext-rear.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287319/mga/vehicles/kia-k4-2024-ext-rear.jpg"
+  },
+  "/vehicles/kia-k4-2024-ext-side.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-k4-2024-ext-side.jpg",
+    "fileName": "kia-k4-2024-ext-side.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287320/mga/vehicles/kia-k4-2024-ext-side.jpg"
+  },
+  "/vehicles/kia-k4-2024-rear-seat.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-k4-2024-rear-seat.jpg",
+    "fileName": "kia-k4-2024-rear-seat.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287320/mga/vehicles/kia-k4-2024-rear-seat.jpg"
+  },
+  "/vehicles/kia-sorento-2025-cabin.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-sorento-2025-cabin.jpg",
+    "fileName": "kia-sorento-2025-cabin.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287321/mga/vehicles/kia-sorento-2025-cabin.jpg"
+  },
+  "/vehicles/kia-sorento-2025-dashboard.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-sorento-2025-dashboard.jpg",
+    "fileName": "kia-sorento-2025-dashboard.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287322/mga/vehicles/kia-sorento-2025-dashboard.jpg"
+  },
+  "/vehicles/kia-sorento-2025-ext-rear.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-sorento-2025-ext-rear.jpg",
+    "fileName": "kia-sorento-2025-ext-rear.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287323/mga/vehicles/kia-sorento-2025-ext-rear.jpg"
+  },
+  "/vehicles/kia-sorento-2025-ext-side.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-sorento-2025-ext-side.jpg",
+    "fileName": "kia-sorento-2025-ext-side.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287324/mga/vehicles/kia-sorento-2025-ext-side.jpg"
+  },
+  "/vehicles/kia-sorento-2025-rear-seat.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-sorento-2025-rear-seat.jpg",
+    "fileName": "kia-sorento-2025-rear-seat.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287326/mga/vehicles/kia-sorento-2025-rear-seat.jpg"
+  },
+  "/vehicles/kia-sorento-s-2025-close-up-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-sorento-s-2025-close-up-front-view.jpg",
+    "fileName": "kia-sorento-s-2025-close-up-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287326/mga/vehicles/kia-sorento-s-2025-close-up-front-view.jpg"
+  },
+  "/vehicles/kia-sorento-s-2025-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-sorento-s-2025-close-up-wheel-image.jpg",
+    "fileName": "kia-sorento-s-2025-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287327/mga/vehicles/kia-sorento-s-2025-close-up-wheel-image.jpg"
+  },
+  "/vehicles/kia-sorento-s-2025-cover-image.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-sorento-s-2025-cover-image.png",
+    "fileName": "kia-sorento-s-2025-cover-image.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287328/mga/vehicles/kia-sorento-s-2025-cover-image.png"
+  },
+  "/vehicles/kia-sorento-s-2025-dash-board-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-sorento-s-2025-dash-board-interior-image.jpg",
+    "fileName": "kia-sorento-s-2025-dash-board-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287328/mga/vehicles/kia-sorento-s-2025-dash-board-interior-image.jpg"
+  },
+  "/vehicles/kia-sorento-s-2025-dash-board-interior-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-sorento-s-2025-dash-board-interior-view.jpg",
+    "fileName": "kia-sorento-s-2025-dash-board-interior-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287329/mga/vehicles/kia-sorento-s-2025-dash-board-interior-view.jpg"
+  },
+  "/vehicles/kia-sorento-s-2025-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-sorento-s-2025-front-view.jpg",
+    "fileName": "kia-sorento-s-2025-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287330/mga/vehicles/kia-sorento-s-2025-front-view.jpg"
+  },
+  "/vehicles/kia-sorento-s-2025-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-sorento-s-2025-rear-view.jpg",
+    "fileName": "kia-sorento-s-2025-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287330/mga/vehicles/kia-sorento-s-2025-rear-view.jpg"
+  },
+  "/vehicles/kia-sorento-s-2025-seats-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-sorento-s-2025-seats-image.jpg",
+    "fileName": "kia-sorento-s-2025-seats-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287331/mga/vehicles/kia-sorento-s-2025-seats-image.jpg"
+  },
+  "/vehicles/kia-sorento-s-2025-side-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-sorento-s-2025-side-view.jpg",
+    "fileName": "kia-sorento-s-2025-side-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287331/mga/vehicles/kia-sorento-s-2025-side-view.jpg"
+  },
+  "/vehicles/kia-telluride-ex-2022-close-up-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-telluride-ex-2022-close-up-rear-view.jpg",
+    "fileName": "kia-telluride-ex-2022-close-up-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287332/mga/vehicles/kia-telluride-ex-2022-close-up-rear-view.jpg"
+  },
+  "/vehicles/kia-telluride-ex-2022-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-telluride-ex-2022-close-up-wheel-image.jpg",
+    "fileName": "kia-telluride-ex-2022-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287332/mga/vehicles/kia-telluride-ex-2022-close-up-wheel-image.jpg"
+  },
+  "/vehicles/kia-telluride-ex-2022-cover-image.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-telluride-ex-2022-cover-image.png",
+    "fileName": "kia-telluride-ex-2022-cover-image.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287333/mga/vehicles/kia-telluride-ex-2022-cover-image.png"
+  },
+  "/vehicles/kia-telluride-ex-2022-dash-board-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-telluride-ex-2022-dash-board-interior-image.jpg",
+    "fileName": "kia-telluride-ex-2022-dash-board-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287334/mga/vehicles/kia-telluride-ex-2022-dash-board-interior-image.jpg"
+  },
+  "/vehicles/kia-telluride-ex-2022-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-telluride-ex-2022-front-view.jpg",
+    "fileName": "kia-telluride-ex-2022-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287335/mga/vehicles/kia-telluride-ex-2022-front-view.jpg"
+  },
+  "/vehicles/kia-telluride-ex-2022-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-telluride-ex-2022-rear-view.jpg",
+    "fileName": "kia-telluride-ex-2022-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287335/mga/vehicles/kia-telluride-ex-2022-rear-view.jpg"
+  },
+  "/vehicles/kia-telluride-ex-2022-seats-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-telluride-ex-2022-seats-image.jpg",
+    "fileName": "kia-telluride-ex-2022-seats-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287336/mga/vehicles/kia-telluride-ex-2022-seats-image.jpg"
+  },
+  "/vehicles/kia-telluride-ex-2022-side-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\kia-telluride-ex-2022-side-view.jpg",
+    "fileName": "kia-telluride-ex-2022-side-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287337/mga/vehicles/kia-telluride-ex-2022-side-view.jpg"
+  },
+  "/vehicles/land-rover-range-rover-se-p530-2023-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\land-rover-range-rover-se-p530-2023-close-up-wheel-image.jpg",
+    "fileName": "land-rover-range-rover-se-p530-2023-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287338/mga/vehicles/land-rover-range-rover-se-p530-2023-close-up-wheel-image.jpg"
+  },
+  "/vehicles/land-rover-range-rover-se-p530-2023-dash-board-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\land-rover-range-rover-se-p530-2023-dash-board-interior-image.jpg",
+    "fileName": "land-rover-range-rover-se-p530-2023-dash-board-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287338/mga/vehicles/land-rover-range-rover-se-p530-2023-dash-board-interior-image.jpg"
+  },
+  "/vehicles/land-rover-range-rover-se-p530-2023-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\land-rover-range-rover-se-p530-2023-front-view.jpg",
+    "fileName": "land-rover-range-rover-se-p530-2023-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287339/mga/vehicles/land-rover-range-rover-se-p530-2023-front-view.jpg"
+  },
+  "/vehicles/land-rover-range-rover-se-p530-2023-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\land-rover-range-rover-se-p530-2023-rear-view.jpg",
+    "fileName": "land-rover-range-rover-se-p530-2023-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287339/mga/vehicles/land-rover-range-rover-se-p530-2023-rear-view.jpg"
+  },
+  "/vehicles/land-rover-range-rover-se-p530-2023-seats-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\land-rover-range-rover-se-p530-2023-seats-image.jpg",
+    "fileName": "land-rover-range-rover-se-p530-2023-seats-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287340/mga/vehicles/land-rover-range-rover-se-p530-2023-seats-image.jpg"
+  },
+  "/vehicles/lexus-es-2024.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\lexus-es-2024.jpg",
+    "fileName": "lexus-es-2024.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287341/mga/vehicles/lexus-es-2024.jpg"
+  },
+  "/vehicles/mercedes-benz-amg-gle-53-coupe-close-up-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-amg-gle-53-coupe-close-up-front-view.jpg",
+    "fileName": "mercedes-benz-amg-gle-53-coupe-close-up-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287341/mga/vehicles/mercedes-benz-amg-gle-53-coupe-close-up-front-view.jpg"
+  },
+  "/vehicles/mercedes-benz-amg-gle-53-coupe-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-amg-gle-53-coupe-close-up-wheel-image.jpg",
+    "fileName": "mercedes-benz-amg-gle-53-coupe-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287342/mga/vehicles/mercedes-benz-amg-gle-53-coupe-close-up-wheel-image.jpg"
+  },
+  "/vehicles/mercedes-benz-amg-gle-53-coupe-cover-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-amg-gle-53-coupe-cover-image.jpeg",
+    "fileName": "mercedes-benz-amg-gle-53-coupe-cover-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287343/mga/vehicles/mercedes-benz-amg-gle-53-coupe-cover-image.jpg"
+  },
+  "/vehicles/mercedes-benz-amg-gle-53-coupe-dash-board-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-amg-gle-53-coupe-dash-board-interior-image.jpg",
+    "fileName": "mercedes-benz-amg-gle-53-coupe-dash-board-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287344/mga/vehicles/mercedes-benz-amg-gle-53-coupe-dash-board-interior-image.jpg"
+  },
+  "/vehicles/mercedes-benz-amg-gle-53-coupe-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-amg-gle-53-coupe-front-view.jpg",
+    "fileName": "mercedes-benz-amg-gle-53-coupe-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287344/mga/vehicles/mercedes-benz-amg-gle-53-coupe-front-view.jpg"
+  },
+  "/vehicles/mercedes-benz-amg-gle-53-coupe-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-amg-gle-53-coupe-rear-view.jpg",
+    "fileName": "mercedes-benz-amg-gle-53-coupe-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287345/mga/vehicles/mercedes-benz-amg-gle-53-coupe-rear-view.jpg"
+  },
+  "/vehicles/mercedes-benz-amg-gle-53-coupe-seats-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-amg-gle-53-coupe-seats-image.jpg",
+    "fileName": "mercedes-benz-amg-gle-53-coupe-seats-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287346/mga/vehicles/mercedes-benz-amg-gle-53-coupe-seats-image.jpg"
+  },
+  "/vehicles/mercedes-benz-amg-gle-53-coupe-side-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-amg-gle-53-coupe-side-view.jpg",
+    "fileName": "mercedes-benz-amg-gle-53-coupe-side-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287347/mga/vehicles/mercedes-benz-amg-gle-53-coupe-side-view.jpg"
+  },
+  "/vehicles/mercedes-benz-e-350-2024-close-up-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-e-350-2024-close-up-rear-view.jpg",
+    "fileName": "mercedes-benz-e-350-2024-close-up-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287347/mga/vehicles/mercedes-benz-e-350-2024-close-up-rear-view.jpg"
+  },
+  "/vehicles/mercedes-benz-e-350-2024-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-e-350-2024-close-up-wheel-image.jpg",
+    "fileName": "mercedes-benz-e-350-2024-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287347/mga/vehicles/mercedes-benz-e-350-2024-close-up-wheel-image.jpg"
+  },
+  "/vehicles/mercedes-benz-e-350-2024-cover-image.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-e-350-2024-cover-image.png",
+    "fileName": "mercedes-benz-e-350-2024-cover-image.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287349/mga/vehicles/mercedes-benz-e-350-2024-cover-image.png"
+  },
+  "/vehicles/mercedes-benz-e-350-2024-dash-board-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-e-350-2024-dash-board-interior-image.jpg",
+    "fileName": "mercedes-benz-e-350-2024-dash-board-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287349/mga/vehicles/mercedes-benz-e-350-2024-dash-board-interior-image.jpg"
+  },
+  "/vehicles/mercedes-benz-e-350-2024-detail-shot.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-e-350-2024-detail-shot.jpg",
+    "fileName": "mercedes-benz-e-350-2024-detail-shot.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287350/mga/vehicles/mercedes-benz-e-350-2024-detail-shot.jpg"
+  },
+  "/vehicles/mercedes-benz-e-350-2024-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-e-350-2024-front-view.jpg",
+    "fileName": "mercedes-benz-e-350-2024-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287350/mga/vehicles/mercedes-benz-e-350-2024-front-view.jpg"
+  },
+  "/vehicles/mercedes-benz-e-350-2024-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-e-350-2024-rear-view.jpg",
+    "fileName": "mercedes-benz-e-350-2024-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287351/mga/vehicles/mercedes-benz-e-350-2024-rear-view.jpg"
+  },
+  "/vehicles/mercedes-benz-e-350-2024-seats-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-e-350-2024-seats-image.jpg",
+    "fileName": "mercedes-benz-e-350-2024-seats-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287351/mga/vehicles/mercedes-benz-e-350-2024-seats-image.jpg"
+  },
+  "/vehicles/mercedes-benz-e-350-2024-side-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-e-350-2024-side-view.jpg",
+    "fileName": "mercedes-benz-e-350-2024-side-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287352/mga/vehicles/mercedes-benz-e-350-2024-side-view.jpg"
+  },
+  "/vehicles/mercedes-benz-e-350-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-e-350-close-up-wheel-image.jpg",
+    "fileName": "mercedes-benz-e-350-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287353/mga/vehicles/mercedes-benz-e-350-close-up-wheel-image.jpg"
+  },
+  "/vehicles/mercedes-benz-e-350-cover-image.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-e-350-cover-image.png",
+    "fileName": "mercedes-benz-e-350-cover-image.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287354/mga/vehicles/mercedes-benz-e-350-cover-image.png"
+  },
+  "/vehicles/mercedes-benz-e-350-dash-board-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-e-350-dash-board-interior-image.jpg",
+    "fileName": "mercedes-benz-e-350-dash-board-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287354/mga/vehicles/mercedes-benz-e-350-dash-board-interior-image.jpg"
+  },
+  "/vehicles/mercedes-benz-e-350-seats-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-e-350-seats-image.jpg",
+    "fileName": "mercedes-benz-e-350-seats-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287355/mga/vehicles/mercedes-benz-e-350-seats-image.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-2025-dashboard.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-2025-dashboard.jpg",
+    "fileName": "mercedes-benz-glc-2025-dashboard.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287356/mga/vehicles/mercedes-benz-glc-2025-dashboard.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-2025-ext-rear.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-2025-ext-rear.jpg",
+    "fileName": "mercedes-benz-glc-2025-ext-rear.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287356/mga/vehicles/mercedes-benz-glc-2025-ext-rear.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-2025-ext-side.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-2025-ext-side.jpg",
+    "fileName": "mercedes-benz-glc-2025-ext-side.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287357/mga/vehicles/mercedes-benz-glc-2025-ext-side.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-2022-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-2022-close-up-wheel-image.jpg",
+    "fileName": "mercedes-benz-glc-300-2022-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287357/mga/vehicles/mercedes-benz-glc-300-2022-close-up-wheel-image.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-2022-cover-image.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-2022-cover-image.png",
+    "fileName": "mercedes-benz-glc-300-2022-cover-image.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287359/mga/vehicles/mercedes-benz-glc-300-2022-cover-image.png"
+  },
+  "/vehicles/mercedes-benz-glc-300-2022-dash-board-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-2022-dash-board-interior-image.jpg",
+    "fileName": "mercedes-benz-glc-300-2022-dash-board-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287360/mga/vehicles/mercedes-benz-glc-300-2022-dash-board-interior-image.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-2022-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-2022-front-view.jpg",
+    "fileName": "mercedes-benz-glc-300-2022-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287360/mga/vehicles/mercedes-benz-glc-300-2022-front-view.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-2022-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-2022-rear-view.jpg",
+    "fileName": "mercedes-benz-glc-300-2022-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287361/mga/vehicles/mercedes-benz-glc-300-2022-rear-view.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-2022-seats-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-2022-seats-image.jpg",
+    "fileName": "mercedes-benz-glc-300-2022-seats-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287362/mga/vehicles/mercedes-benz-glc-300-2022-seats-image.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-2025-coupe-close-up-rear-view.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-2025-coupe-close-up-rear-view.jpeg",
+    "fileName": "mercedes-benz-glc-300-2025-coupe-close-up-rear-view.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287362/mga/vehicles/mercedes-benz-glc-300-2025-coupe-close-up-rear-view.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-2025-coupe-close-up-wheel-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-2025-coupe-close-up-wheel-image.jpeg",
+    "fileName": "mercedes-benz-glc-300-2025-coupe-close-up-wheel-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287363/mga/vehicles/mercedes-benz-glc-300-2025-coupe-close-up-wheel-image.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-2025-coupe-dash-board-interior-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-2025-coupe-dash-board-interior-image.jpeg",
+    "fileName": "mercedes-benz-glc-300-2025-coupe-dash-board-interior-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287364/mga/vehicles/mercedes-benz-glc-300-2025-coupe-dash-board-interior-image.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-2025-coupe-front-view.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-2025-coupe-front-view.jpeg",
+    "fileName": "mercedes-benz-glc-300-2025-coupe-front-view.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287365/mga/vehicles/mercedes-benz-glc-300-2025-coupe-front-view.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-2025-coupe-rear-view.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-2025-coupe-rear-view.jpeg",
+    "fileName": "mercedes-benz-glc-300-2025-coupe-rear-view.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287366/mga/vehicles/mercedes-benz-glc-300-2025-coupe-rear-view.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-2025-coupe-seats-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-2025-coupe-seats-image.jpeg",
+    "fileName": "mercedes-benz-glc-300-2025-coupe-seats-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287367/mga/vehicles/mercedes-benz-glc-300-2025-coupe-seats-image.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-2025-coupe-side-view.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-2025-coupe-side-view.jpeg",
+    "fileName": "mercedes-benz-glc-300-2025-coupe-side-view.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287367/mga/vehicles/mercedes-benz-glc-300-2025-coupe-side-view.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-close-up-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-close-up-front-view.jpg",
+    "fileName": "mercedes-benz-glc-300-close-up-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287368/mga/vehicles/mercedes-benz-glc-300-close-up-front-view.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-close-up-wheel-image.jpg",
+    "fileName": "mercedes-benz-glc-300-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287369/mga/vehicles/mercedes-benz-glc-300-close-up-wheel-image.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-coupe-close-up-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-coupe-close-up-rear-view.jpg",
+    "fileName": "mercedes-benz-glc-300-coupe-close-up-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287369/mga/vehicles/mercedes-benz-glc-300-coupe-close-up-rear-view.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-coupe-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-coupe-close-up-wheel-image.jpg",
+    "fileName": "mercedes-benz-glc-300-coupe-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287370/mga/vehicles/mercedes-benz-glc-300-coupe-close-up-wheel-image.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-coupe-cover-image.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-coupe-cover-image.png",
+    "fileName": "mercedes-benz-glc-300-coupe-cover-image.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287371/mga/vehicles/mercedes-benz-glc-300-coupe-cover-image.png"
+  },
+  "/vehicles/mercedes-benz-glc-300-coupe-dash-board-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-coupe-dash-board-interior-image.jpg",
+    "fileName": "mercedes-benz-glc-300-coupe-dash-board-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287372/mga/vehicles/mercedes-benz-glc-300-coupe-dash-board-interior-image.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-coupe-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-coupe-front-view.jpg",
+    "fileName": "mercedes-benz-glc-300-coupe-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287373/mga/vehicles/mercedes-benz-glc-300-coupe-front-view.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-coupe-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-coupe-rear-view.jpg",
+    "fileName": "mercedes-benz-glc-300-coupe-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287373/mga/vehicles/mercedes-benz-glc-300-coupe-rear-view.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-coupe-seats-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-coupe-seats-image.jpg",
+    "fileName": "mercedes-benz-glc-300-coupe-seats-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287374/mga/vehicles/mercedes-benz-glc-300-coupe-seats-image.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-coupe-side-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-coupe-side-view.jpg",
+    "fileName": "mercedes-benz-glc-300-coupe-side-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287374/mga/vehicles/mercedes-benz-glc-300-coupe-side-view.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-cover-image.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-cover-image.png",
+    "fileName": "mercedes-benz-glc-300-cover-image.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287376/mga/vehicles/mercedes-benz-glc-300-cover-image.png"
+  },
+  "/vehicles/mercedes-benz-glc-300-dash-board-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-dash-board-interior-image.jpg",
+    "fileName": "mercedes-benz-glc-300-dash-board-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287376/mga/vehicles/mercedes-benz-glc-300-dash-board-interior-image.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-dashboard-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-dashboard-interior-image.jpg",
+    "fileName": "mercedes-benz-glc-300-dashboard-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287377/mga/vehicles/mercedes-benz-glc-300-dashboard-interior-image.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-front-view.jpg",
+    "fileName": "mercedes-benz-glc-300-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287377/mga/vehicles/mercedes-benz-glc-300-front-view.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-rear-view.jpg",
+    "fileName": "mercedes-benz-glc-300-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287378/mga/vehicles/mercedes-benz-glc-300-rear-view.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-seats-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-seats-image.jpg",
+    "fileName": "mercedes-benz-glc-300-seats-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287379/mga/vehicles/mercedes-benz-glc-300-seats-image.jpg"
+  },
+  "/vehicles/mercedes-benz-glc-300-side-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-benz-glc-300-side-view.jpg",
+    "fileName": "mercedes-benz-glc-300-side-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287380/mga/vehicles/mercedes-benz-glc-300-side-view.jpg"
+  },
+  "/vehicles/mercedes-gle-2024-updated-backview.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-gle-2024-updated-backview.jpg",
+    "fileName": "mercedes-gle-2024-updated-backview.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287380/mga/vehicles/mercedes-gle-2024-updated-backview.jpg"
+  },
+  "/vehicles/mercedes-gle-2024-updated-dashboard.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-gle-2024-updated-dashboard.jpg",
+    "fileName": "mercedes-gle-2024-updated-dashboard.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287381/mga/vehicles/mercedes-gle-2024-updated-dashboard.jpg"
+  },
+  "/vehicles/mercedes-gle-2024-updated-frontview.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-gle-2024-updated-frontview.jpg",
+    "fileName": "mercedes-gle-2024-updated-frontview.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287381/mga/vehicles/mercedes-gle-2024-updated-frontview.jpg"
+  },
+  "/vehicles/mercedes-gle-2024-updated-headlights.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-gle-2024-updated-headlights.jpg",
+    "fileName": "mercedes-gle-2024-updated-headlights.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287382/mga/vehicles/mercedes-gle-2024-updated-headlights.jpg"
+  },
+  "/vehicles/mercedes-gle-2024-updated-interior back.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-gle-2024-updated-interior back.jpg",
+    "fileName": "mercedes-gle-2024-updated-interior back.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287382/mga/vehicles/mercedes-gle-2024-updated-interior%20back.jpg"
+  },
+  "/vehicles/mercedes-gle-2024-updated-interior.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-gle-2024-updated-interior.jpg",
+    "fileName": "mercedes-gle-2024-updated-interior.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287383/mga/vehicles/mercedes-gle-2024-updated-interior.jpg"
+  },
+  "/vehicles/mercedes-gle-2024-updated-sideview.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-gle-2024-updated-sideview.jpg",
+    "fileName": "mercedes-gle-2024-updated-sideview.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287383/mga/vehicles/mercedes-gle-2024-updated-sideview.jpg"
+  },
+  "/vehicles/mercedes-gle-2024-updated.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-gle-2024-updated.png",
+    "fileName": "mercedes-gle-2024-updated.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287385/mga/vehicles/mercedes-gle-2024-updated.png"
+  },
+  "/vehicles/mercedes-s-class-2024.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedes-s-class-2024.jpg",
+    "fileName": "mercedes-s-class-2024.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287385/mga/vehicles/mercedes-s-class-2024.jpg"
+  },
+  "/vehicles/mercedez-benz-glc-2025-cabin.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedez-benz-glc-2025-cabin.jpg",
+    "fileName": "mercedez-benz-glc-2025-cabin.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287386/mga/vehicles/mercedez-benz-glc-2025-cabin.jpg"
+  },
+  "/vehicles/mercedez-benz-glc-2025-rear-seat.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\mercedez-benz-glc-2025-rear-seat.jpg",
+    "fileName": "mercedez-benz-glc-2025-rear-seat.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287387/mga/vehicles/mercedez-benz-glc-2025-rear-seat.jpg"
+  },
+  "/vehicles/MGA_HERO.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\MGA_HERO.jpg",
+    "fileName": "MGA_HERO.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287387/mga/vehicles/MGA_HERO.jpg"
+  },
+  "/vehicles/MGA_HERO.webp": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\MGA_HERO.webp",
+    "fileName": "MGA_HERO.webp",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287388/mga/vehicles/MGA_HERO.webp"
+  },
+  "/vehicles/our-story-cover-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\our-story-cover-image.jpeg",
+    "fileName": "our-story-cover-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287389/mga/vehicles/our-story-cover-image.jpg"
+  },
+  "/vehicles/our-story-cover-image.webp": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\our-story-cover-image.webp",
+    "fileName": "our-story-cover-image.webp",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287390/mga/vehicles/our-story-cover-image.webp"
+  },
+  "/vehicles/Porsche-Cayenne-2023-Cabin.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\Porsche-Cayenne-2023-Cabin.png",
+    "fileName": "Porsche-Cayenne-2023-Cabin.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287391/mga/vehicles/Porsche-Cayenne-2023-Cabin.png"
+  },
+  "/vehicles/porsche-cayenne-2023-close-up-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-cayenne-2023-close-up-front-view.jpg",
+    "fileName": "porsche-cayenne-2023-close-up-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287391/mga/vehicles/porsche-cayenne-2023-close-up-front-view.jpg"
+  },
+  "/vehicles/porsche-cayenne-2023-close-up-wheel-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-cayenne-2023-close-up-wheel-image.jpeg",
+    "fileName": "porsche-cayenne-2023-close-up-wheel-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287392/mga/vehicles/porsche-cayenne-2023-close-up-wheel-image.jpg"
+  },
+  "/vehicles/porsche-cayenne-2023-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-cayenne-2023-close-up-wheel-image.jpg",
+    "fileName": "porsche-cayenne-2023-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287392/mga/vehicles/porsche-cayenne-2023-close-up-wheel-image.jpg"
+  },
+  "/vehicles/porsche-cayenne-2023-cover-image.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-cayenne-2023-cover-image.png",
+    "fileName": "porsche-cayenne-2023-cover-image.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287394/mga/vehicles/porsche-cayenne-2023-cover-image.png"
+  },
+  "/vehicles/porsche-cayenne-2023-dash-board-interior-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-cayenne-2023-dash-board-interior-image.jpeg",
+    "fileName": "porsche-cayenne-2023-dash-board-interior-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287394/mga/vehicles/porsche-cayenne-2023-dash-board-interior-image.jpg"
+  },
+  "/vehicles/porsche-cayenne-2023-dash-board-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-cayenne-2023-dash-board-interior-image.jpg",
+    "fileName": "porsche-cayenne-2023-dash-board-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287395/mga/vehicles/porsche-cayenne-2023-dash-board-interior-image.jpg"
+  },
+  "/vehicles/Porsche-Cayenne-2023-Dashboard.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\Porsche-Cayenne-2023-Dashboard.png",
+    "fileName": "Porsche-Cayenne-2023-Dashboard.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287396/mga/vehicles/Porsche-Cayenne-2023-Dashboard.png"
+  },
+  "/vehicles/porsche-cayenne-2023-front-view.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-cayenne-2023-front-view.jpeg",
+    "fileName": "porsche-cayenne-2023-front-view.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287396/mga/vehicles/porsche-cayenne-2023-front-view.jpg"
+  },
+  "/vehicles/porsche-cayenne-2023-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-cayenne-2023-front-view.jpg",
+    "fileName": "porsche-cayenne-2023-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287397/mga/vehicles/porsche-cayenne-2023-front-view.jpg"
+  },
+  "/vehicles/Porsche-Cayenne-2023-Rear-Ext.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\Porsche-Cayenne-2023-Rear-Ext.png",
+    "fileName": "Porsche-Cayenne-2023-Rear-Ext.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287398/mga/vehicles/Porsche-Cayenne-2023-Rear-Ext.png"
+  },
+  "/vehicles/porsche-cayenne-2023-rear-view.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-cayenne-2023-rear-view.jpeg",
+    "fileName": "porsche-cayenne-2023-rear-view.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287399/mga/vehicles/porsche-cayenne-2023-rear-view.jpg"
+  },
+  "/vehicles/porsche-cayenne-2023-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-cayenne-2023-rear-view.jpg",
+    "fileName": "porsche-cayenne-2023-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287400/mga/vehicles/porsche-cayenne-2023-rear-view.jpg"
+  },
+  "/vehicles/porsche-cayenne-2023-seats-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-cayenne-2023-seats-image.jpeg",
+    "fileName": "porsche-cayenne-2023-seats-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287400/mga/vehicles/porsche-cayenne-2023-seats-image.jpg"
+  },
+  "/vehicles/porsche-cayenne-2023-seats-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-cayenne-2023-seats-image.jpg",
+    "fileName": "porsche-cayenne-2023-seats-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287401/mga/vehicles/porsche-cayenne-2023-seats-image.jpg"
+  },
+  "/vehicles/Porsche-Cayenne-2023-Seats.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\Porsche-Cayenne-2023-Seats.png",
+    "fileName": "Porsche-Cayenne-2023-Seats.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287402/mga/vehicles/Porsche-Cayenne-2023-Seats.png"
+  },
+  "/vehicles/Porsche-Cayenne-2023-Side-Ext.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\Porsche-Cayenne-2023-Side-Ext.png",
+    "fileName": "Porsche-Cayenne-2023-Side-Ext.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287403/mga/vehicles/Porsche-Cayenne-2023-Side-Ext.png"
+  },
+  "/vehicles/porsche-cayenne-2023-side-view.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-cayenne-2023-side-view.jpeg",
+    "fileName": "porsche-cayenne-2023-side-view.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287404/mga/vehicles/porsche-cayenne-2023-side-view.jpg"
+  },
+  "/vehicles/porsche-cayenne-2024.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-cayenne-2024.jpg",
+    "fileName": "porsche-cayenne-2024.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287405/mga/vehicles/porsche-cayenne-2024.jpg"
+  },
+  "/vehicles/porsche-macan-2023-close-up-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2023-close-up-rear-view.jpg",
+    "fileName": "porsche-macan-2023-close-up-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287405/mga/vehicles/porsche-macan-2023-close-up-rear-view.jpg"
+  },
+  "/vehicles/porsche-macan-2023-close-up-wheel-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2023-close-up-wheel-image.jpeg",
+    "fileName": "porsche-macan-2023-close-up-wheel-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287406/mga/vehicles/porsche-macan-2023-close-up-wheel-image.jpg"
+  },
+  "/vehicles/porsche-macan-2023-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2023-close-up-wheel-image.jpg",
+    "fileName": "porsche-macan-2023-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287407/mga/vehicles/porsche-macan-2023-close-up-wheel-image.jpg"
+  },
+  "/vehicles/porsche-macan-2023-cover-image.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2023-cover-image.png",
+    "fileName": "porsche-macan-2023-cover-image.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287408/mga/vehicles/porsche-macan-2023-cover-image.png"
+  },
+  "/vehicles/porsche-macan-2023-dash-board-interior-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2023-dash-board-interior-image.jpeg",
+    "fileName": "porsche-macan-2023-dash-board-interior-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287408/mga/vehicles/porsche-macan-2023-dash-board-interior-image.jpg"
+  },
+  "/vehicles/porsche-macan-2023-dash-board-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2023-dash-board-interior-image.jpg",
+    "fileName": "porsche-macan-2023-dash-board-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287409/mga/vehicles/porsche-macan-2023-dash-board-interior-image.jpg"
+  },
+  "/vehicles/porsche-macan-2023-front-view.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2023-front-view.jpeg",
+    "fileName": "porsche-macan-2023-front-view.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287410/mga/vehicles/porsche-macan-2023-front-view.jpg"
+  },
+  "/vehicles/porsche-macan-2023-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2023-front-view.jpg",
+    "fileName": "porsche-macan-2023-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287410/mga/vehicles/porsche-macan-2023-front-view.jpg"
+  },
+  "/vehicles/porsche-macan-2023-rear-view.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2023-rear-view.jpeg",
+    "fileName": "porsche-macan-2023-rear-view.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287411/mga/vehicles/porsche-macan-2023-rear-view.jpg"
+  },
+  "/vehicles/porsche-macan-2023-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2023-rear-view.jpg",
+    "fileName": "porsche-macan-2023-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287411/mga/vehicles/porsche-macan-2023-rear-view.jpg"
+  },
+  "/vehicles/porsche-macan-2023-seats-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2023-seats-image.jpeg",
+    "fileName": "porsche-macan-2023-seats-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287412/mga/vehicles/porsche-macan-2023-seats-image.jpg"
+  },
+  "/vehicles/porsche-macan-2023-seats-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2023-seats-image.jpg",
+    "fileName": "porsche-macan-2023-seats-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287412/mga/vehicles/porsche-macan-2023-seats-image.jpg"
+  },
+  "/vehicles/porsche-macan-2023-side-view.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2023-side-view.jpeg",
+    "fileName": "porsche-macan-2023-side-view.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287413/mga/vehicles/porsche-macan-2023-side-view.jpg"
+  },
+  "/vehicles/porsche-macan-2025-close-up-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2025-close-up-front-view.jpg",
+    "fileName": "porsche-macan-2025-close-up-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287413/mga/vehicles/porsche-macan-2025-close-up-front-view.jpg"
+  },
+  "/vehicles/porsche-macan-2025-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2025-close-up-wheel-image.jpg",
+    "fileName": "porsche-macan-2025-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287414/mga/vehicles/porsche-macan-2025-close-up-wheel-image.jpg"
+  },
+  "/vehicles/porsche-macan-2025-cover-image.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2025-cover-image.png",
+    "fileName": "porsche-macan-2025-cover-image.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287415/mga/vehicles/porsche-macan-2025-cover-image.png"
+  },
+  "/vehicles/porsche-macan-2025-dash-board-interior-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2025-dash-board-interior-view.jpg",
+    "fileName": "porsche-macan-2025-dash-board-interior-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287416/mga/vehicles/porsche-macan-2025-dash-board-interior-view.jpg"
+  },
+  "/vehicles/porsche-macan-2025-dashboard-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2025-dashboard-interior-image.jpg",
+    "fileName": "porsche-macan-2025-dashboard-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287416/mga/vehicles/porsche-macan-2025-dashboard-interior-image.jpg"
+  },
+  "/vehicles/porsche-macan-2025-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2025-front-view.jpg",
+    "fileName": "porsche-macan-2025-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287417/mga/vehicles/porsche-macan-2025-front-view.jpg"
+  },
+  "/vehicles/porsche-macan-2025-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2025-rear-view.jpg",
+    "fileName": "porsche-macan-2025-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287417/mga/vehicles/porsche-macan-2025-rear-view.jpg"
+  },
+  "/vehicles/porsche-macan-2025-seats-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2025-seats-image.jpg",
+    "fileName": "porsche-macan-2025-seats-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287418/mga/vehicles/porsche-macan-2025-seats-image.jpg"
+  },
+  "/vehicles/porsche-macan-2025-side-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-macan-2025-side-view.jpg",
+    "fileName": "porsche-macan-2025-side-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287418/mga/vehicles/porsche-macan-2025-side-view.jpg"
+  },
+  "/vehicles/porsche-mecan-2023-cabin.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-mecan-2023-cabin.jpg",
+    "fileName": "porsche-mecan-2023-cabin.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287419/mga/vehicles/porsche-mecan-2023-cabin.jpg"
+  },
+  "/vehicles/porsche-mecan-2023-dashboard.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-mecan-2023-dashboard.jpg",
+    "fileName": "porsche-mecan-2023-dashboard.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287419/mga/vehicles/porsche-mecan-2023-dashboard.jpg"
+  },
+  "/vehicles/porsche-mecan-2023-ext-rear.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-mecan-2023-ext-rear.jpg",
+    "fileName": "porsche-mecan-2023-ext-rear.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287420/mga/vehicles/porsche-mecan-2023-ext-rear.jpg"
+  },
+  "/vehicles/porsche-mecan-2023-ext-side.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-mecan-2023-ext-side.jpg",
+    "fileName": "porsche-mecan-2023-ext-side.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287421/mga/vehicles/porsche-mecan-2023-ext-side.jpg"
+  },
+  "/vehicles/porsche-mecan-2023-rear-seats.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\porsche-mecan-2023-rear-seats.jpg",
+    "fileName": "porsche-mecan-2023-rear-seats.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287421/mga/vehicles/porsche-mecan-2023-rear-seats.jpg"
+  },
+  "/vehicles/Porsche-Mecan-2025-Cabin.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\Porsche-Mecan-2025-Cabin.png",
+    "fileName": "Porsche-Mecan-2025-Cabin.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287422/mga/vehicles/Porsche-Mecan-2025-Cabin.png"
+  },
+  "/vehicles/Porsche-Mecan-2025-Dashboard.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\Porsche-Mecan-2025-Dashboard.png",
+    "fileName": "Porsche-Mecan-2025-Dashboard.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287424/mga/vehicles/Porsche-Mecan-2025-Dashboard.png"
+  },
+  "/vehicles/Porsche-Mecan-2025-Rear-Ext.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\Porsche-Mecan-2025-Rear-Ext.png",
+    "fileName": "Porsche-Mecan-2025-Rear-Ext.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287425/mga/vehicles/Porsche-Mecan-2025-Rear-Ext.png"
+  },
+  "/vehicles/Porsche-Mecan-2025-Seats.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\Porsche-Mecan-2025-Seats.png",
+    "fileName": "Porsche-Mecan-2025-Seats.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287426/mga/vehicles/Porsche-Mecan-2025-Seats.png"
+  },
+  "/vehicles/Porsche-Mecan-2025-Side-Ext.png": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\Porsche-Mecan-2025-Side-Ext.png",
+    "fileName": "Porsche-Mecan-2025-Side-Ext.png",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287427/mga/vehicles/Porsche-Mecan-2025-Side-Ext.png"
+  },
+  "/vehicles/range-rover-hse-updated-backview.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\range-rover-hse-updated-backview.jpg",
+    "fileName": "range-rover-hse-updated-backview.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287428/mga/vehicles/range-rover-hse-updated-backview.jpg"
+  },
+  "/vehicles/range-rover-hse-updated-close-up-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\range-rover-hse-updated-close-up-front-view.jpg",
+    "fileName": "range-rover-hse-updated-close-up-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287428/mga/vehicles/range-rover-hse-updated-close-up-front-view.jpg"
+  },
+  "/vehicles/range-rover-hse-updated-close-up-wheel-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\range-rover-hse-updated-close-up-wheel-image.jpg",
+    "fileName": "range-rover-hse-updated-close-up-wheel-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287429/mga/vehicles/range-rover-hse-updated-close-up-wheel-image.jpg"
+  },
+  "/vehicles/range-rover-hse-updated-cover-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\range-rover-hse-updated-cover-image.jpeg",
+    "fileName": "range-rover-hse-updated-cover-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287430/mga/vehicles/range-rover-hse-updated-cover-image.jpg"
+  },
+  "/vehicles/range-rover-hse-updated-dash-board-interior-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\range-rover-hse-updated-dash-board-interior-image.jpg",
+    "fileName": "range-rover-hse-updated-dash-board-interior-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287431/mga/vehicles/range-rover-hse-updated-dash-board-interior-image.jpg"
+  },
+  "/vehicles/range-rover-hse-updated-dashboard.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\range-rover-hse-updated-dashboard.jpg",
+    "fileName": "range-rover-hse-updated-dashboard.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287431/mga/vehicles/range-rover-hse-updated-dashboard.jpg"
+  },
+  "/vehicles/range-rover-hse-updated-front-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\range-rover-hse-updated-front-view.jpg",
+    "fileName": "range-rover-hse-updated-front-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287432/mga/vehicles/range-rover-hse-updated-front-view.jpg"
+  },
+  "/vehicles/range-rover-hse-updated-front.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\range-rover-hse-updated-front.jpg",
+    "fileName": "range-rover-hse-updated-front.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287432/mga/vehicles/range-rover-hse-updated-front.jpg"
+  },
+  "/vehicles/range-rover-hse-updated-interior-back.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\range-rover-hse-updated-interior-back.jpg",
+    "fileName": "range-rover-hse-updated-interior-back.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287433/mga/vehicles/range-rover-hse-updated-interior-back.jpg"
+  },
+  "/vehicles/range-rover-hse-updated-interior-front.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\range-rover-hse-updated-interior-front.jpg",
+    "fileName": "range-rover-hse-updated-interior-front.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287433/mga/vehicles/range-rover-hse-updated-interior-front.jpg"
+  },
+  "/vehicles/range-rover-hse-updated-rear-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\range-rover-hse-updated-rear-view.jpg",
+    "fileName": "range-rover-hse-updated-rear-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287434/mga/vehicles/range-rover-hse-updated-rear-view.jpg"
+  },
+  "/vehicles/range-rover-hse-updated-seats-image.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\range-rover-hse-updated-seats-image.jpg",
+    "fileName": "range-rover-hse-updated-seats-image.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287434/mga/vehicles/range-rover-hse-updated-seats-image.jpg"
+  },
+  "/vehicles/range-rover-hse-updated-side-view.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\range-rover-hse-updated-side-view.jpg",
+    "fileName": "range-rover-hse-updated-side-view.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287435/mga/vehicles/range-rover-hse-updated-side-view.jpg"
+  },
+  "/vehicles/range-rover-hse-updated-sideview.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\range-rover-hse-updated-sideview.jpg",
+    "fileName": "range-rover-hse-updated-sideview.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287436/mga/vehicles/range-rover-hse-updated-sideview.jpg"
+  },
+  "/vehicles/range-rover-sport-2024.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\range-rover-sport-2024.jpg",
+    "fileName": "range-rover-sport-2024.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287436/mga/vehicles/range-rover-sport-2024.jpg"
+  },
+  "/vehicles/Services-Hero.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\Services-Hero.jpg",
+    "fileName": "Services-Hero.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287437/mga/vehicles/Services-Hero.jpg"
+  },
+  "/vehicles/Services-Hero.webp": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\Services-Hero.webp",
+    "fileName": "Services-Hero.webp",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287437/mga/vehicles/Services-Hero.webp"
+  },
+  "/vehicles/standard-rental-cover-image.jpeg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\standard-rental-cover-image.jpeg",
+    "fileName": "standard-rental-cover-image.jpeg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287438/mga/vehicles/standard-rental-cover-image.jpg"
+  },
+  "/vehicles/standard-rental-cover-image.webp": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\standard-rental-cover-image.webp",
+    "fileName": "standard-rental-cover-image.webp",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287439/mga/vehicles/standard-rental-cover-image.webp"
+  },
+  "/vehicles/tesla-model-3-2024.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\tesla-model-3-2024.jpg",
+    "fileName": "tesla-model-3-2024.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287440/mga/vehicles/tesla-model-3-2024.jpg"
+  },
+  "/vehicles/WELCOME_TO_MGA.jpg": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\WELCOME_TO_MGA.jpg",
+    "fileName": "WELCOME_TO_MGA.jpg",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287441/mga/vehicles/WELCOME_TO_MGA.jpg"
+  },
+  "/vehicles/WELCOME_TO_MGA.webp": {
+    "absolutePath": "C:\\Users\\ejere\\Documents\\Projects\\DevOps\\mga-frontend\\mga-frontend\\public\\vehicles\\WELCOME_TO_MGA.webp",
+    "fileName": "WELCOME_TO_MGA.webp",
+    "compressed": true,
+    "cloudinaryUrl": "https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287441/mga/vehicles/WELCOME_TO_MGA.webp"
+  }
+}

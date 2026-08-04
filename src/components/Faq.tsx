@@ -6,13 +6,19 @@ import { useQuery } from "react-query";
 import { getAllFaqsQuery } from "@/services/queries";
 import { faqs as staticFaqs } from "@/lib/faqs";
 
-const FAQItem = ({ question, answer }) => {
+const FAQItem = ({ question, answer, onToggle }: { question: string; answer: string; onToggle?: (isOpen: boolean) => void }) => {
     const [isOpen, setIsOpen] = useState(false);
+
+    const handleClick = () => {
+        const newState = !isOpen;
+        setIsOpen(newState);
+        if (onToggle) onToggle(newState);
+    };
 
     return (
         <div className="border-b border-white/20 py-4">
             <button
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={handleClick}
                 className="flex w-full items-center justify-between text-left focus:outline-none"
             >
                 <span className="text-lg font-semibold text-gold hover:text-gold/80 transition-colors">
@@ -35,11 +41,22 @@ const FAQItem = ({ question, answer }) => {
     );
 };
 
-const FAQSection = () => {
+const FAQSection = ({ onAnyOpenChange }: { onAnyOpenChange?: (isOpen: boolean) => void }) => {
     const { data: faqData, isLoading } = useQuery("faqs", getAllFaqsQuery);
+    const [openCount, setOpenCount] = useState(0);
     
     // Fallback to static faqs if the API fails or is loading and we want to show something
     const displayFaqs = faqData?.faqs && faqData.faqs.length > 0 ? faqData.faqs : staticFaqs;
+
+    const handleToggle = (isOpen: boolean) => {
+        setOpenCount(prev => {
+            const next = isOpen ? prev + 1 : prev - 1;
+            if (onAnyOpenChange) {
+                onAnyOpenChange(next > 0);
+            }
+            return next;
+        });
+    };
 
     return (
         <div>
@@ -68,7 +85,7 @@ const FAQSection = () => {
                         <div className="text-white/60 text-center">Loading FAQs...</div>
                     ) : (
                         displayFaqs.map((faq, index) => (
-                            <FAQItem key={index} question={faq.question} answer={faq.answer} />
+                            <FAQItem key={index} question={faq.question} answer={faq.answer} onToggle={handleToggle} />
                         ))
                     )}
                 </div>

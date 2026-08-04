@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import FadeIn from "@/components/FadeIn";
 import { vehicles } from "@/data/vehicles";
-import { Plane, Car, Clock, Building2, Sparkles, X } from "lucide-react";
+import { Plane, Car, Clock, Building2, Sparkles, X, Phone, Mail, MapPin } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import { submitRequest } from "@/services/mutations";
 import { CreateRequestPayload } from "@/lib/types";
@@ -13,46 +13,8 @@ import heic2any from "heic2any";
 import Swal from "sweetalert2";
 import { useMutation } from "react-query";
 import { toast } from "sonner";
-import { CONTACT_EMAIL } from "@/data/contact";
-
-const serviceTypes = [
-  {
-    id: "airport",
-    icon: Plane,
-    title: "Airport Service",
-    description:
-      "Convenient vehicle pickup and drop-off at Hartsfield–Jackson Atlanta International Airport, designed for a fast and seamless arrival or departure.",
-    image: "/vehicles/areoplane.webp",
-    imagePosition: "right"
-  },
-  {
-    id: "rentals",
-    icon: Car,
-    title: "Standard Rental",
-    description:
-      "Premium vehicles with transparent pricing, flexible rental terms, and professionally maintained standards for everyday rental needs.",
-    image: "/vehicles/standard-rental-cover-image.webp",
-    imagePosition: "left"
-  },
-  {
-    id: "custom-delivery",
-    icon: Building2,
-    title: "Custom Delivery",
-    description:
-      "Vehicle delivery and pickup tailored to your location and schedule throughout Atlanta for added convenience.",
-    image: "/vehicles/custom-delivery-cover-image.webp",
-    imagePosition: "right"
-  },
-  {
-    id: "cooperate-service",
-    icon: Sparkles,
-    title: "Corporate Services",
-    description:
-      "Professional rental solutions for employee travel, client transportation, and short-term business vehicle needs.",
-    image: "/vehicles/corporate-services-cover-image.webp",
-    imagePosition: "left"
-  },
-];
+import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_ADDRESS, MAPS_URL } from "@/data/contact";
+import { countryCodes } from "@/lib/countryCodes";
 
 export default function Contact() {
   useSEO({
@@ -60,128 +22,28 @@ export default function Contact() {
     description: "Contact Mead Green Autos for premium car rental in Atlanta. Open 7 days a week. Call (470) 817-6427 or send a message.",
     canonical: "https://meadgreenautos.com/contact",
   });
-  const [selectedService, setSelectedService] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
   interface FormData {
-    fullName: string;
+    firstName: string;
+    lastName: string;
     email: string;
     phone: string;
-    serviceType: string;
-    vehicleId: string;
-    startDate: string;
-    endDate: string;
-    time?: string;
-    endTime?: string;
+    countryCode: string;
     notes?: string;
-    license?: any;
-    insurance?: any;
-  }
-
-  interface FormErrors {
-    fullName?: string;
-    email?: string;
-    phone?: string;
-    serviceType?: string;
-    vehicleId?: string;
-    startDate?: string;
-    endDate?: string;
-    time?: string;
-    endTime?: string;
-    notes?: string;
-    license?: any;
-    insurance?: any;
   }
 
   const initialFormState: FormData = {
-    fullName: "",
+    firstName: "",
+    lastName: "",
     email: "",
     phone: "",
-    serviceType: "",
-    vehicleId: "",
-    startDate: "",
-    endDate: "",
-    time: "",
-    endTime: "",
-    notes: "",
-    license: "",
-    insurance: ""
+    countryCode: "+1",
+    notes: ""
   };
 
 
   const [formData, setFormData] = useState<FormData>(initialFormState);
-
-  const [errors, setErrors] = useState<FormErrors>(initialFormState);
-  const today = new Date().toISOString().split("T")[0];
-  const licenseInputRef = useRef<HTMLInputElement>(null);
-  const insuranceInputRef = useRef<HTMLInputElement>(null);
-  const [licenseFilePreview, setLicenseFilePreview] = useState<{ file: File; url: string } | null>(null);
-  const [insuranceFilePreview, setInsuranceFilePreview] = useState<{ file: File; url: string } | null>(null);
-
-
-  const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
-
-    const usPhoneRegex = /^(?:\+1\s?)?(?:\(\d{3}\)|\d{3})(?:[\s.-]?)\d{3}(?:[\s.-]?)\d{4}$/;
-    const titles = /^(mr|mrs|ms|miss|dr|prof|engr|sir|chief)\.?\s+/i;
-
-    if (formData.fullName.trim()) {
-      const fullName = formData.fullName.trim();
-      const finalName = fullName.replace(titles, "");
-      const nameParts = finalName.trim().split(/\s+/);
-
-      if (nameParts.length !== 2) {
-        errors['fullName'] = 'Please enter actual (First and Last name)';
-        return false;
-      }
-    }
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      newErrors.email = "Invalid email address";
-      return false;
-    }
-
-    if (!usPhoneRegex.test(formData.phone.trim())) {
-      newErrors.phone = "Please enter a valid US phone number (e.g., (404) 555-0100)";
-    }
-
-    if (formData.startDate && formData.endDate && formData.startDate === formData.endDate) {
-      if (formData.time && formData.endTime && formData.time >= formData.endTime) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Invalid Time',
-          text: 'End time must be after the start time for same-day bookings.',
-          confirmButtonColor: "hsl(var(--primary))",
-        });
-        return false;
-      }
-    }
-
-    if (!licenseFilePreview) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Missing License',
-        text: 'Please upload a valid driver\'s license.',
-        confirmButtonColor: "hsl(var(--primary))",
-      });
-      return false;
-    }
-
-    if (!insuranceFilePreview) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Missing Insurance',
-        text: 'Please upload valid insurance documentation.',
-        confirmButtonColor: "hsl(var(--primary))",
-      });
-      return false;
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setSubmitted(false);
@@ -189,55 +51,9 @@ export default function Contact() {
       ...prev,
       [field]: value,
     }));
-
-    if (errors[field]) {
-      setErrors((prev) => ({
-        ...prev,
-        [field]: ""
-      }));
-    }
   };
 
-  const handleFileSelect = async (file: File, type: 'license' | 'insurance') => {
-    let processedFile = file;
 
-    const isHeic = file.type === "image/heic" ||
-      file.type === "image/heif" ||
-      file.name.toLowerCase().endsWith(".heic") ||
-      file.name.toLowerCase().endsWith(".heif");
-
-    if (isHeic) {
-      try {
-        const convertedBlob = await heic2any({
-          blob: file,
-          toType: "image/jpeg",
-          quality: 0.8
-        });
-
-        const blob = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
-        processedFile = new File([blob], file.name.replace(/\.(heic|heif)$/i, ".jpg"), {
-          type: "image/jpeg",
-          lastModified: Date.now()
-        });
-      } catch (error) {
-        console.error("HEIC conversion failed:", error);
-      }
-    }
-
-    const url = URL.createObjectURL(processedFile);
-
-    if (type === 'license') {
-      if (licenseFilePreview) {
-        URL.revokeObjectURL(licenseFilePreview.url);
-      }
-      setLicenseFilePreview({ file: processedFile, url });
-    } else {
-      if (insuranceFilePreview) {
-        URL.revokeObjectURL(insuranceFilePreview.url);
-      }
-      setInsuranceFilePreview({ file: processedFile, url });
-    }
-  };
 
 
 
@@ -245,52 +61,28 @@ export default function Contact() {
     e.preventDefault();
 
     try {
-      if (validateForm()) {
-        if (licenseFilePreview) {
-          formData.license = licenseFilePreview.file
-        }
-        if (insuranceFilePreview) {
-          formData.insurance = insuranceFilePreview.file;
-        }
+      const fullPhone = `${formData.countryCode} ${formData.phone}`;
+      const requestDetails: CreateRequestPayload = {
+        ...formData,
+        serviceType: "support",
+        startDate: new Date().toISOString(),
+        endDate: new Date().toISOString(),
+        phone: fullPhone.replace(/[^\d+]/g, "")
+      };
 
-        const requestDetails: CreateRequestPayload = {
-          ...formData,
-          phone: formData.phone.replace(/[^\d+]/g, "")
-        };
+      const data = new FormData();
 
-        const data = new FormData();
+      data.append("firstName", requestDetails.firstName || "");
+      data.append("lastName", requestDetails.lastName || "");
+      data.append("email", requestDetails.email);
+      data.append("phone", requestDetails.phone);
+      data.append("recipientEmail", CONTACT_EMAIL);
+      data.append("serviceType", requestDetails.serviceType);
+      data.append("startDate", requestDetails.startDate);
+      data.append("endDate", requestDetails.endDate);
+      if (requestDetails.notes) data.append("notes", requestDetails.notes);
 
-        data.append("fullName", requestDetails.fullName);
-        data.append("email", requestDetails.email);
-        data.append("phone", requestDetails.phone);
-        data.append("recipientEmail", CONTACT_EMAIL);
-        data.append("serviceType", requestDetails.serviceType);
-        data.append("startDate", requestDetails.startDate);
-        data.append("endDate", requestDetails.endDate);
-
-        if (requestDetails.vehicleId) data.append("vehicleId", requestDetails.vehicleId);
-        if (requestDetails.time) data.append("time", requestDetails.time);
-        if (formData.endTime) data.append("endTime", formData.endTime);
-        if (requestDetails.notes) data.append("notes", requestDetails.notes);
-
-        if (requestDetails.license) {
-          data.append("license", requestDetails.license);
-        }
-        if (requestDetails.insurance) {
-          data.append("insurance", requestDetails.insurance);
-        }
-
-        handleCreateRequest(data);
-      } else {
-        const errorMessages = Object.values(errors).filter(Boolean).join("\n");
-
-        Swal.fire({
-          icon: "warning",
-          title: "Please check the following:",
-          text: errorMessages,
-          confirmButtonColor: "hsl(var(--primary))",
-        });
-      }
+      handleCreateRequest(data);
     } catch (error) {
       console.log(error);
     }
@@ -309,8 +101,6 @@ export default function Contact() {
         });
         setSubmitted(true);
         setFormData(initialFormState);
-        setLicenseFilePreview(null);
-        setInsuranceFilePreview(null);
       },
       onError: (error: any) => {
         const msg: string = error?.message || "We couldn't send your request right now.";
@@ -332,9 +122,9 @@ export default function Contact() {
       <section className="relative overflow-hidden bg-stone py-24 md:py-32">
         <div className="absolute inset-0 z-0">
           <img
-            src="/vehicles/Services-Hero.webp"
-            alt="Luxury Fleet"
-            className="h-full w-full object-cover object-bottom"
+            src="https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287256/mga/vehicles/contact-hero-image.webp"
+            alt="Contact Us"
+            className="h-full w-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
@@ -352,334 +142,207 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Service Sections with Images */}
-      <section className="py-16 md:py-20">
-        <div className="container max-w-6xl">
-          {serviceTypes.map((service, index) => (
-            <div
-              key={service.id}
-              id={service.id}
-              className="scroll-mt-24 mb-20 last:mb-0"
-            >
-              <div
-                className={`grid gap-12 items-center md:grid-cols-2 ${service.imagePosition === "left" ? "md:grid-flow-col" : ""}`}
-              >
-                {/* Image */}
-                <div
-                  className={`rounded-lg overflow-hidden shadow-xl ${service.imagePosition === "right" ? "md:order-1" : "md:order-0"}`}
-                >
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-80 md:h-96 object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-
-                {/* Text Content */}
-                <div
-                  className={`space-y-4 ${service.imagePosition === "right" ? "md:order-0" : "md:order-1"}`}
-                >
-                  <h2 className="font-serif text-3xl md:text-4xl font-semibold text-gold">
-                    {service.title}
+      <section className="py-12 md:py-16">
+        <div className="container">
+          <div className="grid gap-12 lg:grid-cols-2 items-stretch">
+            <FadeIn>
+              {submitted ? (
+                <div className="rounded border border-border bg-card p-8 text-center">
+                  <h2 className="font-serif text-2xl font-semibold">
+                    Request Received
                   </h2>
-                  <p className="text-base leading-relaxed text-white">
-                    {service.description}
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                    Thank you for your request. We review all submissions within 4
+                    hours during business hours and will contact you to confirm
+                    details and next steps.
                   </p>
                   <Button
-                    variant="premium"
-                    size="lg"
-                    onClick={() => {
-                      setSelectedService(service.id);
-                      setSubmitted(false);
-                      setTimeout(() => {
-                        document
-                          .getElementById("service-form")
-                          ?.scrollIntoView({ behavior: "smooth" });
-                      }, 100);
-                    }}
+                    variant="premiumOutline"
+                    size="sm"
+                    className="mt-6"
+                    onClick={() => setSubmitted(false)}
                   >
-                    Request This Service
+                    Submit Another Request
                   </Button>
                 </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Service Request Form */}
-      <section id="service-form" className="bg-stone py-16 md:py-20">
-        <div className="container max-w-2xl">
-          <FadeIn>
-            {submitted ? (
-              <div className="rounded border border-border bg-card p-8 text-center">
-                <h2 className="font-serif text-2xl font-semibold">
-                  Request Received
-                </h2>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  Thank you for your request. We review all submissions within 4
-                  hours during business hours and will contact you to confirm
-                  details and next steps.
-                </p>
-                <Button
-                  variant="premiumOutline"
-                  size="sm"
-                  className="mt-6"
-                  onClick={() => setSubmitted(false)}
-                >
-                  Submit Another Request
-                </Button>
-              </div>
-            ) : (
-              <div className="rounded border border-border bg-card p-8">
-                <div className="flex items-center justify-between mb-6">
-                  <div>
-                    <h2 className="font-serif text-xl font-semibold">
-                      BOOK DIRECT
-                    </h2>
-                    <p className="mt-1 text-sm text-muted-foreground">
-                      Complete the form below to receive pricing, availability, and delivery options.
-                    </p>
+              ) : (
+                <div className="rounded border border-border bg-card p-8">
+                  <div className="flex items-center justify-between mb-6">
+                    <div>
+                      <h2 className="font-serif text-xl font-semibold">
+                        CONTACT US
+                      </h2>
+                      <p className="mt-2 text-sm text-muted-foreground">
+                        Complete the form below and we'll review your request, confirm availability, and contact you shortly.
+                      </p>
+                      <p className="mt-2 text-sm font-medium text-primary">
+                        Questions before booking? Call (470) 817-6427 or email us—we're happy to help.
+                      </p>
+                    </div>
                   </div>
-                  {selectedService && (
-                    <button
-                      onClick={() => setSelectedService(null)}
-                      className="text-muted-foreground hover:text-foreground transition-colors"
-                      aria-label="Clear selection"
-                    >
-                      <X className="h-4 w-4" />
-                    </button>
-                  )}
-                </div>
 
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-name">Full Name</Label>
-                      <Input
-                        id="svc-name"
-                        value={formData.fullName}
-                        onChange={(e) =>
-                          handleInputChange("fullName", e.target.value)
-                        }
-                        disabled={isLoading}
-                        placeholder="Your full name"
-                        required
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
-                      />
-                    </div>
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid gap-5 sm:grid-cols-2">
+                      <div className="space-y-2">
+                        <Label htmlFor="svc-firstname">First Name</Label>
+                        <Input
+                          id="svc-firstname"
+                          value={formData.firstName}
+                          onChange={(e) =>
+                            handleInputChange("firstName", e.target.value)
+                          }
+                          disabled={isLoading}
+                          placeholder="First Name"
+                          required
+                          className="text-white placeholder:text-white/40 focus-visible:ring-primary"
+                        />
+                      </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-email">Email</Label>
-                      <Input
-                        id="svc-email"
-                        value={formData.email}
-                        onChange={(e) =>
-                          handleInputChange("email", e.target.value)
-                        }
-                        type="email"
-                        disabled={isLoading}
-                        placeholder="you@example.com"
-                        required
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
-                      />
-                    </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="svc-lastname">Last Name</Label>
+                        <Input
+                          id="svc-lastname"
+                          value={formData.lastName}
+                          onChange={(e) =>
+                            handleInputChange("lastName", e.target.value)
+                          }
+                          disabled={isLoading}
+                          placeholder="Last Name"
+                          required
+                          className="text-white placeholder:text-white/40 focus-visible:ring-primary"
+                        />
+                      </div>
 
-                    <div className="space-y-2">
+                      <div className="space-y-2">
+                        <Label htmlFor="svc-email">Email</Label>
+                        <Input
+                          id="svc-email"
+                          value={formData.email}
+                          onChange={(e) =>
+                            handleInputChange("email", e.target.value)
+                          }
+                          type="email"
+                          disabled={isLoading}
+                          placeholder="you@example.com"
+                          required
+                          className="text-white placeholder:text-white/40 focus-visible:ring-primary"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
                       <Label htmlFor="svc-phone">Phone</Label>
-                      <Input
-                        id="svc-phone"
-                        value={formData.phone}
-                        onChange={(e) =>
-                          handleInputChange("phone", e.target.value)
-                        }
-                        disabled={isLoading}
-                        type="tel"
-                        placeholder="(404) 555-0000"
-                        required
-                        className="focus-visible:ring-primary text-white placeholder:text-white/40"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-type">Service Type</Label>
-                      <select
-                        id="svc-type"
-                        disabled={isLoading}
-                        value={formData.serviceType}
-                        onChange={(e) => {
-                          setSelectedService(e.target.value);
-                          handleInputChange("serviceType", e.target.value);
-                        }}
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
-                        required
-                      >
-                        <option value="">Select a service</option>
-                        {serviceTypes.map((s) => (
-                          <option key={s.id} value={s.id}>
-                            {s.title}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-time">Start Time</Label>
-                      <Input
-                        id="svc-time"
-                        value={formData.time}
-                        onChange={(e) =>
-                          handleInputChange("time", e.target.value)
-                        }
-                        disabled={isLoading}
-                        type="time"
-                        required
-                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-endtime">End Time</Label>
-                      <Input
-                        id="svc-endtime"
-                        value={formData.endTime}
-                        onChange={(e) =>
-                          handleInputChange("endTime", e.target.value)
-                        }
-                        disabled={isLoading}
-                        type="time"
-                        required
-                        className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-start">Start Date</Label>
-                      <Input
-                        id="svc-start"
-                        value={formData.startDate}
-                        min={today}
-                        onChange={(e) =>
-                          handleInputChange("startDate", e.target.value)
-                        }
-                        type="date"
-                        disabled={isLoading}
-                        required
-                        className="h-10 w-full appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-end">End Date</Label>
-                      <Input
-                        id="svc-end"
-                        value={formData.endDate}
-                        min={today}
-                        onChange={(e) =>
-                          handleInputChange("endDate", e.target.value)
-                        }
-                        type="date"
-                        disabled={isLoading}
-                        required
-                        className="h-10 w-full appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-license">License</Label>
-                      <div className="flex items-center gap-3">
-                        <Button
-                          type="button"
-                          variant="outline"
-                          size="sm"
-                          onClick={() => licenseInputRef.current?.click()}
+                      <div className="flex gap-2">
+                        <select
+                          value={formData.countryCode}
+                          onChange={(e) => handleInputChange("countryCode", e.target.value)}
                           disabled={isLoading}
-                          className="bg-white text-gray-900 hover:bg-gray-100 border-gray-300"
+                          className="flex h-10 w-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
                         >
-                          Choose File
-                        </Button>
-                        <span className="text-sm text-gray-700 flex-1 truncate">
-                          {licenseFilePreview
-                            ? licenseFilePreview.file.name
-                            : "No file selected"}
-                        </span>
+                          {countryCodes.map((country) => (
+                            <option key={country.code} value={country.code}>
+                              {country.code} {country.label}
+                            </option>
+                          ))}
+                        </select>
                         <Input
-                          id="svc-license"
-                          ref={licenseInputRef}
-                          accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
-                          type="file"
+                          id="svc-phone"
+                          value={formData.phone}
+                          onChange={(e) =>
+                            handleInputChange("phone", e.target.value)
+                          }
                           disabled={isLoading}
-                          className="hidden"
-                          onChange={(e) => {
-                            const file = e.target.files?.[0];
-                            if (file) handleFileSelect(file, "license");
-                          }}
+                          type="tel"
+                          placeholder="555-0000"
+                          required
+                          minLength={5}
+                          pattern="^[0-9\-\s\(\)]+$"
+                          title="Please enter a valid phone number with at least 5 digits"
+                          className="flex-1 text-white placeholder:text-white/40 focus-visible:ring-primary"
                         />
                       </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="svc-insurance">Insurance</Label>
-                      <div className="flex items-center gap-3">
-                        <Button
-                          type="button"
-                          variant="outline"
-                          size="sm"
-                          onClick={() => insuranceInputRef.current?.click()}
-                          disabled={isLoading}
-                          className="bg-white text-gray-900 hover:bg-gray-100 border-gray-300"
-                        >
-                          Choose File
-                        </Button>
-                        <span className="text-sm text-gray-700 flex-1 truncate">
-                          {insuranceFilePreview
-                            ? insuranceFilePreview.file.name
-                            : "No file selected"}
-                        </span>
-                        <Input
-                          ref={insuranceInputRef}
-                          id="svc-insurance"
-                          type="file"
-                          disabled={isLoading}
-                          className="hidden"
-                          accept="image/jpeg,image/png,image/heic,image/heif,application/pdf"
-                          onChange={(e) => {
-                            const file = e.target.files?.[0];
-                            if (file) handleFileSelect(file, "insurance");
-                          }}
-                        />
-                      </div>
                     </div>
-                  </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="svc-notes">Message</Label>
-                    <Textarea
-                      id="svc-notes"
-                      value={formData.notes}
-                      onChange={(e) =>
-                        handleInputChange("notes", e.target.value)
-                      }
+                    <div className="space-y-2">
+                      <Label htmlFor="svc-notes">Message</Label>
+                      <Textarea
+                        id="svc-notes"
+                        value={formData.notes}
+                        onChange={(e) =>
+                          handleInputChange("notes", e.target.value)
+                        }
+                        disabled={isLoading}
+                        placeholder="Make and model of the car and any additional details or requests"
+                        rows={3}
+                        className="text-white placeholder:text-white/40 focus-visible:ring-primary"
+                      />
+                    </div>
+
+                    <Button
+                      type="submit"
                       disabled={isLoading}
-                      placeholder="Make and model of the car and any additional details or requests"
-                      rows={3}
-                      className="focus-visible:ring-primary text-white placeholder:text-white/40"
-                    />
-                  </div>
+                      variant="premium"
+                      size="lg"
+                      className="w-full"
+                    >
+                      {isLoading ? "Processing" : "Submit Request"}
+                    </Button>
+                  </form>
+                </div>
+              )}
+            </FadeIn>
 
-                  <Button
-                    type="submit"
-                    disabled={isLoading}
-                    variant="premium"
-                    size="lg"
-                    className="w-full"
-                  >
-                    {isLoading ? "Processing" : "Submit Request"}
-                  </Button>
-                </form>
+            <FadeIn delay={0.15}>
+              <div className="space-y-8 h-full flex flex-col">
+                <div>
+                  <h2 className="font-serif text-xl text-white font-semibold">
+                    Direct Contact
+                  </h2>
+                  <div className="mt-4 space-y-3">
+                    <a
+                      href={`tel:${CONTACT_PHONE.replace(/[^+\d]/g, "")}`}
+                      className="flex items-center gap-3 text-sm text-white hover:text-gold transition-colors"
+                    >
+                      <Phone className="h-4 w-4 text-primary" />
+                      {CONTACT_PHONE}
+                    </a>
+                    <a
+                      href={`mailto:${CONTACT_EMAIL}`}
+                      className="flex items-center gap-3 text-sm text-white hover:text-gold transition-colors"
+                    >
+                      <Mail className="h-4 w-4 text-primary" />
+                      {CONTACT_EMAIL}
+                    </a>
+                    <div className="flex items-center gap-3 text-sm text-white">
+                      <MapPin className="h-4 w-4 text-primary" />
+                      {CONTACT_ADDRESS}
+                    </div>
+                  </div>
+                  <div className="mt-4 flex flex-wrap gap-3 text-white">
+                    <a href={MAPS_URL} target="_blank" rel="noopener noreferrer">
+                      <Button variant="premiumOutline" size="sm" className="text-white">
+                        Get Directions
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex-1 min-h-64 w-full overflow-hidden rounded border border-border">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3322.2711608896607!2d-84.4736799!3d33.6242105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f4e30394d673e3%3A0xa2f5da71d3f0eff1!2s4814%20Old%20National%20Hwy%2C%20Atlanta%2C%20GA%3030337%2C%20USA!5e0!3m2!1sen!2sng!4v1776526361183!5m2!1sen!2sng"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Mead Green Autos — Atlanta"
+                  />
+                </div>
               </div>
-            )}
-          </FadeIn>
+            </FadeIn>
+          </div>
         </div>
       </section>
     </>

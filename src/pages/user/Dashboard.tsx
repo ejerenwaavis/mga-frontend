@@ -284,7 +284,13 @@ const UserDashboard = () => {
   const [deletionOtp, setDeletionOtp] = useState("");
   const [isVideoKycModalOpen, setIsVideoKycModalOpen] = useState(false);
 
-  const { data: userResponse, isLoading: loadingUser, refetch: refetchUser } = useQuery("currentUser", getCurrentUser);
+  const { data: userResponse, isLoading: loadingUser, refetch: refetchUser } = useQuery("currentUser", getCurrentUser, {
+    onSuccess: (data: any) => {
+      if (data?.user) {
+        setUser(data.user);
+      }
+    }
+  });
   const { data: requestsResponse, isLoading: loadingRequests, refetch: refetchRequests, isFetching: isFetchingRequests } = useQuery("myRequests", getMyRequests, {
     refetchInterval: 10000 // Poll every 10 seconds
   });
@@ -574,6 +580,12 @@ const UserDashboard = () => {
                           <span className="text-gray-500 font-medium">Pickup Time</span>
                           <span className="font-semibold text-gray-900">{req.time || "N/A"}</span>
                         </div>
+                        {req.endTime && (
+                          <div className="flex justify-between items-center p-2 rounded-lg bg-gray-50 border border-gray-100">
+                            <span className="text-gray-500 font-medium">Dropoff Time</span>
+                            <span className="font-semibold text-gray-900">{req.endTime}</span>
+                          </div>
+                        )}
                       </div>
                       
                       {["pending", "confirmed", "in_progress"].includes(req.status) && (
@@ -1013,7 +1025,7 @@ const UserDashboard = () => {
       {/* Modification Modal */}
       {isModifyModalOpen && modifyingRequest && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <Card className="w-full max-w-md bg-white rounded-2xl shadow-2xl border-0 animate-in fade-in zoom-in-95 duration-200">
+          <Card className="w-full max-w-md bg-white rounded-2xl shadow-2xl border-0 animate-in fade-in zoom-in-95 duration-200 overflow-hidden">
             <div className="flex items-center justify-between p-6 border-b border-gray-100">
               <div className="flex items-center gap-3 text-[#143D2A]">
                 <div className="p-2 bg-[#C69C45]/10 rounded-full">
@@ -1085,7 +1097,7 @@ const UserDashboard = () => {
       {/* Account Deletion Modal */}
       {isDeleteModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <Card className="w-full max-w-md bg-white rounded-2xl shadow-2xl border-0 animate-in fade-in zoom-in-95 duration-200">
+          <Card className="w-full max-w-md bg-white rounded-2xl shadow-2xl border-0 animate-in fade-in zoom-in-95 duration-200 overflow-hidden">
             <div className="flex items-center justify-between p-6 border-b border-gray-100">
               <div className="flex items-center gap-3 text-red-600">
                 <div className="p-2 bg-red-100 rounded-full">
@@ -1165,7 +1177,7 @@ const UserDashboard = () => {
       {/* Rental Details Chat Modal */}
       {selectedRentalForChat && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <Card className="w-full max-w-2xl bg-white rounded-2xl shadow-2xl border-0 h-[80vh] flex flex-col animate-in fade-in zoom-in-95 duration-200">
+          <Card className="w-full max-w-2xl bg-white rounded-2xl shadow-2xl border-0 h-[80vh] flex flex-col animate-in fade-in zoom-in-95 duration-200 overflow-hidden">
             <CardHeader className="border-b border-gray-100 bg-white/50 py-4 shrink-0">
               <div className="flex justify-between items-center">
                 <CardTitle className="text-lg font-serif text-[#143D2A]">Rental Details & Chat</CardTitle>
@@ -1195,8 +1207,8 @@ const UserDashboard = () => {
                   <div className="bg-[#143D2A] text-white p-4 rounded-2xl rounded-tr-sm max-w-[85%] shadow-sm">
                     <p className="text-sm">
                       <strong>Vehicle:</strong> {selectedRentalForChat.desiredVehicleId === 'any' ? 'Not Specified' : selectedRentalForChat.desiredVehicleId}<br/>
-                      <strong>Dates:</strong> {new Date(selectedRentalForChat.startDate).toLocaleDateString()} - {new Date(selectedRentalForChat.endDate).toLocaleDateString()}<br/>
-                      {selectedRentalForChat.time && <><br/><strong>Time:</strong> {selectedRentalForChat.time}</>}
+                      <strong>Pickup:</strong> {new Date(selectedRentalForChat.startDate).toLocaleDateString()}{selectedRentalForChat.time ? ` at ${selectedRentalForChat.time}` : ''}<br/>
+                      <strong>Drop-off:</strong> {new Date(selectedRentalForChat.endDate).toLocaleDateString()}{selectedRentalForChat.endTime ? ` at ${selectedRentalForChat.endTime}` : ''}
                       {selectedRentalForChat.notes && <><br/><br/><strong>Notes:</strong> {selectedRentalForChat.notes}</>}
                     </p>
                   </div>

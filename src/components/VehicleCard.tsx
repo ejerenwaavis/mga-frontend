@@ -51,16 +51,16 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
       </Link>
 
       <div className="flex flex-1 flex-col p-5">
-        <div className="mb-1 flex items-start justify-between">
+        <div className="mb-1 grid grid-cols-[1fr_auto] gap-3 items-center">
           <div>
-            <h3 className="font-serif text-base font-semibold text-foreground">
+            <h3 className="font-serif text-base font-semibold text-foreground leading-tight">
               {vehicle.name}
             </h3>
             {/* <span className="text-xs font-sans uppercase tracking-wider text-muted-foreground">
               {vehicle.category}
             </span> */}
           </div>
-          <span className="font-serif text-lg font-semibold text-primary transition-colors duration-200 group-hover:text-gold">
+          <span className="font-serif text-lg font-semibold text-primary transition-colors duration-200 group-hover:text-gold shrink-0">
             ${vehicle.pricePerDay}
             <span className="text-xs font-sans font-normal text-muted-foreground">
               /day

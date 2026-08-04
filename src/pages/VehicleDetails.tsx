@@ -24,6 +24,7 @@ export default function VehicleDetails() {
     queryKey: ["carDetails", vehicleId],
     queryFn: () => getCarByIdQuery(vehicleId || ""),
     enabled: !!vehicleId,
+    retry: false, // Don't retry on failure so we show the "Not Found" UI immediately
   });
 
   // Use the fetched car if available, otherwise use local fallback
@@ -93,11 +94,24 @@ export default function VehicleDetails() {
 
   if (!vehicle) {
     return (
-      <section className="py-20">
-        <div className="container text-center">
-          <h1 className="font-serif text-2xl font-semibold">Vehicle Not Found</h1>
-          <Link to="/fleet" className="mt-4 inline-block text-sm text-primary underline">
-            Return to Fleet
+      <section className="min-h-[70vh] flex flex-col items-center justify-center py-20 bg-primary/5">
+        <div className="container max-w-md mx-auto text-center space-y-6">
+          <div className="mx-auto w-24 h-24 rounded-full bg-stone flex items-center justify-center border-2 border-dashed border-gold/50 relative overflow-hidden">
+             {/* Invisible car representation */}
+             <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTkgMTdsLjcwNyAzLjUzNkEybSAwIDAgMTEgMTQgMTdoLTQuNSI+PC9wYXRoPjwvc3ZnPg==')] bg-center bg-no-repeat" />
+             <span className="text-gold font-serif text-4xl opacity-50">?</span>
+          </div>
+          <div className="space-y-3">
+            <h1 className="font-serif text-3xl font-semibold text-white">Oops!</h1>
+            <p className="text-white/80 font-sans text-sm md:text-base leading-relaxed">
+              Looks like this vehicle drove off the lot! <br />
+              We couldn't find the car you were looking for.
+            </p>
+          </div>
+          <Link to="/fleet" className="inline-block mt-4">
+            <Button variant="gold" size="lg" className="px-8 shadow-lg shadow-gold/20 hover:shadow-gold/40 transition-shadow">
+              BROWSE OUR FLEET
+            </Button>
           </Link>
         </div>
       </section>

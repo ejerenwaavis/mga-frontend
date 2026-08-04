@@ -10,11 +10,11 @@ import { getAllCarsQuery } from "@/services/queries";
 import VehicleCardSkeleton from "@/components/VehicleCardSkeleton";
 import { Shield, MapPin, FileCheck, Car, Phone, Clock, CreditCard, ShieldCheck, Gauge, UserCheck, Star, ExternalLink } from "lucide-react";
 import heroVideo from "@/assets/hero-video-1.mp4";
+import { MAPS_URL } from "@/data/contact";
 // import FAQSection from "@/components/Faq";
 const PHONE = "(470) 817-6427";
 const ADDRESS = "4814 Old National Hwy, Atlanta, GA 30337";
 // const YELP_URL = "https://www.yelp.com/biz/mead-green-autos-atlanta";
-const MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=4814+Old+National+Hwy,+Atlanta,+GA+30337";
 
 
 const trustSignals = [
@@ -77,7 +77,7 @@ const rentalRequirements = [
   { 
     icon: ShieldCheck, 
     title: "Coverage requirements", 
-    description: "Valid full-coverage insurance in the renter’s name is required for every rental." 
+    description: "Qualifying full-coverage insurance or MGA rental coverage is required for every reservation." 
   },
   { 
     icon: CreditCard, 
@@ -164,14 +164,14 @@ export default function Index() {
 
   const featuredVehicles = carsData?.cars?.filter((car: any) => car.isFeatured) || [];
   // If no cars are explicitly marked as featured, fallback to the first 6 cars
-  const displayVehicles = featuredVehicles.length > 0 ? featuredVehicles : (carsData?.cars?.slice(0, 6) || []);
+  const displayVehicles = (featuredVehicles.length > 0 ? featuredVehicles : (carsData?.cars?.slice(0, 6) || [])).sort((a: any, b: any) => b.pricePerDay - a.pricePerDay);
 
   return (
     <>
       {/* Hero */}
       <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden bg-secondary">
         <img
-          src="/vehicles/MGA_HERO.webp"
+          src="https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287388/mga/vehicles/MGA_HERO.webp"
           alt="Mead Green Autos hero background"
           className="absolute inset-0 h-full w-full object-cover object-bottom"
         />
@@ -193,7 +193,7 @@ export default function Index() {
 
       {/* Trust strip */}
       <div className="border-b border-border bg-card">
-        <div className="container px-4 md:px-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 py-3 text-[12px] sm:text-[13.5px] font-sans tracking-wide text-muted-foreground">
+        <div className="container px-4 md:px-6 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-x-3 gap-y-2 py-3 text-[12px] sm:text-[13.5px] font-sans tracking-wide text-muted-foreground">
           <span className="whitespace-nowrap">Trusted by hundreds of 5-star trips</span>
           <span className="hidden sm:inline text-border">|</span>
 
@@ -262,7 +262,7 @@ export default function Index() {
               <div className="w-full md:w-1/2 flex justify-center md:justify-end">
                 <div className="w-full h-full  rounded-lg shadow-2xl overflow-hidden">
                   <img
-                    src="/vehicles/WELCOME_TO_MGA.webp"
+                    src="https://res.cloudinary.com/di1mj1zqc/image/upload/v1783287441/mga/vehicles/WELCOME_TO_MGA.webp"
                     alt="Welcome to Mead Green Autos"
                     className="h-full w-full object-cover"
                   />

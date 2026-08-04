@@ -217,3 +217,37 @@
 
 
 /* --primary: 152 45% 20%; */
+
+/* Invert native date/time icons to white on dark backgrounds when color-scheme is light */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(0.8);
+  opacity: 0.6;
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover,
+input[type="time"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+/* Target iOS Safari time input layout bugs */
+input[type="time"] {
+    width: 100%; 
+    max-width: 100%;
+    box-sizing: border-box;
+    display: block;
+    -webkit-appearance: none;
+}
+
+/* Force stubborn elements to obey layout rules on iOS */
+select, 
+input[type="file"],
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="tel"] {
+    -webkit-appearance: none; /* Removes iOS default rounding/shadows */
+    appearance: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
