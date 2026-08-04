@@ -389,7 +389,7 @@ export default function ServiceRequestForm({ initialServiceId }: ServiceRequestF
                     <option value="">Select a service</option>
                     {serviceTypes.map((s) => (
                       <option key={s.id} value={s.id}>
-                        {s.title}
+                        {s.shortName}
                       </option>
                     ))}
                   </select>
