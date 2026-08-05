@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import { CONTACT_EMAIL } from "@/data/contact";
 import { countryCodes } from "@/lib/countryCodes";
 import { CreateRequestPayload } from "@/lib/types";
+import { serviceTypes } from "@/data/services";
 import heic2any from "heic2any";
 import Swal from "sweetalert2";
 
@@ -307,10 +308,9 @@ export default function BookingModal() {
                   required
                 >
                   <option value="">Select a service</option>
-                  <option value="airport">Airport Service</option>
-                  <option value="rentals">Standard Rental</option>
-                  <option value="custom-delivery">Custom Delivery</option>
-                  <option value="cooperate-service">Corporate Services</option>
+                  {serviceTypes.map((s) => (
+                    <option key={s.id} value={s.id}>{s.shortName}</option>
+                  ))}
                 </select>
                 
               </div>

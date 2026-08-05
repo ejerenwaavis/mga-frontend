@@ -95,7 +95,7 @@ export default function About() {
               <img
                 src="/vehicles/our-story-cover-image.webp.PNG"
                 alt="Porsche Macan"
-                className="rounded-lg shadow-2xl w-full object-cover aspect-[4/3]"
+                className="rounded-lg shadow-2xl w-full h-auto"
               />
             </FadeIn>
           </div>

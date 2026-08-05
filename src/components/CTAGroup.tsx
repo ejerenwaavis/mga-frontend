@@ -32,7 +32,7 @@ export default function CTAGroup({ variant = "default", showHelper = true, class
         </div>
         {showHelper && (
           <p className="mt-4 text-xs text-white text-center max-w-xl mx-auto leading-relaxed">
-            BOOK DIRECT: Standard Rentals, Airport Service, Custom Delivery & Corporate Rentals
+            BOOK DIRECT: General Rentals, Airport Service, Vehicle Delivery & Corporate Services
           </p>
         )}
       </div>
@@ -61,7 +61,7 @@ export default function CTAGroup({ variant = "default", showHelper = true, class
         </div>
         {showHelper && (
           <p className="mt-4 text-xs text-white text-center max-w-xl mx-auto leading-relaxed">
-            BOOK DIRECT: Standard Rentals, Airport Service, Custom Delivery & Corporate Rentals
+            BOOK DIRECT: General Rentals, Airport Service, Vehicle Delivery & Corporate Services
           </p>
         )}
       </div>
@@ -89,7 +89,7 @@ export default function CTAGroup({ variant = "default", showHelper = true, class
       </div>
       {showHelper && (
         <p className="mt-3 text-xs text-white text-center max-w-xl mx-auto leading-relaxed">
-          BOOK DIRECT: Standard Rentals, Airport Service, Custom Delivery & Corporate Rentals
+          BOOK DIRECT: General Rentals, Airport Service, Vehicle Delivery & Corporate Services
         </p>
       )}
     </div>

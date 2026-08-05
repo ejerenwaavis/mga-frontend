@@ -114,26 +114,6 @@ export default function ServiceRequestForm({ initialServiceId }: ServiceRequestF
       }
     }
 
-    if (!licenseFilePreview) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Missing License',
-        text: 'Please upload a valid driver\'s license.',
-        confirmButtonColor: "hsl(var(--primary))",
-      });
-      return false;
-    }
-
-    if (!insuranceFilePreview) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Missing Insurance',
-        text: 'Please upload valid insurance documentation.',
-        confirmButtonColor: "hsl(var(--primary))",
-      });
-      return false;
-    }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -389,7 +369,7 @@ export default function ServiceRequestForm({ initialServiceId }: ServiceRequestF
                     <option value="">Select a service</option>
                     {serviceTypes.map((s) => (
                       <option key={s.id} value={s.id}>
-                        {s.title}
+                        {s.shortName}
                       </option>
                     ))}
                   </select>
@@ -458,23 +438,17 @@ export default function ServiceRequestForm({ initialServiceId }: ServiceRequestF
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="svc-license">License</Label>
+                  <Label htmlFor="svc-license">Driver's License (Optional)</Label>
                   <div className="flex items-center gap-3">
                     <Button
                       type="button"
                       variant="outline"
-                      size="sm"
                       onClick={() => licenseInputRef.current?.click()}
                       disabled={isLoading}
-                      className="bg-white text-gray-900 hover:bg-gray-100 border-gray-300"
+                      className="bg-white text-gray-900 border-gray-300 w-full font-normal justify-start px-3"
                     >
                       Choose File
                     </Button>
-                    <span className="text-sm text-gray-700 flex-1 truncate">
-                      {licenseFilePreview
-                        ? licenseFilePreview.file.name
-                        : "No file selected"}
-                    </span>
                     <Input
                       id="svc-license"
                       ref={licenseInputRef}
@@ -488,26 +462,21 @@ export default function ServiceRequestForm({ initialServiceId }: ServiceRequestF
                       }}
                     />
                   </div>
+                  {licenseFilePreview && <span className="text-xs text-gray-500 truncate mt-1 block">{licenseFilePreview.file.name}</span>}
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="svc-insurance">Insurance</Label>
+                  <Label htmlFor="svc-insurance">Insurance Card (Optional)</Label>
                   <div className="flex items-center gap-3">
                     <Button
                       type="button"
                       variant="outline"
-                      size="sm"
                       onClick={() => insuranceInputRef.current?.click()}
                       disabled={isLoading}
-                      className="bg-white text-gray-900 hover:bg-gray-100 border-gray-300"
+                      className="bg-white text-gray-900 border-gray-300 w-full font-normal justify-start px-3"
                     >
                       Choose File
                     </Button>
-                    <span className="text-sm text-gray-700 flex-1 truncate">
-                      {insuranceFilePreview
-                        ? insuranceFilePreview.file.name
-                        : "No file selected"}
-                    </span>
                     <Input
                       ref={insuranceInputRef}
                       id="svc-insurance"
@@ -521,10 +490,14 @@ export default function ServiceRequestForm({ initialServiceId }: ServiceRequestF
                       }}
                     />
                   </div>
+                  {insuranceFilePreview && <span className="text-xs text-gray-500 truncate mt-1 block">{insuranceFilePreview.file.name}</span>}
                 </div>
               </div>
 
               <div className="space-y-2">
+                <p className="text-xs text-black bg-gray-100 p-2 rounded border border-gray-300 mb-2">
+                  Optional document uploads may help expedite your booking. All submitted documents are handled securely and used solely to verify your rental eligibility.
+                </p>
                 <Label htmlFor="svc-notes">Message</Label>
                 <Textarea
                   id="svc-notes"
