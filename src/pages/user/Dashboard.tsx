@@ -13,10 +13,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import useUserStore from "../../hooks/store/userStore";
 import { useNavigate } from "react-router-dom";
-import {
-  LogOut, User as UserIcon, Clock, Mail, Shield, AlertCircle,
-  Pencil, X, Check, FileImage, RefreshCw, Video, ScanFace, CreditCard
-} from "lucide-react";
+import { Camera, RefreshCw, X, Shield, FileImage, LayoutDashboard, KeyRound, Key, Menu, ShieldCheck, Mail, LogOut, Check, ChevronDown, MapPin, Search, Calendar, ChevronRight, CheckCircle2, User, Phone, Upload, AlertCircle } from 'lucide-react';
+import KycSelfieDemo from "@/components/ui/KycSelfieDemo";
 import VideoKYCModal from "./VideoKYCModal";
 
 /* ─── small helper ─── */
@@ -779,9 +777,8 @@ const UserDashboard = () => {
                     ) : (
                       <div className="flex flex-col gap-4 p-5 bg-amber-50 rounded-2xl border border-amber-200 shadow-sm">
                         <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center bg-white/60 p-4 rounded-xl border border-amber-100">
-                          <div className="flex relative shrink-0">
-                            <ScanFace className="w-10 h-10 text-amber-500" />
-                            <CreditCard className="w-5 h-5 text-amber-700 absolute -right-2 -bottom-1 transform bg-white rounded-sm shadow-sm" />
+                          <div className="flex relative shrink-0 text-amber-500" style={{ ["--kyc-card-bg" as any]: "#ffffff" }}>
+                            <KycSelfieDemo idleLoop={false} size={48} />
                           </div>
                           <div className="text-sm text-amber-900">
                             <p className="font-semibold mb-0.5">Demonstration</p>
