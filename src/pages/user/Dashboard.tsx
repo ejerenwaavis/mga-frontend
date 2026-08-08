@@ -13,7 +13,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import useUserStore from "../../hooks/store/userStore";
 import { useNavigate } from "react-router-dom";
-import { Camera, RefreshCw, X, Shield, FileImage, LayoutDashboard, KeyRound, Key, Menu, ShieldCheck, Mail, LogOut, Check, ChevronDown, MapPin, Search, Calendar, ChevronRight, CheckCircle2, User, Phone, Upload, AlertCircle } from 'lucide-react';
+import {
+  LogOut, User as UserIcon, Clock, Mail, Shield, AlertCircle,
+  Pencil, X, Check, FileImage, RefreshCw, Video, ScanFace, CreditCard
+} from "lucide-react";
 import KycSelfieDemo from "@/components/ui/KycSelfieDemo";
 import VideoKYCModal from "./VideoKYCModal";
 
