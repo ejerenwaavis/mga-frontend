@@ -180,7 +180,8 @@ function Navbar() {
   let headerClasses = "fixed top-0 left-0 right-0 z-50 transition-all duration-500 transform ";
   headerClasses += isVisible ? "translate-y-0" : "-translate-y-full";
   
-  const isLightPage = location.pathname === '/login' || location.pathname === '/admin/login';
+  const lightPages = ['/login', '/admin/login', '/dashboard', '/forgot-password'];
+  const isLightPage = lightPages.includes(location.pathname) || location.pathname.startsWith('/reset-password');
   const isLightContext = isLightPage && !scrolled;
   
   if (isVehicleDetailsPage) {
