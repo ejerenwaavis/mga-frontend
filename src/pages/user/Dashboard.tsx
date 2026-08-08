@@ -450,9 +450,13 @@ const UserDashboard = () => {
     handleSupportSubmit(formData);
   };
 
-  const doUpload = (file: File, docType: "license" | "insurance") => {
+  const doUpload = (file: File, docType: "license" | "licenseBack" | "insurance") => {
     const formData = new FormData();
-    formData.append("kycDocument", file);
+    if (docType === "licenseBack") {
+      formData.append("kycDocumentBack", file);
+    } else {
+      formData.append("kycDocument", file);
+    }
     formData.append("docType", docType);
     handleKycUpload(formData);
   };
