@@ -15,7 +15,7 @@ import useUserStore from "../../hooks/store/userStore";
 import { useNavigate } from "react-router-dom";
 import {
   LogOut, User as UserIcon, Clock, Mail, Shield, AlertCircle,
-  Pencil, X, Check, FileImage, RefreshCw, Video
+  Pencil, X, Check, FileImage, RefreshCw, Video, ScanFace, CreditCard
 } from "lucide-react";
 import VideoKYCModal from "./VideoKYCModal";
 
@@ -745,7 +745,7 @@ const UserDashboard = () => {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <Video className="h-4 w-4 text-[#C69C45]" />
-                        <h3 className="font-semibold text-gray-900">Selfie KYC</h3>
+                        <h3 className="font-semibold text-gray-900">KYC - Selfie with license</h3>
                       </div>
                       <div className="flex items-center gap-2">
                         {user?.videoKyc?.status ? (
@@ -773,18 +773,28 @@ const UserDashboard = () => {
                         {isVideoUrl(user.videoKyc.url) ? (
                           <video src={user.videoKyc.url} className="w-full h-full object-cover" controls playsInline />
                         ) : (
-                          <img src={user.videoKyc.url} alt="Selfie KYC" className="w-full h-full object-cover" />
+                          <img src={user.videoKyc.url} alt="KYC - Selfie with license" className="w-full h-full object-cover" />
                         )}
                       </div>
                     ) : (
                       <div className="flex flex-col gap-4 p-5 bg-amber-50 rounded-2xl border border-amber-200 shadow-sm">
+                        <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center bg-white/60 p-4 rounded-xl border border-amber-100">
+                          <div className="flex relative shrink-0">
+                            <ScanFace className="w-10 h-10 text-amber-500" />
+                            <CreditCard className="w-5 h-5 text-amber-700 absolute -right-2 -bottom-1 transform bg-white rounded-sm shadow-sm" />
+                          </div>
+                          <div className="text-sm text-amber-900">
+                            <p className="font-semibold mb-0.5">Demonstration</p>
+                            <p className="opacity-90">Please hold your driver's license near your face so both are clearly visible.</p>
+                          </div>
+                        </div>
                         <div className="flex items-start gap-3">
                           <div className="mt-0.5 p-1.5 bg-amber-100 rounded-full shrink-0">
                             <AlertCircle className="h-4 w-4 text-amber-600" />
                           </div>
                           <div>
-                            <p className="font-semibold text-amber-900">Selfie KYC Needed</p>
-                            <p className="text-sm text-amber-800/80 mt-0.5">Please complete selfie capture to verify your identity.</p>
+                            <p className="font-semibold text-amber-900">KYC - Selfie with license Needed</p>
+                            <p className="text-sm text-amber-800/80 mt-0.5">Please complete capture to verify your identity.</p>
                           </div>
                         </div>
                         <Button
@@ -806,6 +816,16 @@ const UserDashboard = () => {
                     isUploading={isUploadingKyc}
                     isReplace={!!user?.kycDocument?.url}
                     onUpload={(file) => doUpload(file, "license")}
+                  />
+
+                  {/* Driver's License (Back) */}
+                  <DocCard
+                    label="Driver's License (Back)"
+                    doc={user?.kycDocumentBack}
+                    pendingDoc={user?.pendingKycDocumentBack}
+                    isUploading={isUploadingKyc}
+                    isReplace={!!user?.kycDocumentBack?.url}
+                    onUpload={(file) => doUpload(file, "licenseBack")}
                   />
 
                   {/* Insurance */}
