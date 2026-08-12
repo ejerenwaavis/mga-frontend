@@ -15,6 +15,8 @@ import { CreateRequestPayload } from "@/lib/types";
 import { serviceTypes } from "@/data/services";
 import heic2any from "heic2any";
 import Swal from "sweetalert2";
+import "altcha";
+import { BASE_URL } from "@/services/apiInstance";
 
 
 
@@ -58,6 +60,8 @@ export default function BookingModal() {
   const [submitted, setSubmitted] = useState(false);
   const [licenseFilePreview, setLicenseFilePreview] = useState<{ file: File; url: string } | null>(null);
   const [insuranceFilePreview, setInsuranceFilePreview] = useState<{ file: File; url: string } | null>(null);
+
+  const formLoadedAt = useRef(Date.now());
   const licenseInputRef = useRef<HTMLInputElement>(null);
   const insuranceInputRef = useRef<HTMLInputElement>(null);
 
@@ -196,6 +200,15 @@ export default function BookingModal() {
 
     if (licenseFilePreview) data.append("license", licenseFilePreview.file);
     if (insuranceFilePreview) data.append("insurance", insuranceFilePreview.file);
+
+    const altchaInput = document.querySelector('input[name="altcha"]') as HTMLInputElement;
+    if (altchaInput) data.append("altcha", altchaInput.value);
+
+    const hpInput = document.querySelector('input[name="hp_field"]') as HTMLInputElement;
+    if (hpInput) data.append("hp_field", hpInput.value);
+
+    const formLoadedInput = document.querySelector('input[name="form_loaded_at"]') as HTMLInputElement;
+    if (formLoadedInput) data.append("form_loaded_at", formLoadedInput.value);
 
     handleRequest(data);
   };
@@ -443,6 +456,13 @@ export default function BookingModal() {
                 rows={3}
                 className="text-white placeholder:text-white/40 focus-visible:ring-primary"
               />
+            </div>
+
+            <input type="text" name="hp_field" style={{ position: "absolute", left: "-9999px" }} tabIndex={-1} autoComplete="off" />
+            <input type="hidden" name="form_loaded_at" value={formLoadedAt.current} />
+            
+            <div className="mt-8 w-full" style={{ "--altcha-max-width": "100%" } as React.CSSProperties}>
+              <altcha-widget challenge={`${BASE_URL}/altcha-challenge`} name="altcha" hidefooter style={{ width: "100%" }}></altcha-widget>
             </div>
 
             <Button

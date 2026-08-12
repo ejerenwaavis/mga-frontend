@@ -13,6 +13,9 @@ import Swal from "sweetalert2";
 import { useMutation } from "react-query";
 import { toast } from "sonner";
 import { CONTACT_EMAIL } from "@/data/contact";
+import { countryCodes } from "@/lib/countryCodes";
+import "altcha";
+import { BASE_URL } from "@/services/apiInstance";
 
 interface ServiceRequestFormProps {
   initialServiceId?: string;
@@ -23,9 +26,11 @@ export default function ServiceRequestForm({ initialServiceId }: ServiceRequestF
   const [submitted, setSubmitted] = useState(false);
 
   interface FormData {
-    fullName: string;
+    firstName: string;
+    lastName: string;
     email: string;
     phone: string;
+    countryCode: string;
     serviceType: string;
     vehicleId: string;
     startDate: string;
@@ -38,7 +43,8 @@ export default function ServiceRequestForm({ initialServiceId }: ServiceRequestF
   }
 
   interface FormErrors {
-    fullName?: string;
+    firstName?: string;
+    lastName?: string;
     email?: string;
     phone?: string;
     serviceType?: string;
@@ -53,9 +59,11 @@ export default function ServiceRequestForm({ initialServiceId }: ServiceRequestF
   }
 
   const initialFormState: FormData = {
-    fullName: "",
+    firstName: "",
+    lastName: "",
     email: "",
     phone: "",
+    countryCode: "+1",
     serviceType: initialServiceId || "",
     vehicleId: "",
     startDate: "",
@@ -71,6 +79,7 @@ export default function ServiceRequestForm({ initialServiceId }: ServiceRequestF
   const [errors, setErrors] = useState<FormErrors>(initialFormState);
   
   const today = new Date().toISOString().split("T")[0];
+  const formLoadedAt = useRef(Date.now());
   const licenseInputRef = useRef<HTMLInputElement>(null);
   const insuranceInputRef = useRef<HTMLInputElement>(null);
   const [licenseFilePreview, setLicenseFilePreview] = useState<{ file: File; url: string } | null>(null);
@@ -79,38 +88,38 @@ export default function ServiceRequestForm({ initialServiceId }: ServiceRequestF
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
-    const usPhoneRegex = /^(?:\+1\s?)?(?:\(\d{3}\)|\d{3})(?:[\s.-]?)\d{3}(?:[\s.-]?)\d{4}$/;
-    const titles = /^(mr|mrs|ms|miss|dr|prof|engr|sir|chief)\.?\s+/i;
-
-    if (formData.fullName.trim()) {
-      const fullName = formData.fullName.trim();
-      const finalName = fullName.replace(titles, "");
-      const nameParts = finalName.trim().split(/\s+/);
-
-      if (nameParts.length !== 2) {
-        errors['fullName'] = 'Please enter actual (First and Last name)';
-        return false;
-      }
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = "First name is required";
+    }
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = "Last name is required";
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
       newErrors.email = "Invalid email address";
-      return false;
     }
 
-    if (!usPhoneRegex.test(formData.phone.trim())) {
-      newErrors.phone = "Please enter a valid US phone number (e.g., (404) 555-0100)";
-    }
-
-    if (formData.startDate && formData.endDate && formData.startDate === formData.endDate) {
-      if (formData.time && formData.endTime && formData.time >= formData.endTime) {
+    if (formData.startDate && formData.endDate) {
+      if (formData.endDate < formData.startDate) {
         Swal.fire({
           icon: 'error',
-          title: 'Invalid Time',
-          text: 'End time must be after the start time for same-day bookings.',
+          title: 'Invalid Date',
+          text: 'End date cannot be earlier than start date.',
           confirmButtonColor: "hsl(var(--primary))",
         });
         return false;
+      }
+      
+      if (formData.startDate === formData.endDate) {
+        if (formData.time && formData.endTime && formData.time >= formData.endTime) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Invalid Time',
+            text: 'End time must be after the start time for same-day bookings.',
+            confirmButtonColor: "hsl(var(--primary))",
+          });
+          return false;
+        }
       }
     }
 
@@ -188,12 +197,12 @@ export default function ServiceRequestForm({ initialServiceId }: ServiceRequestF
 
         const requestDetails: CreateRequestPayload = {
           ...formData,
-          phone: formData.phone.replace(/[^\d+]/g, "")
+          phone: `${formData.countryCode} ${formData.phone}`.replace(/[^\d+]/g, "")
         };
 
         const data = new FormData();
 
-        data.append("fullName", requestDetails.fullName);
+        data.append("fullName", `${requestDetails.firstName} ${requestDetails.lastName}`);
         data.append("email", requestDetails.email);
         data.append("phone", requestDetails.phone);
         data.append("recipientEmail", CONTACT_EMAIL);
@@ -212,6 +221,15 @@ export default function ServiceRequestForm({ initialServiceId }: ServiceRequestF
         if (requestDetails.insurance) {
           data.append("insurance", requestDetails.insurance);
         }
+
+        const altchaInput = document.querySelector('input[name="altcha"]') as HTMLInputElement;
+        if (altchaInput) data.append("altcha", altchaInput.value);
+
+        const hpInput = document.querySelector('input[name="hp_field"]') as HTMLInputElement;
+        if (hpInput) data.append("hp_field", hpInput.value);
+
+        const formLoadedInput = document.querySelector('input[name="form_loaded_at"]') as HTMLInputElement;
+        if (formLoadedInput) data.append("form_loaded_at", formLoadedInput.value);
 
         handleCreateRequest(data);
       } else {
@@ -307,21 +325,36 @@ export default function ServiceRequestForm({ initialServiceId }: ServiceRequestF
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid gap-5 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="svc-name">Full Name</Label>
+                  <Label htmlFor="svc-fname">First Name *</Label>
                   <Input
-                    id="svc-name"
-                    value={formData.fullName}
+                    id="svc-fname"
+                    value={formData.firstName}
                     onChange={(e) =>
-                      handleInputChange("fullName", e.target.value)
+                      handleInputChange("firstName", e.target.value)
                     }
                     disabled={isLoading}
-                    placeholder="Your full name"
+                    placeholder="John"
                     required
                     className="focus-visible:ring-primary text-white placeholder:text-white/40"
                   />
                 </div>
 
                 <div className="space-y-2">
+                  <Label htmlFor="svc-lname">Last Name *</Label>
+                  <Input
+                    id="svc-lname"
+                    value={formData.lastName}
+                    onChange={(e) =>
+                      handleInputChange("lastName", e.target.value)
+                    }
+                    disabled={isLoading}
+                    placeholder="Doe"
+                    required
+                    className="focus-visible:ring-primary text-white placeholder:text-white/40"
+                  />
+                </div>
+
+                <div className="sm:col-span-2 space-y-2">
                   <Label htmlFor="svc-email">Email</Label>
                   <Input
                     id="svc-email"
@@ -339,18 +372,34 @@ export default function ServiceRequestForm({ initialServiceId }: ServiceRequestF
 
                 <div className="space-y-2">
                   <Label htmlFor="svc-phone">Phone</Label>
-                  <Input
-                    id="svc-phone"
-                    value={formData.phone}
-                    onChange={(e) =>
-                      handleInputChange("phone", e.target.value)
-                    }
-                    disabled={isLoading}
-                    type="tel"
-                    placeholder="(404) 555-0000"
-                    required
-                    className="focus-visible:ring-primary text-white placeholder:text-white/40"
-                  />
+                  <div className="flex gap-2">
+                    <select
+                      value={formData.countryCode}
+                      onChange={(e) => handleInputChange("countryCode", e.target.value)}
+                      className="flex h-10 w-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-white"
+                    >
+                      {countryCodes.map((country) => (
+                        <option key={country.code} value={country.code}>
+                          {country.code} {country.label}
+                        </option>
+                      ))}
+                    </select>
+                    <Input
+                      id="svc-phone"
+                      value={formData.phone}
+                      onChange={(e) =>
+                        handleInputChange("phone", e.target.value)
+                      }
+                      disabled={isLoading}
+                      type="tel"
+                      placeholder="555-0000"
+                      required
+                      minLength={5}
+                      pattern="^[0-9\-\s\(\)]+$"
+                      title="Please enter a valid phone number with at least 5 digits"
+                      className="flex-1 focus-visible:ring-primary text-white placeholder:text-white/40"
+                    />
+                  </div>
                 </div>
 
                 <div className="space-y-2">
@@ -373,36 +422,6 @@ export default function ServiceRequestForm({ initialServiceId }: ServiceRequestF
                       </option>
                     ))}
                   </select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="svc-time">Start Time</Label>
-                  <Input
-                    id="svc-time"
-                    value={formData.time}
-                    onChange={(e) =>
-                      handleInputChange("time", e.target.value)
-                    }
-                    disabled={isLoading}
-                    type="time"
-                    required
-                    className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="svc-endtime">End Time</Label>
-                  <Input
-                    id="svc-endtime"
-                    value={formData.endTime}
-                    onChange={(e) =>
-                      handleInputChange("endTime", e.target.value)
-                    }
-                    disabled={isLoading}
-                    type="time"
-                    required
-                    className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
-                  />
                 </div>
 
                 <div className="space-y-2">
@@ -434,6 +453,36 @@ export default function ServiceRequestForm({ initialServiceId }: ServiceRequestF
                     disabled={isLoading}
                     required
                     className="h-10 w-full appearance-none focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="svc-time">Start Time</Label>
+                  <Input
+                    id="svc-time"
+                    value={formData.time}
+                    onChange={(e) =>
+                      handleInputChange("time", e.target.value)
+                    }
+                    disabled={isLoading}
+                    type="time"
+                    required
+                    className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="svc-endtime">End Time</Label>
+                  <Input
+                    id="svc-endtime"
+                    value={formData.endTime}
+                    onChange={(e) =>
+                      handleInputChange("endTime", e.target.value)
+                    }
+                    disabled={isLoading}
+                    type="time"
+                    required
+                    className="focus-visible:ring-primary text-white/60 placeholder:text-white/40 [color-scheme:dark]"
                   />
                 </div>
 
@@ -510,6 +559,13 @@ export default function ServiceRequestForm({ initialServiceId }: ServiceRequestF
                   rows={3}
                   className="focus-visible:ring-primary text-white placeholder:text-white/40"
                 />
+              </div>
+
+              <input type="text" name="hp_field" style={{ position: "absolute", left: "-9999px" }} tabIndex={-1} autoComplete="off" />
+              <input type="hidden" name="form_loaded_at" value={formLoadedAt.current} />
+              
+              <div className="mt-8 w-full" style={{ "--altcha-max-width": "100%" } as React.CSSProperties}>
+                <altcha-widget challenge={`${BASE_URL}/altcha-challenge`} name="altcha" hidefooter style={{ width: "100%" }}></altcha-widget>
               </div>
 
               <Button
