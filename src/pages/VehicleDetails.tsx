@@ -235,7 +235,7 @@ export default function VehicleDetails() {
                     BOOK DIRECT
                   </Button>
                   <a 
-                    href={TURO_URL} 
+                    href={vehicle.turoURL || TURO_URL} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     onClick={() => recordTuroClick({ vehicleId: vehicle?._id, source: "VehicleDetails" })}
